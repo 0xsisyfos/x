@@ -66,7 +66,7 @@ describe("AccountProvider", () => {
       const pubKey = await provider.getPublicKey();
 
       expect(pubKey).toBeDefined();
-      expect(pubKey).toMatch(/^0x[a-fA-F0-9]+$/);
+      expect(pubKey).toBe(await signer.getPubKey());
     });
 
     it("should cache the public key", async () => {

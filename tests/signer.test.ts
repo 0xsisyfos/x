@@ -1,4 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
+import { EDataAvailabilityMode } from "starknet";
 import { StarkSigner } from "../src/signer/stark.js";
 import { testPrivateKeys, devnetAccount } from "./config.js";
 
@@ -12,13 +13,27 @@ describe("StarkSigner", () => {
       expect(pubKey).toMatch(/^0x[a-fA-F0-9]+$/);
     });
 
-    it("should return same public key on multiple calls", async () => {
+    it("should cache public key in constructor", () => {
       const signer = new StarkSigner(testPrivateKeys.key1);
 
+      // Check that private publicKey property is set during construction
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      expect((signer as any).publicKey).toBeDefined();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      expect((signer as any).publicKey).toMatch(/^0x[a-fA-F0-9]+$/);
+    });
+
+    it("should return cached public key on multiple calls", async () => {
+      const signer = new StarkSigner(testPrivateKeys.key1);
+
+      // Verify the cached value is returned
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const cachedValue = (signer as any).publicKey;
       const pubKey1 = await signer.getPubKey();
       const pubKey2 = await signer.getPubKey();
 
-      expect(pubKey1).toBe(pubKey2);
+      expect(pubKey1).toBe(cachedValue);
+      expect(pubKey2).toBe(cachedValue);
     });
 
     it("should derive different public keys for different private keys", async () => {
@@ -33,21 +48,27 @@ describe("StarkSigner", () => {
   });
 
   describe("_getStarknetSigner", () => {
-    it("should have internal starknet signer", () => {
+    it("should have internal starknet signer set in constructor", () => {
       const signer = new StarkSigner(testPrivateKeys.key1);
-      const starknetSigner = signer._getStarknetSigner();
 
-      expect(starknetSigner).toBeDefined();
-      expect(typeof starknetSigner.signTransaction).toBe("function");
+      // Check that private signer property is set during construction
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      expect((signer as any).signer).toBeDefined();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      expect(typeof (signer as any).signer.signTransaction).toBe("function");
     });
 
-    it("should return same signer instance", () => {
+    it("should return the cached signer instance", () => {
       const signer = new StarkSigner(testPrivateKeys.key1);
 
+      // Verify _getStarknetSigner returns the cached private signer
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const cachedSigner = (signer as any).signer;
       const starknetSigner1 = signer._getStarknetSigner();
       const starknetSigner2 = signer._getStarknetSigner();
 
-      expect(starknetSigner1).toBe(starknetSigner2);
+      expect(starknetSigner1).toBe(cachedSigner);
+      expect(starknetSigner2).toBe(cachedSigner);
     });
   });
 
@@ -131,8 +152,8 @@ describe("StarkSigner", () => {
         tip: 0n,
         paymasterData: [],
         accountDeploymentData: [],
-        nonceDataAvailabilityMode: 0 as const,
-        feeDataAvailabilityMode: 0 as const,
+        nonceDataAvailabilityMode: EDataAvailabilityMode.L1,
+        feeDataAvailabilityMode: EDataAvailabilityMode.L1,
       };
 
       const signature = await signer.signTransaction(calls, transactionDetails);

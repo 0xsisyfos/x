@@ -15,8 +15,7 @@ describe("Tx", () => {
 
       const tx = new Tx(hash, provider, { provider: "voyager" });
 
-      expect(tx.explorerUrl).toContain("voyager.online");
-      expect(tx.explorerUrl).toContain(hash);
+      expect(tx.explorerUrl).toBe("https://sepolia.voyager.online/tx/0x123abc");
     });
 
     it("should build starkscan explorer URL", () => {
@@ -27,8 +26,7 @@ describe("Tx", () => {
 
       const tx = new Tx(hash, provider, { provider: "starkscan" });
 
-      expect(tx.explorerUrl).toContain("starkscan.co");
-      expect(tx.explorerUrl).toContain(hash);
+      expect(tx.explorerUrl).toBe("https://sepolia.starkscan.co/tx/0x123abc");
     });
 
     it("should use custom base URL", () => {
@@ -52,7 +50,7 @@ describe("Tx", () => {
 
       const tx = new Tx(hash, provider);
 
-      expect(tx.explorerUrl).toContain("voyager.online");
+      expect(tx.explorerUrl).toBe("https://sepolia.voyager.online/tx/0x123abc");
     });
 
     it("should use mainnet URL when nodeUrl contains mainnet", () => {
