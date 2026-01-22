@@ -1,4 +1,4 @@
-import type { SponsorshipRequest, SponsorshipResponse } from "./sponsorship.js";
+import type { PaymasterOptions } from "starknet";
 
 /** Supported Starknet chain identifiers */
 export type ChainId = "SN_MAIN" | "SN_SEPOLIA";
@@ -26,43 +26,24 @@ export interface ExplorerConfig {
 }
 
 /**
- * Configuration for gasless (sponsored) transactions.
- *
- * You provide a callback that the SDK calls whenever it needs
- * sponsorship. This callback typically makes a request to your backend.
- *
- * @example
- * ```ts
- * {
- *   getSponsorship: async (req) => {
- *     const res = await fetch("https://api.yourapp.com/sponsor", {
- *       method: "POST",
- *       body: JSON.stringify(req),
- *     });
- *     if (!res.ok) throw new Error("Sponsorship rejected");
- *     return res.json();
- *   }
- * }
- * ```
- */
-export interface SponsorConfig {
-  /**
-   * Called when the SDK needs fee sponsorship for a transaction.
-   * Should return sponsorship details or throw to reject.
-   */
-  getSponsorship: (request: SponsorshipRequest) => Promise<SponsorshipResponse>;
-}
-
-/**
  * Main configuration for the StarkSDK.
  *
+ * Sponsored transactions use AVNU's paymaster (built into starknet.js).
+ * You can optionally configure a custom paymaster endpoint.
+ *
  * @example
  * ```ts
+ * // Basic config (uses default AVNU paymaster for sponsored txs)
  * const sdk = new StarkSDK({
  *   rpcUrl: "https://starknet-mainnet.infura.io/v3/YOUR_KEY",
  *   chainId: "SN_MAIN",
- *   sponsor: { getSponsorship: async (req) => { ... } },
- *   explorer: { provider: "voyager" }
+ * });
+ *
+ * // With custom paymaster endpoint
+ * const sdk = new StarkSDK({
+ *   rpcUrl: "https://starknet-mainnet.infura.io/v3/YOUR_KEY",
+ *   chainId: "SN_MAIN",
+ *   paymaster: { nodeUrl: "https://custom-paymaster.example.com" },
  * });
  * ```
  */
@@ -71,8 +52,8 @@ export interface SDKConfig {
   rpcUrl: string;
   /** Target chain (mainnet or testnet) */
   chainId: ChainId;
-  /** Optional: required if using feeMode="sponsored" */
-  sponsor?: SponsorConfig;
+  /** Optional: custom paymaster config (default: AVNU paymaster) */
+  paymaster?: PaymasterOptions;
   /** Optional: configures how explorer URLs are built */
   explorer?: ExplorerConfig;
 }

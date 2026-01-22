@@ -2,29 +2,25 @@ import {
   Account,
   RpcProvider,
   type Call,
-  type UniversalDetails,
+  type PaymasterTimeBounds,
   TransactionFinalityStatus,
 } from "starknet";
 import { Tx } from "../tx/index.js";
 import { AccountProvider } from "./accounts/provider.js";
 import type {
-  DeployOptions,
   EnsureReadyOptions,
   ExecuteOptions,
   FeeMode,
   PreflightOptions,
   PreflightResult,
 } from "../types/wallet.js";
-import type { SDKConfig, SponsorConfig } from "../types/config.js";
-import type {
-  SponsorPolicyHint,
-  SponsorshipRequest,
-  SponsorshipResponse,
-} from "../types/sponsorship.js";
+import type { SDKConfig } from "../types/config.js";
 
 /**
  * Represents a connected Starknet wallet.
  * Provides methods for deployment, transaction execution, and preflight checks.
+ *
+ * Sponsored transactions use AVNU's paymaster (built into starknet.js).
  */
 export class Wallet {
   /** The wallet's Starknet address */
@@ -34,9 +30,8 @@ export class Wallet {
   private readonly account: Account;
   private readonly accountProvider: AccountProvider;
   private readonly config: SDKConfig;
-  private readonly sponsor: SponsorConfig | undefined;
   private readonly defaultFeeMode: FeeMode;
-  private readonly defaultPolicyHint: SponsorPolicyHint | undefined;
+  private readonly defaultTimeBounds: PaymasterTimeBounds | undefined;
 
   private constructor(
     address: string,
@@ -45,16 +40,15 @@ export class Wallet {
     provider: RpcProvider,
     config: SDKConfig,
     defaultFeeMode: FeeMode = "user_pays",
-    defaultPolicyHint?: SponsorPolicyHint
+    defaultTimeBounds?: PaymasterTimeBounds
   ) {
     this.address = address;
     this.accountProvider = accountProvider;
     this.account = account;
     this.provider = provider;
     this.config = config;
-    this.sponsor = config.sponsor;
     this.defaultFeeMode = defaultFeeMode;
-    this.defaultPolicyHint = defaultPolicyHint;
+    this.defaultTimeBounds = defaultTimeBounds;
   }
 
   /**
@@ -66,23 +60,19 @@ export class Wallet {
     provider: RpcProvider,
     config: SDKConfig,
     defaultFeeMode: FeeMode = "user_pays",
-    defaultPolicyHint?: SponsorPolicyHint
+    defaultTimeBounds?: PaymasterTimeBounds
   ): Promise<Wallet> {
-    // Validate sponsor config if feeMode is sponsored
-    if (defaultFeeMode === "sponsored" && !config.sponsor) {
-      throw new Error(
-        "Cannot use feeMode='sponsored' without configuring sponsor in SDKConfig"
-      );
-    }
-
     const address = await accountProvider.getAddress();
     const signer = accountProvider.getSigner();
 
-    const account = new Account({
+    // Create account with optional custom paymaster
+    const accountOptions = {
       provider,
       address,
       signer: signer._getStarknetSigner(),
-    });
+      ...(config.paymaster && { paymaster: config.paymaster }),
+    };
+    const account = new Account(accountOptions);
 
     return new Wallet(
       address,
@@ -91,7 +81,7 @@ export class Wallet {
       provider,
       config,
       defaultFeeMode,
-      defaultPolicyHint
+      defaultTimeBounds
     );
   }
 
@@ -129,7 +119,7 @@ export class Wallet {
     }
 
     onProgress?.({ step: "DEPLOYING" });
-    const tx = await this.deploy(options);
+    const tx = await this.deploy();
     await tx.wait({
       successStates: [
         TransactionFinalityStatus.ACCEPTED_ON_L2,
@@ -143,38 +133,23 @@ export class Wallet {
   /**
    * Deploy the account contract.
    * Returns a Tx object to track the deployment.
+   *
+   * Note: Sponsored deployment is not yet supported by AVNU paymaster.
+   * Deployment always uses user_pays fee mode.
    */
-  async deploy(options: DeployOptions = {}): Promise<Tx> {
-    const feeMode = options.feeMode ?? this.defaultFeeMode;
-    const policyHint = options.sponsorPolicyHint ?? this.defaultPolicyHint;
-
+  async deploy(): Promise<Tx> {
     const classHash = this.accountProvider.getClassHash();
     const publicKey = await this.accountProvider.getPublicKey();
     const constructorCalldata =
       this.accountProvider.getConstructorCalldata(publicKey);
 
-    // Build deploy options
-    const deployPayload = {
+    // Note: AVNU paymaster doesn't support account deployment yet
+    // Always use regular deployment
+    const { transaction_hash } = await this.account.deployAccount({
       classHash,
       constructorCalldata,
       addressSalt: publicKey,
-    };
-
-    if (feeMode === "sponsored") {
-      const sponsorship = await this.requestSponsorship([], policyHint);
-
-      // Execute with sponsored maxFee
-      const { transaction_hash } = await this.account.deployAccount({
-        ...deployPayload,
-        ...this.buildFeeOptions(sponsorship),
-      });
-
-      return new Tx(transaction_hash, this.provider, this.config.explorer);
-    }
-
-    // User pays: let starknet.js estimate fees
-    const { transaction_hash } =
-      await this.account.deployAccount(deployPayload);
+    });
 
     return new Tx(transaction_hash, this.provider, this.config.explorer);
   }
@@ -182,19 +157,22 @@ export class Wallet {
   /**
    * Execute one or more contract calls.
    * Returns a Tx object to track the transaction.
+   *
+   * When feeMode="sponsored", uses AVNU paymaster for gasless transactions.
    */
   async execute(calls: Call[], options: ExecuteOptions = {}): Promise<Tx> {
     const feeMode = options.feeMode ?? this.defaultFeeMode;
-    const policyHint = options.sponsorPolicyHint ?? this.defaultPolicyHint;
+    const timeBounds = options.timeBounds ?? this.defaultTimeBounds;
 
     if (feeMode === "sponsored") {
-      const sponsorship = await this.requestSponsorship(calls, policyHint);
+      // Use AVNU paymaster for sponsored transactions
+      const paymasterDetails = {
+        feeMode: { mode: "sponsored" as const },
+        ...(timeBounds && { timeBounds }),
+      };
 
-      // Execute with sponsored maxFee
-      const { transaction_hash } = await this.account.execute(
-        calls,
-        this.buildFeeOptions(sponsorship)
-      );
+      const { transaction_hash } =
+        await this.account.executePaymasterTransaction(calls, paymasterDetails);
 
       return new Tx(transaction_hash, this.provider, this.config.explorer);
     }
@@ -210,20 +188,12 @@ export class Wallet {
    */
   async preflight(options: PreflightOptions): Promise<PreflightResult> {
     const { kind, calls = [] } = options;
-    const feeMode = options.feeMode ?? this.defaultFeeMode;
 
     try {
       // Check deployment status
       const deployed = await this.isDeployed();
       if (!deployed && kind !== "execute") {
         return { ok: false, reason: "Account not deployed" };
-      }
-
-      // Check sponsorship availability
-      if (feeMode === "sponsored") {
-        if (!this.sponsor) {
-          return { ok: false, reason: "Sponsor not configured" };
-        }
       }
 
       // Simulate transaction if calls provided
@@ -267,63 +237,5 @@ export class Wallet {
    */
   getAccount(): Account {
     return this.account;
-  }
-
-  /**
-   * Request sponsorship from the configured sponsor backend.
-   * Throws if sponsor is not configured or rejects the request.
-   */
-  private async requestSponsorship(
-    calls: Call[],
-    policyHint?: SponsorPolicyHint
-  ): Promise<SponsorshipResponse> {
-    if (!this.sponsor) {
-      throw new Error(
-        "Sponsor not configured. Set sponsor in SDKConfig to use feeMode='sponsored'"
-      );
-    }
-
-    const request: SponsorshipRequest = {
-      calls,
-      callerAddress: this.address,
-      chainId: this.config.chainId,
-      policyHint,
-    };
-
-    try {
-      return await this.sponsor.getSponsorship(request);
-    } catch (error) {
-      throw new Error(
-        `Sponsorship rejected: ${error instanceof Error ? error.message : "Unknown error"}`
-      );
-    }
-  }
-
-  /**
-   * Build fee options from a sponsorship response.
-   * Maps sponsorship fields to starknet.js UniversalDetails.
-   */
-  private buildFeeOptions(
-    sponsorship: SponsorshipResponse
-  ): Partial<UniversalDetails> {
-    const details: Partial<UniversalDetails> = {};
-
-    if (sponsorship.resourceBounds) {
-      details.resourceBounds = sponsorship.resourceBounds;
-    }
-
-    if (sponsorship.paymasterData) {
-      details.paymasterData = sponsorship.paymasterData;
-    }
-
-    if (sponsorship.accountDeploymentData) {
-      details.accountDeploymentData = sponsorship.accountDeploymentData;
-    }
-
-    if (sponsorship.tip !== undefined) {
-      details.tip = sponsorship.tip;
-    }
-
-    return details;
   }
 }

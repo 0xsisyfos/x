@@ -84,7 +84,7 @@ export class StarkSDK {
    * ```
    */
   async connectWallet(options: ConnectWalletOptions): Promise<Wallet> {
-    const { account, feeMode, sponsorPolicyHint } = options;
+    const { account, feeMode, timeBounds } = options;
 
     const accountProvider = new AccountProvider(
       account.signer,
@@ -96,7 +96,7 @@ export class StarkSDK {
       this.provider,
       this.config,
       feeMode,
-      sponsorPolicyHint
+      timeBounds
     );
   }
 

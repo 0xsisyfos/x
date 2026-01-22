@@ -124,21 +124,20 @@ describe("Wallet", () => {
       }
     });
 
-    it("should fail preflight when sponsor not configured", async () => {
+    it("should allow sponsored preflight (AVNU paymaster is built-in)", async () => {
       const signer = new StarkSigner(privateKey);
       const wallet = await sdk.connectWallet({
         account: { signer },
       });
 
+      // With AVNU paymaster built into starknet.js, sponsored is always available
       const result = await wallet.preflight({
         kind: "execute",
         feeMode: "sponsored",
       });
 
-      expect(result.ok).toBe(false);
-      if (!result.ok) {
-        expect(result.reason).toContain("Sponsor not configured");
-      }
+      // Should succeed since AVNU paymaster is built-in (no sponsor config needed)
+      expect(result.ok).toBe(true);
     });
   });
 });

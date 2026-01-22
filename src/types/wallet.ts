@@ -1,5 +1,4 @@
-import type { Call, Calldata } from "starknet";
-import type { SponsorPolicyHint } from "./sponsorship.js";
+import type { Call, Calldata, PaymasterTimeBounds } from "starknet";
 import type { SignerInterface } from "../signer/interface.js";
 
 // ─── Account Class Configuration ─────────────────────────────────────────────
@@ -70,11 +69,17 @@ export type FeeMode = "sponsored" | "user_pays";
  * ```ts
  * import { StarkSigner, ArgentPreset } from "x";
  *
+ * // User pays fees
  * await sdk.connectWallet({
  *   account: {
  *     signer: new StarkSigner(privateKey),
  *     accountClass: ArgentPreset,
  *   },
+ * });
+ *
+ * // Sponsored via AVNU paymaster
+ * await sdk.connectWallet({
+ *   account: { signer: new StarkSigner(privateKey) },
  *   feeMode: "sponsored",
  * });
  * ```
@@ -84,8 +89,8 @@ export interface ConnectWalletOptions {
   account: AccountConfig;
   /** How fees are paid (default: "user_pays") */
   feeMode?: FeeMode;
-  /** Hint for sponsorship policy when feeMode="sponsored" */
-  sponsorPolicyHint?: SponsorPolicyHint;
+  /** Optional time bounds for paymaster transactions */
+  timeBounds?: PaymasterTimeBounds;
 }
 
 // ─── Ensure Ready ────────────────────────────────────────────────────────────
@@ -127,8 +132,8 @@ export interface EnsureReadyOptions {
   deploy?: DeployMode;
   /** How fees are paid for deployment */
   feeMode?: FeeMode;
-  /** Hint for sponsorship policy */
-  sponsorPolicyHint?: SponsorPolicyHint;
+  /** Optional time bounds for paymaster transactions */
+  timeBounds?: PaymasterTimeBounds;
   /** Callback for progress updates */
   onProgress?: (event: ProgressEvent) => void;
 }
@@ -139,8 +144,8 @@ export interface EnsureReadyOptions {
 export interface DeployOptions {
   /** How fees are paid */
   feeMode?: FeeMode;
-  /** Hint for sponsorship policy */
-  sponsorPolicyHint?: SponsorPolicyHint;
+  /** Optional time bounds for paymaster transactions */
+  timeBounds?: PaymasterTimeBounds;
 }
 
 // ─── Execute ─────────────────────────────────────────────────────────────────
@@ -149,8 +154,8 @@ export interface DeployOptions {
 export interface ExecuteOptions {
   /** How fees are paid */
   feeMode?: FeeMode;
-  /** Hint for sponsorship policy */
-  sponsorPolicyHint?: SponsorPolicyHint;
+  /** Optional time bounds for paymaster transactions */
+  timeBounds?: PaymasterTimeBounds;
 }
 
 // ─── Preflight ───────────────────────────────────────────────────────────────

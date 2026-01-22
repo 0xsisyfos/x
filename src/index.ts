@@ -26,16 +26,16 @@ export { TBTC, WBTC, USDC, USDT, ETH, STRK } from "./token/presets.js";
 export type {
   SDKConfig,
   ChainId,
-  SponsorConfig,
   ExplorerConfig,
   ExplorerProvider,
 } from "./types/config.js";
 
-// Types - Sponsorship
+// Types - Paymaster (re-exported from starknet.js)
 export type {
-  SponsorshipRequest,
-  SponsorshipResponse,
-  SponsorPolicyHint,
+  PaymasterDetails,
+  PaymasterOptions,
+  PaymasterTimeBounds,
+  PaymasterFeeMode,
 } from "./types/sponsorship.js";
 
 // Types - Wallet
