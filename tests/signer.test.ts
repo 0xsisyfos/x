@@ -1,6 +1,6 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { StarkSigner } from "../src/signer/stark.js";
-import { testPrivateKeys } from "./config.js";
+import { testPrivateKeys, devnetAccount } from "./config.js";
 
 describe("StarkSigner", () => {
   describe("getPubKey", () => {
@@ -52,32 +52,98 @@ describe("StarkSigner", () => {
   });
 
   describe("signMessage", () => {
-    it("should be a function", () => {
-      const signer = new StarkSigner(testPrivateKeys.key1);
-      expect(typeof signer.signMessage).toBe("function");
-    });
-
-    it("should delegate to starknet signer", () => {
-      const signer = new StarkSigner(testPrivateKeys.key1);
+    it("should call underlying signer signMessage", async () => {
+      const signer = new StarkSigner(devnetAccount.privateKey);
       const starknetSigner = signer._getStarknetSigner();
 
-      // Verify the method exists on the underlying signer
-      expect(typeof starknetSigner.signMessage).toBe("function");
+      // Mock the underlying signer
+      const mockSignature = ["0x123", "0x456"];
+      const signMessageSpy = vi
+        .spyOn(starknetSigner, "signMessage")
+        .mockResolvedValue(mockSignature);
+
+      const typedData = {
+        types: {
+          StarknetDomain: [
+            { name: "name", type: "shortstring" },
+            { name: "version", type: "shortstring" },
+            { name: "chainId", type: "shortstring" },
+          ],
+          Message: [{ name: "content", type: "felt" }],
+        },
+        primaryType: "Message" as const,
+        domain: {
+          name: "TestApp",
+          version: "1",
+          chainId: "SN_SEPOLIA",
+        },
+        message: {
+          content: "0x1234",
+        },
+      };
+
+      const signature = await signer.signMessage(
+        typedData,
+        devnetAccount.address
+      );
+
+      expect(signMessageSpy).toHaveBeenCalledWith(
+        typedData,
+        devnetAccount.address
+      );
+      expect(signature).toEqual(mockSignature);
+
+      signMessageSpy.mockRestore();
     });
   });
 
   describe("signTransaction", () => {
-    it("should be a function", () => {
-      const signer = new StarkSigner(testPrivateKeys.key1);
-      expect(typeof signer.signTransaction).toBe("function");
-    });
-
-    it("should delegate to starknet signer", () => {
-      const signer = new StarkSigner(testPrivateKeys.key1);
+    it("should call underlying signer signTransaction", async () => {
+      const signer = new StarkSigner(devnetAccount.privateKey);
       const starknetSigner = signer._getStarknetSigner();
 
-      // Verify the method exists on the underlying signer
-      expect(typeof starknetSigner.signTransaction).toBe("function");
+      // Mock the underlying signer
+      const mockSignature = ["0xabc", "0xdef"];
+      const signTransactionSpy = vi
+        .spyOn(starknetSigner, "signTransaction")
+        .mockResolvedValue(mockSignature);
+
+      const calls = [
+        {
+          contractAddress: "0x123",
+          entrypoint: "transfer",
+          calldata: ["0x456", "100", "0"],
+        },
+      ];
+
+      const transactionDetails = {
+        walletAddress: devnetAccount.address,
+        chainId: "0x534e5f5345504f4c4941" as const,
+        nonce: 0n,
+        version: "0x3" as const,
+        maxFee: 0n,
+        cairoVersion: "1" as const,
+        resourceBounds: {
+          l1_gas: { max_amount: 1000n, max_price_per_unit: 1000000n },
+          l2_gas: { max_amount: 0n, max_price_per_unit: 0n },
+          l1_data_gas: { max_amount: 0n, max_price_per_unit: 0n },
+        },
+        tip: 0n,
+        paymasterData: [],
+        accountDeploymentData: [],
+        nonceDataAvailabilityMode: 0 as const,
+        feeDataAvailabilityMode: 0 as const,
+      };
+
+      const signature = await signer.signTransaction(calls, transactionDetails);
+
+      expect(signTransactionSpy).toHaveBeenCalledWith(
+        calls,
+        transactionDetails
+      );
+      expect(signature).toEqual(mockSignature);
+
+      signTransactionSpy.mockRestore();
     });
   });
 });
