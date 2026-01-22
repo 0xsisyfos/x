@@ -50,10 +50,14 @@ export type {
   EnsureReadyOptions,
   DeployOptions,
   ExecuteOptions,
+  PrepareOptions,
   PreflightKind,
   PreflightOptions,
   PreflightResult,
 } from "./types/wallet.js";
+
+// Re-export paymaster transaction types from starknet.js
+export type { PreparedTransaction, ExecutableUserTransaction } from "starknet";
 
 // Types - Token
 export type { Token } from "./types/token.js";

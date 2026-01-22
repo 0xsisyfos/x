@@ -2,7 +2,9 @@ import {
   Account,
   RpcProvider,
   type Call,
+  type ExecutableUserTransaction,
   type PaymasterTimeBounds,
+  type PreparedTransaction,
   TransactionFinalityStatus,
 } from "starknet";
 import { Tx } from "../tx/index.js";
@@ -13,6 +15,7 @@ import type {
   FeeMode,
   PreflightOptions,
   PreflightResult,
+  PrepareOptions,
 } from "../types/wallet.js";
 import type { SDKConfig } from "../types/config.js";
 
@@ -181,6 +184,82 @@ export class Wallet {
     const { transaction_hash } = await this.account.execute(calls);
 
     return new Tx(transaction_hash, this.provider, this.config.explorer);
+  }
+
+  /**
+   * Build a sponsored transaction for the paymaster.
+   * Returns the prepared transaction with typed data and fee estimate.
+   *
+   * Use this when you want to inspect the transaction before signing,
+   * or when you need to handle signing separately.
+   *
+   * @example
+   * ```ts
+   * const prepared = await wallet.buildSponsored(calls);
+   * console.log("Fee estimate:", prepared.fee);
+   * console.log("Typed data:", prepared.typed_data);
+   *
+   * // Then sign and get executable transaction
+   * const executable = await wallet.signSponsored(prepared);
+   * ```
+   */
+  async buildSponsored(
+    calls: Call[],
+    options: PrepareOptions = {}
+  ): Promise<PreparedTransaction> {
+    const timeBounds = options.timeBounds ?? this.defaultTimeBounds;
+
+    const paymasterDetails = {
+      feeMode: { mode: "sponsored" as const },
+      ...(timeBounds && { timeBounds }),
+    };
+
+    return this.account.buildPaymasterTransaction(calls, paymasterDetails);
+  }
+
+  /**
+   * Sign a prepared sponsored transaction.
+   * Returns the executable transaction ready to be relayed by the paymaster.
+   *
+   * @example
+   * ```ts
+   * const prepared = await wallet.buildSponsored(calls);
+   * const executable = await wallet.signSponsored(prepared);
+   *
+   * // The executable can be sent to your backend for relay
+   * await fetch('/api/relay', {
+   *   method: 'POST',
+   *   body: JSON.stringify(executable)
+   * });
+   * ```
+   */
+  async signSponsored(
+    prepared: PreparedTransaction
+  ): Promise<ExecutableUserTransaction> {
+    return this.account.preparePaymasterTransaction(prepared);
+  }
+
+  /**
+   * Build and sign a sponsored transaction in one step.
+   * Returns the executable transaction ready to be relayed by the paymaster.
+   *
+   * @example
+   * ```ts
+   * const executable = await wallet.prepareSponsored(calls);
+   *
+   * // Send to your backend or paymaster for relay
+   * const response = await fetch('https://paymaster.avnu.fi/v1/execute', {
+   *   method: 'POST',
+   *   body: JSON.stringify(executable)
+   * });
+   * ```
+   */
+  async prepareSponsored(
+    calls: Call[],
+    options: PrepareOptions = {}
+  ): Promise<ExecutableUserTransaction> {
+    const prepared = await this.buildSponsored(calls, options);
+    return this.signSponsored(prepared);
   }
 
   /**

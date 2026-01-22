@@ -158,6 +158,12 @@ export interface ExecuteOptions {
   timeBounds?: PaymasterTimeBounds;
 }
 
+/** Options for `wallet.prepareSponsored()` */
+export interface PrepareOptions {
+  /** Optional time bounds for paymaster transactions */
+  timeBounds?: PaymasterTimeBounds;
+}
+
 // ─── Preflight ───────────────────────────────────────────────────────────────
 
 /** The kind of operation to preflight check */
