@@ -2,6 +2,7 @@ import {
   Account,
   RpcProvider,
   type Call,
+  type UniversalDetails,
   TransactionFinalityStatus,
 } from "starknet";
 import { Tx } from "../tx/index.js";
@@ -10,11 +11,16 @@ import type {
   DeployOptions,
   EnsureReadyOptions,
   ExecuteOptions,
+  FeeMode,
   PreflightOptions,
   PreflightResult,
 } from "../types/wallet.js";
 import type { SDKConfig, SponsorConfig } from "../types/config.js";
-import type { SponsorshipRequest } from "../types/sponsorship.js";
+import type {
+  SponsorPolicyHint,
+  SponsorshipRequest,
+  SponsorshipResponse,
+} from "../types/sponsorship.js";
 
 /**
  * Represents a connected Starknet wallet.
@@ -29,13 +35,17 @@ export class Wallet {
   private readonly accountProvider: AccountProvider;
   private readonly config: SDKConfig;
   private readonly sponsor: SponsorConfig | undefined;
+  private readonly defaultFeeMode: FeeMode;
+  private readonly defaultPolicyHint: SponsorPolicyHint | undefined;
 
   private constructor(
     address: string,
     accountProvider: AccountProvider,
     account: Account,
     provider: RpcProvider,
-    config: SDKConfig
+    config: SDKConfig,
+    defaultFeeMode: FeeMode = "user_pays",
+    defaultPolicyHint?: SponsorPolicyHint
   ) {
     this.address = address;
     this.accountProvider = accountProvider;
@@ -43,6 +53,8 @@ export class Wallet {
     this.provider = provider;
     this.config = config;
     this.sponsor = config.sponsor;
+    this.defaultFeeMode = defaultFeeMode;
+    this.defaultPolicyHint = defaultPolicyHint;
   }
 
   /**
@@ -52,8 +64,17 @@ export class Wallet {
   static async create(
     accountProvider: AccountProvider,
     provider: RpcProvider,
-    config: SDKConfig
+    config: SDKConfig,
+    defaultFeeMode: FeeMode = "user_pays",
+    defaultPolicyHint?: SponsorPolicyHint
   ): Promise<Wallet> {
+    // Validate sponsor config if feeMode is sponsored
+    if (defaultFeeMode === "sponsored" && !config.sponsor) {
+      throw new Error(
+        "Cannot use feeMode='sponsored' without configuring sponsor in SDKConfig"
+      );
+    }
+
     const address = await accountProvider.getAddress();
     const signer = accountProvider.getSigner();
 
@@ -63,7 +84,15 @@ export class Wallet {
       signer: signer._getStarknetSigner(),
     });
 
-    return new Wallet(address, accountProvider, account, provider, config);
+    return new Wallet(
+      address,
+      accountProvider,
+      account,
+      provider,
+      config,
+      defaultFeeMode,
+      defaultPolicyHint
+    );
   }
 
   /**
@@ -116,23 +145,36 @@ export class Wallet {
    * Returns a Tx object to track the deployment.
    */
   async deploy(options: DeployOptions = {}): Promise<Tx> {
-    const { feeMode = "user_pays", sponsorPolicyHint } = options;
+    const feeMode = options.feeMode ?? this.defaultFeeMode;
+    const policyHint = options.sponsorPolicyHint ?? this.defaultPolicyHint;
 
     const classHash = this.accountProvider.getClassHash();
     const publicKey = await this.accountProvider.getPublicKey();
     const constructorCalldata =
       this.accountProvider.getConstructorCalldata(publicKey);
 
-    if (feeMode === "sponsored" && this.sponsor) {
-      await this.requestSponsorship([], sponsorPolicyHint);
-      // Note: For account deployment with paymaster, additional logic needed
-    }
-
-    const { transaction_hash } = await this.account.deployAccount({
+    // Build deploy options
+    const deployPayload = {
       classHash,
       constructorCalldata,
       addressSalt: publicKey,
-    });
+    };
+
+    if (feeMode === "sponsored") {
+      const sponsorship = await this.requestSponsorship([], policyHint);
+
+      // Execute with sponsored maxFee
+      const { transaction_hash } = await this.account.deployAccount({
+        ...deployPayload,
+        ...this.buildFeeOptions(sponsorship),
+      });
+
+      return new Tx(transaction_hash, this.provider, this.config.explorer);
+    }
+
+    // User pays: let starknet.js estimate fees
+    const { transaction_hash } =
+      await this.account.deployAccount(deployPayload);
 
     return new Tx(transaction_hash, this.provider, this.config.explorer);
   }
@@ -142,13 +184,22 @@ export class Wallet {
    * Returns a Tx object to track the transaction.
    */
   async execute(calls: Call[], options: ExecuteOptions = {}): Promise<Tx> {
-    const { feeMode = "user_pays", sponsorPolicyHint } = options;
+    const feeMode = options.feeMode ?? this.defaultFeeMode;
+    const policyHint = options.sponsorPolicyHint ?? this.defaultPolicyHint;
 
-    if (feeMode === "sponsored" && this.sponsor) {
-      await this.requestSponsorship(calls, sponsorPolicyHint);
-      // Note: For sponsored execution, additional paymaster logic needed
+    if (feeMode === "sponsored") {
+      const sponsorship = await this.requestSponsorship(calls, policyHint);
+
+      // Execute with sponsored maxFee
+      const { transaction_hash } = await this.account.execute(
+        calls,
+        this.buildFeeOptions(sponsorship)
+      );
+
+      return new Tx(transaction_hash, this.provider, this.config.explorer);
     }
 
+    // User pays: let starknet.js estimate fees
     const { transaction_hash } = await this.account.execute(calls);
 
     return new Tx(transaction_hash, this.provider, this.config.explorer);
@@ -158,7 +209,8 @@ export class Wallet {
    * Check if an operation can succeed before attempting it.
    */
   async preflight(options: PreflightOptions): Promise<PreflightResult> {
-    const { kind, feeMode = "user_pays", calls = [] } = options;
+    const { kind, calls = [] } = options;
+    const feeMode = options.feeMode ?? this.defaultFeeMode;
 
     try {
       // Check deployment status
@@ -217,12 +269,18 @@ export class Wallet {
     return this.account;
   }
 
+  /**
+   * Request sponsorship from the configured sponsor backend.
+   * Throws if sponsor is not configured or rejects the request.
+   */
   private async requestSponsorship(
     calls: Call[],
-    policyHint?: { action: string; [key: string]: unknown }
-  ) {
+    policyHint?: SponsorPolicyHint
+  ): Promise<SponsorshipResponse> {
     if (!this.sponsor) {
-      throw new Error("Sponsor not configured");
+      throw new Error(
+        "Sponsor not configured. Set sponsor in SDKConfig to use feeMode='sponsored'"
+      );
     }
 
     const request: SponsorshipRequest = {
@@ -232,6 +290,40 @@ export class Wallet {
       policyHint,
     };
 
-    return this.sponsor.getSponsorship(request);
+    try {
+      return await this.sponsor.getSponsorship(request);
+    } catch (error) {
+      throw new Error(
+        `Sponsorship rejected: ${error instanceof Error ? error.message : "Unknown error"}`
+      );
+    }
+  }
+
+  /**
+   * Build fee options from a sponsorship response.
+   * Maps sponsorship fields to starknet.js UniversalDetails.
+   */
+  private buildFeeOptions(
+    sponsorship: SponsorshipResponse
+  ): Partial<UniversalDetails> {
+    const details: Partial<UniversalDetails> = {};
+
+    if (sponsorship.resourceBounds) {
+      details.resourceBounds = sponsorship.resourceBounds;
+    }
+
+    if (sponsorship.paymasterData) {
+      details.paymasterData = sponsorship.paymasterData;
+    }
+
+    if (sponsorship.accountDeploymentData) {
+      details.accountDeploymentData = sponsorship.accountDeploymentData;
+    }
+
+    if (sponsorship.tip !== undefined) {
+      details.tip = sponsorship.tip;
+    }
+
+    return details;
   }
 }

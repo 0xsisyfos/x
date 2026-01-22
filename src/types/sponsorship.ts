@@ -1,4 +1,4 @@
-import type { Call } from "starknet";
+import type { Call, ResourceBoundsBN } from "starknet";
 
 /**
  * A hint passed from the client to your backend to help decide
@@ -49,22 +49,47 @@ export interface SponsorshipRequest {
 /**
  * The response from your backend's sponsorship endpoint.
  *
- * At minimum, must include `maxFee` — the maximum fee your paymaster
- * will cover. Additional fields depend on your paymaster implementation
- * (e.g., signatures, nonces, expiry timestamps).
+ * You can provide either:
+ * - `resourceBounds`: V3 transaction resource bounds (preferred)
+ * - `maxFee`: Legacy max fee (will be converted to resource bounds)
  *
  * @example
  * ```ts
+ * // V3 style with resource bounds (preferred)
  * {
- *   maxFee: "0x2386f26fc10000",
- *   paymasterSignature: ["0x...", "0x..."],
- *   expiresAt: 1699999999
+ *   resourceBounds: {
+ *     l1_gas: { max_amount: 1000n, max_price_per_unit: 1000000000n },
+ *     l2_gas: { max_amount: 0n, max_price_per_unit: 0n },
+ *     l1_data_gas: { max_amount: 0n, max_price_per_unit: 0n },
+ *   }
+ * }
+ *
+ * // With paymaster data
+ * {
+ *   resourceBounds: { ... },
+ *   paymasterData: ["0x...", "0x..."]
  * }
  * ```
  */
 export interface SponsorshipResponse {
-  /** The maximum fee (in wei) that the paymaster will cover */
-  maxFee: string;
+  /**
+   * V3 transaction resource bounds.
+   * Specifies the maximum resources the sponsor will cover.
+   */
+  resourceBounds?: ResourceBoundsBN;
+  /**
+   * Optional: Additional data for the paymaster contract.
+   * Format depends on your paymaster implementation.
+   */
+  paymasterData?: bigint[];
+  /**
+   * Optional: Account deployment data for first-time deployment sponsorship.
+   */
+  accountDeploymentData?: bigint[];
+  /**
+   * Optional: Tip for transaction priority.
+   */
+  tip?: bigint;
   /** Additional paymaster-specific fields */
   [key: string]: unknown;
 }
