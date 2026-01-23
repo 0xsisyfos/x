@@ -38,6 +38,7 @@
     "test:testnet": "TEST_NETWORK=testnet vitest run --exclude tests/integration/**",
     "test:integration": "./scripts/test-integration.sh",
     "devnet:start": "starknet-devnet --seed 0 --account-class cairo1",
+    "example": "npm run build && npx --yes serve .",
     "prepare": "husky"
   },
   "devDependencies": {

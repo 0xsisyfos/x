@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StarkSDK Demo</title>
+    <style>
+      :root {
+        --bg: #0a0a0f;
+        --surface: #14141f;
+        --border: #2a2a3a;
+        --text: #e4e4eb;
+        --text-muted: #8888a0;
+        --accent: #ff6b35;
+        --accent-glow: rgba(255, 107, 53, 0.3);
+        --success: #00d68f;
+        --error: #ff5252;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "JetBrains Mono", "Fira Code", monospace;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        padding: 2rem;
+        background-image:
+          radial-gradient(
+            ellipse at top,
+            rgba(255, 107, 53, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at bottom right,
+            rgba(100, 50, 255, 0.05) 0%,
+            transparent 50%
+          );
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, var(--accent), #ff9068);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .subtitle {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .card h2 {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--text-muted);
+      }
+
+      .status-dot.connected {
+        background: var(--success);
+        box-shadow: 0 0 10px var(--success);
+      }
+
+      .status-dot.error {
+        background: var(--error);
+        box-shadow: 0 0 10px var(--error);
+      }
+
+      .address {
+        font-family: monospace;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        word-break: break-all;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      button {
+        font-family: inherit;
+        font-size: 0.9rem;
+        padding: 0.75rem 1.25rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 500;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #ff7d4d;
+        box-shadow: 0 0 20px var(--accent-glow);
+      }
+
+      .btn-secondary {
+        background: var(--border);
+        color: var(--text);
+      }
+
+      .btn-secondary:hover {
+        background: #3a3a4a;
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .input-group {
+        margin-bottom: 1rem;
+      }
+
+      label {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 0.75rem;
+        font-family: inherit;
+        font-size: 0.9rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+
+      .log {
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        padding: 1rem;
+        max-height: 300px;
+        overflow-y: auto;
+        font-size: 0.8rem;
+        line-height: 1.6;
+      }
+
+      .log-entry {
+        padding: 0.25rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .log-entry:last-child {
+        border-bottom: none;
+      }
+
+      .log-time {
+        color: var(--text-muted);
+        margin-right: 0.5rem;
+      }
+
+      .log-success {
+        color: var(--success);
+      }
+      .log-error {
+        color: var(--error);
+      }
+      .log-info {
+        color: var(--accent);
+      }
+
+      .tx-link {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .tx-link:hover {
+        text-decoration: underline;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      @media (max-width: 600px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>StarkSDK</h1>
+      <p class="subtitle">Minimal test interface for wallet integration</p>
+
+      <!-- Connection Card -->
+      <div class="card">
+        <h2>Connection</h2>
+        <div class="status">
+          <div class="status-dot" id="statusDot"></div>
+          <div>
+            <div id="statusText">Not connected</div>
+            <div class="address" id="addressText"></div>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>RPC URL</label>
+          <input
+            type="text"
+            id="rpcUrl"
+            value="https://api.cartridge.gg/x/starknet/sepolia"
+            placeholder="RPC URL"
+          />
+        </div>
+
+        <div class="btn-group">
+          <button class="btn-primary" id="connectCartridge">
+            Connect Cartridge
+          </button>
+          <button class="btn-secondary" id="connectDevnet">
+            Connect Devnet
+          </button>
+          <button class="btn-secondary" id="disconnect" disabled>
+            Disconnect
+          </button>
+        </div>
+      </div>
+
+      <!-- Wallet Actions -->
+      <div class="card">
+        <h2>Wallet Actions</h2>
+        <div class="grid">
+          <div class="input-group">
+            <label>Contract Address</label>
+            <input type="text" id="contractAddress" placeholder="0x..." />
+          </div>
+          <div class="input-group">
+            <label>Entrypoint</label>
+            <input
+              type="text"
+              id="entrypoint"
+              value="transfer"
+              placeholder="function name"
+            />
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Calldata (comma-separated)</label>
+          <input type="text" id="calldata" placeholder="0x123, 100, 0" />
+        </div>
+        <div class="btn-group">
+          <button class="btn-primary" id="execute" disabled>Execute</button>
+          <button class="btn-secondary" id="checkDeployed" disabled>
+            Check Deployed
+          </button>
+          <button class="btn-secondary" id="preflight" disabled>
+            Preflight
+          </button>
+        </div>
+      </div>
+
+      <!-- Sponsored Transactions -->
+      <div class="card">
+        <h2>Sponsored Transactions</h2>
+        <div class="btn-group">
+          <button class="btn-primary" id="executeSponsored" disabled>
+            Execute (Sponsored)
+          </button>
+          <button class="btn-secondary" id="prepareSponsored" disabled>
+            Prepare Sponsored
+          </button>
+        </div>
+      </div>
+
+      <!-- Log -->
+      <div class="card">
+        <h2>Log</h2>
+        <div class="log" id="log">
+          <div class="log-entry">
+            <span class="log-time">--:--:--</span>
+            <span>Ready. Connect a wallet to begin.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      // For local development, import from built dist
+      // In production, you'd use: import { StarkSDK, ... } from 'x';
+
+      // State
+      let sdk = null;
+      let wallet = null;
+
+      // Elements
+      const statusDot = document.getElementById("statusDot");
+      const statusText = document.getElementById("statusText");
+      const addressText = document.getElementById("addressText");
+      const logEl = document.getElementById("log");
+      const rpcUrlInput = document.getElementById("rpcUrl");
+
+      // Buttons
+      const connectCartridgeBtn = document.getElementById("connectCartridge");
+      const connectDevnetBtn = document.getElementById("connectDevnet");
+      const disconnectBtn = document.getElementById("disconnect");
+      const executeBtn = document.getElementById("execute");
+      const checkDeployedBtn = document.getElementById("checkDeployed");
+      const preflightBtn = document.getElementById("preflight");
+      const executeSponsoredBtn = document.getElementById("executeSponsored");
+      const prepareSponsoredBtn = document.getElementById("prepareSponsored");
+
+      // Inputs
+      const contractAddressInput = document.getElementById("contractAddress");
+      const entrypointInput = document.getElementById("entrypoint");
+      const calldataInput = document.getElementById("calldata");
+
+      // Logging
+      function log(message, type = "") {
+        const time = new Date().toLocaleTimeString();
+        const entry = document.createElement("div");
+        entry.className = "log-entry";
+        entry.innerHTML = `<span class="log-time">${time}</span><span class="log-${type}">${message}</span>`;
+        logEl.appendChild(entry);
+        logEl.scrollTop = logEl.scrollHeight;
+      }
+
+      // Update UI state
+      function updateUI() {
+        const connected = !!wallet;
+
+        statusDot.className = "status-dot" + (connected ? " connected" : "");
+        statusText.textContent = connected ? "Connected" : "Not connected";
+        addressText.textContent = connected ? wallet.address : "";
+
+        disconnectBtn.disabled = !connected;
+        executeBtn.disabled = !connected;
+        checkDeployedBtn.disabled = !connected;
+        preflightBtn.disabled = !connected;
+        executeSponsoredBtn.disabled = !connected;
+        prepareSponsoredBtn.disabled = !connected;
+        connectCartridgeBtn.disabled = connected;
+        connectDevnetBtn.disabled = connected;
+      }
+
+      // Initialize SDK
+      function initSDK() {
+        const rpcUrl = rpcUrlInput.value;
+        // Dynamic import since we're in a module
+        return import("../dist/index.js").then((module) => {
+          sdk = new module.StarkSDK({
+            rpcUrl,
+            chainId: rpcUrl.includes("mainnet") ? "SN_MAIN" : "SN_SEPOLIA",
+            explorer: { provider: "voyager" },
+          });
+          return module;
+        });
+      }
+
+      // Connect with Cartridge
+      connectCartridgeBtn.addEventListener("click", async () => {
+        try {
+          log("Connecting with Cartridge...", "info");
+          const module = await initSDK();
+
+          wallet = await sdk.connectCartridge({
+            policies: [
+              {
+                target: contractAddressInput.value || "0x0",
+                method: "transfer",
+              },
+            ],
+          });
+
+          log(`Connected: ${wallet.address}`, "success");
+          updateUI();
+        } catch (err) {
+          log(`Connection failed: ${err.message}`, "error");
+          statusDot.className = "status-dot error";
+        }
+      });
+
+      // Connect with Devnet (private key)
+      connectDevnetBtn.addEventListener("click", async () => {
+        try {
+          log("Connecting to devnet...", "info");
+          const module = await initSDK();
+
+          // Devnet prefunded account
+          const privateKey = "0x71d7bb07b9a64f6f78ac4c816aff4da9";
+          const signer = new module.StarkSigner(privateKey);
+
+          wallet = await sdk.connectWallet({
+            account: {
+              signer,
+              accountClass: module.DevnetPreset,
+            },
+          });
+
+          log(`Connected: ${wallet.address}`, "success");
+          updateUI();
+        } catch (err) {
+          log(`Connection failed: ${err.message}`, "error");
+          statusDot.className = "status-dot error";
+        }
+      });
+
+      // Disconnect
+      disconnectBtn.addEventListener("click", async () => {
+        if (wallet && wallet.disconnect) {
+          await wallet.disconnect();
+        }
+        wallet = null;
+        sdk = null;
+        log("Disconnected", "info");
+        updateUI();
+      });
+
+      // Build calls from inputs
+      function buildCalls() {
+        const contractAddress = contractAddressInput.value;
+        const entrypoint = entrypointInput.value;
+        const calldataStr = calldataInput.value;
+
+        if (!contractAddress) {
+          throw new Error("Contract address required");
+        }
+
+        const calldata = calldataStr
+          ? calldataStr.split(",").map((s) => s.trim())
+          : [];
+
+        return [
+          {
+            contractAddress,
+            entrypoint,
+            calldata,
+          },
+        ];
+      }
+
+      // Execute transaction
+      executeBtn.addEventListener("click", async () => {
+        try {
+          const calls = buildCalls();
+          log(`Executing: ${calls[0].entrypoint}...`, "info");
+
+          const tx = await wallet.execute(calls);
+          log(
+            `TX submitted: <a href="${tx.explorerUrl}" target="_blank" class="tx-link">${tx.hash.slice(0, 20)}...</a>`,
+            "success"
+          );
+
+          log("Waiting for confirmation...", "info");
+          await tx.wait();
+          log("Transaction confirmed!", "success");
+        } catch (err) {
+          log(`Execute failed: ${err.message}`, "error");
+        }
+      });
+
+      // Execute sponsored
+      executeSponsoredBtn.addEventListener("click", async () => {
+        try {
+          const calls = buildCalls();
+          log(`Executing (sponsored): ${calls[0].entrypoint}...`, "info");
+
+          const tx = await wallet.execute(calls, { feeMode: "sponsored" });
+          log(
+            `TX submitted: <a href="${tx.explorerUrl}" target="_blank" class="tx-link">${tx.hash.slice(0, 20)}...</a>`,
+            "success"
+          );
+
+          log("Waiting for confirmation...", "info");
+          await tx.wait();
+          log("Transaction confirmed!", "success");
+        } catch (err) {
+          log(`Execute failed: ${err.message}`, "error");
+        }
+      });
+
+      // Prepare sponsored
+      prepareSponsoredBtn.addEventListener("click", async () => {
+        try {
+          const calls = buildCalls();
+          log("Preparing sponsored transaction...", "info");
+
+          const executable = await wallet.prepareSponsored(calls);
+          log("Prepared transaction:", "success");
+          log(
+            `<pre style="font-size:0.7rem;overflow:auto">${JSON.stringify(executable, null, 2)}</pre>`,
+            ""
+          );
+        } catch (err) {
+          log(`Prepare failed: ${err.message}`, "error");
+        }
+      });
+
+      // Check deployed
+      checkDeployedBtn.addEventListener("click", async () => {
+        try {
+          const deployed = await wallet.isDeployed();
+          log(`Account deployed: ${deployed}`, deployed ? "success" : "info");
+        } catch (err) {
+          log(`Check failed: ${err.message}`, "error");
+        }
+      });
+
+      // Preflight
+      preflightBtn.addEventListener("click", async () => {
+        try {
+          const calls = buildCalls();
+          log("Running preflight check...", "info");
+
+          const result = await wallet.preflight({
+            kind: "execute",
+            calls,
+          });
+
+          if (result.ok) {
+            log("Preflight passed ✓", "success");
+          } else {
+            log(`Preflight failed: ${result.reason}`, "error");
+          }
+        } catch (err) {
+          log(`Preflight error: ${err.message}`, "error");
+        }
+      });
+
+      // Initial state
+      updateUI();
+    </script>
+  </body>
+</html>
