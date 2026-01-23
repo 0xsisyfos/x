@@ -127,12 +127,13 @@ export class StarkSDK {
    * ```
    */
   async connectCartridge(
-    options: Omit<CartridgeWalletOptions, "rpcUrl"> = {}
+    options: Omit<CartridgeWalletOptions, "rpcUrl" | "chainId"> = {}
   ): Promise<CartridgeWallet> {
     const explorer = options.explorer ?? this.config.explorer;
     return CartridgeWallet.create({
       ...options,
       rpcUrl: this.config.rpcUrl,
+      chainId: this.config.chainId,
       ...(explorer && { explorer }),
     });
   }

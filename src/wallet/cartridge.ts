@@ -2,6 +2,7 @@ import Controller from "@cartridge/controller";
 import {
   RpcProvider,
   TransactionFinalityStatus,
+  constants,
   type Account,
   type Call,
   type ExecutableUserTransaction,
@@ -18,8 +19,14 @@ import type {
   PreflightResult,
   PrepareOptions,
 } from "../types/wallet.js";
-import type { ExplorerConfig } from "../types/config.js";
+import type { ExplorerConfig, ChainId } from "../types/config.js";
 import type { WalletInterface } from "./interface.js";
+
+// Map SDK chainId to Starknet constants
+const CHAIN_ID_MAP: Record<ChainId, string> = {
+  SN_MAIN: constants.StarknetChainId.SN_MAIN,
+  SN_SEPOLIA: constants.StarknetChainId.SN_SEPOLIA,
+};
 
 /**
  * Options for connecting with Cartridge Controller.
@@ -37,6 +44,8 @@ import type { WalletInterface } from "./interface.js";
 export interface CartridgeWalletOptions {
   /** RPC URL for the Starknet network */
   rpcUrl?: string;
+  /** Chain ID for the Starknet network */
+  chainId?: ChainId;
   /** Session policies for pre-approved transactions */
   policies?: Array<{ target: string; method: string }>;
   /** Preset name for controller configuration */
@@ -114,31 +123,65 @@ export class CartridgeWallet implements WalletInterface {
   static async create(
     options: CartridgeWalletOptions = {}
   ): Promise<CartridgeWallet> {
-    const controller = new Controller({
-      rpcUrl: options.rpcUrl,
-      policies: options.policies
-        ? {
-            contracts: Object.fromEntries(
-              options.policies.map((p) => [
-                p.target,
-                { methods: [{ entrypoint: p.method }] },
-              ])
-            ),
-          }
-        : undefined,
-      preset: options.preset,
-      url: options.url,
-    });
+    // Build controller options
+    const controllerOptions: Record<string, unknown> = {};
 
-    // First try to probe for existing session
-    let walletAccount = await controller.probe();
+    // Set default chain ID
+    if (options.chainId) {
+      controllerOptions.defaultChainId = CHAIN_ID_MAP[options.chainId];
+    }
+
+    // Add custom chains if using non-Cartridge RPC
+    if (options.rpcUrl && !options.rpcUrl.includes("api.cartridge.gg")) {
+      controllerOptions.chains = [{ rpcUrl: options.rpcUrl }];
+    }
+
+    // Add policies if provided
+    if (options.policies && options.policies.length > 0) {
+      controllerOptions.policies = {
+        contracts: Object.fromEntries(
+          options.policies.map((p) => [
+            p.target,
+            { methods: [{ entrypoint: p.method }] },
+          ])
+        ),
+      };
+    }
+
+    // Add preset if provided
+    if (options.preset) {
+      controllerOptions.preset = options.preset;
+    }
+
+    // Add custom keychain URL if provided
+    if (options.url) {
+      controllerOptions.url = options.url;
+    }
+
+    const controller = new Controller(controllerOptions);
+
+    // Wait for the keychain iframe to be ready
+    const maxWaitMs = 10000; // 10 seconds max
+    const pollIntervalMs = 100;
+    let waited = 0;
+
+    while (!controller.isReady() && waited < maxWaitMs) {
+      await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
+      waited += pollIntervalMs;
+    }
+
+    if (!controller.isReady()) {
+      throw new Error(
+        "Cartridge Controller failed to initialize. Please try again."
+      );
+    }
+
+    const walletAccount = await controller.connect();
 
     if (!walletAccount) {
-      // Open connection popup
-      walletAccount = await controller.connect();
-      if (!walletAccount) {
-        throw new Error("Cartridge connection cancelled or failed");
-      }
+      throw new Error(
+        "Cartridge connection failed. Make sure popups are allowed and try again."
+      );
     }
 
     const provider = new RpcProvider({

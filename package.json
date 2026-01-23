@@ -38,7 +38,6 @@
     "test:testnet": "TEST_NETWORK=testnet vitest run --exclude tests/integration/**",
     "test:integration": "./scripts/test-integration.sh",
     "devnet:start": "starknet-devnet --seed 0 --account-class cairo1",
-    "example": "npm run build && npx --yes serve .",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -50,10 +49,11 @@
     "prettier": "3.8.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.53.1",
+    "vite": "^7.3.1",
     "vitest": "^4.0.17"
   },
   "dependencies": {
-    "@cartridge/controller": "^0.12.1",
+    "@cartridge/controller": "^0.11.3",
     "starknet": "^9.2.1"
   }
 }

@@ -39,6 +39,7 @@ vi.mock("@cartridge/controller", () => {
     openSettings = vi.fn();
     username = vi.fn().mockResolvedValue("testuser");
     rpcUrl = vi.fn().mockReturnValue("https://api.cartridge.gg/x/test");
+    isReady = vi.fn().mockReturnValue(true);
     keychain = {
       deploy: vi.fn().mockResolvedValue({
         code: "SUCCESS",
