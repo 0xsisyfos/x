@@ -80,7 +80,9 @@ describe("CartridgeWallet", () => {
       });
 
       expect(wallet).toBeInstanceOf(CartridgeWallet);
-      expect(wallet.address).toBe("0x1234567890abcdef");
+      expect(wallet.address).toBe(
+        "0x0000000000000000000000000000000000000000000000001234567890abcdef"
+      );
     });
 
     it("should accept policies option", async () => {

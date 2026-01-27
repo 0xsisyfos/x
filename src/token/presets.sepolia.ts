@@ -7,13 +7,14 @@
  */
 
 import type { Token } from "../types/token.js";
+import type { Address } from "../types/address.js";
 
 export const sepoliaTokens: Record<string, Token> = {
   /** Ether */
   ETH: {
     name: "Ether",
     address:
-      "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+      "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7" as Address,
     decimals: 18,
     symbol: "ETH",
   },
@@ -21,7 +22,7 @@ export const sepoliaTokens: Record<string, Token> = {
   STRK: {
     name: "Starknet Token",
     address:
-      "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d",
+      "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d" as Address,
     decimals: 18,
     symbol: "STRK",
   },
@@ -29,7 +30,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC: {
     name: "USDC",
     address:
-      "0x053b40a647cedfca6ca84f542a0fe36736031905a9639a7f19a3c1e66bfd5080",
+      "0x053b40a647cedfca6ca84f542a0fe36736031905a9639a7f19a3c1e66bfd5080" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -37,7 +38,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_1: {
     name: "USDC",
     address:
-      "0x0512feac6339ff7889822cb5aa2a86c848e9d392bb0e3e237c008674feed8343",
+      "0x0512feac6339ff7889822cb5aa2a86c848e9d392bb0e3e237c008674feed8343" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -45,7 +46,7 @@ export const sepoliaTokens: Record<string, Token> = {
   SWAY: {
     name: "Standard Weighted Adalian Yield",
     address:
-      "0x0030058f19ed447208015f6430f0102e8ab82d6c291566d7e73fe8e613c3d2ed",
+      "0x0030058f19ed447208015f6430f0102e8ab82d6c291566d7e73fe8e613c3d2ed" as Address,
     decimals: 6,
     symbol: "SWAY",
   },
@@ -53,7 +54,7 @@ export const sepoliaTokens: Record<string, Token> = {
   KUSDC: {
     name: "Kulipa USD Coin",
     address:
-      "0x06261e9ac387adf9a17e7411adabaf7867ab9f69babddfa4aba7653367ee4f3a",
+      "0x06261e9ac387adf9a17e7411adabaf7867ab9f69babddfa4aba7653367ee4f3a" as Address,
     decimals: 6,
     symbol: "kUSDC",
   },
@@ -61,7 +62,7 @@ export const sepoliaTokens: Record<string, Token> = {
   LPUSD: {
     name: "LumisPayUSD",
     address:
-      "0x07fefd575de284372db1d8317e15e69d9cef546d1f3f161a326fda14a47b77c3",
+      "0x07fefd575de284372db1d8317e15e69d9cef546d1f3f161a326fda14a47b77c3" as Address,
     decimals: 3,
     symbol: "lpUSD",
   },
@@ -69,7 +70,7 @@ export const sepoliaTokens: Record<string, Token> = {
   FAME: {
     name: "Duelist Fame",
     address:
-      "0x02549653a4ae1ff8d04a20b8820a49cbe97486c536ec0e4c8f68aa33d80067cf",
+      "0x02549653a4ae1ff8d04a20b8820a49cbe97486c536ec0e4c8f68aa33d80067cf" as Address,
     decimals: 18,
     symbol: "FAME",
   },
@@ -77,7 +78,7 @@ export const sepoliaTokens: Record<string, Token> = {
   LORDS: {
     name: "Lords",
     address:
-      "0x044e6bcc627e6201ce09f781d1aae44ea4c21c2fdef299e34fce55bef2d02210",
+      "0x044e6bcc627e6201ce09f781d1aae44ea4c21c2fdef299e34fce55bef2d02210" as Address,
     decimals: 18,
     symbol: "LORDS",
   },
@@ -85,7 +86,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VESTRK: {
     name: "veSTRK",
     address:
-      "0x0102918ff8257835e2dcedf4472c364653e88922a598294441b683644a3e94c0",
+      "0x0102918ff8257835e2dcedf4472c364653e88922a598294441b683644a3e94c0" as Address,
     decimals: 18,
     symbol: "veSTRK",
   },
@@ -93,7 +94,7 @@ export const sepoliaTokens: Record<string, Token> = {
   TEST: {
     name: "Test Token",
     address:
-      "0x0331ee8f7ea0a362c0cc532b784b9686fb32ff7279b3f3e01762a8aec127b40c",
+      "0x0331ee8f7ea0a362c0cc532b784b9686fb32ff7279b3f3e01762a8aec127b40c" as Address,
     decimals: 18,
     symbol: "TEST",
   },
@@ -101,7 +102,7 @@ export const sepoliaTokens: Record<string, Token> = {
   SLORDS: {
     name: "SepoliaLords",
     address:
-      "0x025ff15ffd980fa811955d471abdf0d0db40f497a0d08e1fedd63545d1f7ab0d",
+      "0x025ff15ffd980fa811955d471abdf0d0db40f497a0d08e1fedd63545d1f7ab0d" as Address,
     decimals: 18,
     symbol: "SLORDS",
   },
@@ -109,7 +110,7 @@ export const sepoliaTokens: Record<string, Token> = {
   KI: {
     name: "KiToken",
     address:
-      "0x075eb3eaf2a9062a659a83801d55272a3185a94d68bb67f2b5cab708b5711374",
+      "0x075eb3eaf2a9062a659a83801d55272a3185a94d68bb67f2b5cab708b5711374" as Address,
     decimals: 18,
     symbol: "KI",
   },
@@ -117,7 +118,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_2: {
     name: "USD Coin",
     address:
-      "0x02f37c3e00e75ee4135b32bb60c37e0599af264076376a618f138d2f9929ac74",
+      "0x02f37c3e00e75ee4135b32bb60c37e0599af264076376a618f138d2f9929ac74" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -125,7 +126,7 @@ export const sepoliaTokens: Record<string, Token> = {
   UNKNOWN: {
     name: "",
     address:
-      "0x05c625ad8a1356b367d01a13defaa5e5b47f4cd6b364caeba39ca3c22d9a3c2b",
+      "0x05c625ad8a1356b367d01a13defaa5e5b47f4cd6b364caeba39ca3c22d9a3c2b" as Address,
     decimals: 18,
     symbol: "",
   },
@@ -133,7 +134,7 @@ export const sepoliaTokens: Record<string, Token> = {
   SOUL: {
     name: "Soul",
     address:
-      "0x05d0a9a5a61db47a9d8e2bf2f74b48a5d2efb0f633b649aba5812e761ccf7c4b",
+      "0x05d0a9a5a61db47a9d8e2bf2f74b48a5d2efb0f633b649aba5812e761ccf7c4b" as Address,
     decimals: 18,
     symbol: "SOUL",
   },
@@ -141,7 +142,7 @@ export const sepoliaTokens: Record<string, Token> = {
   SOUL_1: {
     name: "Soul",
     address:
-      "0x05161f957e12ad17e8e70e96113e128b1a816c44336843178ac43ca7475ccbf2",
+      "0x05161f957e12ad17e8e70e96113e128b1a816c44336843178ac43ca7475ccbf2" as Address,
     decimals: 18,
     symbol: "SOUL",
   },
@@ -149,7 +150,7 @@ export const sepoliaTokens: Record<string, Token> = {
   LORD: {
     name: "Lords",
     address:
-      "0x019c92fa87f4d5e3be25c3dd6a284f30282a07e87cd782f5fd387b82c8142017",
+      "0x019c92fa87f4d5e3be25c3dd6a284f30282a07e87cd782f5fd387b82c8142017" as Address,
     decimals: 18,
     symbol: "LORD",
   },
@@ -157,7 +158,7 @@ export const sepoliaTokens: Record<string, Token> = {
   DST: {
     name: "defidotspace testnet token",
     address:
-      "0x01674bd6ad0d6049e0a6cc6e1fd9a7871d939eb52c2788210d7d223664bbc700",
+      "0x01674bd6ad0d6049e0a6cc6e1fd9a7871d939eb52c2788210d7d223664bbc700" as Address,
     decimals: 18,
     symbol: "DST",
   },
@@ -165,7 +166,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WBTC: {
     name: "Wrapped BTC",
     address:
-      "0x0496bef3ed20371382fbe0ca6a5a64252c5c848f9f1f0cccf8110fc4def912d5",
+      "0x0496bef3ed20371382fbe0ca6a5a64252c5c848f9f1f0cccf8110fc4def912d5" as Address,
     decimals: 8,
     symbol: "WBTC",
   },
@@ -173,7 +174,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ETH_1: {
     name: "Ether",
     address:
-      "0x06bb3f514d96f252cda2e1c0364a232ea887829d852845097688993af2db1c21",
+      "0x06bb3f514d96f252cda2e1c0364a232ea887829d852845097688993af2db1c21" as Address,
     decimals: 18,
     symbol: "ETH",
   },
@@ -181,7 +182,7 @@ export const sepoliaTokens: Record<string, Token> = {
   FAME_1: {
     name: "Duelist Fame",
     address:
-      "0x03c6bef87e2128c86577271448d1d2151e6417caf5246ddb56efd63f9a275c4f",
+      "0x03c6bef87e2128c86577271448d1d2151e6417caf5246ddb56efd63f9a275c4f" as Address,
     decimals: 18,
     symbol: "FAME",
   },
@@ -189,7 +190,7 @@ export const sepoliaTokens: Record<string, Token> = {
   FAME_2: {
     name: "Duelist Fame",
     address:
-      "0x0714094302620cab7ac11446e06b62bd3276434abc1a530241a299da3646db81",
+      "0x0714094302620cab7ac11446e06b62bd3276434abc1a530241a299da3646db81" as Address,
     decimals: 18,
     symbol: "FAME",
   },
@@ -197,7 +198,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WBTC_1: {
     name: "wrapped-bitcoin",
     address:
-      "0x04861ba938aed21f2cd7740acd3765ac4d2974783a3218367233de0153490cb6",
+      "0x04861ba938aed21f2cd7740acd3765ac4d2974783a3218367233de0153490cb6" as Address,
     decimals: 8,
     symbol: "WBTC",
   },
@@ -205,7 +206,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDT: {
     name: "USDT",
     address:
-      "0x061c54ec0285bc41ca6823c9a6758cb3555cb1d2479f3758dadd0f6f6a94c6bd",
+      "0x061c54ec0285bc41ca6823c9a6758cb3555cb1d2479f3758dadd0f6f6a94c6bd" as Address,
     decimals: 6,
     symbol: "USDT",
   },
@@ -213,7 +214,7 @@ export const sepoliaTokens: Record<string, Token> = {
   AETH: {
     name: "AkiraETH",
     address:
-      "0x008a5529010b5dbf1cc6cfe457f3ea1964e6325838878af99f79fb62c0e19d73",
+      "0x008a5529010b5dbf1cc6cfe457f3ea1964e6325838878af99f79fb62c0e19d73" as Address,
     decimals: 18,
     symbol: "AETH",
   },
@@ -221,7 +222,7 @@ export const sepoliaTokens: Record<string, Token> = {
   AUSDC: {
     name: "AkiraUSDC",
     address:
-      "0x060c1efa7d195d3b2c14c65fd5a2ada075a7c54ff4bc3fda9cc7bead527b3054",
+      "0x060c1efa7d195d3b2c14c65fd5a2ada075a7c54ff4bc3fda9cc7bead527b3054" as Address,
     decimals: 6,
     symbol: "AUSDC",
   },
@@ -229,7 +230,7 @@ export const sepoliaTokens: Record<string, Token> = {
   AUSDT: {
     name: "AkiraUSDT",
     address:
-      "0x00d01adf56d9bf6c65617bc03127561d89807e5e8eb37f3fb8d0dc4c5116ea61",
+      "0x00d01adf56d9bf6c65617bc03127561d89807e5e8eb37f3fb8d0dc4c5116ea61" as Address,
     decimals: 6,
     symbol: "AUSDT",
   },
@@ -237,7 +238,7 @@ export const sepoliaTokens: Record<string, Token> = {
   NGTST: {
     name: "NoGame Test Steel",
     address:
-      "0x078fe22042c6c37fe686a396bc9b029c7cd56a23fbeae9de0bc4f3208c3b9a23",
+      "0x078fe22042c6c37fe686a396bc9b029c7cd56a23fbeae9de0bc4f3208c3b9a23" as Address,
     decimals: 18,
     symbol: "NGtST",
   },
@@ -245,7 +246,7 @@ export const sepoliaTokens: Record<string, Token> = {
   NGTQZ: {
     name: "NoGame test Quartz",
     address:
-      "0x02d8927576f83b90749524d7e12cc30a20d1e189457b0a682dca4bee59f693f5",
+      "0x02d8927576f83b90749524d7e12cc30a20d1e189457b0a682dca4bee59f693f5" as Address,
     decimals: 18,
     symbol: "NGtQZ",
   },
@@ -253,7 +254,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_3: {
     name: "usd-coin",
     address:
-      "0x0715649d4c493ca350743e43915b88d2e6838b1c78ddc23d6d9385446b9d6844",
+      "0x0715649d4c493ca350743e43915b88d2e6838b1c78ddc23d6d9385446b9d6844" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -261,7 +262,7 @@ export const sepoliaTokens: Record<string, Token> = {
   NGTTT: {
     name: "NoGame test Tritium",
     address:
-      "0x00371d3ff4557d8ec1f09ec09122be59bcc8aaf7ef652d91d3534e5dfe690504",
+      "0x00371d3ff4557d8ec1f09ec09122be59bcc8aaf7ef652d91d3534e5dfe690504" as Address,
     decimals: 18,
     symbol: "NGtTT",
   },
@@ -269,7 +270,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WBTC_2: {
     name: "wrapped-bitcoin",
     address:
-      "0x00abbd6f1e590eb83addd87ba5ac27960d859b1f17d11a3c1cd6a0006704b141",
+      "0x00abbd6f1e590eb83addd87ba5ac27960d859b1f17d11a3c1cd6a0006704b141" as Address,
     decimals: 8,
     symbol: "WBTC",
   },
@@ -277,7 +278,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_4: {
     name: "USDC",
     address:
-      "0x02ac2fc4528a1681a258cebedcbaac91e42e49b37d1957e6bea5db8c793b92e3",
+      "0x02ac2fc4528a1681a258cebedcbaac91e42e49b37d1957e6bea5db8c793b92e3" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -285,7 +286,7 @@ export const sepoliaTokens: Record<string, Token> = {
   FAME_3: {
     name: "Duelist Fame",
     address:
-      "0x0426988695dca7c4aa08910d82c3c5addb282aa8c5cb34d5682a6a56444f18bc",
+      "0x0426988695dca7c4aa08910d82c3c5addb282aa8c5cb34d5682a6a56444f18bc" as Address,
     decimals: 18,
     symbol: "FAME",
   },
@@ -293,7 +294,7 @@ export const sepoliaTokens: Record<string, Token> = {
   LORD_1: {
     name: "Lord",
     address:
-      "0x021d1aa0b2c3413f0b8a1c14ddcdbaf404debfb0d4d858d0bb6ccb48ec1c0c51",
+      "0x021d1aa0b2c3413f0b8a1c14ddcdbaf404debfb0d4d858d0bb6ccb48ec1c0c51" as Address,
     decimals: 18,
     symbol: "LORD",
   },
@@ -301,7 +302,7 @@ export const sepoliaTokens: Record<string, Token> = {
   LORDS_1: {
     name: "lords",
     address:
-      "0x04b359a3b5972e4a05348ce46ae63d0d1ee98e6d14b93148d1d4229243aa2308",
+      "0x04b359a3b5972e4a05348ce46ae63d0d1ee98e6d14b93148d1d4229243aa2308" as Address,
     decimals: 18,
     symbol: "lords",
   },
@@ -309,7 +310,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ARUSDC: {
     name: "Aren USDC",
     address:
-      "0x04a762673b08014b8e7a969f94cc752a93b8ae209ace1aa01fea14a22f8a865c",
+      "0x04a762673b08014b8e7a969f94cc752a93b8ae209ace1aa01fea14a22f8a865c" as Address,
     decimals: NaN,
     symbol: "ArUSDC",
   },
@@ -317,7 +318,7 @@ export const sepoliaTokens: Record<string, Token> = {
   STRK_1: {
     name: "starknet",
     address:
-      "0x01278f23115f7e8acf07150b17c1f4b2a58257dde88aad535dbafc142edbd289",
+      "0x01278f23115f7e8acf07150b17c1f4b2a58257dde88aad535dbafc142edbd289" as Address,
     decimals: 18,
     symbol: "STRK",
   },
@@ -325,7 +326,7 @@ export const sepoliaTokens: Record<string, Token> = {
   KSTRK: {
     name: "Karnot STRK",
     address:
-      "0x042de5b868da876768213c48019b8d46cd484e66013ae3275f8a4b97b31fc7eb",
+      "0x042de5b868da876768213c48019b8d46cd484e66013ae3275f8a4b97b31fc7eb" as Address,
     decimals: 18,
     symbol: "kSTRK",
   },
@@ -333,7 +334,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_5: {
     name: "usd-coin",
     address:
-      "0x0054bd06a78db79f274984edf6907148c57af42f06ffd9a764ffe40ed9e0129b",
+      "0x0054bd06a78db79f274984edf6907148c57af42f06ffd9a764ffe40ed9e0129b" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -341,7 +342,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ESTRK: {
     name: "Emulated STRK",
     address:
-      "0x071de745c1ae996cfd39fb292b4342b7c086622e3ecf3a5692bd623060ff3fa0",
+      "0x071de745c1ae996cfd39fb292b4342b7c086622e3ecf3a5692bd623060ff3fa0" as Address,
     decimals: 18,
     symbol: "eSTRK",
   },
@@ -349,7 +350,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_6: {
     name: "USDC",
     address:
-      "0x02b568cc40500fecf1244f95ce2d21a97701114808a8468a3db07536f051bfac",
+      "0x02b568cc40500fecf1244f95ce2d21a97701114808a8468a3db07536f051bfac" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -357,7 +358,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WBTC_3: {
     name: "wrapped BTC",
     address:
-      "0x03595357ef49da1d6eff8e1677e6ffa9a384ce9cc63c8f94e3eb7e5b24418d8f",
+      "0x03595357ef49da1d6eff8e1677e6ffa9a384ce9cc63c8f94e3eb7e5b24418d8f" as Address,
     decimals: 8,
     symbol: "wBTC",
   },
@@ -365,7 +366,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ETH_2: {
     name: "ethereum",
     address:
-      "0x07809bb63f557736e49ff0ae4a64bd8aa6ea60e3f77f26c520cb92c24e3700d3",
+      "0x07809bb63f557736e49ff0ae4a64bd8aa6ea60e3f77f26c520cb92c24e3700d3" as Address,
     decimals: 18,
     symbol: "ETH",
   },
@@ -373,7 +374,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WSTETH: {
     name: "Wrapped liquid staked Ether 2.0",
     address:
-      "0x02bb2fb3837dcd4229404b422908da95109d94191c4b075b2d0f192f1a18f2ac",
+      "0x02bb2fb3837dcd4229404b422908da95109d94191c4b075b2d0f192f1a18f2ac" as Address,
     decimals: 18,
     symbol: "wstETH",
   },
@@ -381,7 +382,7 @@ export const sepoliaTokens: Record<string, Token> = {
   TBTC1: {
     name: "TestBTC1",
     address:
-      "0x044ad07751ad782288413c7db42c48e1c4f6195876bca3b6caef449bb4fb8d36",
+      "0x044ad07751ad782288413c7db42c48e1c4f6195876bca3b6caef449bb4fb8d36" as Address,
     decimals: 8,
     symbol: "TBTC1",
   },
@@ -389,7 +390,7 @@ export const sepoliaTokens: Record<string, Token> = {
   STRK_2: {
     name: "starknet",
     address:
-      "0x07823ffda63718356038de9506994db3a8648214473218d33577c0aafc6d8be2",
+      "0x07823ffda63718356038de9506994db3a8648214473218d33577c0aafc6d8be2" as Address,
     decimals: 18,
     symbol: "STRK",
   },
@@ -397,7 +398,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MTK: {
     name: "MyToken",
     address:
-      "0x058458d1b17fccd0431dd3e83e0184d45f93b229ad03b3337770730245bd5e34",
+      "0x058458d1b17fccd0431dd3e83e0184d45f93b229ad03b3337770730245bd5e34" as Address,
     decimals: 18,
     symbol: "MTK",
   },
@@ -405,7 +406,7 @@ export const sepoliaTokens: Record<string, Token> = {
   BLING: {
     name: "BLING",
     address:
-      "0x06be32f1bd65b394a772fef47a4a4c0df3dff3e5ae1529542b0508140e8110bf",
+      "0x06be32f1bd65b394a772fef47a4a4c0df3dff3e5ae1529542b0508140e8110bf" as Address,
     decimals: 18,
     symbol: "BLING",
   },
@@ -413,7 +414,7 @@ export const sepoliaTokens: Record<string, Token> = {
   UNKNOWN_1: {
     name: "",
     address:
-      "0x07fb9183f47540f7700cad6c17ca9db615fc9fe26edae9409f7b56294a6d1b17",
+      "0x07fb9183f47540f7700cad6c17ca9db615fc9fe26edae9409f7b56294a6d1b17" as Address,
     decimals: 18,
     symbol: "",
   },
@@ -421,7 +422,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ELORDS: {
     name: "Emulated Lords",
     address:
-      "0x04230d6e1203e0d26080eb1cf24d1a3708b8fc085a7e0a4b403f8cc4ec5f7b7b",
+      "0x04230d6e1203e0d26080eb1cf24d1a3708b8fc085a7e0a4b403f8cc4ec5f7b7b" as Address,
     decimals: 18,
     symbol: "eLORDS",
   },
@@ -429,7 +430,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDT_1: {
     name: "tether",
     address:
-      "0x008d4c6451c45ef46eff81b13e1a3f2237642b97e528ce1ae1d8b8ee2b267e8d",
+      "0x008d4c6451c45ef46eff81b13e1a3f2237642b97e528ce1ae1d8b8ee2b267e8d" as Address,
     decimals: 6,
     symbol: "USDT",
   },
@@ -437,7 +438,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WSTETH_1: {
     name: "wrapped-steth",
     address:
-      "0x070862ec4a96c0232682bbd330a98e1ab866acb32c110fe2fd3de80d8353274f",
+      "0x070862ec4a96c0232682bbd330a98e1ab866acb32c110fe2fd3de80d8353274f" as Address,
     decimals: 18,
     symbol: "wstETH",
   },
@@ -445,7 +446,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_7: {
     name: "usd-coin",
     address:
-      "0x027ef4670397069d7d5442cb7945b27338692de0d8896bdb15e6400cf5249f94",
+      "0x027ef4670397069d7d5442cb7945b27338692de0d8896bdb15e6400cf5249f94" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -453,7 +454,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WSTETH_2: {
     name: "wrapped-steth-legacy",
     address:
-      "0x03c50d1bb227bdd8ab94a69b28d43e67ba29bfac013d94d4cfab170a64a78989",
+      "0x03c50d1bb227bdd8ab94a69b28d43e67ba29bfac013d94d4cfab170a64a78989" as Address,
     decimals: 18,
     symbol: "wstETH",
   },
@@ -461,7 +462,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ETH_3: {
     name: "ethereum",
     address:
-      "0x0766ffbaee4fc8f8953616a9a20604ee3c05d2994de286a0ba35a2cc719c8fb3",
+      "0x0766ffbaee4fc8f8953616a9a20604ee3c05d2994de286a0ba35a2cc719c8fb3" as Address,
     decimals: 18,
     symbol: "ETH",
   },
@@ -469,7 +470,7 @@ export const sepoliaTokens: Record<string, Token> = {
   EPAL: {
     name: "Emulated PAL",
     address:
-      "0x01d321fcdb8c0592760d566b32b707a822b5e516e87e54c85b135b0c030b1706",
+      "0x01d321fcdb8c0592760d566b32b707a822b5e516e87e54c85b135b0c030b1706" as Address,
     decimals: 18,
     symbol: "ePAL",
   },
@@ -477,7 +478,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WBTC_4: {
     name: "wrapped-bitcoin",
     address:
-      "0x063d32a3fa6074e72e7a1e06fe78c46a0c8473217773e19f11d8c8cbfc4ff8ca",
+      "0x063d32a3fa6074e72e7a1e06fe78c46a0c8473217773e19f11d8c8cbfc4ff8ca" as Address,
     decimals: 8,
     symbol: "WBTC",
   },
@@ -485,7 +486,7 @@ export const sepoliaTokens: Record<string, Token> = {
   STRK_3: {
     name: "starknet",
     address:
-      "0x0772131070c7d56f78f3e46b27b70271d8ca81c7c52e3f62aa868fab4b679e43",
+      "0x0772131070c7d56f78f3e46b27b70271d8ca81c7c52e3f62aa868fab4b679e43" as Address,
     decimals: 18,
     symbol: "STRK",
   },
@@ -493,7 +494,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ETH_4: {
     name: "ethereum",
     address:
-      "0x07bb0505dde7c05f576a6e08e64dadccd7797f14704763a5ad955727be25e5e9",
+      "0x07bb0505dde7c05f576a6e08e64dadccd7797f14704763a5ad955727be25e5e9" as Address,
     decimals: 18,
     symbol: "ETH",
   },
@@ -501,7 +502,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WSTETH_3: {
     name: "wstETH OpenMint",
     address:
-      "0x0703911a6196ef674fc635de02763dcd4ccc16d7cf736f68a9483cc44eccaa94",
+      "0x0703911a6196ef674fc635de02763dcd4ccc16d7cf736f68a9483cc44eccaa94" as Address,
     decimals: 18,
     symbol: "wstETH",
   },
@@ -509,7 +510,7 @@ export const sepoliaTokens: Record<string, Token> = {
   EBROTHER: {
     name: "Emulated Starknet Brother",
     address:
-      "0x07031b4db035ffe8872034a97c60abd4e212528416f97462b1742e1f6cf82afe",
+      "0x07031b4db035ffe8872034a97c60abd4e212528416f97462b1742e1f6cf82afe" as Address,
     decimals: 18,
     symbol: "eBROTHER",
   },
@@ -517,7 +518,7 @@ export const sepoliaTokens: Record<string, Token> = {
   EPAPER: {
     name: "Emulated Paper",
     address:
-      "0x0335e87d03baaea788b8735ea0eac49406684081bb669535bb7074f9d3f66825",
+      "0x0335e87d03baaea788b8735ea0eac49406684081bb669535bb7074f9d3f66825" as Address,
     decimals: 18,
     symbol: "ePAPER",
   },
@@ -525,7 +526,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDT_2: {
     name: "tether",
     address:
-      "0x002cd937c3dccd4a4e125011bbe3189a6db0419bb6dd95c4b5ce5f6d834d8996",
+      "0x002cd937c3dccd4a4e125011bbe3189a6db0419bb6dd95c4b5ce5f6d834d8996" as Address,
     decimals: 6,
     symbol: "USDT",
   },
@@ -533,7 +534,7 @@ export const sepoliaTokens: Record<string, Token> = {
   NGTST_1: {
     name: "NoGame Test Steel",
     address:
-      "0x06a00eb3010b98bcf4329393bae52fadaf6aafa925e2cdc860e99a3df30d05f6",
+      "0x06a00eb3010b98bcf4329393bae52fadaf6aafa925e2cdc860e99a3df30d05f6" as Address,
     decimals: 18,
     symbol: "NGtST",
   },
@@ -541,7 +542,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDT_3: {
     name: "tether",
     address:
-      "0x041301316d5313cb7ee3389a04cfb788db7dd600d6369bc1ffd7982d6d808ff4",
+      "0x041301316d5313cb7ee3389a04cfb788db7dd600d6369bc1ffd7982d6d808ff4" as Address,
     decimals: 6,
     symbol: "USDT",
   },
@@ -549,7 +550,7 @@ export const sepoliaTokens: Record<string, Token> = {
   NGTQZ_1: {
     name: "NoGame test Quartz",
     address:
-      "0x007c854e52363b4e6308a800c9a06821229ba8e4185342d31a90e181bcd80144",
+      "0x007c854e52363b4e6308a800c9a06821229ba8e4185342d31a90e181bcd80144" as Address,
     decimals: 18,
     symbol: "NGtQZ",
   },
@@ -557,7 +558,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WSTETH_4: {
     name: "wrapped-steth-legacy",
     address:
-      "0x0257ed491384f9708064059e116343931746c8d46a80e67c5ddf0a8a3a3ff9e0",
+      "0x0257ed491384f9708064059e116343931746c8d46a80e67c5ddf0a8a3a3ff9e0" as Address,
     decimals: 18,
     symbol: "wstETH",
   },
@@ -565,7 +566,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WSTETH_5: {
     name: "wrapped-steth",
     address:
-      "0x0173d770db353707f2bfac025f760d2a45a288e06f56d48d545bcbdcebe3daa2",
+      "0x0173d770db353707f2bfac025f760d2a45a288e06f56d48d545bcbdcebe3daa2" as Address,
     decimals: 18,
     symbol: "wstETH",
   },
@@ -573,7 +574,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WSTETH_6: {
     name: "wrapped-steth",
     address:
-      "0x057181b39020af1416747a7d0d2de6ad5a5b721183136585e8774e1425efd5d2",
+      "0x057181b39020af1416747a7d0d2de6ad5a5b721183136585e8774e1425efd5d2" as Address,
     decimals: 18,
     symbol: "wstETH",
   },
@@ -581,7 +582,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDT_4: {
     name: "USDT",
     address:
-      "0x02ab8758891e84b968ff11361789070c6b1af2df618d6d2f4a78b0757573c6eb",
+      "0x02ab8758891e84b968ff11361789070c6b1af2df618d6d2f4a78b0757573c6eb" as Address,
     decimals: 6,
     symbol: "USDT",
   },
@@ -589,7 +590,7 @@ export const sepoliaTokens: Record<string, Token> = {
   BIG_TOKEN: {
     name: "BIG_TOKEN",
     address:
-      "0x00148a15f9fbf4c015b927bf88608fbafb6d149abdd5ef5b3e3b296e6ac999a4",
+      "0x00148a15f9fbf4c015b927bf88608fbafb6d149abdd5ef5b3e3b296e6ac999a4" as Address,
     decimals: 18,
     symbol: "BIG_TOKEN",
   },
@@ -597,7 +598,7 @@ export const sepoliaTokens: Record<string, Token> = {
   NGTTT_1: {
     name: "NoGame test Tritium",
     address:
-      "0x01bcecbc618236d8a19c33599cd5a001284fb072904cd338ec84fc436a994024",
+      "0x01bcecbc618236d8a19c33599cd5a001284fb072904cd338ec84fc436a994024" as Address,
     decimals: 18,
     symbol: "NGtTT",
   },
@@ -605,7 +606,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ZXB: {
     name: "USDZ",
     address:
-      "0x04f28c3cc48b5cee48836547c8bf90ae29a9415ce5a425632aa27351724243a4",
+      "0x04f28c3cc48b5cee48836547c8bf90ae29a9415ce5a425632aa27351724243a4" as Address,
     decimals: 18,
     symbol: "ZXB",
   },
@@ -613,7 +614,7 @@ export const sepoliaTokens: Record<string, Token> = {
   EKUBO: {
     name: "Ekubo Protocol",
     address:
-      "0x01fad7c03b2ea7fbef306764e20977f8d4eae6191b3a54e4514cc5fc9d19e569",
+      "0x01fad7c03b2ea7fbef306764e20977f8d4eae6191b3a54e4514cc5fc9d19e569" as Address,
     decimals: 18,
     symbol: "EKUBO",
   },
@@ -621,7 +622,7 @@ export const sepoliaTokens: Record<string, Token> = {
   TBTC2: {
     name: "TestBTC2",
     address:
-      "0x07e97477601e5606359303cf50c050fd3ba94f66bd041f4ed504673ba2b81696",
+      "0x07e97477601e5606359303cf50c050fd3ba94f66bd041f4ed504673ba2b81696" as Address,
     decimals: 8,
     symbol: "TBTC2",
   },
@@ -629,7 +630,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VETH: {
     name: "Vesu Ether",
     address:
-      "0x01ceb6db3ac889e2c0d2881eff602117c340316e55436f37699d91c193ee8aa0",
+      "0x01ceb6db3ac889e2c0d2881eff602117c340316e55436f37699d91c193ee8aa0" as Address,
     decimals: 18,
     symbol: "vETH",
   },
@@ -637,7 +638,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WFUSD: {
     name: "Wolfy USD",
     address:
-      "0x0585593986c67a9802555dab7c7728270b603da6721ed6f754063eb8fd51f0aa",
+      "0x0585593986c67a9802555dab7c7728270b603da6721ed6f754063eb8fd51f0aa" as Address,
     decimals: 18,
     symbol: "wfUSD",
   },
@@ -645,7 +646,7 @@ export const sepoliaTokens: Record<string, Token> = {
   TFM: {
     name: "ToneFunnyMoney",
     address:
-      "0x00ed001175df231206870e664965a0d69599dca364162817987d69997e65a1bf",
+      "0x00ed001175df231206870e664965a0d69599dca364162817987d69997e65a1bf" as Address,
     decimals: 6,
     symbol: "TFM",
   },
@@ -653,15 +654,23 @@ export const sepoliaTokens: Record<string, Token> = {
   BNB: {
     name: "BNB",
     address:
-      "0x042aad20c38afadfd4c65fca9ce796bab1837986d39f1ee869cfc9366ae92e81",
+      "0x042aad20c38afadfd4c65fca9ce796bab1837986d39f1ee869cfc9366ae92e81" as Address,
     decimals: 18,
     symbol: "BNB",
+  },
+  /** USDC */
+  USDC_8: {
+    name: "USDC",
+    address:
+      "0x0520222566f0e503162fbbf4d2dc1b1343bf5440d82608317d6d2b613107abf0" as Address,
+    decimals: 6,
+    symbol: "USDC",
   },
   /** zkLend Interest-Bearing ETH */
   ZETH: {
     name: "zkLend Interest-Bearing ETH",
     address:
-      "0x037b024be146a5f62224eaa769f53fbefa3e44b1c20ae316aaf8ec94aa6c0ec5",
+      "0x037b024be146a5f62224eaa769f53fbefa3e44b1c20ae316aaf8ec94aa6c0ec5" as Address,
     decimals: 18,
     symbol: "zETH",
   },
@@ -669,23 +678,15 @@ export const sepoliaTokens: Record<string, Token> = {
   SLT: {
     name: "Salt Lake Token",
     address:
-      "0x00f051bd64b82f541821751138af6a131e33a764c913ae9956f16407126481c4",
+      "0x00f051bd64b82f541821751138af6a131e33a764c913ae9956f16407126481c4" as Address,
     decimals: 18,
     symbol: "SLT",
-  },
-  /** USDC */
-  USDC_8: {
-    name: "USDC",
-    address:
-      "0x0520222566f0e503162fbbf4d2dc1b1343bf5440d82608317d6d2b613107abf0",
-    decimals: 6,
-    symbol: "USDC",
   },
   /** USD Coin */
   USDC_9: {
     name: "USD Coin",
     address:
-      "0x02613a46ec7f06ae803a16bce8ede8a72f5bf3daf883c530d3a6e7719d31a7a7",
+      "0x02613a46ec7f06ae803a16bce8ede8a72f5bf3daf883c530d3a6e7719d31a7a7" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -693,7 +694,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VUSDC: {
     name: "Vesu USD Coin",
     address:
-      "0x074655d40dcdf5d0c2d1c508e0d79ca57416dbd51facda53a08f9ec2380cf96d",
+      "0x074655d40dcdf5d0c2d1c508e0d79ca57416dbd51facda53a08f9ec2380cf96d" as Address,
     decimals: 18,
     symbol: "vUSDC",
   },
@@ -701,7 +702,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ENA: {
     name: "ENA",
     address:
-      "0x069c639370e644ba0dbffefad0de207c47bf3f87070c98d60bbb8ccbee80ccb8",
+      "0x069c639370e644ba0dbffefad0de207c47bf3f87070c98d60bbb8ccbee80ccb8" as Address,
     decimals: 18,
     symbol: "ENA",
   },
@@ -709,7 +710,7 @@ export const sepoliaTokens: Record<string, Token> = {
   AAVE: {
     name: "AAVE",
     address:
-      "0x026bd84ce6cb0edb93a7f46f9343cf9322ac9f0129ae66302af2e2d6558a2c1e",
+      "0x026bd84ce6cb0edb93a7f46f9343cf9322ac9f0129ae66302af2e2d6558a2c1e" as Address,
     decimals: 18,
     symbol: "AAVE",
   },
@@ -717,7 +718,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MNUMS: {
     name: "Mock NUMS",
     address:
-      "0x06d97c1eb0ad331837882af3a7a0cd49b4a8f24603f9ca42dfdcdf6ece0ac56d",
+      "0x06d97c1eb0ad331837882af3a7a0cd49b4a8f24603f9ca42dfdcdf6ece0ac56d" as Address,
     decimals: 18,
     symbol: "mNUMS",
   },
@@ -725,7 +726,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WFETH: {
     name: "Wolfy Ethereum",
     address:
-      "0x0161304979f98530f4c3d6659e0a43cad96ceb71531482c7aaba90e07f150315",
+      "0x0161304979f98530f4c3d6659e0a43cad96ceb71531482c7aaba90e07f150315" as Address,
     decimals: 18,
     symbol: "wfETH",
   },
@@ -733,7 +734,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_10: {
     name: "usdc Token",
     address:
-      "0x02b3fde6711abc8480721ff0b1c279676b4d025c97caad5edaa44d720d6f4d42",
+      "0x02b3fde6711abc8480721ff0b1c279676b4d025c97caad5edaa44d720d6f4d42" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -741,7 +742,7 @@ export const sepoliaTokens: Record<string, Token> = {
   UNI: {
     name: "UNI",
     address:
-      "0x01274b87822f58a4bd15ef118393d708cdb8e87b93eff18e08ba9046e728373f",
+      "0x01274b87822f58a4bd15ef118393d708cdb8e87b93eff18e08ba9046e728373f" as Address,
     decimals: 18,
     symbol: "UNI",
   },
@@ -749,7 +750,7 @@ export const sepoliaTokens: Record<string, Token> = {
   TON: {
     name: "TON",
     address:
-      "0x0421acde5c3231ee3d328bee1d99c556996628ef514ab10c449d748daa9aa001",
+      "0x0421acde5c3231ee3d328bee1d99c556996628ef514ab10c449d748daa9aa001" as Address,
     decimals: 9,
     symbol: "TON",
   },
@@ -757,7 +758,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VUSDC_1: {
     name: "Vesu USD Coin",
     address:
-      "0x07632c8fab1399aede8ad1f89411f082b0a492ca58e87b5ebc475d38f799b0c7",
+      "0x07632c8fab1399aede8ad1f89411f082b0a492ca58e87b5ebc475d38f799b0c7" as Address,
     decimals: 18,
     symbol: "vUSDC",
   },
@@ -765,7 +766,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MTK_1: {
     name: "MyToken",
     address:
-      "0x038b828abff1c65ef2c99234339f655177118131c58579b92f1775a7a1c7f5c4",
+      "0x038b828abff1c65ef2c99234339f655177118131c58579b92f1775a7a1c7f5c4" as Address,
     decimals: 18,
     symbol: "MTK",
   },
@@ -773,7 +774,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDT_5: {
     name: " Tether USD",
     address:
-      "0x02af4e46d0c0ece7cfa26e7b5c53438de6b6960899dd71adb7027915e727101a",
+      "0x02af4e46d0c0ece7cfa26e7b5c53438de6b6960899dd71adb7027915e727101a" as Address,
     decimals: 8,
     symbol: "USDT",
   },
@@ -781,7 +782,7 @@ export const sepoliaTokens: Record<string, Token> = {
   FAME_4: {
     name: "Duelist Fame",
     address:
-      "0x00f14cf4b00ac73f69cb878821c3cb4cf41675c9c8838fe6d6261712f95a529a",
+      "0x00f14cf4b00ac73f69cb878821c3cb4cf41675c9c8838fe6d6261712f95a529a" as Address,
     decimals: 18,
     symbol: "FAME",
   },
@@ -789,7 +790,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ABTK: {
     name: "ARSBase Token",
     address:
-      "0x0180de7d151badd5435d6f0fe89f491929e29c726cea05b41027528dc190949d",
+      "0x0180de7d151badd5435d6f0fe89f491929e29c726cea05b41027528dc190949d" as Address,
     decimals: 18,
     symbol: "ABTK",
   },
@@ -797,7 +798,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MUSDC: {
     name: "Mock USDC",
     address:
-      "0x043082212e798db5582e9f89b93d9eb2283fc7c8c3fc6b25a6c3c47e586c88ab",
+      "0x043082212e798db5582e9f89b93d9eb2283fc7c8c3fc6b25a6c3c47e586c88ab" as Address,
     decimals: 18,
     symbol: "mUSDC",
   },
@@ -805,7 +806,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WBTC_5: {
     name: "Wrapped BTC",
     address:
-      "0x01707040b571a177a3e8161a5d3cdeeafdc24dd74bd8ab3143c33f4a2afb17cf",
+      "0x01707040b571a177a3e8161a5d3cdeeafdc24dd74bd8ab3143c33f4a2afb17cf" as Address,
     decimals: 8,
     symbol: "WBTC",
   },
@@ -813,7 +814,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ZKX: {
     name: "ZKX",
     address:
-      "0x05f4b33315b2e2460b933994d69cfd448f91fc76ffeed24a212d773e61f14676",
+      "0x05f4b33315b2e2460b933994d69cfd448f91fc76ffeed24a212d773e61f14676" as Address,
     decimals: 18,
     symbol: "ZKX",
   },
@@ -821,7 +822,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WFSTRK: {
     name: "Wolfy Starknet",
     address:
-      "0x0257f31f11fa095874ded95a8ad6c8dca9fb851557df83e7cd384bde65c4d1c4",
+      "0x0257f31f11fa095874ded95a8ad6c8dca9fb851557df83e7cd384bde65c4d1c4" as Address,
     decimals: 18,
     symbol: "wfSTRK",
   },
@@ -829,7 +830,7 @@ export const sepoliaTokens: Record<string, Token> = {
   STRK_4: {
     name: "Starknet Token ",
     address:
-      "0x04757e1150c243399a9accb7df2eb4b2956315b0effec8d5f26bb6065cf4edd2",
+      "0x04757e1150c243399a9accb7df2eb4b2956315b0effec8d5f26bb6065cf4edd2" as Address,
     decimals: 18,
     symbol: "STRK",
   },
@@ -837,7 +838,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WFBTC: {
     name: "Wolfy Bitcoin",
     address:
-      "0x07e3b6dce9c3b052e96a63d63f26aa129a1c5342343a7bb9a20754812bf4e614",
+      "0x07e3b6dce9c3b052e96a63d63f26aa129a1c5342343a7bb9a20754812bf4e614" as Address,
     decimals: 8,
     symbol: "wfBTC",
   },
@@ -845,7 +846,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WBTC_6: {
     name: "Wrapped Bitcoin",
     address:
-      "0x0715b6e3f6263c5b972a218dce20f9685bc7b932d8a6386810cfba391cf0b3dc",
+      "0x0715b6e3f6263c5b972a218dce20f9685bc7b932d8a6386810cfba391cf0b3dc" as Address,
     decimals: 8,
     symbol: "WBTC",
   },
@@ -853,7 +854,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDT_6: {
     name: "USDT",
     address:
-      "0x057e859eee48e899cef91cf0595661bec0634db7d593d98222c68af6472e8394",
+      "0x057e859eee48e899cef91cf0595661bec0634db7d593d98222c68af6472e8394" as Address,
     decimals: 18,
     symbol: "USDT",
   },
@@ -861,7 +862,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ETH_5: {
     name: "Ethereum",
     address:
-      "0x052e4366eceb8234dfbc431cb9e8d1db1a062392300d68d35ec2fc09d99af2e2",
+      "0x052e4366eceb8234dfbc431cb9e8d1db1a062392300d68d35ec2fc09d99af2e2" as Address,
     decimals: 18,
     symbol: "ETH",
   },
@@ -869,7 +870,7 @@ export const sepoliaTokens: Record<string, Token> = {
   DUSD: {
     name: "Dew USD",
     address:
-      "0x07d2da5ff2548727ecdc1c2ec8c9c3b552cbe7a9800abc1f69579e75c01b90a5",
+      "0x07d2da5ff2548727ecdc1c2ec8c9c3b552cbe7a9800abc1f69579e75c01b90a5" as Address,
     decimals: 18,
     symbol: "DUSD",
   },
@@ -877,7 +878,7 @@ export const sepoliaTokens: Record<string, Token> = {
   CRZ: {
     name: "CrazyHorse",
     address:
-      "0x01b13a244e499b9baf6b82900dced05fbf4a44274d87f1000f500d465da12669",
+      "0x01b13a244e499b9baf6b82900dced05fbf4a44274d87f1000f500d465da12669" as Address,
     decimals: 18,
     symbol: "CRZ",
   },
@@ -885,7 +886,7 @@ export const sepoliaTokens: Record<string, Token> = {
   PRISM: {
     name: "Prism",
     address:
-      "0x060f0508a0cfdb8ffa81ee07db964a3de1ce6594cbccfd679b05611b52c6c707",
+      "0x060f0508a0cfdb8ffa81ee07db964a3de1ce6594cbccfd679b05611b52c6c707" as Address,
     decimals: 18,
     symbol: "Prism",
   },
@@ -893,7 +894,7 @@ export const sepoliaTokens: Record<string, Token> = {
   METH: {
     name: "Mock ETH",
     address:
-      "0x0090dd4348a02c9521660442273f7e03c86baa9dea33bde06dd96c1791c0a129",
+      "0x0090dd4348a02c9521660442273f7e03c86baa9dea33bde06dd96c1791c0a129" as Address,
     decimals: 18,
     symbol: "mETH",
   },
@@ -901,7 +902,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MTK_2: {
     name: "Dice",
     address:
-      "0x05cb7374e48900508ca5a0fdfe15d0d145574a1070ccbefde38a17415fe27e04",
+      "0x05cb7374e48900508ca5a0fdfe15d0d145574a1070ccbefde38a17415fe27e04" as Address,
     decimals: 18,
     symbol: "MTK",
   },
@@ -909,7 +910,7 @@ export const sepoliaTokens: Record<string, Token> = {
   DST_1: {
     name: "defi.space test token",
     address:
-      "0x0222b676303e8dfb3b27c9a710bd30973a548ddaeed651a4ea7a356b18406521",
+      "0x0222b676303e8dfb3b27c9a710bd30973a548ddaeed651a4ea7a356b18406521" as Address,
     decimals: 18,
     symbol: "DST",
   },
@@ -917,7 +918,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VSTRK: {
     name: "Starknet Voting Token",
     address:
-      "0x035c332b8de00874e702b4831c84b22281fb3246f714475496d74e644f35d492",
+      "0x035c332b8de00874e702b4831c84b22281fb3246f714475496d74e644f35d492" as Address,
     decimals: 18,
     symbol: "vSTRK",
   },
@@ -925,7 +926,7 @@ export const sepoliaTokens: Record<string, Token> = {
   LORDS_2: {
     name: "lords",
     address:
-      "0x072599086bffce6593a2e08169c21d23564f08be1e1d0b8e05a9768f20469a3f",
+      "0x072599086bffce6593a2e08169c21d23564f08be1e1d0b8e05a9768f20469a3f" as Address,
     decimals: 18,
     symbol: "lords",
   },
@@ -933,7 +934,7 @@ export const sepoliaTokens: Record<string, Token> = {
   XVT: {
     name: "VoxelToken",
     address:
-      "0x0440452cb86c2654ee1a9ea1eb8966b0420d687f0abfb290f4ac9e3f3adbbbb3",
+      "0x0440452cb86c2654ee1a9ea1eb8966b0420d687f0abfb290f4ac9e3f3adbbbb3" as Address,
     decimals: 18,
     symbol: "XVT",
   },
@@ -941,7 +942,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDT_7: {
     name: "Tether USD",
     address:
-      "0x051684237625577c80cf7b403e50ac04db8ad9ae8f5fc567015df88e60b1e323",
+      "0x051684237625577c80cf7b403e50ac04db8ad9ae8f5fc567015df88e60b1e323" as Address,
     decimals: 6,
     symbol: "USDT",
   },
@@ -949,7 +950,7 @@ export const sepoliaTokens: Record<string, Token> = {
   CRZ_1: {
     name: "CrazyHorse",
     address:
-      "0x0246d951dfaf3ef239302533d6280bef384873b6f3ac4993c4f5563aea81d06b",
+      "0x0246d951dfaf3ef239302533d6280bef384873b6f3ac4993c4f5563aea81d06b" as Address,
     decimals: 18,
     symbol: "CRZ",
   },
@@ -957,7 +958,7 @@ export const sepoliaTokens: Record<string, Token> = {
   AXE: {
     name: "AXE",
     address:
-      "0x004d204547803c53c80c3ce46d5f6542166d7d947c3fdd185ed8fb3cdfb4ad3f",
+      "0x004d204547803c53c80c3ce46d5f6542166d7d947c3fdd185ed8fb3cdfb4ad3f" as Address,
     decimals: 18,
     symbol: "AXE",
   },
@@ -965,7 +966,7 @@ export const sepoliaTokens: Record<string, Token> = {
   STSTRK: {
     name: "Staked Starknet Token",
     address:
-      "0x001c8ae9b37811b55974d980e98f70b1c7816d5b083c19e3a2a1ff3679700d62",
+      "0x001c8ae9b37811b55974d980e98f70b1c7816d5b083c19e3a2a1ff3679700d62" as Address,
     decimals: 18,
     symbol: "stSTRK",
   },
@@ -973,7 +974,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MTK_3: {
     name: "MyToken",
     address:
-      "0x0669e24364ce0ae7ec2864fb03eedbe60cfbc9d1c74438d10fa4b86552907d54",
+      "0x0669e24364ce0ae7ec2864fb03eedbe60cfbc9d1c74438d10fa4b86552907d54" as Address,
     decimals: 18,
     symbol: "MTK",
   },
@@ -981,7 +982,7 @@ export const sepoliaTokens: Record<string, Token> = {
   LORDS_3: {
     name: "lords",
     address:
-      "0x07c0ee4ec03d7ac318212ae19d0214fd94d060b376e70aa3c6d7c263a0430dfb",
+      "0x07c0ee4ec03d7ac318212ae19d0214fd94d060b376e70aa3c6d7c263a0430dfb" as Address,
     decimals: 18,
     symbol: "lords",
   },
@@ -989,7 +990,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WSTETH_7: {
     name: "Wrapped liquid staked Ether 2.0",
     address:
-      "0x030de54c07e57818ae4a1210f2a3018a0b9521b8f8ae5206605684741650ac25",
+      "0x030de54c07e57818ae4a1210f2a3018a0b9521b8f8ae5206605684741650ac25" as Address,
     decimals: 18,
     symbol: "wstETH",
   },
@@ -997,7 +998,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MSTRK: {
     name: "Mock STRK",
     address:
-      "0x0451705d1be491ae427dc940ea11685d695fcfe0b3066029f67efe804b19c1b0",
+      "0x0451705d1be491ae427dc940ea11685d695fcfe0b3066029f67efe804b19c1b0" as Address,
     decimals: 18,
     symbol: "mSTRK",
   },
@@ -1005,7 +1006,7 @@ export const sepoliaTokens: Record<string, Token> = {
   N3G: {
     name: "Nebula3Gamefi",
     address:
-      "0x044e30567a17908fed818875a747064015634760fdd5cb639f31c33c00db36d2",
+      "0x044e30567a17908fed818875a747064015634760fdd5cb639f31c33c00db36d2" as Address,
     decimals: 0,
     symbol: "N3G",
   },
@@ -1013,7 +1014,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VUSDT: {
     name: "Vesu Tether USD",
     address:
-      "0x07f39fc9465588bb783023401230d2318354b23e71e632aa7019a423d284f8c4",
+      "0x07f39fc9465588bb783023401230d2318354b23e71e632aa7019a423d284f8c4" as Address,
     decimals: 18,
     symbol: "vUSDT",
   },
@@ -1021,7 +1022,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ZARU: {
     name: "ZARU Stablecoin",
     address:
-      "0x010339e2e1f736e89aa856a8d3067ea0ea3cb2fd84512961292f91ee965c019f",
+      "0x010339e2e1f736e89aa856a8d3067ea0ea3cb2fd84512961292f91ee965c019f" as Address,
     decimals: 2,
     symbol: "ZARU",
   },
@@ -1029,7 +1030,7 @@ export const sepoliaTokens: Record<string, Token> = {
   LPUSD_1: {
     name: "LumisPayUSD",
     address:
-      "0x0360cb861bc77243ed7828e75cea6f5e98930301594216c27b46d550ec00c7c2",
+      "0x0360cb861bc77243ed7828e75cea6f5e98930301594216c27b46d550ec00c7c2" as Address,
     decimals: 3,
     symbol: "lpUSD",
   },
@@ -1037,7 +1038,7 @@ export const sepoliaTokens: Record<string, Token> = {
   BTC: {
     name: "BTC",
     address:
-      "0x04a57290d72da4958a9447010f1506b143c78b2be8f2fa808900c1f9dbf07d57",
+      "0x04a57290d72da4958a9447010f1506b143c78b2be8f2fa808900c1f9dbf07d57" as Address,
     decimals: 18,
     symbol: "BTC",
   },
@@ -1045,7 +1046,7 @@ export const sepoliaTokens: Record<string, Token> = {
   STRK_5: {
     name: "STRK",
     address:
-      "0x03a36ebe42f16c88097b95738299188f46299110283996e784a29d8c1644e25e",
+      "0x03a36ebe42f16c88097b95738299188f46299110283996e784a29d8c1644e25e" as Address,
     decimals: 18,
     symbol: "STRK",
   },
@@ -1053,7 +1054,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ETH_6: {
     name: "ETH",
     address:
-      "0x01600e4e8660c2c52fdaf25d71583114ef280b29b414adea0aeead341a1660b5",
+      "0x01600e4e8660c2c52fdaf25d71583114ef280b29b414adea0aeead341a1660b5" as Address,
     decimals: 18,
     symbol: "ETH",
   },
@@ -1061,7 +1062,7 @@ export const sepoliaTokens: Record<string, Token> = {
   BTC_1: {
     name: "BTC",
     address:
-      "0x078b36583fe9dca95356315c2a66955a6fc8641970989b8bc97ee2b63fdb68a7",
+      "0x078b36583fe9dca95356315c2a66955a6fc8641970989b8bc97ee2b63fdb68a7" as Address,
     decimals: 18,
     symbol: "BTC",
   },
@@ -1069,7 +1070,7 @@ export const sepoliaTokens: Record<string, Token> = {
   PLTSTRK: {
     name: "Ponziland Test STRK",
     address:
-      "0x04404c4b2e9ca6b9434f3c13bcad64c5e7bcd22c0fb50b7ff2c40fd19498a0b2",
+      "0x04404c4b2e9ca6b9434f3c13bcad64c5e7bcd22c0fb50b7ff2c40fd19498a0b2" as Address,
     decimals: 18,
     symbol: "pltSTRK",
   },
@@ -1077,7 +1078,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VWBTC: {
     name: "Vesu Wrapped BTC",
     address:
-      "0x033d52ef1746ab58c5a22f8e4d80eaaf7c5a08fcfaa6c5e5365680d0ed482f34",
+      "0x033d52ef1746ab58c5a22f8e4d80eaaf7c5a08fcfaa6c5e5365680d0ed482f34" as Address,
     decimals: 18,
     symbol: "vWBTC",
   },
@@ -1085,7 +1086,7 @@ export const sepoliaTokens: Record<string, Token> = {
   GOLD: {
     name: "Gold",
     address:
-      "0x0689731c6c6df7798e601d730f18a0eae7f9a138f9ac9c54d27d94b423b29eca",
+      "0x0689731c6c6df7798e601d730f18a0eae7f9a138f9ac9c54d27d94b423b29eca" as Address,
     decimals: 18,
     symbol: "gold",
   },
@@ -1093,7 +1094,7 @@ export const sepoliaTokens: Record<string, Token> = {
   NPO: {
     name: "NekoPlaytestOne",
     address:
-      "0x00bb7546cc8fb47530464e39e8effb8ec17ebd9faef7e5a3537a4e6884f14984",
+      "0x00bb7546cc8fb47530464e39e8effb8ec17ebd9faef7e5a3537a4e6884f14984" as Address,
     decimals: 18,
     symbol: "NPO",
   },
@@ -1101,7 +1102,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_11: {
     name: "USD Coin",
     address:
-      "0x03a909c1f2d1900d0c96626fac1bedf1e82b92110e5c529b05f9138951b93535",
+      "0x03a909c1f2d1900d0c96626fac1bedf1e82b92110e5c529b05f9138951b93535" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -1109,7 +1110,7 @@ export const sepoliaTokens: Record<string, Token> = {
   EKUBO_1: {
     name: "EKUBO",
     address:
-      "0x04fff7cdfbb17adfa29de8d5bf5260005ce5292bd90aa06d1a870bed59b991ba",
+      "0x04fff7cdfbb17adfa29de8d5bf5260005ce5292bd90aa06d1a870bed59b991ba" as Address,
     decimals: 18,
     symbol: "EKUBO",
   },
@@ -1117,7 +1118,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ETH_7: {
     name: "ETH",
     address:
-      "0x071e2dde39e7c3d038193a2f1c411c44fc3d2b1a37769c56b7ee45809eeff876",
+      "0x071e2dde39e7c3d038193a2f1c411c44fc3d2b1a37769c56b7ee45809eeff876" as Address,
     decimals: 18,
     symbol: "ETH",
   },
@@ -1125,7 +1126,7 @@ export const sepoliaTokens: Record<string, Token> = {
   UNKNOWN_2: {
     name: "",
     address:
-      "0x023ed5f7fb8c9f6e11ff52d755b40f1e99b4d2e35421d0512295cf9d06ab0c31",
+      "0x023ed5f7fb8c9f6e11ff52d755b40f1e99b4d2e35421d0512295cf9d06ab0c31" as Address,
     decimals: 18,
     symbol: "",
   },
@@ -1133,7 +1134,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_12: {
     name: "USDC",
     address:
-      "0x03b531e3f7c4a8b6bf0d69e0d7a544c925252b2405968b89b0284d73a16d10c8",
+      "0x03b531e3f7c4a8b6bf0d69e0d7a544c925252b2405968b89b0284d73a16d10c8" as Address,
     decimals: 18,
     symbol: "USDC",
   },
@@ -1141,7 +1142,7 @@ export const sepoliaTokens: Record<string, Token> = {
   EKUBO_2: {
     name: "EKUBO",
     address:
-      "0x06838a198829a65dd23e74ed12ed99c7da5f5bfc75d8fde373f83d50a9e42dd0",
+      "0x06838a198829a65dd23e74ed12ed99c7da5f5bfc75d8fde373f83d50a9e42dd0" as Address,
     decimals: 18,
     symbol: "EKUBO",
   },
@@ -1149,7 +1150,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MTK_4: {
     name: "Mock Token",
     address:
-      "0x0697b05873b50e1c7b2b860a87ff33fe9889ec2b2f28691d82adce52f4ed2838",
+      "0x0697b05873b50e1c7b2b860a87ff33fe9889ec2b2f28691d82adce52f4ed2838" as Address,
     decimals: 6,
     symbol: "MTK",
   },
@@ -1157,7 +1158,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDT_8: {
     name: "USDT",
     address:
-      "0x04f49755637b6b32db9bfd47f7df57bd0a71250406eb2bf557198cffb4ba378a",
+      "0x04f49755637b6b32db9bfd47f7df57bd0a71250406eb2bf557198cffb4ba378a" as Address,
     decimals: 18,
     symbol: "USDT",
   },
@@ -1165,7 +1166,7 @@ export const sepoliaTokens: Record<string, Token> = {
   STRK_6: {
     name: "STRK",
     address:
-      "0x0093d860e36acd29e56f3fa0f92ad7fcba4971cd4971525eafff17f726f93816",
+      "0x0093d860e36acd29e56f3fa0f92ad7fcba4971cd4971525eafff17f726f93816" as Address,
     decimals: 18,
     symbol: "STRK",
   },
@@ -1173,7 +1174,7 @@ export const sepoliaTokens: Record<string, Token> = {
   UNKNOWN_3: {
     name: "",
     address:
-      "0x03df66e5fb59fcc4594164991b2f31fa18d31f9e6141581bceec49d09df483b0",
+      "0x03df66e5fb59fcc4594164991b2f31fa18d31f9e6141581bceec49d09df483b0" as Address,
     decimals: 6,
     symbol: "",
   },
@@ -1181,7 +1182,7 @@ export const sepoliaTokens: Record<string, Token> = {
   BTC_2: {
     name: "BTC",
     address:
-      "0x0320c14ec2cef0e26834639b624deaeabe632ae5f22e6ab6362d74e5e695a72b",
+      "0x0320c14ec2cef0e26834639b624deaeabe632ae5f22e6ab6362d74e5e695a72b" as Address,
     decimals: 18,
     symbol: "BTC",
   },
@@ -1189,7 +1190,7 @@ export const sepoliaTokens: Record<string, Token> = {
   LORDS_4: {
     name: "lords",
     address:
-      "0x01d3da816e4846a54badad33a91079a5c89d4441ca9ab3032d73853248982a36",
+      "0x01d3da816e4846a54badad33a91079a5c89d4441ca9ab3032d73853248982a36" as Address,
     decimals: 18,
     symbol: "lords",
   },
@@ -1197,7 +1198,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDT_9: {
     name: "USDT",
     address:
-      "0x073e28303f015227c735c91a8fb18b5609190209becfb82bedc88dfa78e27b25",
+      "0x073e28303f015227c735c91a8fb18b5609190209becfb82bedc88dfa78e27b25" as Address,
     decimals: 18,
     symbol: "USDT",
   },
@@ -1205,7 +1206,7 @@ export const sepoliaTokens: Record<string, Token> = {
   GOLD_1: {
     name: "Gold",
     address:
-      "0x034dc20ea98d615518c783f498869d08d260dffec86fdef9448bd04ff8482001",
+      "0x034dc20ea98d615518c783f498869d08d260dffec86fdef9448bd04ff8482001" as Address,
     decimals: 18,
     symbol: "gold",
   },
@@ -1213,7 +1214,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WD: {
     name: "wattDollar",
     address:
-      "0x05bdba9f15a2c49bf62050da6c9e7efae11d4530dc993b5321fa872c243a4cee",
+      "0x05bdba9f15a2c49bf62050da6c9e7efae11d4530dc993b5321fa872c243a4cee" as Address,
     decimals: 18,
     symbol: "wD",
   },
@@ -1221,7 +1222,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ZSTRK: {
     name: "zkLend Interest-Bearing STRK",
     address:
-      "0x045e8a227e33af3debb74da1e12ee522f75593ff3fbf61c08a8aa23292d34fb6",
+      "0x045e8a227e33af3debb74da1e12ee522f75593ff3fbf61c08a8aa23292d34fb6" as Address,
     decimals: 18,
     symbol: "zSTRK",
   },
@@ -1229,7 +1230,7 @@ export const sepoliaTokens: Record<string, Token> = {
   BABYLAIKA: {
     name: "Baby Laika",
     address:
-      "0x004a8ff6a7b121c55d5e21af478265c5798f574abaa41efadf569d6939705896",
+      "0x004a8ff6a7b121c55d5e21af478265c5798f574abaa41efadf569d6939705896" as Address,
     decimals: 18,
     symbol: "BABYLAIKA",
   },
@@ -1237,7 +1238,7 @@ export const sepoliaTokens: Record<string, Token> = {
   OMC: {
     name: "OpenMark Coin",
     address:
-      "0x06866b14e2d9d4a48c8ae11f4711a6f976d528215239e9f49850be8f22f8c0cf",
+      "0x06866b14e2d9d4a48c8ae11f4711a6f976d528215239e9f49850be8f22f8c0cf" as Address,
     decimals: 18,
     symbol: "OMC",
   },
@@ -1245,7 +1246,7 @@ export const sepoliaTokens: Record<string, Token> = {
   UNKNOWN_4: {
     name: "",
     address:
-      "0x04bec42b48094e55b7a9bfea60e90721de9310905631c1b31151e524a588b086",
+      "0x04bec42b48094e55b7a9bfea60e90721de9310905631c1b31151e524a588b086" as Address,
     decimals: 6,
     symbol: "",
   },
@@ -1253,7 +1254,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MBTC: {
     name: "Mock BTC",
     address:
-      "0x00aa2ba1e0f22cb3714427ac76f620159d8d5735699ea0f004ded0a9857d07c2",
+      "0x00aa2ba1e0f22cb3714427ac76f620159d8d5735699ea0f004ded0a9857d07c2" as Address,
     decimals: 18,
     symbol: "mBTC",
   },
@@ -1261,7 +1262,7 @@ export const sepoliaTokens: Record<string, Token> = {
   HYPSOL: {
     name: "hypSOL",
     address:
-      "0x05a5b7d2a9be4c41cdc522b42cd787ea4d142bf1dc8619a47be2196c0b3ad1a0",
+      "0x05a5b7d2a9be4c41cdc522b42cd787ea4d142bf1dc8619a47be2196c0b3ad1a0" as Address,
     decimals: 9,
     symbol: "hypSOL",
   },
@@ -1269,7 +1270,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_13: {
     name: "USDC",
     address:
-      "0x06f2213cd3d370b7e5f25e4fafb01cbbebbad36292c2eb0a159193e0450721b6",
+      "0x06f2213cd3d370b7e5f25e4fafb01cbbebbad36292c2eb0a159193e0450721b6" as Address,
     decimals: 18,
     symbol: "USDC",
   },
@@ -1277,7 +1278,7 @@ export const sepoliaTokens: Record<string, Token> = {
   SNTGBOTTEST: {
     name: "SNTGBOTTEST",
     address:
-      "0x019be8d7ed4b93a4e924218a0d3e08abf0b33623d655b9c04197eb189c3f3d8c",
+      "0x019be8d7ed4b93a4e924218a0d3e08abf0b33623d655b9c04197eb189c3f3d8c" as Address,
     decimals: 18,
     symbol: "SNTGBOTTEST",
   },
@@ -1285,7 +1286,7 @@ export const sepoliaTokens: Record<string, Token> = {
   BLUE: {
     name: "BlueToken",
     address:
-      "0x01853f03f808ae62dfbd8b8a4de08e2052388c40b9f91d626090de04bbc1f619",
+      "0x01853f03f808ae62dfbd8b8a4de08e2052388c40b9f91d626090de04bbc1f619" as Address,
     decimals: 18,
     symbol: "BLUE",
   },
@@ -1293,7 +1294,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VSTRK_1: {
     name: "Vesu Starknet",
     address:
-      "0x0360bac2ddf1f6d3aeea78d032acb1ec66845a6f112eecb5907ed2518f68a8c3",
+      "0x0360bac2ddf1f6d3aeea78d032acb1ec66845a6f112eecb5907ed2518f68a8c3" as Address,
     decimals: 18,
     symbol: "vSTRK",
   },
@@ -1301,7 +1302,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ZUSDC: {
     name: "zkLend Interest-Bearing USDC",
     address:
-      "0x061ccfc256de0cdd3e2efebda7b7ced8583a61c488c3272e84b60d1fed8de233",
+      "0x061ccfc256de0cdd3e2efebda7b7ced8583a61c488c3272e84b60d1fed8de233" as Address,
     decimals: 6,
     symbol: "zUSDC",
   },
@@ -1309,7 +1310,7 @@ export const sepoliaTokens: Record<string, Token> = {
   UNKNOWN_5: {
     name: "",
     address:
-      "0x02a39a8cb51c341a267d3dc7bab63ad270fb8c5f5d8c0b145b0875b8599cf515",
+      "0x02a39a8cb51c341a267d3dc7bab63ad270fb8c5f5d8c0b145b0875b8599cf515" as Address,
     decimals: 8,
     symbol: "",
   },
@@ -1317,7 +1318,7 @@ export const sepoliaTokens: Record<string, Token> = {
   STRK_7: {
     name: "STRK",
     address:
-      "0x05a4067cb4c7853ce4e423355a77e8f3900626749eeb60ed49fb7f211d9282c1",
+      "0x05a4067cb4c7853ce4e423355a77e8f3900626749eeb60ed49fb7f211d9282c1" as Address,
     decimals: 18,
     symbol: "STRK",
   },
@@ -1325,7 +1326,7 @@ export const sepoliaTokens: Record<string, Token> = {
   STRK_8: {
     name: "STRK",
     address:
-      "0x03d66cffcbf66c3a04be6618c73ab8d9feb28d6948bf040f7a55420ba268199b",
+      "0x03d66cffcbf66c3a04be6618c73ab8d9feb28d6948bf040f7a55420ba268199b" as Address,
     decimals: 18,
     symbol: "STRK",
   },
@@ -1333,7 +1334,7 @@ export const sepoliaTokens: Record<string, Token> = {
   RED: {
     name: "RedToken",
     address:
-      "0x06450580d0d5cd36f0107227091ca68a237fd0ab538ae59ea43868f660bc2c30",
+      "0x06450580d0d5cd36f0107227091ca68a237fd0ab538ae59ea43868f660bc2c30" as Address,
     decimals: 18,
     symbol: "RED",
   },
@@ -1341,7 +1342,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VUSDC_2: {
     name: "Vesu USD Coin",
     address:
-      "0x0341e472cdfe6fc6a6d9684d26f1028b177c48a52ffd4c847fea60e66b21a455",
+      "0x0341e472cdfe6fc6a6d9684d26f1028b177c48a52ffd4c847fea60e66b21a455" as Address,
     decimals: 18,
     symbol: "vUSDC",
   },
@@ -1349,7 +1350,7 @@ export const sepoliaTokens: Record<string, Token> = {
   CTN: {
     name: "COITON",
     address:
-      "0x054b20f7c16caf6c2f7f73ce2be3061fc8bf0b701d34db583c282cea490995cc",
+      "0x054b20f7c16caf6c2f7f73ce2be3061fc8bf0b701d34db583c282cea490995cc" as Address,
     decimals: 18,
     symbol: "CTN",
   },
@@ -1357,7 +1358,7 @@ export const sepoliaTokens: Record<string, Token> = {
   IRLP: {
     name: "IRLP",
     address:
-      "0x05ba91db44b3e6a4485b5dbfcb17d791faa9cb6890a42731b66b3536b28b8ed5",
+      "0x05ba91db44b3e6a4485b5dbfcb17d791faa9cb6890a42731b66b3536b28b8ed5" as Address,
     decimals: 6,
     symbol: "IRLP",
   },
@@ -1365,7 +1366,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VWBTC_1: {
     name: "Vesu Wrapped BTC",
     address:
-      "0x05868ed6b7c57ac071bf6bfe762174a2522858b700ba9fb062709e63b65bf186",
+      "0x05868ed6b7c57ac071bf6bfe762174a2522858b700ba9fb062709e63b65bf186" as Address,
     decimals: 18,
     symbol: "vWBTC",
   },
@@ -1373,7 +1374,7 @@ export const sepoliaTokens: Record<string, Token> = {
   VESTRK_1: {
     name: "veSTRK",
     address:
-      "0x0005a3b39963aec7d799fb4e331bc2e8725221529f23843afcfbe6b6456dcfd7",
+      "0x0005a3b39963aec7d799fb4e331bc2e8725221529f23843afcfbe6b6456dcfd7" as Address,
     decimals: 18,
     symbol: "veSTRK",
   },
@@ -1381,7 +1382,7 @@ export const sepoliaTokens: Record<string, Token> = {
   NKO: {
     name: "NekoCoin",
     address:
-      "0x0195420f271957cc541c792a483b06b869037b14bb94af2364381eb2f6d8cd51",
+      "0x0195420f271957cc541c792a483b06b869037b14bb94af2364381eb2f6d8cd51" as Address,
     decimals: 18,
     symbol: "NKO",
   },
@@ -1389,7 +1390,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WBTC_7: {
     name: "Wrapped Bitcoin",
     address:
-      "0x069a1bc284625b608f453ea800a37af6b8b0351d5695b3803087a932a76d5b58",
+      "0x069a1bc284625b608f453ea800a37af6b8b0351d5695b3803087a932a76d5b58" as Address,
     decimals: 8,
     symbol: "WBTC",
   },
@@ -1397,7 +1398,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WBTC_8: {
     name: "Wrapped Bitcoin",
     address:
-      "0x00bd1c778c01fd698cd3ad8b2392f202e07b35078e72ff803fd0dcc6696bd540",
+      "0x00bd1c778c01fd698cd3ad8b2392f202e07b35078e72ff803fd0dcc6696bd540" as Address,
     decimals: 18,
     symbol: "WBTC",
   },
@@ -1405,7 +1406,7 @@ export const sepoliaTokens: Record<string, Token> = {
   GOLD_2: {
     name: "GOLDEN",
     address:
-      "0x04ef0e2993abf44178d3a40f2818828ed1c09cde9009677b7a3323570b4c0f2e",
+      "0x04ef0e2993abf44178d3a40f2818828ed1c09cde9009677b7a3323570b4c0f2e" as Address,
     decimals: 18,
     symbol: "GOLD",
   },
@@ -1413,7 +1414,7 @@ export const sepoliaTokens: Record<string, Token> = {
   NKO_1: {
     name: "NekoCoin",
     address:
-      "0x0101b24014305e98d3aa639ab863773186b7a1c9349c0343da0c1d41b8fe304c",
+      "0x0101b24014305e98d3aa639ab863773186b7a1c9349c0343da0c1d41b8fe304c" as Address,
     decimals: 18,
     symbol: "NKO",
   },
@@ -1421,7 +1422,7 @@ export const sepoliaTokens: Record<string, Token> = {
   CHA: {
     name: "Charity",
     address:
-      "0x026dbc5f09e101a5739eadbd526934cf92025c72ca0cd0f936cb6d82354844b5",
+      "0x026dbc5f09e101a5739eadbd526934cf92025c72ca0cd0f936cb6d82354844b5" as Address,
     decimals: NaN,
     symbol: "CHA",
   },
@@ -1429,7 +1430,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MTK_5: {
     name: "MyToken",
     address:
-      "0x006e1698dcd0665757dd213a59aff489624bab8c970ce0482c23937a78879b04",
+      "0x006e1698dcd0665757dd213a59aff489624bab8c970ce0482c23937a78879b04" as Address,
     decimals: 18,
     symbol: "MTK",
   },
@@ -1437,7 +1438,7 @@ export const sepoliaTokens: Record<string, Token> = {
   GOLD_3: {
     name: "Gold",
     address:
-      "0x00a1c64e2d85db6b90a3a2c309b494aba992cffa1029856b4f9208395f409872",
+      "0x00a1c64e2d85db6b90a3a2c309b494aba992cffa1029856b4f9208395f409872" as Address,
     decimals: 18,
     symbol: "gold",
   },
@@ -1445,7 +1446,7 @@ export const sepoliaTokens: Record<string, Token> = {
   UNKNOWN_6: {
     name: "",
     address:
-      "0x041b14277b3ea39eadaa506c7c9a4483544d9eaae6ed417747fa19ae500297e4",
+      "0x041b14277b3ea39eadaa506c7c9a4483544d9eaae6ed417747fa19ae500297e4" as Address,
     decimals: 18,
     symbol: "",
   },
@@ -1453,7 +1454,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_14: {
     name: "USD Coin",
     address:
-      "0x07b0505a7c9533a9f7780ed9445a7d00ad93498eef5723e421eb472d1698b2cd",
+      "0x07b0505a7c9533a9f7780ed9445a7d00ad93498eef5723e421eb472d1698b2cd" as Address,
     decimals: 18,
     symbol: "USDC",
   },
@@ -1461,7 +1462,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WD_1: {
     name: "wattDollar",
     address:
-      "0x03054baf04392c13f1dfb9dabd6c9d7a00eac8690a4e5bc5492ff3b19107dde8",
+      "0x03054baf04392c13f1dfb9dabd6c9d7a00eac8690a4e5bc5492ff3b19107dde8" as Address,
     decimals: 18,
     symbol: "wD",
   },
@@ -1469,7 +1470,7 @@ export const sepoliaTokens: Record<string, Token> = {
   PRISM_1: {
     name: "Prism",
     address:
-      "0x0545ff1b0610a4f1b1ff0d41b324e131c1183bbabd2fd2c47f7722e8c0c97f9d",
+      "0x0545ff1b0610a4f1b1ff0d41b324e131c1183bbabd2fd2c47f7722e8c0c97f9d" as Address,
     decimals: 18,
     symbol: "Prism",
   },
@@ -1477,7 +1478,7 @@ export const sepoliaTokens: Record<string, Token> = {
   PRISM_2: {
     name: "Prism",
     address:
-      "0x01eeaa1919db578d5fbe664a2e936b30a83e8af6f3b3290eb488ecc06b748330",
+      "0x01eeaa1919db578d5fbe664a2e936b30a83e8af6f3b3290eb488ecc06b748330" as Address,
     decimals: 18,
     symbol: "Prism",
   },
@@ -1485,7 +1486,7 @@ export const sepoliaTokens: Record<string, Token> = {
   SAGE: {
     name: "Sage",
     address:
-      "0x0412fb80249c484ad8bb307abdaa094ab9b7ab518b5524f3f676a2a09cf98944",
+      "0x0412fb80249c484ad8bb307abdaa094ab9b7ab518b5524f3f676a2a09cf98944" as Address,
     decimals: 18,
     symbol: "SAGE",
   },
@@ -1493,7 +1494,7 @@ export const sepoliaTokens: Record<string, Token> = {
   BOETH: {
     name: "BoETH",
     address:
-      "0x074aa02630916df1edb78492c0bbd1843e5c059a347cff99667c4d2fcb4593cf",
+      "0x074aa02630916df1edb78492c0bbd1843e5c059a347cff99667c4d2fcb4593cf" as Address,
     decimals: 18,
     symbol: "BoETH",
   },
@@ -1501,7 +1502,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ZETH_1: {
     name: "zEthereum",
     address:
-      "0x043822a6a8871e4f4c255138162a3173de69805bbe945c11c697a130c868d4c4",
+      "0x043822a6a8871e4f4c255138162a3173de69805bbe945c11c697a130c868d4c4" as Address,
     decimals: 18,
     symbol: "zETH",
   },
@@ -1509,7 +1510,7 @@ export const sepoliaTokens: Record<string, Token> = {
   TBTC: {
     name: "Test Bitcoin",
     address:
-      "0x0514f13dbfabf6ec1b73524ca47aa4d2b8d8d62b20c9ed6131566bc43d93d4fc",
+      "0x0514f13dbfabf6ec1b73524ca47aa4d2b8d8d62b20c9ed6131566bc43d93d4fc" as Address,
     decimals: 8,
     symbol: "tBTC",
   },
@@ -1517,7 +1518,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_15: {
     name: "USD Coin (Testnet)",
     address:
-      "0x05ce50f20396d8aa6c1c8638bbfee5a5cae5fcec5b4192a774e45ca814fb508c",
+      "0x05ce50f20396d8aa6c1c8638bbfee5a5cae5fcec5b4192a774e45ca814fb508c" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -1525,7 +1526,7 @@ export const sepoliaTokens: Record<string, Token> = {
   WZKXOG: {
     name: "Locked ZKX OG",
     address:
-      "0x055468285324f24afcb78d10daddb9071d0aee3e256be0daadd04358672a0798",
+      "0x055468285324f24afcb78d10daddb9071d0aee3e256be0daadd04358672a0798" as Address,
     decimals: 18,
     symbol: "wZKXOG",
   },
@@ -1533,7 +1534,7 @@ export const sepoliaTokens: Record<string, Token> = {
   CASH: {
     name: "Cash",
     address:
-      "0x0398c179d65929f3652b6b82875eaf5826ea1c9a9dd49271e0d749328186713e",
+      "0x0398c179d65929f3652b6b82875eaf5826ea1c9a9dd49271e0d749328186713e" as Address,
     decimals: 18,
     symbol: "CASH",
   },
@@ -1541,7 +1542,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ZBTC: {
     name: "zBitcoin",
     address:
-      "0x0083bb3d799ae9b9fd6025d7fb2a49916f1d3e08659145ae8d96bd74a4a94133",
+      "0x0083bb3d799ae9b9fd6025d7fb2a49916f1d3e08659145ae8d96bd74a4a94133" as Address,
     decimals: 8,
     symbol: "zBTC",
   },
@@ -1549,7 +1550,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ZSTRK_1: {
     name: "zkLend Interest-Bearing STRK",
     address:
-      "0x0258662e73fdae7da247551d57e956628c75ab3b34ddc37617b976c6bbcf352c",
+      "0x0258662e73fdae7da247551d57e956628c75ab3b34ddc37617b976c6bbcf352c" as Address,
     decimals: 18,
     symbol: "zSTRK",
   },
@@ -1557,7 +1558,7 @@ export const sepoliaTokens: Record<string, Token> = {
   ZSTRK_2: {
     name: "zStark",
     address:
-      "0x063ef45831eef121a6bc322d2c4f6d827b9e4e0df54b3d68d46827da36165bce",
+      "0x063ef45831eef121a6bc322d2c4f6d827b9e4e0df54b3d68d46827da36165bce" as Address,
     decimals: 18,
     symbol: "zSTRK",
   },
@@ -1565,7 +1566,7 @@ export const sepoliaTokens: Record<string, Token> = {
   GREEN: {
     name: "GreenToken",
     address:
-      "0x04ed678da6c0534e8ba7a1e7db81f3ecc0f1c2628094094b5123c481cd13461f",
+      "0x04ed678da6c0534e8ba7a1e7db81f3ecc0f1c2628094094b5123c481cd13461f" as Address,
     decimals: 18,
     symbol: "GREEN",
   },
@@ -1573,7 +1574,7 @@ export const sepoliaTokens: Record<string, Token> = {
   BROTHER: {
     name: "Brother",
     address:
-      "0x052d182d6a675507fbf96d464b26ad874abd0d922e571f1711101a3e593acac1",
+      "0x052d182d6a675507fbf96d464b26ad874abd0d922e571f1711101a3e593acac1" as Address,
     decimals: 18,
     symbol: "BROTHER",
   },
@@ -1581,7 +1582,7 @@ export const sepoliaTokens: Record<string, Token> = {
   KDS: {
     name: "Kudos",
     address:
-      "0x049db95ecf5245921f420dfe01536c8f1266198d4d46cc28f592f51afed0159e",
+      "0x049db95ecf5245921f420dfe01536c8f1266198d4d46cc28f592f51afed0159e" as Address,
     decimals: 18,
     symbol: "KDS",
   },
@@ -1589,7 +1590,7 @@ export const sepoliaTokens: Record<string, Token> = {
   NKO_2: {
     name: "NekoCoin",
     address:
-      "0x06f16e4cfdbd1e5d51ba686153fe8ed63c06c1a2336dcaeca35c154cdf8abfbc",
+      "0x06f16e4cfdbd1e5d51ba686153fe8ed63c06c1a2336dcaeca35c154cdf8abfbc" as Address,
     decimals: 18,
     symbol: "NKO",
   },
@@ -1597,7 +1598,7 @@ export const sepoliaTokens: Record<string, Token> = {
   MINERAL: {
     name: "MINERAL",
     address:
-      "0x02ebbfafc2e40f66fc4e729a21270c36d7277dbeba5e5dda61884a998ecdadc8",
+      "0x02ebbfafc2e40f66fc4e729a21270c36d7277dbeba5e5dda61884a998ecdadc8" as Address,
     decimals: 18,
     symbol: "MINERAL",
   },
@@ -1605,7 +1606,7 @@ export const sepoliaTokens: Record<string, Token> = {
   USDC_16: {
     name: "USDC",
     address:
-      "0x028b83a30b8e4e0982f2876df0c11bf302808eaef929118860151f09585edae2",
+      "0x028b83a30b8e4e0982f2876df0c11bf302808eaef929118860151f09585edae2" as Address,
     decimals: 18,
     symbol: "USDC",
   },

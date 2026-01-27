@@ -7,13 +7,14 @@
  */
 
 import type { Token } from "../types/token.js";
+import type { Address } from "../types/address.js";
 
 export const mainnetTokens: Record<string, Token> = {
   /** Ether */
   ETH: {
     name: "Ether",
     address:
-      "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+      "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7" as Address,
     decimals: 18,
     symbol: "ETH",
   },
@@ -21,7 +22,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRK: {
     name: "Starknet Token",
     address:
-      "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d",
+      "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d" as Address,
     decimals: 18,
     symbol: "STRK",
   },
@@ -29,7 +30,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZETH: {
     name: "zkLend Interest-Bearing ETH",
     address:
-      "0x01b5bd713e72fdc5d63ffd83762f81297f6175a5e0a4771cdadbc1dd5fe72cb1",
+      "0x01b5bd713e72fdc5d63ffd83762f81297f6175a5e0a4771cdadbc1dd5fe72cb1" as Address,
     decimals: 18,
     symbol: "zETH",
   },
@@ -37,7 +38,7 @@ export const mainnetTokens: Record<string, Token> = {
   USDC: {
     name: "USDC.e Bridged",
     address:
-      "0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8",
+      "0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -45,7 +46,7 @@ export const mainnetTokens: Record<string, Token> = {
   USDT: {
     name: "Tether USD",
     address:
-      "0x068f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8",
+      "0x068f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8" as Address,
     decimals: 6,
     symbol: "USDT",
   },
@@ -53,7 +54,7 @@ export const mainnetTokens: Record<string, Token> = {
   DAI: {
     name: "Dai Stablecoin",
     address:
-      "0x00da114221cb83fa859dbdb4c44beeaa0bb37c7537ad5ae66fe5e0efd20e6eb3",
+      "0x00da114221cb83fa859dbdb4c44beeaa0bb37c7537ad5ae66fe5e0efd20e6eb3" as Address,
     decimals: 18,
     symbol: "DAI",
   },
@@ -61,7 +62,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZUSDC: {
     name: "zkLend Interest-Bearing USDC",
     address:
-      "0x047ad51726d891f972e74e4ad858a261b43869f7126ce7436ee0b2529a98f486",
+      "0x047ad51726d891f972e74e4ad858a261b43869f7126ce7436ee0b2529a98f486" as Address,
     decimals: 6,
     symbol: "zUSDC",
   },
@@ -69,7 +70,7 @@ export const mainnetTokens: Record<string, Token> = {
   GOL: {
     name: "Game of Life Token",
     address:
-      "0x06a05844a03bb9e744479e3298f54705a35966ab04140d3d8dd797c1f6dc49d0",
+      "0x06a05844a03bb9e744479e3298f54705a35966ab04140d3d8dd797c1f6dc49d0" as Address,
     decimals: 0,
     symbol: "GOL",
   },
@@ -77,7 +78,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT: {
     name: "10kSwap Pair Token",
     address:
-      "0x000023c72abdf49dffc85ae3ede714f2168ad384cc67d08524732acea90df325",
+      "0x000023c72abdf49dffc85ae3ede714f2168ad384cc67d08524732acea90df325" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -85,7 +86,7 @@ export const mainnetTokens: Record<string, Token> = {
   MYLP: {
     name: "MYSWAP ETH/USDC",
     address:
-      "0x022b05f9396d2c48183f6deaf138a57522bcc8b35b67dee919f76403d1783136",
+      "0x022b05f9396d2c48183f6deaf138a57522bcc8b35b67dee919f76403d1783136" as Address,
     decimals: 12,
     symbol: "MYLP",
   },
@@ -93,7 +94,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P: {
     name: "JediSwap Pair",
     address:
-      "0x04d0390b777b424e43839cd1e744799f3de6c176c7e32c1812a41dbd9c19db6a",
+      "0x04d0390b777b424e43839cd1e744799f3de6c176c7e32c1812a41dbd9c19db6a" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -101,7 +102,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZUSDT: {
     name: "zkLend Interest-Bearing USDT",
     address:
-      "0x00811d8da5dc8a2206ea7fd0b28627c2d77280a515126e62baa4d78e22714c4a",
+      "0x00811d8da5dc8a2206ea7fd0b28627c2d77280a515126e62baa4d78e22714c4a" as Address,
     decimals: 6,
     symbol: "zUSDT",
   },
@@ -109,7 +110,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKR: {
     name: "Stark Rocket",
     address:
-      "0x0030c42f4c0a094ea1eda7e3086056a225a464c43dd7da48bd2083fc3114a4db",
+      "0x0030c42f4c0a094ea1eda7e3086056a225a464c43dd7da48bd2083fc3114a4db" as Address,
     decimals: 18,
     symbol: "STRKR",
   },
@@ -117,7 +118,7 @@ export const mainnetTokens: Record<string, Token> = {
   WBTC: {
     name: "Wrapped BTC",
     address:
-      "0x03fe2b97c1fd336e750087d68b9b867997fd64a2661ff3ca5a7c771641e8e7ac",
+      "0x03fe2b97c1fd336e750087d68b9b867997fd64a2661ff3ca5a7c771641e8e7ac" as Address,
     decimals: 8,
     symbol: "WBTC",
   },
@@ -125,7 +126,7 @@ export const mainnetTokens: Record<string, Token> = {
   IETH_C: {
     name: "Nostra ETH Interest Collat.",
     address:
-      "0x057146f6409deb4c9fa12866915dd952aa07c1eb2752e451d7f3b042086bdeb8",
+      "0x057146f6409deb4c9fa12866915dd952aa07c1eb2752e451d7f3b042086bdeb8" as Address,
     decimals: 18,
     symbol: "iETH-c",
   },
@@ -133,7 +134,7 @@ export const mainnetTokens: Record<string, Token> = {
   LORDS: {
     name: "Lords",
     address:
-      "0x0124aeb495b947201f5fac96fd1138e326ad86195b98df6dec9009158a533b49",
+      "0x0124aeb495b947201f5fac96fd1138e326ad86195b98df6dec9009158a533b49" as Address,
     decimals: 18,
     symbol: "LORDS",
   },
@@ -141,7 +142,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZDAI: {
     name: "zkLend Interest-Bearing DAI",
     address:
-      "0x062fa7afe1ca2992f8d8015385a279f49fad36299754fb1e9866f4f052289376",
+      "0x062fa7afe1ca2992f8d8015385a279f49fad36299754fb1e9866f4f052289376" as Address,
     decimals: 18,
     symbol: "zDAI",
   },
@@ -149,7 +150,7 @@ export const mainnetTokens: Record<string, Token> = {
   KI: {
     name: "KiToken",
     address:
-      "0x0269b6a4501f60b6012dd659cdaec077cca07b073aa0f6ef5cf710ae804b68f7",
+      "0x0269b6a4501f60b6012dd659cdaec077cca07b073aa0f6ef5cf710ae804b68f7" as Address,
     decimals: 18,
     symbol: "KI",
   },
@@ -157,7 +158,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZSTRK: {
     name: "zkLend Interest-Bearing STRK",
     address:
-      "0x06d8fa671ef84f791b7f601fa79fea8f6ceb70b5fa84189e3159d532162efc21",
+      "0x06d8fa671ef84f791b7f601fa79fea8f6ceb70b5fa84189e3159d532162efc21" as Address,
     decimals: 18,
     symbol: "zSTRK",
   },
@@ -165,7 +166,7 @@ export const mainnetTokens: Record<string, Token> = {
   WSTETH: {
     name: "Starknet Wrapped Staked Ether",
     address:
-      "0x042b8f0484674ca266ac5d08e4ac6a3fe65bd3129795def2dca5c34ecc5f96d2",
+      "0x042b8f0484674ca266ac5d08e4ac6a3fe65bd3129795def2dca5c34ecc5f96d2" as Address,
     decimals: 18,
     symbol: "wstETH",
   },
@@ -173,7 +174,7 @@ export const mainnetTokens: Record<string, Token> = {
   SPIST: {
     name: "Spirit Stone",
     address:
-      "0x06182278e63816ff4080ed07d668f991df6773fd13db0ea10971096033411b11",
+      "0x06182278e63816ff4080ed07d668f991df6773fd13db0ea10971096033411b11" as Address,
     decimals: 18,
     symbol: "SPIST",
   },
@@ -181,7 +182,7 @@ export const mainnetTokens: Record<string, Token> = {
   IUSDC_C: {
     name: "Nostra IBC USD Coin",
     address:
-      "0x029959a546dda754dc823a7b8aa65862c5825faeaaf7938741d8ca6bfdc69e4e",
+      "0x029959a546dda754dc823a7b8aa65862c5825faeaaf7938741d8ca6bfdc69e4e" as Address,
     decimals: 6,
     symbol: "iUSDC-c",
   },
@@ -189,7 +190,7 @@ export const mainnetTokens: Record<string, Token> = {
   IETH_C_1: {
     name: "Nostra IBC Ethereum",
     address:
-      "0x070f8a4fcd75190661ca09a7300b7c93fab93971b67ea712c664d7948a8a54c6",
+      "0x070f8a4fcd75190661ca09a7300b7c93fab93971b67ea712c664d7948a8a54c6" as Address,
     decimals: 18,
     symbol: "iETH-c",
   },
@@ -197,7 +198,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTRK: {
     name: "Starknet Voting Token",
     address:
-      "0x0782f0ddca11d9950bc3220e35ac82cf868778edb67a5e58b39838544bc4cd0f",
+      "0x0782f0ddca11d9950bc3220e35ac82cf868778edb67a5e58b39838544bc4cd0f" as Address,
     decimals: 18,
     symbol: "vSTRK",
   },
@@ -205,7 +206,7 @@ export const mainnetTokens: Record<string, Token> = {
   NSTR: {
     name: "Nostra",
     address:
-      "0x00c530f2c0aa4c16a0806365b0898499fba372e5df7a7172dc6fe9ba777e8007",
+      "0x00c530f2c0aa4c16a0806365b0898499fba372e5df7a7172dc6fe9ba777e8007" as Address,
     decimals: 18,
     symbol: "NSTR",
   },
@@ -213,7 +214,7 @@ export const mainnetTokens: Record<string, Token> = {
   EKUBO: {
     name: "Ekubo Protocol",
     address:
-      "0x075afe6402ad5a5c20dd25e10ec3b3986acaa647b77e4ae24b0cbc9a54a27a87",
+      "0x075afe6402ad5a5c20dd25e10ec3b3986acaa647b77e4ae24b0cbc9a54a27a87" as Address,
     decimals: 18,
     symbol: "EKUBO",
   },
@@ -221,7 +222,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_1: {
     name: "JediSwap Pair",
     address:
-      "0x045e7131d776dddc137e30bdd490b431c7144677e97bf9369f629ed8d3fb7dd6",
+      "0x045e7131d776dddc137e30bdd490b431c7144677e97bf9369f629ed8d3fb7dd6" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -229,7 +230,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_1: {
     name: "10kSwap Pair Token",
     address:
-      "0x05900cfa2b50d53b097cb305d54e249e31f24f881885aae5639b0cd6af4ed298",
+      "0x05900cfa2b50d53b097cb305d54e249e31f24f881885aae5639b0cd6af4ed298" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -237,7 +238,7 @@ export const mainnetTokens: Record<string, Token> = {
   MYLP_1: {
     name: "MYSWAP ETH/USDT",
     address:
-      "0x041f9a1e9a4d924273f5a5c0c138d52d66d2e6a8bee17412c6b0f48fe059ae04",
+      "0x041f9a1e9a4d924273f5a5c0c138d52d66d2e6a8bee17412c6b0f48fe059ae04" as Address,
     decimals: 12,
     symbol: "MYLP",
   },
@@ -245,7 +246,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSVLP_ETH_USDC: {
     name: "SS_V1_VLP #2",
     address:
-      "0x030615bec9c1506bfac97d9dbd3c546307987d467a7f95d5533c2e861eb81f3f",
+      "0x030615bec9c1506bfac97d9dbd3c546307987d467a7f95d5533c2e861eb81f3f" as Address,
     decimals: 18,
     symbol: "ssVLP-ETH/USDC",
   },
@@ -253,7 +254,7 @@ export const mainnetTokens: Record<string, Token> = {
   IUSDC_C_1: {
     name: "Nostra USDC Interest Collat.",
     address:
-      "0x05dcd26c25d9d8fd9fc860038dcb6e4d835e524eb8a85213a8cda5b7fff845f6",
+      "0x05dcd26c25d9d8fd9fc860038dcb6e4d835e524eb8a85213a8cda5b7fff845f6" as Address,
     decimals: 6,
     symbol: "iUSDC-c",
   },
@@ -261,7 +262,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_ETHUSDC_P: {
     name: "Carmine ETH/USDC put pool",
     address:
-      "0x018a6abca394bd5f822cfa5f88783c01b13e593d1603e7b41b00d31d2ea4827a",
+      "0x018a6abca394bd5f822cfa5f88783c01b13e593d1603e7b41b00d31d2ea4827a" as Address,
     decimals: 18,
     symbol: "C-ETHUSDC-P",
   },
@@ -269,7 +270,7 @@ export const mainnetTokens: Record<string, Token> = {
   WARS: {
     name: "WARS",
     address:
-      "0x015905d4ce047ed501b498964e74d82750c22826db5a38449080e9bf4e4796ca",
+      "0x015905d4ce047ed501b498964e74d82750c22826db5a38449080e9bf4e4796ca" as Address,
     decimals: 18,
     symbol: "WARS",
   },
@@ -277,7 +278,7 @@ export const mainnetTokens: Record<string, Token> = {
   AKU: {
     name: "Akamaru",
     address:
-      "0x0137dfca7d96cdd526d13a63176454f35c691f55837497448fad352643cfe4d4",
+      "0x0137dfca7d96cdd526d13a63176454f35c691f55837497448fad352643cfe4d4" as Address,
     decimals: 18,
     symbol: "AKU",
   },
@@ -285,7 +286,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_2: {
     name: "JediSwap Pair",
     address:
-      "0x07e2a13b40fc1119ec55e0bcf9428eedaa581ab3c924561ad4e955f95da63138",
+      "0x07e2a13b40fc1119ec55e0bcf9428eedaa581ab3c924561ad4e955f95da63138" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -293,7 +294,7 @@ export const mainnetTokens: Record<string, Token> = {
   IUSDT_C: {
     name: "Nostra IBC Tether USD",
     address:
-      "0x055ba2baf189b98c59f6951a584a3a7d7d6ff2c4ef88639794e739557e1876f0",
+      "0x055ba2baf189b98c59f6951a584a3a7d7d6ff2c4ef88639794e739557e1876f0" as Address,
     decimals: 6,
     symbol: "iUSDT-c",
   },
@@ -301,7 +302,7 @@ export const mainnetTokens: Record<string, Token> = {
   MYLP_2: {
     name: "MYSWAP DAI/ETH",
     address:
-      "0x07c662b10f409d7a0a69c8da79b397fd91187ca5f6230ed30effef2dceddc5b3",
+      "0x07c662b10f409d7a0a69c8da79b397fd91187ca5f6230ed30effef2dceddc5b3" as Address,
     decimals: 18,
     symbol: "MYLP",
   },
@@ -309,7 +310,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_2: {
     name: "10kSwap Pair Token",
     address:
-      "0x017e9e62c04b50800d7c59454754fe31a2193c9c3c6c92c093f2ab0faadf8c87",
+      "0x017e9e62c04b50800d7c59454754fe31a2193c9c3c6c92c093f2ab0faadf8c87" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -317,7 +318,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_ETHUSDC_C: {
     name: "Carmine ETH/USDC call pool",
     address:
-      "0x07aba50fdb4e024c1ba63e2c60565d0fd32566ff4b18aa5818fc80c30e749024",
+      "0x07aba50fdb4e024c1ba63e2c60565d0fd32566ff4b18aa5818fc80c30e749024" as Address,
     decimals: 18,
     symbol: "C-ETHUSDC-C",
   },
@@ -325,7 +326,7 @@ export const mainnetTokens: Record<string, Token> = {
   SPIST_1: {
     name: "Spirit Stone",
     address:
-      "0x060cf64cf9edfc1b16ec903cee31a2c21680ee02fc778225dacee578c303806a",
+      "0x060cf64cf9edfc1b16ec903cee31a2c21680ee02fc778225dacee578c303806a" as Address,
     decimals: 18,
     symbol: "SPIST",
   },
@@ -333,7 +334,7 @@ export const mainnetTokens: Record<string, Token> = {
   ISTRK_C: {
     name: "Nostra STRK Interest Collat.",
     address:
-      "0x07c2e1e733f28daa23e78be3a4f6c724c0ab06af65f6a95b5e0545215f1abc1b",
+      "0x07c2e1e733f28daa23e78be3a4f6c724c0ab06af65f6a95b5e0545215f1abc1b" as Address,
     decimals: 18,
     symbol: "iSTRK-c",
   },
@@ -341,7 +342,7 @@ export const mainnetTokens: Record<string, Token> = {
   USDC_1: {
     name: "USDC",
     address:
-      "0x033068f6539f8e6e6b131e6b2b814e6c34a5224bc66947c47dab9dfee93b35fb",
+      "0x033068f6539f8e6e6b131e6b2b814e6c34a5224bc66947c47dab9dfee93b35fb" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -349,7 +350,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZEND: {
     name: "zkLend Token",
     address:
-      "0x00585c32b625999e6e5e78645ff8df7a9001cf5cf3eb6b80ccdd16cb64bd3a34",
+      "0x00585c32b625999e6e5e78645ff8df7a9001cf5cf3eb6b80ccdd16cb64bd3a34" as Address,
     decimals: 18,
     symbol: "ZEND",
   },
@@ -357,7 +358,7 @@ export const mainnetTokens: Record<string, Token> = {
   DRAB: {
     name: "DRAGON BALL",
     address:
-      "0x02a3c4db12911f4acc6480f45928c2858e6517ec77d15a9709bc727af5f26e1b",
+      "0x02a3c4db12911f4acc6480f45928c2858e6517ec77d15a9709bc727af5f26e1b" as Address,
     decimals: 18,
     symbol: "DRAB",
   },
@@ -365,7 +366,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZWBTC: {
     name: "zkLend Interest-Bearing WBTC",
     address:
-      "0x02b9ea3acdb23da566cee8e8beae3125a1458e720dea68c4a9a7a2d8eb5bbb4a",
+      "0x02b9ea3acdb23da566cee8e8beae3125a1458e720dea68c4a9a7a2d8eb5bbb4a" as Address,
     decimals: 8,
     symbol: "zWBTC",
   },
@@ -373,7 +374,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_3: {
     name: "StarkEx Pair Token",
     address:
-      "0x069d369e52fd3f8ce32ab6073a4296f4ce8c832b125284e8f0d653e02e93541d",
+      "0x069d369e52fd3f8ce32ab6073a4296f4ce8c832b125284e8f0d653e02e93541d" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -381,7 +382,7 @@ export const mainnetTokens: Record<string, Token> = {
   SOCKS: {
     name: "SOCKS",
     address:
-      "0x023ed2ba4fb5709302c5dfd739fa7613359042f143286c115b6c7f7dc2601015",
+      "0x023ed2ba4fb5709302c5dfd739fa7613359042f143286c115b6c7f7dc2601015" as Address,
     decimals: 18,
     symbol: "SOCKS",
   },
@@ -389,7 +390,7 @@ export const mainnetTokens: Record<string, Token> = {
   SPEPE: {
     name: "StarkPepe",
     address:
-      "0x06f15ec4b6ff0b7f7a216c4b2ccdefc96cbf114d6242292ca82971592f62273b",
+      "0x06f15ec4b6ff0b7f7a216c4b2ccdefc96cbf114d6242292ca82971592f62273b" as Address,
     decimals: 18,
     symbol: "SPEPE",
   },
@@ -397,7 +398,7 @@ export const mainnetTokens: Record<string, Token> = {
   IDAI: {
     name: "Nostra IB DAI Stablecoin",
     address:
-      "0x00b9b1a4373de5b1458e598df53195ea3204aa926f46198b50b32ed843ce508b",
+      "0x00b9b1a4373de5b1458e598df53195ea3204aa926f46198b50b32ed843ce508b" as Address,
     decimals: 18,
     symbol: "iDAI",
   },
@@ -405,7 +406,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSSLP_USDC_USDT: {
     name: "SS_V1_SLP #5",
     address:
-      "0x0601f72228f73704e827de5bcd8dadaad52c652bb1e42bf492d90bbe22df2cec",
+      "0x0601f72228f73704e827de5bcd8dadaad52c652bb1e42bf492d90bbe22df2cec" as Address,
     decimals: 18,
     symbol: "ssSLP-USDC/USDT",
   },
@@ -413,7 +414,7 @@ export const mainnetTokens: Record<string, Token> = {
   SPEPE_1: {
     name: "StarkPepe",
     address:
-      "0x01e0eee22c684fdf32babdd65e6bcca62a8ce2c23c8d5e68f3989595d26e1b4a",
+      "0x01e0eee22c684fdf32babdd65e6bcca62a8ce2c23c8d5e68f3989595d26e1b4a" as Address,
     decimals: 18,
     symbol: "SPEPE",
   },
@@ -421,7 +422,7 @@ export const mainnetTokens: Record<string, Token> = {
   SCHIZODIO: {
     name: "SCHIZODIO ",
     address:
-      "0x00acc2fa3bb7f6a6726c14d9e142d51fe3984dbfa32b5907e1e76425177875e2",
+      "0x00acc2fa3bb7f6a6726c14d9e142d51fe3984dbfa32b5907e1e76425177875e2" as Address,
     decimals: 18,
     symbol: "SCHIZODIO ",
   },
@@ -429,7 +430,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_4: {
     name: "10kSwap Pair Token",
     address:
-      "0x041a708cf109737a50baa6cbeb9adf0bf8d97112dc6cc80c7a458cbad35328b0",
+      "0x041a708cf109737a50baa6cbeb9adf0bf8d97112dc6cc80c7a458cbad35328b0" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -437,7 +438,7 @@ export const mainnetTokens: Record<string, Token> = {
   BROTHER: {
     name: "STARKNET BROTHER",
     address:
-      "0x03b405a98c9e795d427fe82cdeeeed803f221b52471e3a757574a2b4180793ee",
+      "0x03b405a98c9e795d427fe82cdeeeed803f221b52471e3a757574a2b4180793ee" as Address,
     decimals: 18,
     symbol: "BROTHER",
   },
@@ -445,7 +446,7 @@ export const mainnetTokens: Record<string, Token> = {
   NETH: {
     name: "Nostra ETH",
     address:
-      "0x07170f54dd61ae85377f75131359e3f4a12677589bb7ec5d61f362915a5c0982",
+      "0x07170f54dd61ae85377f75131359e3f4a12677589bb7ec5d61f362915a5c0982" as Address,
     decimals: 18,
     symbol: "nETH",
   },
@@ -453,7 +454,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_5: {
     name: "10kSwap Pair Token",
     address:
-      "0x02e767b996c8d4594c73317bb102c2018b9036aee8eed08ace5f45b3568b94e5",
+      "0x02e767b996c8d4594c73317bb102c2018b9036aee8eed08ace5f45b3568b94e5" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -461,7 +462,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSVLP_DAI_ETH: {
     name: "SS_V1_VLP #1",
     address:
-      "0x0032ebb8e68553620b97b308684babf606d9556d5c0a652450c32e85f40d000d",
+      "0x0032ebb8e68553620b97b308684babf606d9556d5c0a652450c32e85f40d000d" as Address,
     decimals: 18,
     symbol: "ssVLP-DAI/ETH",
   },
@@ -469,7 +470,7 @@ export const mainnetTokens: Record<string, Token> = {
   MYLP_3: {
     name: "MYSWAP tETH/ETH",
     address:
-      "0x014e644c20bd5f9888033d2093c8ba3334caa0c7d15ed142962a9bebf36cc7e0",
+      "0x014e644c20bd5f9888033d2093c8ba3334caa0c7d15ed142962a9bebf36cc7e0" as Address,
     decimals: 18,
     symbol: "MYLP",
   },
@@ -477,7 +478,7 @@ export const mainnetTokens: Record<string, Token> = {
   XSTRK: {
     name: "Endur xSTRK",
     address:
-      "0x028d709c875c0ceac3dce7065bec5328186dc89fe254527084d1689910954b0a",
+      "0x028d709c875c0ceac3dce7065bec5328186dc89fe254527084d1689910954b0a" as Address,
     decimals: 18,
     symbol: "xSTRK",
   },
@@ -485,7 +486,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_3: {
     name: "JediSwap Pair",
     address:
-      "0x05801bdad32f343035fb242e98d1e9371ae85bc1543962fedea16c59b35bd19b",
+      "0x05801bdad32f343035fb242e98d1e9371ae85bc1543962fedea16c59b35bd19b" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -493,7 +494,7 @@ export const mainnetTokens: Record<string, Token> = {
   RETH: {
     name: "Rocket Pool ETH",
     address:
-      "0x0319111a5037cbec2b3e638cc34a3474e2d2608299f3e62866e9cc683208c610",
+      "0x0319111a5037cbec2b3e638cc34a3474e2d2608299f3e62866e9cc683208c610" as Address,
     decimals: 18,
     symbol: "rETH",
   },
@@ -501,7 +502,7 @@ export const mainnetTokens: Record<string, Token> = {
   MYLP_4: {
     name: "MYSWAP USDC/USDT",
     address:
-      "0x01ea237607b7d9d2e9997aa373795929807552503683e35d8739f4dc46652de1",
+      "0x01ea237607b7d9d2e9997aa373795929807552503683e35d8739f4dc46652de1" as Address,
     decimals: 6,
     symbol: "MYLP",
   },
@@ -509,7 +510,7 @@ export const mainnetTokens: Record<string, Token> = {
   DUSDC: {
     name: "Debt USD Coin",
     address:
-      "0x03b6058a9f6029b519bc72b2cc31bcb93ca704d0ab79fec2ae5d43f79ac07f7a",
+      "0x03b6058a9f6029b519bc72b2cc31bcb93ca704d0ab79fec2ae5d43f79ac07f7a" as Address,
     decimals: 6,
     symbol: "dUSDC",
   },
@@ -517,7 +518,7 @@ export const mainnetTokens: Record<string, Token> = {
   NSTRWD: {
     name: "nstreward.com - Nostra Reward",
     address:
-      "0x0211da598b878e104e706cf377f3052f23b0fd769559bc28fd492351cd4b4355",
+      "0x0211da598b878e104e706cf377f3052f23b0fd769559bc28fd492351cd4b4355" as Address,
     decimals: 8,
     symbol: "nstRWD",
   },
@@ -525,7 +526,7 @@ export const mainnetTokens: Record<string, Token> = {
   DRAB2_0: {
     name: "DRAGON BALL2.0",
     address:
-      "0x00bc60aa076d4dc759601f33255b30eb5819e7f78298aa75230cbb8bd2026672",
+      "0x00bc60aa076d4dc759601f33255b30eb5819e7f78298aa75230cbb8bd2026672" as Address,
     decimals: 18,
     symbol: "DRAB2.0",
   },
@@ -533,7 +534,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTKB: {
     name: "vstrb.com - vSTRK Bonus Token",
     address:
-      "0x0653cca8b4fa05016bb1d86258ef80ae5e7ffcaeb3919a08c47e9e2594da1c30",
+      "0x0653cca8b4fa05016bb1d86258ef80ae5e7ffcaeb3919a08c47e9e2594da1c30" as Address,
     decimals: 8,
     symbol: "vSTKB",
   },
@@ -541,7 +542,7 @@ export const mainnetTokens: Record<string, Token> = {
   NETH_1: {
     name: "Nostra Ethereum",
     address:
-      "0x04f89253e37ca0ab7190b2e9565808f105585c9cacca6b2fa6145553fa061a41",
+      "0x04f89253e37ca0ab7190b2e9565808f105585c9cacca6b2fa6145553fa061a41" as Address,
     decimals: 18,
     symbol: "nETH",
   },
@@ -549,7 +550,7 @@ export const mainnetTokens: Record<string, Token> = {
   NETH_C: {
     name: "Nostra C Ethereum",
     address:
-      "0x0553cea5d1dc0e0157ffcd36a51a0ced717efdadd5ef1b4644352bb45bd35453",
+      "0x0553cea5d1dc0e0157ffcd36a51a0ced717efdadd5ef1b4644352bb45bd35453" as Address,
     decimals: 18,
     symbol: "nETH-c",
   },
@@ -557,7 +558,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRARWD_COM: {
     name: "nostrarwd.com - Nostra Reward",
     address:
-      "0x0525434cffdb693436fba15e363ec1eb476c8a57df16ace558a40e9a258c633d",
+      "0x0525434cffdb693436fba15e363ec1eb476c8a57df16ace558a40e9a258c633d" as Address,
     decimals: 8,
     symbol: "nostrarwd.com",
   },
@@ -565,7 +566,7 @@ export const mainnetTokens: Record<string, Token> = {
   ESTRKB: {
     name: "strkeb.com - STRK Extra Bonus",
     address:
-      "0x0362b9671dad73b4be8f44876a3b875171931256a145589afb62e23564de047d",
+      "0x0362b9671dad73b4be8f44876a3b875171931256a145589afb62e23564de047d" as Address,
     decimals: 8,
     symbol: "eSTRKB",
   },
@@ -573,7 +574,7 @@ export const mainnetTokens: Record<string, Token> = {
   ESTRKB_1: {
     name: "strkeb.net - STRK Extra Bonus",
     address:
-      "0x07df8c11f734ed959ebecd147748da745d438d380c5bb4d4af3074e3c0a56439",
+      "0x07df8c11f734ed959ebecd147748da745d438d380c5bb4d4af3074e3c0a56439" as Address,
     decimals: 8,
     symbol: "eSTRKB",
   },
@@ -581,7 +582,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSVLP_ETH_USDT: {
     name: "SS_V1_VLP #7",
     address:
-      "0x00691fa7f66d63dc8c89ff4e77732fff5133f282e7dbd41813273692cc595516",
+      "0x00691fa7f66d63dc8c89ff4e77732fff5133f282e7dbd41813273692cc595516" as Address,
     decimals: 18,
     symbol: "ssVLP-ETH/USDT",
   },
@@ -589,7 +590,7 @@ export const mainnetTokens: Record<string, Token> = {
   EKBRWD_COM: {
     name: "ekbrwd.com - Ekubo Reward Token",
     address:
-      "0x04cb6f9b3d1466524a695c9bdb4a0d7c37aa606e38724b99c0b6952bacaf2e63",
+      "0x0637dd334abf822b123cb108e170836ffdae0ca6d9e4a8adde07ed6374122085" as Address,
     decimals: 8,
     symbol: "ekbrwd.com",
   },
@@ -597,7 +598,7 @@ export const mainnetTokens: Record<string, Token> = {
   EKBRWD_COM_1: {
     name: "ekbrwd.com - Ekubo Reward Token",
     address:
-      "0x0637dd334abf822b123cb108e170836ffdae0ca6d9e4a8adde07ed6374122085",
+      "0x04cb6f9b3d1466524a695c9bdb4a0d7c37aa606e38724b99c0b6952bacaf2e63" as Address,
     decimals: 8,
     symbol: "ekbrwd.com",
   },
@@ -605,7 +606,7 @@ export const mainnetTokens: Record<string, Token> = {
   EKBRWD_COM_2: {
     name: "ekbrwd.com - Ekubo Reward Token",
     address:
-      "0x0589fa9b6728a8bbf2c5245dd61dfaed26237c6e3b18fafd4d18d4a200f61a71",
+      "0x0589fa9b6728a8bbf2c5245dd61dfaed26237c6e3b18fafd4d18d4a200f61a71" as Address,
     decimals: 8,
     symbol: "ekbrwd.com",
   },
@@ -613,7 +614,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKFI_NET: {
     name: "strkfiâ¤net - STRK Gift Token",
     address:
-      "0x064fe08ae9f3255f411387eccf19bf1ca750d6953a519ca44cca5db66b71f8da",
+      "0x064fe08ae9f3255f411387eccf19bf1ca750d6953a519ca44cca5db66b71f8da" as Address,
     decimals: 8,
     symbol: "strkfiâ¤net",
   },
@@ -621,7 +622,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKFI_NET_1: {
     name: "strkfiâ¤net - STRK Gift Token",
     address:
-      "0x028c6716d6a13391b28c78e60363b2cf7f0200e4df93b91e06f4ad2cf0d0e700",
+      "0x028c6716d6a13391b28c78e60363b2cf7f0200e4df93b91e06f4ad2cf0d0e700" as Address,
     decimals: 8,
     symbol: "strkfiâ¤net",
   },
@@ -629,7 +630,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKFI_NET_2: {
     name: "strkfiâ¤net - STRK Gift Token",
     address:
-      "0x008399e499697518baa403abca27ec0b232b4b1f45c9073c313897b051056d91",
+      "0x008399e499697518baa403abca27ec0b232b4b1f45c9073c313897b051056d91" as Address,
     decimals: 8,
     symbol: "strkfiâ¤net",
   },
@@ -637,7 +638,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKFI_NET_3: {
     name: "strkfiâ¤net - STRK Gift Token",
     address:
-      "0x05211ac61a7e4ae2ccaa25a5c0f21e715227b0b7cd3cf9f223edf7d5fd90a2b9",
+      "0x05211ac61a7e4ae2ccaa25a5c0f21e715227b0b7cd3cf9f223edf7d5fd90a2b9" as Address,
     decimals: 8,
     symbol: "strkfiâ¤net",
   },
@@ -645,7 +646,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKFI_NET_4: {
     name: "strkfi.net - STRK Gift Token",
     address:
-      "0x0620231d7b32495374164ac091ab43d835d7cfb654986b1d11f67d6fda0e9129",
+      "0x018e69d119dddad3ac2053648710324b716ff3718e1b6852f6df308d0b810ba7" as Address,
     decimals: 8,
     symbol: "strkfi.net",
   },
@@ -653,7 +654,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKFI_NET_5: {
     name: "strkfi.net - STRK Gift Token",
     address:
-      "0x018e69d119dddad3ac2053648710324b716ff3718e1b6852f6df308d0b810ba7",
+      "0x0620231d7b32495374164ac091ab43d835d7cfb654986b1d11f67d6fda0e9129" as Address,
     decimals: 8,
     symbol: "strkfi.net",
   },
@@ -661,7 +662,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKFI_NET_6: {
     name: "strkfi.net - STRK Gift Token",
     address:
-      "0x051f6edf1ceec33ddbaeb738f701243ec349a1fe3871122f28f6e55652c6b16b",
+      "0x051f6edf1ceec33ddbaeb738f701243ec349a1fe3871122f28f6e55652c6b16b" as Address,
     decimals: 8,
     symbol: "strkfi.net",
   },
@@ -669,7 +670,7 @@ export const mainnetTokens: Record<string, Token> = {
   STARKSFI_CC: {
     name: "starksfi.cc - STRK Reward Token",
     address:
-      "0x037bf0e66ce8bfbc0ec08fe53e3c820a93af2b07627e823853ff176d87480a25",
+      "0x037bf0e66ce8bfbc0ec08fe53e3c820a93af2b07627e823853ff176d87480a25" as Address,
     decimals: 8,
     symbol: "starksfi.cc",
   },
@@ -677,7 +678,7 @@ export const mainnetTokens: Record<string, Token> = {
   IUSDT_C_1: {
     name: "Nostra USDT Interest Collat.",
     address:
-      "0x0453c4c996f1047d9370f824d68145bd5e7ce12d00437140ad02181e1d11dc83",
+      "0x0453c4c996f1047d9370f824d68145bd5e7ce12d00437140ad02181e1d11dc83" as Address,
     decimals: 6,
     symbol: "iUSDT-c",
   },
@@ -685,7 +686,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZKRWD: {
     name: "zkrwd.com - zkLend Reward Token",
     address:
-      "0x0058cb4af4f7d864fe5be5c29719d7d861eac4602ce7502b3575a5e63404192b",
+      "0x0058cb4af4f7d864fe5be5c29719d7d861eac4602ce7502b3575a5e63404192b" as Address,
     decimals: 8,
     symbol: "zkRWD",
   },
@@ -693,7 +694,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZKRWD_1: {
     name: "zkrwd.net - zkLend Reward Token",
     address:
-      "0x00fa01bac8f7714338144eda343731c0d75a8ae1fd66af7b867e0506fa1100da",
+      "0x00fa01bac8f7714338144eda343731c0d75a8ae1fd66af7b867e0506fa1100da" as Address,
     decimals: 8,
     symbol: "zkRWD",
   },
@@ -701,7 +702,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZZEND: {
     name: "zkLend Interest-Bearing ZEND",
     address:
-      "0x02a28036ec5007c05c5611281a7d740c71a26d0305f7e9a4fa2f751d252a9f0d",
+      "0x02a28036ec5007c05c5611281a7d740c71a26d0305f7e9a4fa2f751d252a9f0d" as Address,
     decimals: 18,
     symbol: "zZEND",
   },
@@ -709,7 +710,7 @@ export const mainnetTokens: Record<string, Token> = {
   WZKX2: {
     name: "Locked ZKX 2",
     address:
-      "0x005bbed149d27bc7fb8cbeca568929aaffdbf5a1ccd675bda73c8fe519ed0704",
+      "0x005bbed149d27bc7fb8cbeca568929aaffdbf5a1ccd675bda73c8fe519ed0704" as Address,
     decimals: 18,
     symbol: "wZKX2",
   },
@@ -717,7 +718,7 @@ export const mainnetTokens: Record<string, Token> = {
   PUNK: {
     name: "Punk",
     address:
-      "0x026e0852e1de834db3858b644270c52c4e0cab5be1da710751711c11b74eefed",
+      "0x026e0852e1de834db3858b644270c52c4e0cab5be1da710751711c11b74eefed" as Address,
     decimals: 18,
     symbol: "PUNK",
   },
@@ -725,7 +726,7 @@ export const mainnetTokens: Record<string, Token> = {
   DETH: {
     name: "Debt Ethereum",
     address:
-      "0x040b091cb020d91f4a4b34396946b4d4e2a450dbd9410432ebdbfe10e55ee5e5",
+      "0x040b091cb020d91f4a4b34396946b4d4e2a450dbd9410432ebdbfe10e55ee5e5" as Address,
     decimals: 18,
     symbol: "dETH",
   },
@@ -733,7 +734,7 @@ export const mainnetTokens: Record<string, Token> = {
   WZKX: {
     name: "Locked ZKX",
     address:
-      "0x077c8566f0cd5c99b9d4b0443ff2ad595ad842c90e598f76dcb58e6509ec858d",
+      "0x077c8566f0cd5c99b9d4b0443ff2ad595ad842c90e598f76dcb58e6509ec858d" as Address,
     decimals: 18,
     symbol: "wZKX",
   },
@@ -741,7 +742,7 @@ export const mainnetTokens: Record<string, Token> = {
   MYLP_5: {
     name: "MYSWAP DAI/USDC",
     address:
-      "0x0611e8f4f3badf1737b9e8f0ca77dd2f6b46a1d33ce4eed951c6b18ac497d505",
+      "0x0611e8f4f3badf1737b9e8f0ca77dd2f6b46a1d33ce4eed951c6b18ac497d505" as Address,
     decimals: 12,
     symbol: "MYLP",
   },
@@ -749,7 +750,7 @@ export const mainnetTokens: Record<string, Token> = {
   IDAI_C: {
     name: "Nostra DAI Interest Collat.",
     address:
-      "0x04f18ffc850cdfa223a530d7246d3c6fc12a5969e0aa5d4a88f470f5fe6c46e9",
+      "0x04f18ffc850cdfa223a530d7246d3c6fc12a5969e0aa5d4a88f470f5fe6c46e9" as Address,
     decimals: 18,
     symbol: "iDAI-c",
   },
@@ -757,7 +758,7 @@ export const mainnetTokens: Record<string, Token> = {
   FAME: {
     name: "Duelist Fame",
     address:
-      "0x02549653a4ae1ff8d04a20b8820a49cbe97486c536ec0e4c8f68aa33d80067cf",
+      "0x02549653a4ae1ff8d04a20b8820a49cbe97486c536ec0e4c8f68aa33d80067cf" as Address,
     decimals: 18,
     symbol: "FAME",
   },
@@ -765,7 +766,7 @@ export const mainnetTokens: Record<string, Token> = {
   NSTRWD_1: {
     name: "nstreward.net - Nostra Reward",
     address:
-      "0x0341794b1b111f42c9d42c3bc0bb1462bbf40c8d5acb3a9155c9bb8a202fc686",
+      "0x0341794b1b111f42c9d42c3bc0bb1462bbf40c8d5acb3a9155c9bb8a202fc686" as Address,
     decimals: 8,
     symbol: "nstRWD",
   },
@@ -773,7 +774,7 @@ export const mainnetTokens: Record<string, Token> = {
   NSTSTRK: {
     name: "Nostra Staked STRK",
     address:
-      "0x04619e9ce4109590219c5263787050726be63382148538f3f936c22aa87d2fc2",
+      "0x04619e9ce4109590219c5263787050726be63382148538f3f936c22aa87d2fc2" as Address,
     decimals: 18,
     symbol: "nstSTRK",
   },
@@ -781,7 +782,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_4: {
     name: "JediSwap Pair",
     address:
-      "0x00cfd39f5244f7b617418c018204a8a9f9a7f72e71f0ef38f968eeb2a9ca302b",
+      "0x00cfd39f5244f7b617418c018204a8a9f9a7f72e71f0ef38f968eeb2a9ca302b" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -789,7 +790,7 @@ export const mainnetTokens: Record<string, Token> = {
   DUSDT: {
     name: "Debt Tether USD",
     address:
-      "0x065c6c7119b738247583286021ea05acc6417aa86d391dcdda21843c1fc6e9c6",
+      "0x065c6c7119b738247583286021ea05acc6417aa86d391dcdda21843c1fc6e9c6" as Address,
     decimals: 6,
     symbol: "dUSDT",
   },
@@ -797,7 +798,7 @@ export const mainnetTokens: Record<string, Token> = {
   LUSD: {
     name: "LUSD Stablecoin",
     address:
-      "0x070a76fd48ca0ef910631754d77dd822147fe98a569b826ec85e3c33fde586ac",
+      "0x070a76fd48ca0ef910631754d77dd822147fe98a569b826ec85e3c33fde586ac" as Address,
     decimals: 18,
     symbol: "LUSD",
   },
@@ -805,7 +806,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKHUB_NET: {
     name: "strkhub.net - vSTRK Bonus Token",
     address:
-      "0x01e7de7ca4eb58bbc4a3c3d61888c212862f6fb6723232c9c1e6281130ff90da",
+      "0x01e7de7ca4eb58bbc4a3c3d61888c212862f6fb6723232c9c1e6281130ff90da" as Address,
     decimals: 8,
     symbol: "strkhub.net",
   },
@@ -813,7 +814,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKHUB_NET_1: {
     name: "strkhub.net - vSTRK Bonus Token",
     address:
-      "0x00aeb4db239bed7f00d29f104507c4ebed78ed5f0941c0a9f612e5cc5bc466cb",
+      "0x00aeb4db239bed7f00d29f104507c4ebed78ed5f0941c0a9f612e5cc5bc466cb" as Address,
     decimals: 8,
     symbol: "strkhub.net",
   },
@@ -821,7 +822,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRKHUB_NET_2: {
     name: "strkhub.net - vSTRK Bonus Token",
     address:
-      "0x07527185ecff6717354410ca2d3deb6ae3518a3350a172b16a6dfc580a9228eb",
+      "0x07527185ecff6717354410ca2d3deb6ae3518a3350a172b16a6dfc580a9228eb" as Address,
     decimals: 8,
     symbol: "strkhub.net",
   },
@@ -829,7 +830,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_6: {
     name: "ProtossSwap Pair Token",
     address:
-      "0x05a08fb18007357366a35739bd627fe00b00ff0881d58b076f34a69572f5fa8b",
+      "0x05a08fb18007357366a35739bd627fe00b00ff0881d58b076f34a69572f5fa8b" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -837,7 +838,7 @@ export const mainnetTokens: Record<string, Token> = {
   VECRM: {
     name: "vote escrowed Carmine token",
     address:
-      "0x03c0286e9e428a130ae7fbbe911b794e8a829c367dd788e7cfe3efb0367548fa",
+      "0x03c0286e9e428a130ae7fbbe911b794e8a829c367dd788e7cfe3efb0367548fa" as Address,
     decimals: 18,
     symbol: "veCRM",
   },
@@ -845,7 +846,7 @@ export const mainnetTokens: Record<string, Token> = {
   DDAI: {
     name: "Debt DAI Stablecoin",
     address:
-      "0x0362b4455f5f4cc108a5a1ab1fd2cc6c4f0c70597abb541a99cf2734435ec9cb",
+      "0x0362b4455f5f4cc108a5a1ab1fd2cc6c4f0c70597abb541a99cf2734435ec9cb" as Address,
     decimals: 18,
     symbol: "dDAI",
   },
@@ -853,7 +854,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_5: {
     name: "JediSwap Pair",
     address:
-      "0x00f0f5b3eed258344152e1f17baf84a2e1b621cd754b625bec169e8595aea767",
+      "0x00f0f5b3eed258344152e1f17baf84a2e1b621cd754b625bec169e8595aea767" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -861,7 +862,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZWSTETH: {
     name: "zkLend Interest-Bearing wstETH",
     address:
-      "0x0536aa7e01ecc0235ca3e29da7b5ad5b12cb881e29034d87a4290edbb20b7c28",
+      "0x0536aa7e01ecc0235ca3e29da7b5ad5b12cb881e29034d87a4290edbb20b7c28" as Address,
     decimals: 18,
     symbol: "zwstETH",
   },
@@ -869,7 +870,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_7: {
     name: "StarkEx Pair Token",
     address:
-      "0x06530c6d6bee06898faf2362de56d2ce7dcbb234f5318f495d12dd7ad5db1841",
+      "0x06530c6d6bee06898faf2362de56d2ce7dcbb234f5318f495d12dd7ad5db1841" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -877,7 +878,7 @@ export const mainnetTokens: Record<string, Token> = {
   RETH_1: {
     name: "rETH",
     address:
-      "0x00436d8d078de345c11493bd91512eae60cd2713e05bcaa0bb9f0cba90358c6e",
+      "0x00436d8d078de345c11493bd91512eae60cd2713e05bcaa0bb9f0cba90358c6e" as Address,
     decimals: 18,
     symbol: "rETH",
   },
@@ -885,7 +886,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_8: {
     name: "10kSwap Pair Token",
     address:
-      "0x02a6e0ecda844736c4803a385fb1372eff458c365d2325c7d4e08032c7a908f3",
+      "0x02a6e0ecda844736c4803a385fb1372eff458c365d2325c7d4e08032c7a908f3" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -893,7 +894,7 @@ export const mainnetTokens: Record<string, Token> = {
   NSTRFI_COM: {
     name: "nstrfi.âcom - Nostra Reward",
     address:
-      "0x03140797dae93149db5d10c35aae9b1d918327473df072d342badbceaeee281d",
+      "0x044d33110e0ace3a2881db9e0036f7a5e84c30aab55b9e4e4cf40214ccf3ebe6" as Address,
     decimals: 8,
     symbol: "nstrfi.âcom",
   },
@@ -901,15 +902,7 @@ export const mainnetTokens: Record<string, Token> = {
   NSTRFI_COM_1: {
     name: "nstrfi.âcom - Nostra Reward",
     address:
-      "0x044d33110e0ace3a2881db9e0036f7a5e84c30aab55b9e4e4cf40214ccf3ebe6",
-    decimals: 8,
-    symbol: "nstrfi.âcom",
-  },
-  /** nstrfi.âcom - Nostra Reward */
-  NSTRFI_COM_2: {
-    name: "nstrfi.âcom - Nostra Reward",
-    address:
-      "0x04539ec3fc530eeeb4c2a26c679a846ae42fcc5a8121904adaf2370abe2f9b0a",
+      "0x03140797dae93149db5d10c35aae9b1d918327473df072d342badbceaeee281d" as Address,
     decimals: 8,
     symbol: "nstrfi.âcom",
   },
@@ -917,15 +910,23 @@ export const mainnetTokens: Record<string, Token> = {
   UNI: {
     name: "Uniswap",
     address:
-      "0x049210ffc442172463f3177147c1aeaa36c51d152c1b0630f2364c300d4f48ee",
+      "0x049210ffc442172463f3177147c1aeaa36c51d152c1b0630f2364c300d4f48ee" as Address,
     decimals: 18,
     symbol: "UNI",
+  },
+  /** nstrfi.âcom - Nostra Reward */
+  NSTRFI_COM_2: {
+    name: "nstrfi.âcom - Nostra Reward",
+    address:
+      "0x04539ec3fc530eeeb4c2a26c679a846ae42fcc5a8121904adaf2370abe2f9b0a" as Address,
+    decimals: 8,
+    symbol: "nstrfi.âcom",
   },
   /** Hashstack Supply STRK */
   RSTRK: {
     name: "Hashstack Supply STRK",
     address:
-      "0x07514ee6fa12f300ce293c60d60ecce0704314defdb137301dae78a7e5abbdd7",
+      "0x07514ee6fa12f300ce293c60d60ecce0704314defdb137301dae78a7e5abbdd7" as Address,
     decimals: 18,
     symbol: "rSTRK",
   },
@@ -933,31 +934,31 @@ export const mainnetTokens: Record<string, Token> = {
   IUSDC: {
     name: "Nostra IB USD Coin",
     address:
-      "0x06af9a313434c0987f5952277f1ac8c61dc4d50b8b009539891ed8aaee5d041d",
+      "0x06af9a313434c0987f5952277f1ac8c61dc4d50b8b009539891ed8aaee5d041d" as Address,
     decimals: 6,
     symbol: "iUSDC",
-  },
-  /** Savings Starknet Token */
-  SSTRK: {
-    name: "Savings Starknet Token",
-    address:
-      "0x01f823d93f9b5a836a3a1a4cea64bfb5737db81270cd526201a82d7447691cf9",
-    decimals: 18,
-    symbol: "sSTRK",
   },
   /** Nostra nstSTRK Interest Coll. */
   INSTSTRK_C: {
     name: "Nostra nstSTRK Interest Coll.",
     address:
-      "0x067a34ff63ec38d0ccb2817c6d3f01e8b0c4792c77845feb43571092dcf5ebb5",
+      "0x067a34ff63ec38d0ccb2817c6d3f01e8b0c4792c77845feb43571092dcf5ebb5" as Address,
     decimals: 18,
     symbol: "instSTRK-c",
+  },
+  /** Savings Starknet Token */
+  SSTRK: {
+    name: "Savings Starknet Token",
+    address:
+      "0x01f823d93f9b5a836a3a1a4cea64bfb5737db81270cd526201a82d7447691cf9" as Address,
+    decimals: 18,
+    symbol: "sSTRK",
   },
   /** nstrwd.com - Nostra Pool Reward */
   NSTPRWD: {
     name: "nstrwd.com - Nostra Pool Reward",
     address:
-      "0x0737c25518a4817035f7fdf22988938645aca4520689692fdd9ecf984818f2a7",
+      "0x0737c25518a4817035f7fdf22988938645aca4520689692fdd9ecf984818f2a7" as Address,
     decimals: 8,
     symbol: "nstPRWD",
   },
@@ -965,7 +966,7 @@ export const mainnetTokens: Record<string, Token> = {
   IUSDT: {
     name: "Nostra IB Tether USD",
     address:
-      "0x06404c8e886fea27590710bb0e0e8c7a3e7d74afccc60663beb82707495f8609",
+      "0x06404c8e886fea27590710bb0e0e8c7a3e7d74afccc60663beb82707495f8609" as Address,
     decimals: 6,
     symbol: "iUSDT",
   },
@@ -973,7 +974,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZKX: {
     name: "ZKX",
     address:
-      "0x0256c74b33f5734c68402cd9433dfa77856f62c6940f54591874527cf898a924",
+      "0x0256c74b33f5734c68402cd9433dfa77856f62c6940f54591874527cf898a924" as Address,
     decimals: 18,
     symbol: "ZKX",
   },
@@ -981,7 +982,7 @@ export const mainnetTokens: Record<string, Token> = {
   IUSDC_1: {
     name: "Nostra USDC Interest",
     address:
-      "0x002fc2d4b41cc1f03d185e6681cbd40cced61915d4891517a042658d61cba3b1",
+      "0x002fc2d4b41cc1f03d185e6681cbd40cced61915d4891517a042658d61cba3b1" as Address,
     decimals: 6,
     symbol: "iUSDC",
   },
@@ -989,7 +990,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_9: {
     name: "StarkEx Pair Token",
     address:
-      "0x01834bbbcb2e4d69aab350ada67a3ccc2b596e10e7ed1fad1da5d1bd2700b1f9",
+      "0x01834bbbcb2e4d69aab350ada67a3ccc2b596e10e7ed1fad1da5d1bd2700b1f9" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -997,7 +998,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT: {
     name: "ETHUSDC-23NOV23-1900-LONG-CALL",
     address:
-      "0x018e15e45dab8d05195ef51ab1f1d113dcab8939f5c39d4aaa9bf47b315fe0ca",
+      "0x018e15e45dab8d05195ef51ab1f1d113dcab8939f5c39d4aaa9bf47b315fe0ca" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1005,7 +1006,7 @@ export const mainnetTokens: Record<string, Token> = {
   CORGI: {
     name: "Stark Corgi",
     address:
-      "0x000844d2cf792180590334b4ca0ce8bfc3df6fcc780f8b803aef5df37548d2b2",
+      "0x000844d2cf792180590334b4ca0ce8bfc3df6fcc780f8b803aef5df37548d2b2" as Address,
     decimals: 18,
     symbol: "CORGI",
   },
@@ -1013,7 +1014,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_1: {
     name: "ETHUSDC-07SEP23-1900-LONG-CALL",
     address:
-      "0x000de406dfe50c098b147986f66ee4f22adf1a7bbacf2f76648c975e73500526",
+      "0x000de406dfe50c098b147986f66ee4f22adf1a7bbacf2f76648c975e73500526" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1021,7 +1022,7 @@ export const mainnetTokens: Record<string, Token> = {
   MSLPB: {
     name: "msdao.org - MySwap LP Bonus",
     address:
-      "0x02571bba350c91af6c5a154c81ceb861119332773dbe1e631eaacc7727bdaf7c",
+      "0x02571bba350c91af6c5a154c81ceb861119332773dbe1e631eaacc7727bdaf7c" as Address,
     decimals: 8,
     symbol: "msLPB",
   },
@@ -1029,7 +1030,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_10: {
     name: "10kSwap Pair Token",
     address:
-      "0x041d52e15e82b003bf0ad52ca58393c87abef3e00f1bf69682fd4162d5773f8f",
+      "0x041d52e15e82b003bf0ad52ca58393c87abef3e00f1bf69682fd4162d5773f8f" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -1037,7 +1038,7 @@ export const mainnetTokens: Record<string, Token> = {
   IETH: {
     name: "Nostra IB Ethereum",
     address:
-      "0x002f8deaebb9da2cb53771b9e2c6d67265d11a4e745ebd74a726b8859c9337b9",
+      "0x002f8deaebb9da2cb53771b9e2c6d67265d11a4e745ebd74a726b8859c9337b9" as Address,
     decimals: 18,
     symbol: "iETH",
   },
@@ -1045,7 +1046,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_6: {
     name: "JediSwap Pair",
     address:
-      "0x0260e98362e0949fefff8b4de85367c035e44f734c9f8069b6ce2075ae86b45c",
+      "0x0260e98362e0949fefff8b4de85367c035e44f734c9f8069b6ce2075ae86b45c" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -1053,7 +1054,7 @@ export const mainnetTokens: Record<string, Token> = {
   IETH_1: {
     name: "Nostra ETH Interest",
     address:
-      "0x01fecadfe7cda2487c66291f2970a629be8eecdcb006ba4e71d1428c2b7605c7",
+      "0x01fecadfe7cda2487c66291f2970a629be8eecdcb006ba4e71d1428c2b7605c7" as Address,
     decimals: 18,
     symbol: "iETH",
   },
@@ -1061,7 +1062,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_STRK_ETH: {
     name: "Nostra Pool STRK/ETH",
     address:
-      "0x068400056dccee818caa7e8a2c305f9a60d255145bac22d6c5c9bf9e2e046b71",
+      "0x068400056dccee818caa7e8a2c305f9a60d255145bac22d6c5c9bf9e2e046b71" as Address,
     decimals: 18,
     symbol: "NOSTRA-STRK/ETH",
   },
@@ -1069,7 +1070,7 @@ export const mainnetTokens: Record<string, Token> = {
   IWBTC: {
     name: "Nostra IB Wrapped BTC",
     address:
-      "0x0061d892cccf43daf73407194da9f0ea6dbece950bb24c50be2356444313a707",
+      "0x0061d892cccf43daf73407194da9f0ea6dbece950bb24c50be2356444313a707" as Address,
     decimals: 8,
     symbol: "iWBTC",
   },
@@ -1077,7 +1078,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTKB_1: {
     name: "vstrkbonus.com - vSTRK Bonus",
     address:
-      "0x0374ea72a3e07311f1c0598bae4f0b3827c6df370afd02109be5f2d06c53306b",
+      "0x0374ea72a3e07311f1c0598bae4f0b3827c6df370afd02109be5f2d06c53306b" as Address,
     decimals: 8,
     symbol: "vSTKB",
   },
@@ -1085,7 +1086,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_7: {
     name: "JediSwap Pair",
     address:
-      "0x02b3030c04e9c920bd66c6a8dc209717bbefa1ea5f8bc8ebabd639e5a4766502",
+      "0x02b3030c04e9c920bd66c6a8dc209717bbefa1ea5f8bc8ebabd639e5a4766502" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -1093,7 +1094,7 @@ export const mainnetTokens: Record<string, Token> = {
   BABYLAIKA: {
     name: "Baby Laika",
     address:
-      "0x06ea04cd7e40bfef07c3625e2b3472839093d966bf601568128436466f962fcf",
+      "0x06ea04cd7e40bfef07c3625e2b3472839093d966bf601568128436466f962fcf" as Address,
     decimals: 18,
     symbol: "BABYLAIKA",
   },
@@ -1101,7 +1102,7 @@ export const mainnetTokens: Record<string, Token> = {
   RUSDC: {
     name: "rUSDC",
     address:
-      "0x03bcecd40212e9b91d92bbe25bb3643ad93f0d230d93237c675f46fac5187e8c",
+      "0x03bcecd40212e9b91d92bbe25bb3643ad93f0d230d93237c675f46fac5187e8c" as Address,
     decimals: 6,
     symbol: "rUSDC",
   },
@@ -1109,7 +1110,7 @@ export const mainnetTokens: Record<string, Token> = {
   WSTETH_1: {
     name: "Starknet Wrapped Staked Ether",
     address:
-      "0x0057912720381af14b0e5c87aa4718ed5e527eab60b3801ebf702ab09139e38b",
+      "0x0057912720381af14b0e5c87aa4718ed5e527eab60b3801ebf702ab09139e38b" as Address,
     decimals: 18,
     symbol: "wstETH",
   },
@@ -1117,7 +1118,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTARKD_P: {
     name: "vStarkDefi Pair",
     address:
-      "0x0549bdff3f2744f69a6f5f84bdcdc647452e116e1faf967e5ff19955d0011c87",
+      "0x0549bdff3f2744f69a6f5f84bdcdc647452e116e1faf967e5ff19955d0011c87" as Address,
     decimals: 18,
     symbol: "vSTARKD-P",
   },
@@ -1125,7 +1126,7 @@ export const mainnetTokens: Record<string, Token> = {
   MSLPB_1: {
     name: "msdao.org - MySwap LP Bonus",
     address:
-      "0x00e5b867d6c848d0483059fac44f4f3715e9bdae50c26bf7c4c2f5cdae0af341",
+      "0x00e5b867d6c848d0483059fac44f4f3715e9bdae50c26bf7c4c2f5cdae0af341" as Address,
     decimals: 8,
     symbol: "msLPB",
   },
@@ -1133,7 +1134,7 @@ export const mainnetTokens: Record<string, Token> = {
   MSLPB_2: {
     name: "msdao.org - MySwap LP Bonus",
     address:
-      "0x0193c002265123f093f551048cc41da785c674e4837c90bf525964da7c642d39",
+      "0x0193c002265123f093f551048cc41da785c674e4837c90bf525964da7c642d39" as Address,
     decimals: 8,
     symbol: "msLPB",
   },
@@ -1141,7 +1142,7 @@ export const mainnetTokens: Record<string, Token> = {
   SBANANA: {
     name: "StarkBanana",
     address:
-      "0x03650d77855a4f05b9dd0acff3936cfffd693624754a96d90e4d5876e06c231d",
+      "0x03650d77855a4f05b9dd0acff3936cfffd693624754a96d90e4d5876e06c231d" as Address,
     decimals: 18,
     symbol: "SBANANA",
   },
@@ -1149,7 +1150,7 @@ export const mainnetTokens: Record<string, Token> = {
   KURA: {
     name: "Kuracoin",
     address:
-      "0x016d60c76b5939bdfa253a487dd93c24953c9bfa5b6f737ee226a69c3c4a6073",
+      "0x016d60c76b5939bdfa253a487dd93c24953c9bfa5b6f737ee226a69c3c4a6073" as Address,
     decimals: 18,
     symbol: "KURA",
   },
@@ -1157,7 +1158,7 @@ export const mainnetTokens: Record<string, Token> = {
   BLACK: {
     name: "Black",
     address:
-      "0x03a6ec0b0ea7a1903329d5dec4bb574ecb4d6fdc206664e1c61eeded8158ab40",
+      "0x03a6ec0b0ea7a1903329d5dec4bb574ecb4d6fdc206664e1c61eeded8158ab40" as Address,
     decimals: 18,
     symbol: "BLACK",
   },
@@ -1165,7 +1166,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_ETH_USDC: {
     name: "Nostra Pool ETH/USDC",
     address:
-      "0x05ef8800d242c5d5e218605d6a10e81449529d4144185f95bf4b8fb669424516",
+      "0x05ef8800d242c5d5e218605d6a10e81449529d4144185f95bf4b8fb669424516" as Address,
     decimals: 18,
     symbol: "NOSTRA-ETH/USDC",
   },
@@ -1173,7 +1174,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_2: {
     name: "ETHUSDC-29DEC23-1800-LONG-CALL",
     address:
-      "0x021a2d06cce2ce9fee570fbe3eea5c9211c84686524975ef57fb12abddda1d7a",
+      "0x021a2d06cce2ce9fee570fbe3eea5c9211c84686524975ef57fb12abddda1d7a" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1181,7 +1182,7 @@ export const mainnetTokens: Record<string, Token> = {
   NUSDC: {
     name: "Nostra USDC",
     address:
-      "0x06eda767a143da12f70947192cd13ee0ccc077829002412570a88cd6539c1d85",
+      "0x06eda767a143da12f70947192cd13ee0ccc077829002412570a88cd6539c1d85" as Address,
     decimals: 6,
     symbol: "nUSDC",
   },
@@ -1189,7 +1190,7 @@ export const mainnetTokens: Record<string, Token> = {
   SAIL: {
     name: "SAIL",
     address:
-      "0x02644af9bfd3e2f956037d7ef952689c6597bf2961ea89f2e52a3ac532a5b821",
+      "0x02644af9bfd3e2f956037d7ef952689c6597bf2961ea89f2e52a3ac532a5b821" as Address,
     decimals: 18,
     symbol: "SAIL",
   },
@@ -1197,7 +1198,7 @@ export const mainnetTokens: Record<string, Token> = {
   BANANA: {
     name: "Banana",
     address:
-      "0x067bd8f64ddf28f55f42c568c415c1e137d9da8c60e007e417487cf005cdf411",
+      "0x067bd8f64ddf28f55f42c568c415c1e137d9da8c60e007e417487cf005cdf411" as Address,
     decimals: 18,
     symbol: "BANANA",
   },
@@ -1205,7 +1206,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTARKD_P_1: {
     name: "vStarkDefi Pair",
     address:
-      "0x06cbc110394329a1beb059b1da3a36e3042280f4c8cab1a1d10618e4822649ce",
+      "0x06cbc110394329a1beb059b1da3a36e3042280f4c8cab1a1d10618e4822649ce" as Address,
     decimals: 18,
     symbol: "vSTARKD-P",
   },
@@ -1213,7 +1214,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTKB_2: {
     name: "strkvb.com - vSTRK Bonus Token",
     address:
-      "0x019bfbb3356e4ee1315fbade61216839ead9423be8585bde485a85dcf87fc461",
+      "0x019bfbb3356e4ee1315fbade61216839ead9423be8585bde485a85dcf87fc461" as Address,
     decimals: 8,
     symbol: "vSTKB",
   },
@@ -1221,7 +1222,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTKB_3: {
     name: "strkhub.com - vSTRK Bonus Token",
     address:
-      "0x042c36a3711618d05a151aaee3fe72570731d5a4fbaee436a2873ed38d0b53c4",
+      "0x042c36a3711618d05a151aaee3fe72570731d5a4fbaee436a2873ed38d0b53c4" as Address,
     decimals: 8,
     symbol: "vSTKB",
   },
@@ -1229,7 +1230,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTKB_4: {
     name: "vstrkhq.com - vSTRK Bonus Token",
     address:
-      "0x068acbba22b46d5309b61fbb8469794375420eac85b076e0105653c472a5a919",
+      "0x068acbba22b46d5309b61fbb8469794375420eac85b076e0105653c472a5a919" as Address,
     decimals: 8,
     symbol: "vSTKB",
   },
@@ -1237,7 +1238,7 @@ export const mainnetTokens: Record<string, Token> = {
   DAI_1: {
     name: "Dai Stablecoin",
     address:
-      "0x05574eb6b8789a91466f902c380d978e472db68170ff82a5b650b95a58ddf4ad",
+      "0x05574eb6b8789a91466f902c380d978e472db68170ff82a5b650b95a58ddf4ad" as Address,
     decimals: 18,
     symbol: "DAI",
   },
@@ -1245,7 +1246,7 @@ export const mainnetTokens: Record<string, Token> = {
   MYLP_6: {
     name: "MYSWAP ORDS/ETH",
     address:
-      "0x02699b69786cb08b4c83c1c02e943eca3eba00234d80a564ebe00c40226ea70b",
+      "0x02699b69786cb08b4c83c1c02e943eca3eba00234d80a564ebe00c40226ea70b" as Address,
     decimals: 18,
     symbol: "MYLP",
   },
@@ -1253,7 +1254,7 @@ export const mainnetTokens: Record<string, Token> = {
   DICK: {
     name: "DICK",
     address:
-      "0x0388588584bd8c651151f6baf241a85827e7ff0574101f2a8194a3df68a7e2fe",
+      "0x0388588584bd8c651151f6baf241a85827e7ff0574101f2a8194a3df68a7e2fe" as Address,
     decimals: 18,
     symbol: "DICK",
   },
@@ -1261,7 +1262,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_STRK_ETH_1: {
     name: "Nostra Pool STRK/ETH",
     address:
-      "0x01a2de9f2895ac4e6cb80c11ecc07ce8062a4ae883f64cb2b1dc6724b85e897d",
+      "0x01a2de9f2895ac4e6cb80c11ecc07ce8062a4ae883f64cb2b1dc6724b85e897d" as Address,
     decimals: 18,
     symbol: "NOSTRA-STRK/ETH",
   },
@@ -1269,7 +1270,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI: {
     name: "JEDI",
     address:
-      "0x05c3cb37846108e515b59086d269a507baaacbb355b947891bfb41a8b0c8f7e8",
+      "0x05c3cb37846108e515b59086d269a507baaacbb355b947891bfb41a8b0c8f7e8" as Address,
     decimals: 18,
     symbol: "JEDI",
   },
@@ -1277,7 +1278,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_3: {
     name: "ETHUSDC-26OCT23-1900-LONG-CALL",
     address:
-      "0x012deb84990ff56613c611a1a0ab5f42c3fefd69bbada244c8766dfa5d147aa6",
+      "0x012deb84990ff56613c611a1a0ab5f42c3fefd69bbada244c8766dfa5d147aa6" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1285,7 +1286,7 @@ export const mainnetTokens: Record<string, Token> = {
   NUSDC_C: {
     name: "Nostra C USD Coin",
     address:
-      "0x047e794d7c49c49fd2104a724cfa69a92c5a4b50a5753163802617394e973833",
+      "0x047e794d7c49c49fd2104a724cfa69a92c5a4b50a5753163802617394e973833" as Address,
     decimals: 6,
     symbol: "nUSDC-c",
   },
@@ -1293,7 +1294,7 @@ export const mainnetTokens: Record<string, Token> = {
   INSTR_C: {
     name: "Nostra NSTR Interest Collat.",
     address:
-      "0x046ab56ec0c6a6d42384251c97e9331aa75eb693e05ed8823e2df4de5713e9a4",
+      "0x046ab56ec0c6a6d42384251c97e9331aa75eb693e05ed8823e2df4de5713e9a4" as Address,
     decimals: 18,
     symbol: "iNSTR-c",
   },
@@ -1301,7 +1302,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_4: {
     name: "ETHUSDC-24AUG23-2100-LONG-CALL",
     address:
-      "0x0076c5b9d7384426d8cd02c77c6c9342a540aa85f89eab42bba4fe6a3db8147d",
+      "0x0076c5b9d7384426d8cd02c77c6c9342a540aa85f89eab42bba4fe6a3db8147d" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1309,7 +1310,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSTRK_1: {
     name: "Staked Starknet Token",
     address:
-      "0x0356f304b154d29d2a8fe22f1cb9107a9b564a733cf6b4cc47fd121ac1af90c9",
+      "0x0356f304b154d29d2a8fe22f1cb9107a9b564a733cf6b4cc47fd121ac1af90c9" as Address,
     decimals: 18,
     symbol: "sSTRK",
   },
@@ -1317,7 +1318,7 @@ export const mainnetTokens: Record<string, Token> = {
   OWL: {
     name: "OWL",
     address:
-      "0x039877a272619050ab8b0e3e0a19b58d076fc2ce84da1dc73b699590e629f2b8",
+      "0x039877a272619050ab8b0e3e0a19b58d076fc2ce84da1dc73b699590e629f2b8" as Address,
     decimals: 18,
     symbol: "OWL",
   },
@@ -1325,7 +1326,7 @@ export const mainnetTokens: Record<string, Token> = {
   STARKINU: {
     name: "Stark Inu",
     address:
-      "0x06cead2351c6fc93ccf3a43d4ddb645d0c851c1827b0332e3ac0c5c89d6560db",
+      "0x06cead2351c6fc93ccf3a43d4ddb645d0c851c1827b0332e3ac0c5c89d6560db" as Address,
     decimals: 18,
     symbol: "STARKINU",
   },
@@ -1333,7 +1334,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSTR: {
     name: "SISTER",
     address:
-      "0x0102d5e124c51b936ee87302e0f938165aec96fb6c2027ae7f3a5ed46c77573b",
+      "0x0102d5e124c51b936ee87302e0f938165aec96fb6c2027ae7f3a5ed46c77573b" as Address,
     decimals: 18,
     symbol: "SSTR",
   },
@@ -1341,7 +1342,7 @@ export const mainnetTokens: Record<string, Token> = {
   USDC_2: {
     name: "USD Coin",
     address:
-      "0x028757d11c97078dd182023b1cc7b9e7659716c631adf94d24f1fa7dc5943072",
+      "0x028757d11c97078dd182023b1cc7b9e7659716c631adf94d24f1fa7dc5943072" as Address,
     decimals: 6,
     symbol: "USDC",
   },
@@ -1349,7 +1350,7 @@ export const mainnetTokens: Record<string, Token> = {
   MY: {
     name: "MY",
     address:
-      "0x0470dd037eba0a60a559efa52216c61f51411801377ed87b201e1db70b34c7cf",
+      "0x0470dd037eba0a60a559efa52216c61f51411801377ed87b201e1db70b34c7cf" as Address,
     decimals: 18,
     symbol: "MY",
   },
@@ -1357,7 +1358,7 @@ export const mainnetTokens: Record<string, Token> = {
   WZKXOG: {
     name: "Locked ZKX OG",
     address:
-      "0x01b3ad20742f9f2c636fe4a4371085724897d54e1976872cbe34ee67afcd9067",
+      "0x01b3ad20742f9f2c636fe4a4371085724897d54e1976872cbe34ee67afcd9067" as Address,
     decimals: 18,
     symbol: "wZKXOG",
   },
@@ -1365,7 +1366,7 @@ export const mainnetTokens: Record<string, Token> = {
   STRAK: {
     name: "STRAK",
     address:
-      "0x055c3868c743e92c470701799388cb3fb1d922dcec271150d10462c6948e3cf4",
+      "0x055c3868c743e92c470701799388cb3fb1d922dcec271150d10462c6948e3cf4" as Address,
     decimals: 18,
     symbol: "STRAK",
   },
@@ -1373,7 +1374,7 @@ export const mainnetTokens: Record<string, Token> = {
   NETH_C_1: {
     name: "Nostra ETH Collateral",
     address:
-      "0x044debfe17e4d9a5a1e226dabaf286e72c9cc36abbe71c5b847e669da4503893",
+      "0x044debfe17e4d9a5a1e226dabaf286e72c9cc36abbe71c5b847e669da4503893" as Address,
     decimals: 18,
     symbol: "nETH-c",
   },
@@ -1381,7 +1382,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_5: {
     name: "ETHUSDC-26OCT23-1600-LONG-PUT",
     address:
-      "0x0638813dd11a874d04602369abc4e61c9498feeb44d8f53c93349ff291b69905",
+      "0x0638813dd11a874d04602369abc4e61c9498feeb44d8f53c93349ff291b69905" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1389,7 +1390,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_STRK_USDC: {
     name: "Nostra Pool STRK/USDC",
     address:
-      "0x07ae43abf704f4981094a4f3457d1abe6b176844f6cdfbb39c0544a635ef56b0",
+      "0x07ae43abf704f4981094a4f3457d1abe6b176844f6cdfbb39c0544a635ef56b0" as Address,
     decimals: 18,
     symbol: "NOSTRA-STRK/USDC",
   },
@@ -1397,7 +1398,7 @@ export const mainnetTokens: Record<string, Token> = {
   STARKFI_CC: {
     name: "starkfi.âcc - STRK Gift Token",
     address:
-      "0x041e7455a1009c150268b1bfec337246e4539f07885315b69495dac1abf5ff4c",
+      "0x041e7455a1009c150268b1bfec337246e4539f07885315b69495dac1abf5ff4c" as Address,
     decimals: 8,
     symbol: "starkfi.âcc",
   },
@@ -1405,7 +1406,7 @@ export const mainnetTokens: Record<string, Token> = {
   STARKFI_CC_1: {
     name: "starkfi.âcc - STRK Gift Token",
     address:
-      "0x059d73a427901c14baf404ba8b96d5c568dc7231784e1cf91c2089ec8abeead3",
+      "0x054d85c29a78cf234050d56f5d13e57d06fc0f80300a200b04eef330f919cabb" as Address,
     decimals: 8,
     symbol: "starkfi.âcc",
   },
@@ -1413,7 +1414,7 @@ export const mainnetTokens: Record<string, Token> = {
   STARKFI_CC_2: {
     name: "starkfi.âcc - STRK Gift Token",
     address:
-      "0x076695f2f6fe0e2b3ca214309f9ff15fd9ded139608a19bfbf1656266419c7bc",
+      "0x076695f2f6fe0e2b3ca214309f9ff15fd9ded139608a19bfbf1656266419c7bc" as Address,
     decimals: 8,
     symbol: "starkfi.âcc",
   },
@@ -1421,7 +1422,7 @@ export const mainnetTokens: Record<string, Token> = {
   STARKFI_CC_3: {
     name: "starkfi.âcc - STRK Gift Token",
     address:
-      "0x054d85c29a78cf234050d56f5d13e57d06fc0f80300a200b04eef330f919cabb",
+      "0x059d73a427901c14baf404ba8b96d5c568dc7231784e1cf91c2089ec8abeead3" as Address,
     decimals: 8,
     symbol: "starkfi.âcc",
   },
@@ -1429,7 +1430,7 @@ export const mainnetTokens: Record<string, Token> = {
   CATS: {
     name: "STARK CAT",
     address:
-      "0x02ba82d441a2804e3963eb05cdb81337d1b0086fec16dd751e41a175e7d6652c",
+      "0x02ba82d441a2804e3963eb05cdb81337d1b0086fec16dd751e41a175e7d6652c" as Address,
     decimals: 18,
     symbol: "CATS",
   },
@@ -1437,7 +1438,7 @@ export const mainnetTokens: Record<string, Token> = {
   DUSDC_1: {
     name: "Nostra USDC Debt",
     address:
-      "0x063d69ae657bd2f40337c39bf35a870ac27ddf91e6623c2f52529db4c1619a51",
+      "0x063d69ae657bd2f40337c39bf35a870ac27ddf91e6623c2f52529db4c1619a51" as Address,
     decimals: 6,
     symbol: "dUSDC",
   },
@@ -1445,7 +1446,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_11: {
     name: "StarkEx Pair Token",
     address:
-      "0x0538365162a3017d5e03caa3ee87305694694c03e232625ba635b1de2f45bb05",
+      "0x0538365162a3017d5e03caa3ee87305694694c03e232625ba635b1de2f45bb05" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -1453,7 +1454,7 @@ export const mainnetTokens: Record<string, Token> = {
   ISTRK: {
     name: "Nostra STRK Interest",
     address:
-      "0x026c5994c2462770bbf940552c5824fb0e0920e2a8a5ce1180042da1b3e489db",
+      "0x026c5994c2462770bbf940552c5824fb0e0920e2a8a5ce1180042da1b3e489db" as Address,
     decimals: 18,
     symbol: "iSTRK",
   },
@@ -1461,7 +1462,7 @@ export const mainnetTokens: Record<string, Token> = {
   IUSDT_1: {
     name: "Nostra USDT Interest",
     address:
-      "0x0360f9786a6595137f84f2d6931aaec09ceec476a94a98dcad2bb092c6c06701",
+      "0x0360f9786a6595137f84f2d6931aaec09ceec476a94a98dcad2bb092c6c06701" as Address,
     decimals: 6,
     symbol: "iUSDT",
   },
@@ -1469,7 +1470,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_12: {
     name: "10kSwap Pair Token",
     address:
-      "0x04ad445ffb6294d1394b3f6a5610642d37c702eaaa47346b680c6af2f102192e",
+      "0x04ad445ffb6294d1394b3f6a5610642d37c702eaaa47346b680c6af2f102192e" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -1477,7 +1478,7 @@ export const mainnetTokens: Record<string, Token> = {
   _10K: {
     name: "10K",
     address:
-      "0x05f49de8b42885b8088b454a208ae2c9d2311f7170abedd7227a0043a4aabf6e",
+      "0x05f49de8b42885b8088b454a208ae2c9d2311f7170abedd7227a0043a4aabf6e" as Address,
     decimals: 18,
     symbol: "10K",
   },
@@ -1485,7 +1486,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTARKD_P_2: {
     name: "vStarkDefi Pair",
     address:
-      "0x01c381df6357df3693eff7a541a676a100375859ee1cfaf23e12586ad09dbd04",
+      "0x01c381df6357df3693eff7a541a676a100375859ee1cfaf23e12586ad09dbd04" as Address,
     decimals: 18,
     symbol: "vSTARKD-P",
   },
@@ -1493,7 +1494,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSSLP_DAI_USDC: {
     name: "SS_V1_SLP #3",
     address:
-      "0x015e9cd2d4d6b4bb9f1124688b1e6bc19b4ff877a01011d28c25c9ee918e83e5",
+      "0x015e9cd2d4d6b4bb9f1124688b1e6bc19b4ff877a01011d28c25c9ee918e83e5" as Address,
     decimals: 18,
     symbol: "ssSLP-DAI/USDC",
   },
@@ -1501,7 +1502,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_6: {
     name: "ETHUSDC-26OCT23-1500-LONG-PUT",
     address:
-      "0x0203442b78d762f8c10ba946b827bcfeb6e57723627b4f55f682a441065b645a",
+      "0x0203442b78d762f8c10ba946b827bcfeb6e57723627b4f55f682a441065b645a" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1509,7 +1510,7 @@ export const mainnetTokens: Record<string, Token> = {
   CRO: {
     name: "BabyCario",
     address:
-      "0x04ee423b1f89f1ac011d6f2f05c1eb35d61594b801122771cce7747718aa416f",
+      "0x04ee423b1f89f1ac011d6f2f05c1eb35d61594b801122771cce7747718aa416f" as Address,
     decimals: 18,
     symbol: "cro",
   },
@@ -1517,7 +1518,7 @@ export const mainnetTokens: Record<string, Token> = {
   SWAY: {
     name: "Standard Weighted Adalian Yield",
     address:
-      "0x004878d1148318a31829523ee9c6a5ee563af6cd87f90a30809e5b0d27db8a9b",
+      "0x004878d1148318a31829523ee9c6a5ee563af6cd87f90a30809e5b0d27db8a9b" as Address,
     decimals: 6,
     symbol: "SWAY",
   },
@@ -1525,7 +1526,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_USDC_USDT: {
     name: "Nostra Pool USDC/USDT",
     address:
-      "0x00c318445d5a5096e2ad086452d5c97f65a9d28cafe343345e0fa70da0841295",
+      "0x00c318445d5a5096e2ad086452d5c97f65a9d28cafe343345e0fa70da0841295" as Address,
     decimals: 18,
     symbol: "NOSTRA-USDC/USDT",
   },
@@ -1533,7 +1534,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSTARKD_P: {
     name: "sStarkDefi Pair",
     address:
-      "0x07cecccbfa263721bb64c19892ccdc658ad08ea80e90fb8f78ff06446a62c3cc",
+      "0x07cecccbfa263721bb64c19892ccdc658ad08ea80e90fb8f78ff06446a62c3cc" as Address,
     decimals: 18,
     symbol: "sSTARKD-P",
   },
@@ -1541,7 +1542,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_7: {
     name: "ETHUSDC-05OCT23-1900-LONG-CALL",
     address:
-      "0x07d9905c3b9805864c9b9de4cdfe641657c69875d5b77f3c7135e9a13f7f2742",
+      "0x07d9905c3b9805864c9b9de4cdfe641657c69875d5b77f3c7135e9a13f7f2742" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1549,7 +1550,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_STRK_USDC_1: {
     name: "Nostra Pool STRK/USDC",
     address:
-      "0x042543c7d220465bd3f8f42314b51f4f3a61d58de3770523b281da61dbf27c8a",
+      "0x042543c7d220465bd3f8f42314b51f4f3a61d58de3770523b281da61dbf27c8a" as Address,
     decimals: 18,
     symbol: "NOSTRA-STRK/USDC",
   },
@@ -1557,7 +1558,7 @@ export const mainnetTokens: Record<string, Token> = {
   FUEL: {
     name: "Fuel",
     address:
-      "0x07aff71144cde9a9db0cf44e09f5c110fcd487a85c8a8d6824bf03527484e8cb",
+      "0x07aff71144cde9a9db0cf44e09f5c110fcd487a85c8a8d6824bf03527484e8cb" as Address,
     decimals: 18,
     symbol: "Fuel",
   },
@@ -1565,7 +1566,7 @@ export const mainnetTokens: Record<string, Token> = {
   POWNI: {
     name: "Powni",
     address:
-      "0x079337c58d486aec3f2c5648271345d7c54657a158d88a1e3bd3521129c7cc94",
+      "0x079337c58d486aec3f2c5648271345d7c54657a158d88a1e3bd3521129c7cc94" as Address,
     decimals: 18,
     symbol: "POWNI",
   },
@@ -1573,7 +1574,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_8: {
     name: "ETHUSDC-31AUG23-1800-LONG-PUT",
     address:
-      "0x03b9016a58c1270e74d2d02dcd919b75af46c4614de45d856d5e8648fb6ed9bb",
+      "0x03b9016a58c1270e74d2d02dcd919b75af46c4614de45d856d5e8648fb6ed9bb" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1581,7 +1582,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_8: {
     name: "JediSwap Pair",
     address:
-      "0x02ed66297d146ecd91595c3174da61c1397e8b7fcecf25d423b1ba6717b0ece9",
+      "0x02ed66297d146ecd91595c3174da61c1397e8b7fcecf25d423b1ba6717b0ece9" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -1589,7 +1590,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_9: {
     name: "ETHUSDC-23NOV23-1600-LONG-PUT",
     address:
-      "0x0119c7fa9aa0f7173599d47d28eb61420fc9f1f1a1f1d7ed6343e7c0518dfb19",
+      "0x0119c7fa9aa0f7173599d47d28eb61420fc9f1f1a1f1d7ed6343e7c0518dfb19" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1597,7 +1598,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_10: {
     name: "ETHUSDC-28SEP23-1600-LONG-PUT",
     address:
-      "0x0666a7345efdfe2259571a0bdd489816f654d3e776e828309e0b6d485e6a6f0a",
+      "0x0666a7345efdfe2259571a0bdd489816f654d3e776e828309e0b6d485e6a6f0a" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1605,7 +1606,7 @@ export const mainnetTokens: Record<string, Token> = {
   EKUBORWD_COM: {
     name: "ekuborwd.com - Ekubo Rewards",
     address:
-      "0x075e8334f04e354d2b054b0cc72a7094a18e8a387bf9eb750dab27983b20718a",
+      "0x075e8334f04e354d2b054b0cc72a7094a18e8a387bf9eb750dab27983b20718a" as Address,
     decimals: 8,
     symbol: "ekuborwd.com",
   },
@@ -1613,7 +1614,7 @@ export const mainnetTokens: Record<string, Token> = {
   NUSDC_1: {
     name: "Nostra USD Coin",
     address:
-      "0x05327df4c669cb9be5c1e2cf79e121edef43c1416fac884559cd94fcb7e6e232",
+      "0x05327df4c669cb9be5c1e2cf79e121edef43c1416fac884559cd94fcb7e6e232" as Address,
     decimals: 6,
     symbol: "nUSDC",
   },
@@ -1621,7 +1622,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_13: {
     name: "10kSwap Pair Token",
     address:
-      "0x022e45d94d5c6c477d9efd440aad71b2c02a5cd5bed9a4d6da10bb7c19fd93ba",
+      "0x022e45d94d5c6c477d9efd440aad71b2c02a5cd5bed9a4d6da10bb7c19fd93ba" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -1629,7 +1630,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_11: {
     name: "ETHUSDC-28SEP23-1900-LONG-CALL",
     address:
-      "0x019e71e907117a656b32494e6c12122358d6ad9cdc8a62fc1ceb8959a3ac9355",
+      "0x019e71e907117a656b32494e6c12122358d6ad9cdc8a62fc1ceb8959a3ac9355" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1637,7 +1638,7 @@ export const mainnetTokens: Record<string, Token> = {
   SURVIVOR: {
     name: "Survivor",
     address:
-      "0x042dd777885ad2c116be96d4d634abc90a26a790ffb5871e037dd5ae7d2ec86b",
+      "0x042dd777885ad2c116be96d4d634abc90a26a790ffb5871e037dd5ae7d2ec86b" as Address,
     decimals: 18,
     symbol: "SURVIVOR",
   },
@@ -1645,7 +1646,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_12: {
     name: "ETHUSDC-23NOV23-1800-LONG-CALL",
     address:
-      "0x05b2029360f0ca8676de9104c82572748abce42704810348185b713fb8398609",
+      "0x05b2029360f0ca8676de9104c82572748abce42704810348185b713fb8398609" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1653,7 +1654,7 @@ export const mainnetTokens: Record<string, Token> = {
   NGT: {
     name: "NGT Token",
     address:
-      "0x073a95938e5b2191aaa63c85c668d3bdd115574c829d22f503bbd4f6ca47f456",
+      "0x073a95938e5b2191aaa63c85c668d3bdd115574c829d22f503bbd4f6ca47f456" as Address,
     decimals: 18,
     symbol: "NGT",
   },
@@ -1661,7 +1662,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_13: {
     name: "ETHUSDC-14SEP23-1900-LONG-CALL",
     address:
-      "0x02058264886a37f5099a122800ddb30ed73fb0243eb7168bf089e9c3d758496d",
+      "0x02058264886a37f5099a122800ddb30ed73fb0243eb7168bf089e9c3d758496d" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1669,7 +1670,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_9: {
     name: "JediSwap Pair",
     address:
-      "0x070cda8400d7b1ee9e21f7194d320b9ad9c7a2b27e0d15a5a9967b9fefe10c76",
+      "0x070cda8400d7b1ee9e21f7194d320b9ad9c7a2b27e0d15a5a9967b9fefe10c76" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -1677,7 +1678,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSSLP_ETH_USDC: {
     name: "SS_V1_SLP #6",
     address:
-      "0x06e1ed57b7e9fed35364ca419340c47479e93206a2dcda5e50530ae198d872ea",
+      "0x06e1ed57b7e9fed35364ca419340c47479e93206a2dcda5e50530ae198d872ea" as Address,
     decimals: 18,
     symbol: "ssSLP-ETH/USDC",
   },
@@ -1685,7 +1686,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_14: {
     name: "ETHUSDC-23NOV23-1700-LONG-CALL",
     address:
-      "0x0336e84d70e113a06fed95a49bae0aaa89675dba387868d5709264b01bfc99ca",
+      "0x0336e84d70e113a06fed95a49bae0aaa89675dba387868d5709264b01bfc99ca" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1693,7 +1694,7 @@ export const mainnetTokens: Record<string, Token> = {
   ANB: {
     name: "Anubis",
     address:
-      "0x070dd1f88cc973de315c10b2da4e196554c20e925d630474e257a0a4d9d363dc",
+      "0x070dd1f88cc973de315c10b2da4e196554c20e925d630474e257a0a4d9d363dc" as Address,
     decimals: 18,
     symbol: "ANB",
   },
@@ -1701,7 +1702,7 @@ export const mainnetTokens: Record<string, Token> = {
   UNO: {
     name: "UNO",
     address:
-      "0x0719b5092403233201aa822ce928bd4b551d0cdb071a724edd7dc5e5f57b7f34",
+      "0x0719b5092403233201aa822ce928bd4b551d0cdb071a724edd7dc5e5f57b7f34" as Address,
     decimals: 18,
     symbol: "UNO",
   },
@@ -1709,7 +1710,7 @@ export const mainnetTokens: Record<string, Token> = {
   IWBTC_C: {
     name: "Nostra WBTC Interest Collat.",
     address:
-      "0x05b7d301fa769274f20e89222169c0fad4d846c366440afc160aafadd6f88f0c",
+      "0x05b7d301fa769274f20e89222169c0fad4d846c366440afc160aafadd6f88f0c" as Address,
     decimals: 8,
     symbol: "iWBTC-c",
   },
@@ -1717,23 +1718,23 @@ export const mainnetTokens: Record<string, Token> = {
   VXSTRK: {
     name: "Vesu Endur xSTRK",
     address:
-      "0x040f67320745980459615f4f3e7dd71002dbe6c68c8249c847c82dbe327b23cb",
+      "0x040f67320745980459615f4f3e7dd71002dbe6c68c8249c847c82dbe327b23cb" as Address,
     decimals: 18,
     symbol: "vxSTRK",
   },
-  /** ETHUSDC-21SEP23-1900-LONG-CALL */
+  /** ETHUSDC-26OCT23-1700-LONG-CALL */
   C_OPT_15: {
-    name: "ETHUSDC-21SEP23-1900-LONG-CALL",
+    name: "ETHUSDC-26OCT23-1700-LONG-CALL",
     address:
-      "0x01c107171703b0ed5787ad9f0192a9efdb790e1d33711b56801da220ad42b9e1",
+      "0x07acc0ca649c129d52c39c8e61f8edccc62e4656d652cffb23a8563a61eff36a" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
-  /** ETHUSDC-26OCT23-1700-LONG-CALL */
+  /** ETHUSDC-21SEP23-1900-LONG-CALL */
   C_OPT_16: {
-    name: "ETHUSDC-26OCT23-1700-LONG-CALL",
+    name: "ETHUSDC-21SEP23-1900-LONG-CALL",
     address:
-      "0x07acc0ca649c129d52c39c8e61f8edccc62e4656d652cffb23a8563a61eff36a",
+      "0x01c107171703b0ed5787ad9f0192a9efdb790e1d33711b56801da220ad42b9e1" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1741,7 +1742,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_17: {
     name: "ETHUSDC-31AUG23-1900-LONG-PUT",
     address:
-      "0x01f01245344dcfbf5d076d9499c8fe00b2f425dcd17d4f7f5191b3d5940bd8ee",
+      "0x01f01245344dcfbf5d076d9499c8fe00b2f425dcd17d4f7f5191b3d5940bd8ee" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1749,7 +1750,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_NSTSTRK_STRK: {
     name: "Nostra Pool nstSTRK/STRK",
     address:
-      "0x076def79cc9a3a375779c163ad12996f99fbeb4acd68d7041529159bde897160",
+      "0x076def79cc9a3a375779c163ad12996f99fbeb4acd68d7041529159bde897160" as Address,
     decimals: 18,
     symbol: "NOSTRA-nstSTRK/STRK",
   },
@@ -1757,7 +1758,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSVLP_USDC_USDT: {
     name: "SS_V1_VLP #10",
     address:
-      "0x034b7f1c71726cd75e3b1664371beec65890e46f110f2c175d465163638c691a",
+      "0x034b7f1c71726cd75e3b1664371beec65890e46f110f2c175d465163638c691a" as Address,
     decimals: 18,
     symbol: "ssVLP-USDC/USDT",
   },
@@ -1765,7 +1766,7 @@ export const mainnetTokens: Record<string, Token> = {
   INSTR: {
     name: "Nostra NSTR Interest",
     address:
-      "0x02589fc11f60f21af6a1dda3aeb7a44305c552928af122f2834d1c3b1a7aa626",
+      "0x02589fc11f60f21af6a1dda3aeb7a44305c552928af122f2834d1c3b1a7aa626" as Address,
     decimals: 18,
     symbol: "iNSTR",
   },
@@ -1773,7 +1774,7 @@ export const mainnetTokens: Record<string, Token> = {
   ID: {
     name: "ID",
     address:
-      "0x07723ed91bc846cfc3b6e00fbc5bd683d323ea3db769bfb613b5234dde6f6d4d",
+      "0x07723ed91bc846cfc3b6e00fbc5bd683d323ea3db769bfb613b5234dde6f6d4d" as Address,
     decimals: 18,
     symbol: "ID",
   },
@@ -1781,7 +1782,7 @@ export const mainnetTokens: Record<string, Token> = {
   UNKNOWN: {
     name: "ONLY EIGHT USERS",
     address:
-      "0x00e33356072418951fdf3312e3e2eef99abf6d7e12df6ff956082d3e178dde2a",
+      "0x00e33356072418951fdf3312e3e2eef99abf6d7e12df6ff956082d3e178dde2a" as Address,
     decimals: 18,
     symbol: "",
   },
@@ -1789,7 +1790,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_18: {
     name: "ETHUSDC-28SEP23-1500-LONG-PUT",
     address:
-      "0x052c571cddc6a3621a64a6e6a223b6a85cd258f6453e51af9cae6d15699e9085",
+      "0x052c571cddc6a3621a64a6e6a223b6a85cd258f6453e51af9cae6d15699e9085" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1797,7 +1798,7 @@ export const mainnetTokens: Record<string, Token> = {
   RUSDT: {
     name: "rUSDT",
     address:
-      "0x05fa6cc6185eab4b0264a4134e2d4e74be11205351c7c91196cb27d5d97f8d21",
+      "0x05fa6cc6185eab4b0264a4134e2d4e74be11205351c7c91196cb27d5d97f8d21" as Address,
     decimals: 6,
     symbol: "rUSDT",
   },
@@ -1805,7 +1806,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_19: {
     name: "ETHUSDC-23NOV23-1500-LONG-PUT",
     address:
-      "0x00ddf69167d81fed44b6f3268ef9d9c8672fa5948833301a73ed66e6eea66564",
+      "0x00ddf69167d81fed44b6f3268ef9d9c8672fa5948833301a73ed66e6eea66564" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1813,7 +1814,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_14: {
     name: "ProtossSwap Pair Token",
     address:
-      "0x0725469f4e651f437c13e1c1d408771ca48bf98b8781e9b43dff3379e654470f",
+      "0x0725469f4e651f437c13e1c1d408771ca48bf98b8781e9b43dff3379e654470f" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -1821,7 +1822,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_20: {
     name: "ETHUSDC-14SEP23-1500-LONG-PUT",
     address:
-      "0x077cca93c211087b099c3cd141a9aeb4293baba6c1399ff8938574d767e422cc",
+      "0x077cca93c211087b099c3cd141a9aeb4293baba6c1399ff8938574d767e422cc" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1829,7 +1830,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_10: {
     name: "JediSwap Pair",
     address:
-      "0x039c183c8e5a2df130eefa6fbaa3b8aad89b29891f6272cb0c90deaa93ec6315",
+      "0x039c183c8e5a2df130eefa6fbaa3b8aad89b29891f6272cb0c90deaa93ec6315" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -1837,7 +1838,7 @@ export const mainnetTokens: Record<string, Token> = {
   ATOKEN: {
     name: "AToken",
     address:
-      "0x05b90e6ecee9985d4b39d5750c01b5b57a0bcafcd7a2e29e27ea1b1c46a81384",
+      "0x05b90e6ecee9985d4b39d5750c01b5b57a0bcafcd7a2e29e27ea1b1c46a81384" as Address,
     decimals: 18,
     symbol: "AToken",
   },
@@ -1845,7 +1846,7 @@ export const mainnetTokens: Record<string, Token> = {
   WZKX8: {
     name: "Locked ZKX 8",
     address:
-      "0x039d5e3229b4db07ae4771e24adc45c1d706dea26d252d1208720dfb30c1b0f2",
+      "0x039d5e3229b4db07ae4771e24adc45c1d706dea26d252d1208720dfb30c1b0f2" as Address,
     decimals: 18,
     symbol: "wZKX8",
   },
@@ -1853,7 +1854,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_21: {
     name: "ETHUSDC-31AUG23-2100-LONG-CALL",
     address:
-      "0x024e1409ef76972a0f18ce5d01fe37edeb7e4a271276b768a61feb318f923c09",
+      "0x024e1409ef76972a0f18ce5d01fe37edeb7e4a271276b768a61feb318f923c09" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1861,7 +1862,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_22: {
     name: "ETHUSDC-21SEP23-1600-LONG-PUT",
     address:
-      "0x0113b590a32177b7a91f79bf6b72dd2da5068bfc56c51b37cc646ee09c2ee1fd",
+      "0x0113b590a32177b7a91f79bf6b72dd2da5068bfc56c51b37cc646ee09c2ee1fd" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1869,7 +1870,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_23: {
     name: "ETHUSDC-29DEC23-1700-LONG-CALL",
     address:
-      "0x065aae6d8a3a197328594e69ea1c2399aa335a7b8be05b5ab5f146a3dc476a6e",
+      "0x065aae6d8a3a197328594e69ea1c2399aa335a7b8be05b5ab5f146a3dc476a6e" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1877,7 +1878,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_24: {
     name: "ETHUSDC-21SEP23-1500-LONG-PUT",
     address:
-      "0x062b15710fc96a87a3121a2ddea3370b8a14b74ef5c295457aaa9c56b1613813",
+      "0x062b15710fc96a87a3121a2ddea3370b8a14b74ef5c295457aaa9c56b1613813" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1885,7 +1886,7 @@ export const mainnetTokens: Record<string, Token> = {
   N_PLP_EETH: {
     name: "Nimbora-PLP-EETH",
     address:
-      "0x0316ec509f7ad89b7e6e03d15a436df634454f95e815536d616af03edc850fa3",
+      "0x0316ec509f7ad89b7e6e03d15a436df634454f95e815536d616af03edc850fa3" as Address,
     decimals: 18,
     symbol: "N-PLP-EETH",
   },
@@ -1893,7 +1894,7 @@ export const mainnetTokens: Record<string, Token> = {
   MYLP_7: {
     name: "MYSWAP WBTC/USDC",
     address:
-      "0x025b392609604c75d62dde3d6ae98e124a31b49123b8366d7ce0066ccb94f696",
+      "0x025b392609604c75d62dde3d6ae98e124a31b49123b8366d7ce0066ccb94f696" as Address,
     decimals: 7,
     symbol: "MYLP",
   },
@@ -1901,7 +1902,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_15: {
     name: "StarkEx Pair Token",
     address:
-      "0x05ca0a96e4593741c8bd9fb5ab270716371898c4746278b8ceecedb6a6a85a2d",
+      "0x05ca0a96e4593741c8bd9fb5ab270716371898c4746278b8ceecedb6a6a85a2d" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -1909,7 +1910,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_16: {
     name: "ProtossSwap Pair Token",
     address:
-      "0x077c4206101272d79b7603cb9b51f6d54d1b50903ab31696f9dfbebe20d851c7",
+      "0x077c4206101272d79b7603cb9b51f6d54d1b50903ab31696f9dfbebe20d851c7" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -1917,7 +1918,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZKLENDRWD_COM: {
     name: "zklendrwd.âcom -zkLend Reward",
     address:
-      "0x02f14c5d510b5ac0a05f2afc41f5972c908c0cfc6c0720f83a21db2575de7e3a",
+      "0x02f14c5d510b5ac0a05f2afc41f5972c908c0cfc6c0720f83a21db2575de7e3a" as Address,
     decimals: 8,
     symbol: "zklendrwd.âcom",
   },
@@ -1925,7 +1926,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZKLENDRWD_COM_1: {
     name: "zklendrwd.âcom -zkLend Reward",
     address:
-      "0x00fb61f09b4248f5f691339fd3383106f363a07ea157e1907282371def70a6e3",
+      "0x00fb61f09b4248f5f691339fd3383106f363a07ea157e1907282371def70a6e3" as Address,
     decimals: 8,
     symbol: "zklendrwd.âcom",
   },
@@ -1933,7 +1934,7 @@ export const mainnetTokens: Record<string, Token> = {
   EKUBORWD_COM_1: {
     name: "ekuborwd.âcom - Ekubo Reward",
     address:
-      "0x05c6e2d472e55092d6094bf559754b1b0ded4d750840f1e86193ab71646734e5",
+      "0x05c6e2d472e55092d6094bf559754b1b0ded4d750840f1e86193ab71646734e5" as Address,
     decimals: 8,
     symbol: "ekuborwd.âcom",
   },
@@ -1941,7 +1942,7 @@ export const mainnetTokens: Record<string, Token> = {
   EKUBORWD_COM_2: {
     name: "ekuborwd.âcom - Ekubo Reward",
     address:
-      "0x01b41bcefcff4199f33352ee7e02fcce2a3f7a78a09413f9eb98e0bc75edaa3f",
+      "0x01b41bcefcff4199f33352ee7e02fcce2a3f7a78a09413f9eb98e0bc75edaa3f" as Address,
     decimals: 8,
     symbol: "ekuborwd.âcom",
   },
@@ -1949,7 +1950,7 @@ export const mainnetTokens: Record<string, Token> = {
   EKUBORWD_COM_3: {
     name: "ekuborwd.âcom - Ekubo Reward",
     address:
-      "0x01799bb45263473b86903b81a619b5c0a4283b8ee6574fcf9acb8e9f5fcd3b37",
+      "0x01799bb45263473b86903b81a619b5c0a4283b8ee6574fcf9acb8e9f5fcd3b37" as Address,
     decimals: 8,
     symbol: "ekuborwd.âcom",
   },
@@ -1957,7 +1958,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_25: {
     name: "ETHUSDC-31AUG23-2100-SHORT-CALL",
     address:
-      "0x00f8cd5a1ec23dafa53a768bae31a016f5df3b98fed8a37b05498df0f490401f",
+      "0x00f8cd5a1ec23dafa53a768bae31a016f5df3b98fed8a37b05498df0f490401f" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1965,7 +1966,7 @@ export const mainnetTokens: Record<string, Token> = {
   NUSDT: {
     name: "Nostra Tether USD",
     address:
-      "0x040375d0720245bc0d123aa35dc1c93d14a78f64456eff75f63757d99a0e6a83",
+      "0x040375d0720245bc0d123aa35dc1c93d14a78f64456eff75f63757d99a0e6a83" as Address,
     decimals: 6,
     symbol: "nUSDT",
   },
@@ -1973,7 +1974,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_17: {
     name: "10kSwap Pair Token",
     address:
-      "0x00f9d8f827734f5fd54571f0e78398033a3c1f1074a471cd4623f2aa45163718",
+      "0x00f9d8f827734f5fd54571f0e78398033a3c1f1074a471cd4623f2aa45163718" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -1981,7 +1982,7 @@ export const mainnetTokens: Record<string, Token> = {
   XVEN: {
     name: "xVEN",
     address:
-      "0x02dff80820db3e553701828c8f7819d584f328b1d78caac821508debcb80ead0",
+      "0x02dff80820db3e553701828c8f7819d584f328b1d78caac821508debcb80ead0" as Address,
     decimals: 18,
     symbol: "xVEN",
   },
@@ -1989,7 +1990,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_26: {
     name: "ETHUSDC-07SEP23-1500-LONG-PUT",
     address:
-      "0x063ca7dfdcb9a77df4485c51770046b0dcd936464ea0b8e31ae00cfa031d0431",
+      "0x063ca7dfdcb9a77df4485c51770046b0dcd936464ea0b8e31ae00cfa031d0431" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -1997,7 +1998,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_27: {
     name: "ETHUSDC-24AUG23-1900-LONG-PUT",
     address:
-      "0x061ff26e289fecaba92dc7f4d99acfb609cdacb7890ec6dbd13c0c514eec9251",
+      "0x061ff26e289fecaba92dc7f4d99acfb609cdacb7890ec6dbd13c0c514eec9251" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2005,7 +2006,7 @@ export const mainnetTokens: Record<string, Token> = {
   DUSDT_1: {
     name: "Nostra USDT Debt",
     address:
-      "0x024e9b0d6bc79e111e6872bb1ada2a874c25712cf08dfc5bcf0de008a7cca55f",
+      "0x024e9b0d6bc79e111e6872bb1ada2a874c25712cf08dfc5bcf0de008a7cca55f" as Address,
     decimals: 6,
     symbol: "dUSDT",
   },
@@ -2013,7 +2014,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_18: {
     name: "10kSwap Pair Token",
     address:
-      "0x066733193503019e4e9472f598ff32f15951a0ddb8fb5001f0beaa8bd1fb6840",
+      "0x066733193503019e4e9472f598ff32f15951a0ddb8fb5001f0beaa8bd1fb6840" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -2021,7 +2022,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_11: {
     name: "JediSwap Pair",
     address:
-      "0x05726725e9507c3586cc0516449e2c74d9b201ab2747752bb0251aaa263c9a26",
+      "0x05726725e9507c3586cc0516449e2c74d9b201ab2747752bb0251aaa263c9a26" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -2029,7 +2030,7 @@ export const mainnetTokens: Record<string, Token> = {
   NDAI: {
     name: "Nostra DAI Stablecoin",
     address:
-      "0x02ea39ba7a05f0c936b7468d8bc8d0e1f2116916064e7e163e7c1044d95bd135",
+      "0x02ea39ba7a05f0c936b7468d8bc8d0e1f2116916064e7e163e7c1044d95bd135" as Address,
     decimals: 18,
     symbol: "nDAI",
   },
@@ -2037,7 +2038,7 @@ export const mainnetTokens: Record<string, Token> = {
   SLINK: {
     name: "Slinky",
     address:
-      "0x013ff4e86fa3e7286cc5c64b62f4099cf41e7918d727d22a5109ecfd00274d19",
+      "0x013ff4e86fa3e7286cc5c64b62f4099cf41e7918d727d22a5109ecfd00274d19" as Address,
     decimals: 18,
     symbol: "SLINK",
   },
@@ -2045,7 +2046,7 @@ export const mainnetTokens: Record<string, Token> = {
   CAIRO: {
     name: "CAIRO",
     address:
-      "0x04fdcb3c358be3cca2c707a90a286480de0902003a2c8c4bb7a503d704bb6bf2",
+      "0x04fdcb3c358be3cca2c707a90a286480de0902003a2c8c4bb7a503d704bb6bf2" as Address,
     decimals: 18,
     symbol: "CAIRO",
   },
@@ -2053,7 +2054,7 @@ export const mainnetTokens: Record<string, Token> = {
   TMSC: {
     name: "TMSC.coin",
     address:
-      "0x03ad51c588d85e016614b9514bc5e700b52783fd67ca6f1343173b339106aaad",
+      "0x03ad51c588d85e016614b9514bc5e700b52783fd67ca6f1343173b339106aaad" as Address,
     decimals: 18,
     symbol: "TMSC",
   },
@@ -2061,7 +2062,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSVLP_LORDS_ETH: {
     name: "SS_V1_VLP #16",
     address:
-      "0x02718bbc0176cff083b5c95ac22691bd1c16d55d37ae153d3ba347ce2292417e",
+      "0x02718bbc0176cff083b5c95ac22691bd1c16d55d37ae153d3ba347ce2292417e" as Address,
     decimals: 18,
     symbol: "ssVLP-LORDS/ETH",
   },
@@ -2069,7 +2070,7 @@ export const mainnetTokens: Record<string, Token> = {
   NPPETH: {
     name: "Nimbora Pendle Puffer Eth",
     address:
-      "0x00357cba05d61beb5fe378429d25013dc5fe0f67878b541747b0675c5ebecee1",
+      "0x00357cba05d61beb5fe378429d25013dc5fe0f67878b541747b0675c5ebecee1" as Address,
     decimals: 18,
     symbol: "nppEth",
   },
@@ -2077,7 +2078,7 @@ export const mainnetTokens: Record<string, Token> = {
   VXSTRK_1: {
     name: "Vesu Endur xSTRK",
     address:
-      "0x037ff012710c5175004687bc4d9e4c6e86d6ce5ca6fb6afee72ea02b1208fdb7",
+      "0x037ff012710c5175004687bc4d9e4c6e86d6ce5ca6fb6afee72ea02b1208fdb7" as Address,
     decimals: 18,
     symbol: "vxSTRK",
   },
@@ -2085,7 +2086,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_28: {
     name: "ETHUSDC-29DEC23-1500-LONG-PUT",
     address:
-      "0x030d6edcb01f810c846837e8d0e0247e41f93aa4e5ca8d526305328d704dd12d",
+      "0x030d6edcb01f810c846837e8d0e0247e41f93aa4e5ca8d526305328d704dd12d" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2093,7 +2094,7 @@ export const mainnetTokens: Record<string, Token> = {
   PAL: {
     name: "Pain au lait",
     address:
-      "0x049201f03a0f0a9e70e28dcd74cbf44931174dbe3cc4b2ff488898339959e559",
+      "0x049201f03a0f0a9e70e28dcd74cbf44931174dbe3cc4b2ff488898339959e559" as Address,
     decimals: 18,
     symbol: "PAL",
   },
@@ -2101,7 +2102,7 @@ export const mainnetTokens: Record<string, Token> = {
   TONY: {
     name: "Tony",
     address:
-      "0x05f467ace847d1cbc6d1efea978752a8b4549fec043286fec1289d19b8c57e67",
+      "0x05f467ace847d1cbc6d1efea978752a8b4549fec043286fec1289d19b8c57e67" as Address,
     decimals: 18,
     symbol: "TONY",
   },
@@ -2109,7 +2110,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_29: {
     name: "ETHUSDC-29DEC23-1600-LONG-PUT",
     address:
-      "0x00cdbd77bdaf4f67e9b7b9bf3a01901bf6ed5a29edaa2dc53101c8ad7f3d87b0",
+      "0x00cdbd77bdaf4f67e9b7b9bf3a01901bf6ed5a29edaa2dc53101c8ad7f3d87b0" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2117,23 +2118,15 @@ export const mainnetTokens: Record<string, Token> = {
   CAIROFI_P: {
     name: "CairoFiSwap Pair",
     address:
-      "0x07b40b76d94cc23ee833c827270280114296f533cf4a9265b2996d390d1f0cec",
+      "0x07b40b76d94cc23ee833c827270280114296f533cf4a9265b2996d390d1f0cec" as Address,
     decimals: 18,
     symbol: "CairoFi-P",
-  },
-  /** vstrkb.net - vSTRK Bonus Token */
-  VSTKB_5: {
-    name: "vstrkb.net - vSTRK Bonus Token",
-    address:
-      "0x058fe1e976b14461a28234efe1b9cce6d5e5f5f25eb82edede88d03ab4430804",
-    decimals: 8,
-    symbol: "vSTKB",
   },
   /** vstrkb.net - vSTRK Bonus Token */
   VSTRKB_NET: {
     name: "vstrkb.net - vSTRK Bonus Token",
     address:
-      "0x04e14c7b0befed1fa9a95a01b1676ac46413c73d9e247703588597ab9c5c7327",
+      "0x0181e3a2e5a604b468c003f96682c3e8d443c3bf58be975c35465e0d89271267" as Address,
     decimals: 8,
     symbol: "vstrkb.net",
   },
@@ -2141,15 +2134,23 @@ export const mainnetTokens: Record<string, Token> = {
   VSTRKB_NET_1: {
     name: "vstrkb.net - vSTRK Bonus Token",
     address:
-      "0x0181e3a2e5a604b468c003f96682c3e8d443c3bf58be975c35465e0d89271267",
+      "0x04e14c7b0befed1fa9a95a01b1676ac46413c73d9e247703588597ab9c5c7327" as Address,
     decimals: 8,
     symbol: "vstrkb.net",
+  },
+  /** vstrkb.net - vSTRK Bonus Token */
+  VSTKB_5: {
+    name: "vstrkb.net - vSTRK Bonus Token",
+    address:
+      "0x058fe1e976b14461a28234efe1b9cce6d5e5f5f25eb82edede88d03ab4430804" as Address,
+    decimals: 8,
+    symbol: "vSTKB",
   },
   /** ETHUSDC-26OCT23-1800-LONG-CALL */
   C_OPT_30: {
     name: "ETHUSDC-26OCT23-1800-LONG-CALL",
     address:
-      "0x02a12e1dc143769246e6c9b79a1a2f32ea307d16f84dacf4fb2dbfe18bf8ae51",
+      "0x02a12e1dc143769246e6c9b79a1a2f32ea307d16f84dacf4fb2dbfe18bf8ae51" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2157,7 +2158,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_12: {
     name: "JediSwap Pair",
     address:
-      "0x005a8054e5ca0b277b295a830e53bd71a6a6943b42d0dbb22329437522bc80c8",
+      "0x005a8054e5ca0b277b295a830e53bd71a6a6943b42d0dbb22329437522bc80c8" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -2165,7 +2166,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_31: {
     name: "ETHUSDC-24AUG23-1800-LONG-PUT",
     address:
-      "0x0582713506b614dd8ad5c3e2bc87d0ca0ee27b80451ce0defa1164aeafd60ede",
+      "0x0582713506b614dd8ad5c3e2bc87d0ca0ee27b80451ce0defa1164aeafd60ede" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2173,7 +2174,7 @@ export const mainnetTokens: Record<string, Token> = {
   DSTRK: {
     name: "Nostra STRK Debt",
     address:
-      "0x001258eae3eae5002125bebf062d611a772e8aea3a1879b64a19f363ebd00947",
+      "0x001258eae3eae5002125bebf062d611a772e8aea3a1879b64a19f363ebd00947" as Address,
     decimals: 18,
     symbol: "dSTRK",
   },
@@ -2181,7 +2182,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_32: {
     name: "ETHUSDC-28SEP23-1700-LONG-CALL",
     address:
-      "0x02652c483e13c66c82e608f2073e764dc204f1ad64a7fb3fd56e55ba7177eb96",
+      "0x02652c483e13c66c82e608f2073e764dc204f1ad64a7fb3fd56e55ba7177eb96" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2189,7 +2190,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_19: {
     name: "10kSwap Pair Token",
     address:
-      "0x050031010bcee2f43575b3afe197878e064e1a03c12f2ff437f29a2710e0b6ef",
+      "0x050031010bcee2f43575b3afe197878e064e1a03c12f2ff437f29a2710e0b6ef" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -2197,7 +2198,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_33: {
     name: "ETHUSDC-05OCT23-1600-LONG-PUT",
     address:
-      "0x0632384b272205dd4dc6235bbfdf14eba2be25d23026d81a70058f4802fd0d62",
+      "0x0632384b272205dd4dc6235bbfdf14eba2be25d23026d81a70058f4802fd0d62" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2205,7 +2206,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_34: {
     name: "ETHUSDC-14SEP23-1900-LONG-PUT",
     address:
-      "0x00630480f66558f3e63e2f6ed77e57d6504e0f204ccc2ac5abad4fecf5905a1c",
+      "0x00630480f66558f3e63e2f6ed77e57d6504e0f204ccc2ac5abad4fecf5905a1c" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2213,7 +2214,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_35: {
     name: "ETHUSDC-05OCT23-1500-LONG-PUT",
     address:
-      "0x01ad646f593fda856b2284f4ae8856b09f2a36c5d643d3d73d9aa5650f606812",
+      "0x01ad646f593fda856b2284f4ae8856b09f2a36c5d643d3d73d9aa5650f606812" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2221,7 +2222,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTRK_1: {
     name: "Vesu Starknet",
     address:
-      "0x037ae3f583c8d644b7556c93a04b83b52fa96159b2b0cbd83c14d3122aef80a2",
+      "0x037ae3f583c8d644b7556c93a04b83b52fa96159b2b0cbd83c14d3122aef80a2" as Address,
     decimals: 18,
     symbol: "vSTRK",
   },
@@ -2229,31 +2230,31 @@ export const mainnetTokens: Record<string, Token> = {
   IDAI_1: {
     name: "Nostra DAI Interest",
     address:
-      "0x022ccca3a16c9ef0df7d56cbdccd8c4a6f98356dfd11abc61a112483b242db90",
+      "0x022ccca3a16c9ef0df7d56cbdccd8c4a6f98356dfd11abc61a112483b242db90" as Address,
     decimals: 18,
     symbol: "iDAI",
-  },
-  /** EmberETH */
-  EMBETH: {
-    name: "EmberETH",
-    address:
-      "0x030bbf27c4e9e698dfb5c8df4efe712985444603c7f721144416227bfd7c10c5",
-    decimals: 18,
-    symbol: "embETH",
   },
   /** Gary Gensler */
   GARY: {
     name: "Gary Gensler",
     address:
-      "0x00d3d60f69d76b6639fc51ae1447480ecdf0ba1ea3f6162e3230be0a40ef2a6b",
+      "0x00d3d60f69d76b6639fc51ae1447480ecdf0ba1ea3f6162e3230be0a40ef2a6b" as Address,
     decimals: 18,
     symbol: "GARY",
+  },
+  /** EmberETH */
+  EMBETH: {
+    name: "EmberETH",
+    address:
+      "0x030bbf27c4e9e698dfb5c8df4efe712985444603c7f721144416227bfd7c10c5" as Address,
+    decimals: 18,
+    symbol: "embETH",
   },
   /** ETHUSDC-31AUG23-2000-SHORT-CALL */
   C_OPT_36: {
     name: "ETHUSDC-31AUG23-2000-SHORT-CALL",
     address:
-      "0x022893a172c9cdbaeedde14cb7731d20fa10833fe1f335b033428946902f9033",
+      "0x022893a172c9cdbaeedde14cb7731d20fa10833fe1f335b033428946902f9033" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2261,7 +2262,7 @@ export const mainnetTokens: Record<string, Token> = {
   NUSDT_1: {
     name: "Nostra USDT",
     address:
-      "0x06669cb476aa7e6a29c18b59b54f30b8bfcfbb8444f09e7bbb06c10895bf5d7b",
+      "0x06669cb476aa7e6a29c18b59b54f30b8bfcfbb8444f09e7bbb06c10895bf5d7b" as Address,
     decimals: 6,
     symbol: "nUSDT",
   },
@@ -2269,7 +2270,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZDAI_1: {
     name: "zkLend Interest-Bearing DAI",
     address:
-      "0x04e9c97ac4bb76b743a59678432ca017fe263209a8b49e0618ecc73b9518db4a",
+      "0x04e9c97ac4bb76b743a59678432ca017fe263209a8b49e0618ecc73b9518db4a" as Address,
     decimals: 18,
     symbol: "zDAI",
   },
@@ -2277,7 +2278,7 @@ export const mainnetTokens: Record<string, Token> = {
   GAET: {
     name: "Gaetbout",
     address:
-      "0x06321571ce6f884a184e6c5872dfb2b833201c5a4707c1bce0bfb62f252192ee",
+      "0x06321571ce6f884a184e6c5872dfb2b833201c5a4707c1bce0bfb62f252192ee" as Address,
     decimals: 18,
     symbol: "GAET",
   },
@@ -2285,7 +2286,7 @@ export const mainnetTokens: Record<string, Token> = {
   NDAI_1: {
     name: "Nostra DAI",
     address:
-      "0x02b5fd690bb9b126e3517f7abfb9db038e6a69a068303d06cf500c49c1388e20",
+      "0x02b5fd690bb9b126e3517f7abfb9db038e6a69a068303d06cf500c49c1388e20" as Address,
     decimals: 18,
     symbol: "nDAI",
   },
@@ -2293,7 +2294,7 @@ export const mainnetTokens: Record<string, Token> = {
   CASH: {
     name: "Cash",
     address:
-      "0x0498edfaf50ca5855666a700c25dd629d577eb9afccdf3b5977aec79aee55ada",
+      "0x0498edfaf50ca5855666a700c25dd629d577eb9afccdf3b5977aec79aee55ada" as Address,
     decimals: 18,
     symbol: "CASH",
   },
@@ -2301,7 +2302,7 @@ export const mainnetTokens: Record<string, Token> = {
   ALF: {
     name: "Alf the Alpha",
     address:
-      "0x078d7dfcddb44667153513bd837ff534ef395484f4b6cf28faa25b2c46e063d9",
+      "0x078d7dfcddb44667153513bd837ff534ef395484f4b6cf28faa25b2c46e063d9" as Address,
     decimals: 18,
     symbol: "ALF",
   },
@@ -2309,7 +2310,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_20: {
     name: "StarkEx Pair Token",
     address:
-      "0x0215d01e29721eb6ab10bbed2d15c33f168fa9e7587c071596cc72784bb74992",
+      "0x0215d01e29721eb6ab10bbed2d15c33f168fa9e7587c071596cc72784bb74992" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -2317,7 +2318,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_21: {
     name: "ProtossSwap Pair Token",
     address:
-      "0x05a3bbe6645bf0fc157c716559f918bd893e3ca70dec6f7eb6af05dfb212107f",
+      "0x05a3bbe6645bf0fc157c716559f918bd893e3ca70dec6f7eb6af05dfb212107f" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -2325,7 +2326,7 @@ export const mainnetTokens: Record<string, Token> = {
   TEST: {
     name: "Test",
     address:
-      "0x012404c1eb5fb2127856a1bd4008efa8dc1632dd35b6058313ca55c70d379f57",
+      "0x012404c1eb5fb2127856a1bd4008efa8dc1632dd35b6058313ca55c70d379f57" as Address,
     decimals: 18,
     symbol: "TEST",
   },
@@ -2333,7 +2334,7 @@ export const mainnetTokens: Record<string, Token> = {
   VFSTRK: {
     name: "Vesu Fusion STRK",
     address:
-      "0x07fb5bcb8525954a60fde4e8fb8220477696ce7117ef264775a1770e23571929",
+      "0x07fb5bcb8525954a60fde4e8fb8220477696ce7117ef264775a1770e23571929" as Address,
     decimals: 18,
     symbol: "vfSTRK",
   },
@@ -2341,7 +2342,7 @@ export const mainnetTokens: Record<string, Token> = {
   TONY_1: {
     name: "Tony",
     address:
-      "0x06e93bee3b8fe29713292a0d137af8d1ba0f0751573a6663f84c4c620ee5c66c",
+      "0x06e93bee3b8fe29713292a0d137af8d1ba0f0751573a6663f84c4c620ee5c66c" as Address,
     decimals: 18,
     symbol: "Tony",
   },
@@ -2349,7 +2350,7 @@ export const mainnetTokens: Record<string, Token> = {
   NUSDT_C: {
     name: "Nostra C Tether USD",
     address:
-      "0x003cd2066f3c8b4677741b39db13acebba843bbbaa73d657412102ab4fd98601",
+      "0x003cd2066f3c8b4677741b39db13acebba843bbbaa73d657412102ab4fd98601" as Address,
     decimals: 6,
     symbol: "nUSDT-c",
   },
@@ -2357,7 +2358,7 @@ export const mainnetTokens: Record<string, Token> = {
   CRM: {
     name: "Carmine Token",
     address:
-      "0x051c4b1fe3bf6774b87ad0b15ef5d1472759076e42944fff9b9f641ff13e5bbe",
+      "0x051c4b1fe3bf6774b87ad0b15ef5d1472759076e42944fff9b9f641ff13e5bbe" as Address,
     decimals: 18,
     symbol: "CRM",
   },
@@ -2365,7 +2366,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_37: {
     name: "ETHUSDC-31AUG23-1900-LONG-CALL",
     address:
-      "0x03a33593e69959ba93a424e9e3102e7fb7d72d48df3fb72b6a51d05f014c9ad5",
+      "0x03a33593e69959ba93a424e9e3102e7fb7d72d48df3fb72b6a51d05f014c9ad5" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2373,7 +2374,7 @@ export const mainnetTokens: Record<string, Token> = {
   RE7_TROVES_STRK_USDC: {
     name: "Re7 Ekubo STRK/USDC",
     address:
-      "0x0351b36d0d9d8b40010658825adeeddb1397436cd41acd0ff6c6e23aaa8b5b30",
+      "0x0351b36d0d9d8b40010658825adeeddb1397436cd41acd0ff6c6e23aaa8b5b30" as Address,
     decimals: 18,
     symbol: "Re7-Troves-STRK-USDC",
   },
@@ -2381,7 +2382,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_38: {
     name: "ETHUSDC-07SEP23-1600-LONG-PUT",
     address:
-      "0x001ee91db33ce62fa1e606cadeefbbd7c0beed4498d4bfca8d459f5811db94ba",
+      "0x001ee91db33ce62fa1e606cadeefbbd7c0beed4498d4bfca8d459f5811db94ba" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2389,7 +2390,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_13: {
     name: "JediSwap Pair",
     address:
-      "0x056dc2aa83379f195de35ee699a270c76f1c2840b8b97385689d9137b38d9f44",
+      "0x056dc2aa83379f195de35ee699a270c76f1c2840b8b97385689d9137b38d9f44" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -2397,31 +2398,31 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_39: {
     name: "ETHUSDC-14SEP23-1800-LONG-PUT",
     address:
-      "0x02964095e901c285c72f0a70bcfd2e7a240d473616964d3553e9b7915293fadd",
+      "0x02964095e901c285c72f0a70bcfd2e7a240d473616964d3553e9b7915293fadd" as Address,
     decimals: 18,
     symbol: "C-OPT",
-  },
-  /** StarkDoge */
-  SDOGE: {
-    name: "StarkDoge",
-    address:
-      "0x04f812d4c2284675fdb8fbe95c1b8c3aca2c4b8254597f7eba642c18ca845f0e",
-    decimals: 18,
-    symbol: "SDOGE",
   },
   /** RICHMAN */
   RICH: {
     name: "RICHMAN",
     address:
-      "0x009b54c41ee003edcbc5507c98316ec2e5430c6fcb3139529e92683862ddbd40",
+      "0x009b54c41ee003edcbc5507c98316ec2e5430c6fcb3139529e92683862ddbd40" as Address,
     decimals: 18,
     symbol: "RICH",
+  },
+  /** StarkDoge */
+  SDOGE: {
+    name: "StarkDoge",
+    address:
+      "0x04f812d4c2284675fdb8fbe95c1b8c3aca2c4b8254597f7eba642c18ca845f0e" as Address,
+    decimals: 18,
+    symbol: "SDOGE",
   },
   /** ETHUSDC-14SEP23-1600-LONG-PUT */
   C_OPT_40: {
     name: "ETHUSDC-14SEP23-1600-LONG-PUT",
     address:
-      "0x02f1ff24d90c395622a9db14ee2ba65be07d5238843c3188af42686d2144c3f3",
+      "0x02f1ff24d90c395622a9db14ee2ba65be07d5238843c3188af42686d2144c3f3" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2429,7 +2430,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_41: {
     name: "ETHUSDC-24AUG23-1900-LONG-CALL",
     address:
-      "0x03cb2b29a5111dce96f9c811b07acc960705cbc4105b9f241af8bfbf89e473f8",
+      "0x03cb2b29a5111dce96f9c811b07acc960705cbc4105b9f241af8bfbf89e473f8" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2437,7 +2438,7 @@ export const mainnetTokens: Record<string, Token> = {
   VETH: {
     name: "Vesu Ether",
     address:
-      "0x021fe2ca1b7e731e4a5ef7df2881356070c5d72db4b2d19f9195f6b641f75df0",
+      "0x021fe2ca1b7e731e4a5ef7df2881356070c5d72db4b2d19f9195f6b641f75df0" as Address,
     decimals: 18,
     symbol: "vETH",
   },
@@ -2445,7 +2446,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_42: {
     name: "ETHUSDC-21SEP23-1800-LONG-CALL",
     address:
-      "0x04430fdec13776bf66a9ac9cde3d5ea8db63c4908849b6542b1458fa84cafdd3",
+      "0x04430fdec13776bf66a9ac9cde3d5ea8db63c4908849b6542b1458fa84cafdd3" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2453,7 +2454,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_43: {
     name: "ETHUSDC-24AUG23-2000-LONG-CALL",
     address:
-      "0x013b14ea8b0a0fcf775f086b0170302058f720bec932503e1e5a1d60a3203be4",
+      "0x013b14ea8b0a0fcf775f086b0170302058f720bec932503e1e5a1d60a3203be4" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2461,7 +2462,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_14: {
     name: "JediSwap Pair",
     address:
-      "0x07f409bd2e266e00486566dd3cb72bacc6996f49c0b19f04c0a8b5bd7bf991d1",
+      "0x07f409bd2e266e00486566dd3cb72bacc6996f49c0b19f04c0a8b5bd7bf991d1" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -2469,7 +2470,7 @@ export const mainnetTokens: Record<string, Token> = {
   NFTSTRK: {
     name: "NFT Equivalent Stark",
     address:
-      "0x056893df1e063190aabda3c71304e9842a1b3d638134253dd0f69806a4f106eb",
+      "0x056893df1e063190aabda3c71304e9842a1b3d638134253dd0f69806a4f106eb" as Address,
     decimals: 18,
     symbol: "nftSTRK",
   },
@@ -2477,7 +2478,7 @@ export const mainnetTokens: Record<string, Token> = {
   DWBTC: {
     name: "Debt Wrapped BTC",
     address:
-      "0x075b0d87aca8dee25df35cdc39a82b406168fa23a76fc3f03abbfdc6620bb6d7",
+      "0x075b0d87aca8dee25df35cdc39a82b406168fa23a76fc3f03abbfdc6620bb6d7" as Address,
     decimals: 8,
     symbol: "dWBTC",
   },
@@ -2485,7 +2486,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_44: {
     name: "ETHUSDC-31AUG23-2000-LONG-CALL",
     address:
-      "0x068461412239cd32e632679ffe9fbc47da3e2707250b7661beec528a5426138c",
+      "0x068461412239cd32e632679ffe9fbc47da3e2707250b7661beec528a5426138c" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2493,7 +2494,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_45: {
     name: "ETHUSDC-14SEP23-1700-LONG-CALL",
     address:
-      "0x050e8cece568e2d51fb8f3623b20bfedaf4c671d714cf88ab0e3c365853f9c44",
+      "0x050e8cece568e2d51fb8f3623b20bfedaf4c671d714cf88ab0e3c365853f9c44" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2501,7 +2502,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSVLP_DAI_USDC: {
     name: "SS_V1_VLP #9",
     address:
-      "0x00a144ef99419e4dbb3ef99bc2db894fbe7b4532ebed9592a407908727321fcf",
+      "0x00a144ef99419e4dbb3ef99bc2db894fbe7b4532ebed9592a407908727321fcf" as Address,
     decimals: 18,
     symbol: "ssVLP-DAI/USDC",
   },
@@ -2509,7 +2510,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_ETH_USDT: {
     name: "Nostra Pool ETH/USDT",
     address:
-      "0x052b136b37a7e6ea52ce1647fb5edc64efe23d449fc1561d9994a9f8feaa6753",
+      "0x052b136b37a7e6ea52ce1647fb5edc64efe23d449fc1561d9994a9f8feaa6753" as Address,
     decimals: 18,
     symbol: "NOSTRA-ETH/USDT",
   },
@@ -2517,7 +2518,7 @@ export const mainnetTokens: Record<string, Token> = {
   IXSTRK: {
     name: "Nostra xSTRK Interest",
     address:
-      "0x04d1125a716f547a0b69413c0098e811da3b799d173429c95da4290a00c139f7",
+      "0x04d1125a716f547a0b69413c0098e811da3b799d173429c95da4290a00c139f7" as Address,
     decimals: 18,
     symbol: "ixSTRK",
   },
@@ -2525,7 +2526,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_46: {
     name: "ETHUSDC-14SEP23-1800-LONG-CALL",
     address:
-      "0x039e8d9c11560f6d01dc719a9fe751f7169afeeacf78c83738f6d96f37c0355a",
+      "0x039e8d9c11560f6d01dc719a9fe751f7169afeeacf78c83738f6d96f37c0355a" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2533,7 +2534,7 @@ export const mainnetTokens: Record<string, Token> = {
   DOG: {
     name: "DOGâ¢GOâ¢TOâ¢THEâ¢MOON",
     address:
-      "0x040e81cfeb176bfdbc5047bbc55eb471cfab20a6b221f38d8fda134e1bfffca4",
+      "0x040e81cfeb176bfdbc5047bbc55eb471cfab20a6b221f38d8fda134e1bfffca4" as Address,
     decimals: 5,
     symbol: "DOG",
   },
@@ -2541,7 +2542,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_ETH_USDC_1: {
     name: "Nostra Pool ETH/USDC",
     address:
-      "0x05e03162008d76cf645fe53c6c13a7a5fce745e8991c6ffe94400d60e44c210a",
+      "0x05e03162008d76cf645fe53c6c13a7a5fce745e8991c6ffe94400d60e44c210a" as Address,
     decimals: 18,
     symbol: "NOSTRA-ETH/USDC",
   },
@@ -2549,7 +2550,7 @@ export const mainnetTokens: Record<string, Token> = {
   NUSDC_C_1: {
     name: "Nostra USDC Collateral",
     address:
-      "0x05f296e1b9f4cf1ab452c218e72e02a8713cee98921dad2d3b5706235e128ee4",
+      "0x05f296e1b9f4cf1ab452c218e72e02a8713cee98921dad2d3b5706235e128ee4" as Address,
     decimals: 6,
     symbol: "nUSDC-c",
   },
@@ -2557,7 +2558,7 @@ export const mainnetTokens: Record<string, Token> = {
   UNKNOWN_1: {
     name: "",
     address:
-      "0x004380de5819e2e989b5e8b978ea2811fd36fdbc5c12fcfb3a2b444098888665",
+      "0x004380de5819e2e989b5e8b978ea2811fd36fdbc5c12fcfb3a2b444098888665" as Address,
     decimals: 18,
     symbol: "",
   },
@@ -2565,7 +2566,7 @@ export const mainnetTokens: Record<string, Token> = {
   LPT_22: {
     name: "StarkEx Pair Token",
     address:
-      "0x019357ed018933c3f75a23e2fdda59e766e04f82e207c9cb0a2ff167a7c9e103",
+      "0x019357ed018933c3f75a23e2fdda59e766e04f82e207c9cb0a2ff167a7c9e103" as Address,
     decimals: 18,
     symbol: "LPT",
   },
@@ -2573,7 +2574,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOAH: {
     name: "Ninth Noah",
     address:
-      "0x07038b75cd6557f4c788971eacc37cf6554acad7146398d42bcc7da3a05b5218",
+      "0x07038b75cd6557f4c788971eacc37cf6554acad7146398d42bcc7da3a05b5218" as Address,
     decimals: 0,
     symbol: "NOAH",
   },
@@ -2581,7 +2582,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_47: {
     name: "ETHUSDC-28SEP23-1800-LONG-CALL",
     address:
-      "0x0016414fc238f6e8933b8dbe334e2841ac6c374dfc6683134b52824aee4cb91f",
+      "0x0016414fc238f6e8933b8dbe334e2841ac6c374dfc6683134b52824aee4cb91f" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2589,7 +2590,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_LORDS_ETH: {
     name: "Nostra Pool LORDS/ETH",
     address:
-      "0x05ae9c593b2bef20a8d69ae7abf1e6da551481f9efd83d03a9f05b6d7c9a78ec",
+      "0x05ae9c593b2bef20a8d69ae7abf1e6da551481f9efd83d03a9f05b6d7c9a78ec" as Address,
     decimals: 18,
     symbol: "NOSTRA-LORDS/ETH",
   },
@@ -2597,7 +2598,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_48: {
     name: "ETHUSDC-21SEP23-1700-LONG-CALL",
     address:
-      "0x00249f6a22da8d928a975f9f5834faa2acea7b78eb3f9db18b2be9cc5f239a56",
+      "0x00249f6a22da8d928a975f9f5834faa2acea7b78eb3f9db18b2be9cc5f239a56" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2605,7 +2606,7 @@ export const mainnetTokens: Record<string, Token> = {
   HSTK: {
     name: "Hashstack",
     address:
-      "0x02e8f2e80fab8239b234c125ee1a68d522718e1d698c214ac85d1f48407349c9",
+      "0x02e8f2e80fab8239b234c125ee1a68d522718e1d698c214ac85d1f48407349c9" as Address,
     decimals: 18,
     symbol: "HSTK",
   },
@@ -2613,7 +2614,7 @@ export const mainnetTokens: Record<string, Token> = {
   VFUSDC: {
     name: "Vesu Fusion USDC",
     address:
-      "0x00a858c97e9454f407d1bd7c57472fc8d8d8449a777c822b41d18e387816f29c",
+      "0x00a858c97e9454f407d1bd7c57472fc8d8d8449a777c822b41d18e387816f29c" as Address,
     decimals: 6,
     symbol: "vfUSDC",
   },
@@ -2621,7 +2622,7 @@ export const mainnetTokens: Record<string, Token> = {
   VPPE: {
     name: "veyronPePe",
     address:
-      "0x06abf0a8b2386f14a0d5e4631978bf3097179bd8180af3c40060a4b2c69c8e1c",
+      "0x06abf0a8b2386f14a0d5e4631978bf3097179bd8180af3c40060a4b2c69c8e1c" as Address,
     decimals: 18,
     symbol: "VPPE",
   },
@@ -2629,7 +2630,7 @@ export const mainnetTokens: Record<string, Token> = {
   VXSTRK_RE7RUSDC: {
     name: "Vesu xSTRK Re7 rUSDC",
     address:
-      "0x069d2c197680bd60bafe1804239968275a1c85a1cad921809277306634b332b5",
+      "0x069d2c197680bd60bafe1804239968275a1c85a1cad921809277306634b332b5" as Address,
     decimals: 18,
     symbol: "vxSTRK-Re7rUSDC",
   },
@@ -2637,7 +2638,7 @@ export const mainnetTokens: Record<string, Token> = {
   IUNO_C: {
     name: "Nostra UNO Interest Collat.",
     address:
-      "0x02a3a9d7bcecc6d3121e3b6180b73c7e8f4c5f81c35a90c8dd457a70a842b723",
+      "0x02a3a9d7bcecc6d3121e3b6180b73c7e8f4c5f81c35a90c8dd457a70a842b723" as Address,
     decimals: 18,
     symbol: "iUNO-c",
   },
@@ -2645,7 +2646,7 @@ export const mainnetTokens: Record<string, Token> = {
   PAPA: {
     name: "PAPA BEAR",
     address:
-      "0x036f8a3e7157942841544b79ad8294456fd98bfb9bdc39dd97065a6dfe997c2a",
+      "0x036f8a3e7157942841544b79ad8294456fd98bfb9bdc39dd97065a6dfe997c2a" as Address,
     decimals: 18,
     symbol: "PAPA",
   },
@@ -2653,7 +2654,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZEKUBO: {
     name: "zkLend Interest-Bearing EKUBO",
     address:
-      "0x02f3add8ad0c2ab66568b5c2f315acf15636babf03f19e4dc8e3eacce43af9b2",
+      "0x02f3add8ad0c2ab66568b5c2f315acf15636babf03f19e4dc8e3eacce43af9b2" as Address,
     decimals: 18,
     symbol: "zEKUBO",
   },
@@ -2661,7 +2662,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_49: {
     name: "ETHUSDC-24AUG23-2100-SHORT-CALL",
     address:
-      "0x07375deaa949049c931f80919ced47362e5a312d5d1b6cce465ad5acfb06b6e4",
+      "0x07375deaa949049c931f80919ced47362e5a312d5d1b6cce465ad5acfb06b6e4" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2669,7 +2670,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_50: {
     name: "ETHUSDC-05OCT23-1700-LONG-CALL",
     address:
-      "0x035e00259d2bf901325206892f1e41a12008c2310b9530eff285849c580b0bd8",
+      "0x035e00259d2bf901325206892f1e41a12008c2310b9530eff285849c580b0bd8" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2677,7 +2678,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_15: {
     name: "JediSwap Pair",
     address:
-      "0x044d13ad98a46fd2322ef2637e5e4c292ce8822f47b7cb9a1d581176a801c1a0",
+      "0x044d13ad98a46fd2322ef2637e5e4c292ce8822f47b7cb9a1d581176a801c1a0" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -2685,7 +2686,7 @@ export const mainnetTokens: Record<string, Token> = {
   POG: {
     name: "Pog Coin",
     address:
-      "0x02403cba6d24fbc7f8ab2af71e1d3f9582f7ba5b237b5d4acf9c283ca90bf9de",
+      "0x02403cba6d24fbc7f8ab2af71e1d3f9582f7ba5b237b5d4acf9c283ca90bf9de" as Address,
     decimals: 18,
     symbol: "POG",
   },
@@ -2693,7 +2694,7 @@ export const mainnetTokens: Record<string, Token> = {
   XWBTC: {
     name: "Endur xWBTC",
     address:
-      "0x06a567e68c805323525fe1649adb80b03cddf92c23d2629a6779f54192dffc13",
+      "0x06a567e68c805323525fe1649adb80b03cddf92c23d2629a6779f54192dffc13" as Address,
     decimals: 8,
     symbol: "xWBTC",
   },
@@ -2701,31 +2702,31 @@ export const mainnetTokens: Record<string, Token> = {
   BRRR: {
     name: "Money Printer Go Brrr",
     address:
-      "0x067737cbee9be3e3042ca86ef41598af7cc36fa6e109193c165b854de07d1df7",
+      "0x067737cbee9be3e3042ca86ef41598af7cc36fa6e109193c165b854de07d1df7" as Address,
     decimals: 18,
     symbol: "$BRRR",
-  },
-  /** Paper */
-  PAPER: {
-    name: "Paper",
-    address:
-      "0x0410466536b5ae074f7fea81e5533b8134a9fa08b3dd077dd9db08f64997d113",
-    decimals: 18,
-    symbol: "PAPER",
   },
   /** ETHUSDC-05OCT23-1800-LONG-CALL */
   C_OPT_51: {
     name: "ETHUSDC-05OCT23-1800-LONG-CALL",
     address:
-      "0x00eb085bf336ce67d24a194a68685429b6f1f72e06879dd7ada223af37f19ddf",
+      "0x00eb085bf336ce67d24a194a68685429b6f1f72e06879dd7ada223af37f19ddf" as Address,
     decimals: 18,
     symbol: "C-OPT",
+  },
+  /** Paper */
+  PAPER: {
+    name: "Paper",
+    address:
+      "0x0410466536b5ae074f7fea81e5533b8134a9fa08b3dd077dd9db08f64997d113" as Address,
+    decimals: 18,
+    symbol: "PAPER",
   },
   /** SOL */
   SOL: {
     name: "SOL",
     address:
-      "0x01e70aedffd376afe33cebdf51ed5365131dccb2a5b2cb36d02b785442912b9b",
+      "0x01e70aedffd376afe33cebdf51ed5365131dccb2a5b2cb36d02b785442912b9b" as Address,
     decimals: 9,
     symbol: "SOL",
   },
@@ -2733,7 +2734,7 @@ export const mainnetTokens: Record<string, Token> = {
   FINI: {
     name: "FINI.world",
     address:
-      "0x005f9ca940d127e6f2ade77763859c6e92562658ae17676704384cf70340d828",
+      "0x005f9ca940d127e6f2ade77763859c6e92562658ae17676704384cf70340d828" as Address,
     decimals: 18,
     symbol: "FINI",
   },
@@ -2741,7 +2742,7 @@ export const mainnetTokens: Record<string, Token> = {
   FOOLS: {
     name: "Fools",
     address:
-      "0x068a7a07e08fc3e723a878223d00f669106780d5ea6665eb15d893476d47bf3b",
+      "0x068a7a07e08fc3e723a878223d00f669106780d5ea6665eb15d893476d47bf3b" as Address,
     decimals: 18,
     symbol: "FOOLS",
   },
@@ -2749,7 +2750,7 @@ export const mainnetTokens: Record<string, Token> = {
   AERO: {
     name: "Aerodrome",
     address:
-      "0x069107746338f9b8cb4c57558dd5b364a53031b28ef8f3d72613c0d3e74b213e",
+      "0x069107746338f9b8cb4c57558dd5b364a53031b28ef8f3d72613c0d3e74b213e" as Address,
     decimals: 18,
     symbol: "AERO",
   },
@@ -2757,7 +2758,7 @@ export const mainnetTokens: Record<string, Token> = {
   DETH_1: {
     name: "Nostra ETH Debt",
     address:
-      "0x00ba3037d968790ac486f70acaa9a1cab10cf5843bb85c986624b4d0e5a82e74",
+      "0x00ba3037d968790ac486f70acaa9a1cab10cf5843bb85c986624b4d0e5a82e74" as Address,
     decimals: 18,
     symbol: "dETH",
   },
@@ -2765,7 +2766,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_52: {
     name: "ETHUSDC-19MAY23-1900-LONG-PUT",
     address:
-      "0x060a10c7a095844bff2a90010cee24c0c4c4652f74e480bb095994787849730d",
+      "0x060a10c7a095844bff2a90010cee24c0c4c4652f74e480bb095994787849730d" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2773,7 +2774,7 @@ export const mainnetTokens: Record<string, Token> = {
   SBA: {
     name: "Starknet BA Token",
     address:
-      "0x01b3028e81e0604fd34eb439b610bd9a405c02c90ae8569e47477b2e3d965b82",
+      "0x01b3028e81e0604fd34eb439b610bd9a405c02c90ae8569e47477b2e3d965b82" as Address,
     decimals: 18,
     symbol: "SBA",
   },
@@ -2781,31 +2782,31 @@ export const mainnetTokens: Record<string, Token> = {
   NSTUSD: {
     name: "Nimbora Staked Usda",
     address:
-      "0x0405b7b5fb7353ec745d9ef7cf1634e54fd25c5e24d62241c177114a18c45910",
+      "0x0405b7b5fb7353ec745d9ef7cf1634e54fd25c5e24d62241c177114a18c45910" as Address,
     decimals: 6,
     symbol: "nstUSD",
-  },
-  /** ETHUSDC-10AUG23-2100-LONG-CALL */
-  C_OPT_53: {
-    name: "ETHUSDC-10AUG23-2100-LONG-CALL",
-    address:
-      "0x0406c05793112a23640d440ccb86e88a5c4bfac49b9b4086dbb9511d75d3168d",
-    decimals: 18,
-    symbol: "C-OPT",
   },
   /** BasedVelocimeter */
   BMV: {
     name: "BasedVelocimeter",
     address:
-      "0x04e67f0145072aac76aa5a1da0b47b0417f75d44439902a43d023e7b0656e0d0",
+      "0x04e67f0145072aac76aa5a1da0b47b0417f75d44439902a43d023e7b0656e0d0" as Address,
     decimals: 18,
     symbol: "BMV",
+  },
+  /** ETHUSDC-10AUG23-2100-LONG-CALL */
+  C_OPT_53: {
+    name: "ETHUSDC-10AUG23-2100-LONG-CALL",
+    address:
+      "0x0406c05793112a23640d440ccb86e88a5c4bfac49b9b4086dbb9511d75d3168d" as Address,
+    decimals: 18,
+    symbol: "C-OPT",
   },
   /** SS_V1_VLP #12 */
   SSVLP_WBTC_ETH: {
     name: "SS_V1_VLP #12",
     address:
-      "0x0106ff0f48fba1274b1f4f65e6d847fa58ac455e95318754fec20eb221b660ed",
+      "0x0106ff0f48fba1274b1f4f65e6d847fa58ac455e95318754fec20eb221b660ed" as Address,
     decimals: 18,
     symbol: "ssVLP-WBTC/ETH",
   },
@@ -2813,7 +2814,7 @@ export const mainnetTokens: Record<string, Token> = {
   EWNT: {
     name: "Equivalent Wolf Nation Token",
     address:
-      "0x040025cec149bf1f58d2e34a6924605b571a5fce7b798a47ec52cfbd3ff68b6e",
+      "0x040025cec149bf1f58d2e34a6924605b571a5fce7b798a47ec52cfbd3ff68b6e" as Address,
     decimals: 18,
     symbol: "eWNT",
   },
@@ -2821,7 +2822,7 @@ export const mainnetTokens: Record<string, Token> = {
   FYETH: {
     name: "ForgeYieldsETH",
     address:
-      "0x050707bc3b8730022f10530c2c6f6b9467644129c50c2868ad0036c5e4e9e616",
+      "0x050707bc3b8730022f10530c2c6f6b9467644129c50c2868ad0036c5e4e9e616" as Address,
     decimals: 18,
     symbol: "fyETH",
   },
@@ -2829,7 +2830,7 @@ export const mainnetTokens: Record<string, Token> = {
   NFTLORDS: {
     name: "Eq Nft LORDS",
     address:
-      "0x00dcdc180a8b4b9cef2d039462ad30de95c5609178a1c2bc55779309c07d45db",
+      "0x00dcdc180a8b4b9cef2d039462ad30de95c5609178a1c2bc55779309c07d45db" as Address,
     decimals: 18,
     symbol: "nftLORDS",
   },
@@ -2837,31 +2838,31 @@ export const mainnetTokens: Record<string, Token> = {
   SSVLP_DAI_USDT: {
     name: "SS_V1_VLP #11",
     address:
-      "0x04d15040581b20b7682ad69db3c57fd0513fdc55639b8b406da3ddcd5ba39b8a",
+      "0x04d15040581b20b7682ad69db3c57fd0513fdc55639b8b406da3ddcd5ba39b8a" as Address,
     decimals: 18,
     symbol: "ssVLP-DAI/USDT",
-  },
-  /** Vesu Starknet Token Re7 xSTRK */
-  VSTRK_RE7XSTRK: {
-    name: "Vesu Starknet Token Re7 xSTRK",
-    address:
-      "0x05f4c1bc95be3e8c234c633b239a8ec965b748230c9b04319688ca8012e034c3",
-    decimals: 18,
-    symbol: "vSTRK-Re7xSTRK",
   },
   /** ETHUSDC-27JUL23-2100-LONG-CALL */
   C_OPT_54: {
     name: "ETHUSDC-27JUL23-2100-LONG-CALL",
     address:
-      "0x01cde794161aa04235c6572c81803c300f71c99dc29a8b2940dabca893e9e6a4",
+      "0x01cde794161aa04235c6572c81803c300f71c99dc29a8b2940dabca893e9e6a4" as Address,
     decimals: 18,
     symbol: "C-OPT",
+  },
+  /** Vesu Starknet Token Re7 xSTRK */
+  VSTRK_RE7XSTRK: {
+    name: "Vesu Starknet Token Re7 xSTRK",
+    address:
+      "0x05f4c1bc95be3e8c234c633b239a8ec965b748230c9b04319688ca8012e034c3" as Address,
+    decimals: 18,
+    symbol: "vSTRK-Re7xSTRK",
   },
   /** SZMC.meme */
   SZMC: {
     name: "SZMC.meme",
     address:
-      "0x07e99b10f4d2a543864a671e3f43e5dddb7a0cefb91fb3a7d36e3f4da41b76f3",
+      "0x07e99b10f4d2a543864a671e3f43e5dddb7a0cefb91fb3a7d36e3f4da41b76f3" as Address,
     decimals: 18,
     symbol: "SZMC",
   },
@@ -2869,7 +2870,7 @@ export const mainnetTokens: Record<string, Token> = {
   RE7_TROVES_ETH_USDC: {
     name: "Re7 Ekubo ETH/USDC",
     address:
-      "0x0160d8fa4569ef6a12e6bf47cb943d7b5ebba8a41a69a14c1d943050ba5ff947",
+      "0x0160d8fa4569ef6a12e6bf47cb943d7b5ebba8a41a69a14c1d943050ba5ff947" as Address,
     decimals: 18,
     symbol: "Re7-Troves-ETH-USDC",
   },
@@ -2877,7 +2878,7 @@ export const mainnetTokens: Record<string, Token> = {
   VUSDC: {
     name: "Vesu USD Coin",
     address:
-      "0x0227942991ea19a1843ed6d28af9458cf2566a3c2d6fccb2fd28f0424fce44b4",
+      "0x0227942991ea19a1843ed6d28af9458cf2566a3c2d6fccb2fd28f0424fce44b4" as Address,
     decimals: 18,
     symbol: "vUSDC",
   },
@@ -2885,7 +2886,7 @@ export const mainnetTokens: Record<string, Token> = {
   MTK: {
     name: "Dice",
     address:
-      "0x07b986f3fa87b758461d12875979693751930a55a01379b9fb3528cae34a30e6",
+      "0x07b986f3fa87b758461d12875979693751930a55a01379b9fb3528cae34a30e6" as Address,
     decimals: 18,
     symbol: "MTK",
   },
@@ -2893,7 +2894,7 @@ export const mainnetTokens: Record<string, Token> = {
   BSX: {
     name: "BaseX",
     address:
-      "0x07aad64360a88429140f403a465c69c36dc6b8847a931893b55590ceccc5251a",
+      "0x07aad64360a88429140f403a465c69c36dc6b8847a931893b55590ceccc5251a" as Address,
     decimals: 18,
     symbol: "BSX",
   },
@@ -2901,7 +2902,7 @@ export const mainnetTokens: Record<string, Token> = {
   SEX: {
     name: "SEX",
     address:
-      "0x0741562e7deecfaff810ba84d6301005f3c2119f004d5d2c3c39537abaa5147b",
+      "0x0741562e7deecfaff810ba84d6301005f3c2119f004d5d2c3c39537abaa5147b" as Address,
     decimals: 18,
     symbol: "SEX",
   },
@@ -2909,7 +2910,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_55: {
     name: "ETHUSDC-24AUG23-2000-SHORT-CALL",
     address:
-      "0x051eb120b72180e1ae281684ae97a92fd53a0d58f8fa8bd073f45153beb1362a",
+      "0x051eb120b72180e1ae281684ae97a92fd53a0d58f8fa8bd073f45153beb1362a" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2917,7 +2918,7 @@ export const mainnetTokens: Record<string, Token> = {
   EQQ: {
     name: "Equivalent Quack Quack",
     address:
-      "0x078c1138aa1cfd27436b26279d5ac4e3f8f5a432927d85d22b2a2e7c0e5528b4",
+      "0x078c1138aa1cfd27436b26279d5ac4e3f8f5a432927d85d22b2a2e7c0e5528b4" as Address,
     decimals: 18,
     symbol: "eQQ",
   },
@@ -2925,7 +2926,7 @@ export const mainnetTokens: Record<string, Token> = {
   RE7_TROVES_USDC_USDT: {
     name: "Re7 Ekubo USDC/USDT",
     address:
-      "0x03a4f8debaf12af97bb911099bc011d63d6c208d4c5ba8e15d7f437785b0aaa2",
+      "0x03a4f8debaf12af97bb911099bc011d63d6c208d4c5ba8e15d7f437785b0aaa2" as Address,
     decimals: 18,
     symbol: "Re7-Troves-USDC-USDT",
   },
@@ -2933,7 +2934,7 @@ export const mainnetTokens: Record<string, Token> = {
   SLAY: {
     name: "Brother Eli",
     address:
-      "0x02ab526354a39e7f5d272f327fa94e757df3688188d4a92c6dc3623ab79894e2",
+      "0x02ab526354a39e7f5d272f327fa94e757df3688188d4a92c6dc3623ab79894e2" as Address,
     decimals: 18,
     symbol: "SLAY",
   },
@@ -2941,7 +2942,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_56: {
     name: "ETHUSDC-26OCT23-1900-SHORT-CALL",
     address:
-      "0x06824b1ab1eab038fe48c44e7c1c998b8e8b043c9a118ed559a2d501985def25",
+      "0x06824b1ab1eab038fe48c44e7c1c998b8e8b043c9a118ed559a2d501985def25" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2949,7 +2950,7 @@ export const mainnetTokens: Record<string, Token> = {
   ESG: {
     name: "eq StarGate Token",
     address:
-      "0x074ad80778e07102902abdec71e0161023b45d1204c29e2c4ec3befab3bb82f5",
+      "0x074ad80778e07102902abdec71e0161023b45d1204c29e2c4ec3befab3bb82f5" as Address,
     decimals: 18,
     symbol: "eSG",
   },
@@ -2957,7 +2958,7 @@ export const mainnetTokens: Record<string, Token> = {
   JEDI_P_16: {
     name: "JediSwap Pair",
     address:
-      "0x051184e312f09abcbf28132d6ef58259a6ebe9b5e7e32b5200427fdc96973f94",
+      "0x051184e312f09abcbf28132d6ef58259a6ebe9b5e7e32b5200427fdc96973f94" as Address,
     decimals: 18,
     symbol: "JEDI-P",
   },
@@ -2965,7 +2966,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_57: {
     name: "ETHUSDC-03AUG23-2100-LONG-CALL",
     address:
-      "0x0695c3d1bc057a3ce0d6e4563ca933f56208302cf08dd77696516d90487d6e70",
+      "0x0695c3d1bc057a3ce0d6e4563ca933f56208302cf08dd77696516d90487d6e70" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2973,7 +2974,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_58: {
     name: "ETHUSDC-23NOV23-1900-SHORT-CALL",
     address:
-      "0x0591c28db9005d9bac40447597647fc5075df99b088ca87db746f3af615f50a3",
+      "0x0591c28db9005d9bac40447597647fc5075df99b088ca87db746f3af615f50a3" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -2981,15 +2982,23 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_59: {
     name: "ETHUSDC-14SEP23-1900-SHORT-CALL",
     address:
-      "0x0636d7b589773f51f862bfa25ed0e715a442cfbbabbdcf44edf0c3316da46e68",
+      "0x0636d7b589773f51f862bfa25ed0e715a442cfbbabbdcf44edf0c3316da46e68" as Address,
     decimals: 18,
     symbol: "C-OPT",
+  },
+  /** SS_V1_SLP #8 */
+  SSSLP_ETH_USDT: {
+    name: "SS_V1_SLP #8",
+    address:
+      "0x05e86d570376e8dc917d241288150a3286c8ad7151638c152d787eca2b96aec3" as Address,
+    decimals: 18,
+    symbol: "ssSLP-ETH/USDT",
   },
   /** Vesu Ether */
   VETH_1: {
     name: "Vesu Ether",
     address:
-      "0x0391bd9b58695b952aa15cffce50ba4650c954105df405ca8fc976ad7a65d646",
+      "0x0391bd9b58695b952aa15cffce50ba4650c954105df405ca8fc976ad7a65d646" as Address,
     decimals: 18,
     symbol: "vETH",
   },
@@ -2997,23 +3006,15 @@ export const mainnetTokens: Record<string, Token> = {
   NUMS: {
     name: "Nums",
     address:
-      "0x00e5f10eddc01699dc899a30dbc3c9858148fa4aa0a47c0ffd85f887ffc4653e",
+      "0x00e5f10eddc01699dc899a30dbc3c9858148fa4aa0a47c0ffd85f887ffc4653e" as Address,
     decimals: 18,
     symbol: "NUMS",
-  },
-  /** SS_V1_SLP #8 */
-  SSSLP_ETH_USDT: {
-    name: "SS_V1_SLP #8",
-    address:
-      "0x05e86d570376e8dc917d241288150a3286c8ad7151638c152d787eca2b96aec3",
-    decimals: 18,
-    symbol: "ssSLP-ETH/USDT",
   },
   /** LeastEthereumAligned */
   LEA: {
     name: "LeastEthereumAligned",
     address:
-      "0x0412396984a874866f68334f0997b0b897e3a0b29a4f8d64861126b9bd171a98",
+      "0x0412396984a874866f68334f0997b0b897e3a0b29a4f8d64861126b9bd171a98" as Address,
     decimals: 18,
     symbol: "LEA",
   },
@@ -3021,7 +3022,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSVLP_DAI_WBTC: {
     name: "SS_V1_VLP #28",
     address:
-      "0x068fa77586bc98d71125e342660ebdfb17a1c26027002af1dd8a620d93ea3ba3",
+      "0x068fa77586bc98d71125e342660ebdfb17a1c26027002af1dd8a620d93ea3ba3" as Address,
     decimals: 18,
     symbol: "ssVLP-DAI/WBTC",
   },
@@ -3029,7 +3030,7 @@ export const mainnetTokens: Record<string, Token> = {
   TICKET: {
     name: "Dungeon Ticket",
     address:
-      "0x035f581b050a39958b7188ab5c75daaa1f9d3571a0c032203038c898663f31f8",
+      "0x035f581b050a39958b7188ab5c75daaa1f9d3571a0c032203038c898663f31f8" as Address,
     decimals: 18,
     symbol: "TICKET",
   },
@@ -3037,7 +3038,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_60: {
     name: "ETHUSDC-29JUN23-1800-LONG-CALL",
     address:
-      "0x020f5f9bc9de4a62321913e02ddb25364ecb31b81fb6534c02db180d059c4c96",
+      "0x020f5f9bc9de4a62321913e02ddb25364ecb31b81fb6534c02db180d059c4c96" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -3045,7 +3046,7 @@ export const mainnetTokens: Record<string, Token> = {
   SWORD: {
     name: "eZKalibur",
     address:
-      "0x06e6fe330a97e10eaa30b882868c90b34da15017dd8e6b0828c8f41ac5e1ec5d",
+      "0x06e6fe330a97e10eaa30b882868c90b34da15017dd8e6b0828c8f41ac5e1ec5d" as Address,
     decimals: 18,
     symbol: "SWORD",
   },
@@ -3053,7 +3054,7 @@ export const mainnetTokens: Record<string, Token> = {
   VUSDC_1: {
     name: "Vesu USD Coin",
     address:
-      "0x00387e8ddbb1ab36ca08874d9abc702ef4872ad600dcf76b7f240b71d7bc4e65",
+      "0x00387e8ddbb1ab36ca08874d9abc702ef4872ad600dcf76b7f240b71d7bc4e65" as Address,
     decimals: 18,
     symbol: "vUSDC",
   },
@@ -3061,7 +3062,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_61: {
     name: "ETHUSDC-27JUL23-1900-LONG-CALL",
     address:
-      "0x05c9bb0f1087571461f50e07727abfb7e0f2b4a39a4a584b6e844ab14014f1d1",
+      "0x05c9bb0f1087571461f50e07727abfb7e0f2b4a39a4a584b6e844ab14014f1d1" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -3069,7 +3070,7 @@ export const mainnetTokens: Record<string, Token> = {
   WIZ: {
     name: "wizardwifhat",
     address:
-      "0x006e987f1e703c549991e1c13b8f1b8e1e6f8bba068a0715b9aacb51dba2800f",
+      "0x006e987f1e703c549991e1c13b8f1b8e1e6f8bba068a0715b9aacb51dba2800f" as Address,
     decimals: 18,
     symbol: "WIZ",
   },
@@ -3077,7 +3078,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZKSTRK: {
     name: "zkLend Interest-Bearing kSTRK",
     address:
-      "0x07e475a3b2d64b97e48860bde4dad0255727c75f69aec760f90bd4d17e7f7d21",
+      "0x07e475a3b2d64b97e48860bde4dad0255727c75f69aec760f90bd4d17e7f7d21" as Address,
     decimals: 18,
     symbol: "zkSTRK",
   },
@@ -3085,7 +3086,7 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_NSTR_USDC: {
     name: "Nostra Pool NSTR/USDC",
     address:
-      "0x07f232e7857effe04f7351e9bb2f1ebc2589bacca3380ae84efcc22067c1436e",
+      "0x07f232e7857effe04f7351e9bb2f1ebc2589bacca3380ae84efcc22067c1436e" as Address,
     decimals: 18,
     symbol: "NOSTRA-NSTR/USDC",
   },
@@ -3093,7 +3094,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_62: {
     name: "ETHUSDC-20JUL23-2100-LONG-CALL",
     address:
-      "0x07179fa6e10f57ef5a80db56aade69febdfefe21220124ae8de41062db98470b",
+      "0x07179fa6e10f57ef5a80db56aade69febdfefe21220124ae8de41062db98470b" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -3101,7 +3102,7 @@ export const mainnetTokens: Record<string, Token> = {
   SSSLP_DAI_ETH: {
     name: "SS_V1_SLP #4",
     address:
-      "0x02aab581754064a87ade1b680fd9756dc3a17440a87aaf496dcfb39fd163d1dd",
+      "0x02aab581754064a87ade1b680fd9756dc3a17440a87aaf496dcfb39fd163d1dd" as Address,
     decimals: 18,
     symbol: "ssSLP-DAI/ETH",
   },
@@ -3109,7 +3110,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_63: {
     name: "ETHUSDC-07SEP23-1800-LONG-CALL",
     address:
-      "0x04a085a8b3f85406a7a30c5b64b2a577a48602c83b41c9ecb4410fd01ec5e3f4",
+      "0x04a085a8b3f85406a7a30c5b64b2a577a48602c83b41c9ecb4410fd01ec5e3f4" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -3117,7 +3118,7 @@ export const mainnetTokens: Record<string, Token> = {
   ZPC: {
     name: "ZenPandaCoin",
     address:
-      "0x0374d37de15b1f3c6c2d7ecd090d5a3db68c4fc93492caa219dc953feaaafd3b",
+      "0x0374d37de15b1f3c6c2d7ecd090d5a3db68c4fc93492caa219dc953feaaafd3b" as Address,
     decimals: 18,
     symbol: "ZPC",
   },
@@ -3125,47 +3126,47 @@ export const mainnetTokens: Record<string, Token> = {
   NOSTRA_WBTC_ETH: {
     name: "Nostra Pool WBTC/ETH",
     address:
-      "0x0285aa1c4bbeef8a183fb7245f096ddc4c99c6b2fedd1c1af52a634c83842804",
+      "0x0285aa1c4bbeef8a183fb7245f096ddc4c99c6b2fedd1c1af52a634c83842804" as Address,
     decimals: 18,
     symbol: "NOSTRA-WBTC/ETH",
-  },
-  /** Symbiosis */
-  SIS: {
-    name: "Symbiosis",
-    address:
-      "0x02f13bf7e61effee16f5122a7782d21f6704135dae6c8f020636e1cdaf188090",
-    decimals: 18,
-    symbol: "SIS",
   },
   /** STRONK */
   STRONK: {
     name: "STRONK",
     address:
-      "0x02b2ba5da3a25d7e0d45487649a9c4535f29711b57b9054099737e7c9f7dc10a",
+      "0x02b2ba5da3a25d7e0d45487649a9c4535f29711b57b9054099737e7c9f7dc10a" as Address,
     decimals: 18,
     symbol: "STRONK",
   },
-  /** STARKMAN */
-  STAM: {
-    name: "STARKMAN",
+  /** Symbiosis */
+  SIS: {
+    name: "Symbiosis",
     address:
-      "0x03902352adfa40453725e5c25fa5ed92bb62597f2db3236e26b85f2a668bb92e",
+      "0x02f13bf7e61effee16f5122a7782d21f6704135dae6c8f020636e1cdaf188090" as Address,
     decimals: 18,
-    symbol: "STAM",
+    symbol: "SIS",
   },
   /** Dungeon Ticket */
   DTICKET: {
     name: "Dungeon Ticket",
     address:
-      "0x0452810188c4cb3aebd63711a3b445755bc0d6c4f27b923fdd99b1a118858136",
+      "0x0452810188c4cb3aebd63711a3b445755bc0d6c4f27b923fdd99b1a118858136" as Address,
     decimals: 18,
     symbol: "DTICKET",
+  },
+  /** STARKMAN */
+  STAM: {
+    name: "STARKMAN",
+    address:
+      "0x03902352adfa40453725e5c25fa5ed92bb62597f2db3236e26b85f2a668bb92e" as Address,
+    decimals: 18,
+    symbol: "STAM",
   },
   /** VeSync */
   VS: {
     name: "VeSync",
     address:
-      "0x067c8dc54a7125ff805ec8d63fa098d2be1ac16bc3a38203c7bce40c8f36780c",
+      "0x067c8dc54a7125ff805ec8d63fa098d2be1ac16bc3a38203c7bce40c8f36780c" as Address,
     decimals: 18,
     symbol: "VS",
   },
@@ -3173,7 +3174,7 @@ export const mainnetTokens: Record<string, Token> = {
   VSTARKD_P_3: {
     name: "vStarkDefi Pair",
     address:
-      "0x00d0778809710cecd727b805ca92267ad17d0e6f35f1877086b9a7ca12b98c4c",
+      "0x00d0778809710cecd727b805ca92267ad17d0e6f35f1877086b9a7ca12b98c4c" as Address,
     decimals: 18,
     symbol: "vSTARKD-P",
   },
@@ -3181,7 +3182,7 @@ export const mainnetTokens: Record<string, Token> = {
   FLIP: {
     name: "Flip",
     address:
-      "0x01bfe97d729138fc7c2d93c77d6d1d8a24708d5060608017d9b384adf38f04c7",
+      "0x01bfe97d729138fc7c2d93c77d6d1d8a24708d5060608017d9b384adf38f04c7" as Address,
     decimals: 18,
     symbol: "FLIP",
   },
@@ -3189,7 +3190,7 @@ export const mainnetTokens: Record<string, Token> = {
   C_OPT_64: {
     name: "ETHUSDC-29DEC23-1800-SHORT-CALL",
     address:
-      "0x035ec813370515278ed1bd463ccbb3ac7c52bc88c7ab8e021b1db4a1a40d3b34",
+      "0x035ec813370515278ed1bd463ccbb3ac7c52bc88c7ab8e021b1db4a1a40d3b34" as Address,
     decimals: 18,
     symbol: "C-OPT",
   },
@@ -3197,7 +3198,7 @@ export const mainnetTokens: Record<string, Token> = {
   TXSTRK_H: {
     name: "Troves Hyper xSTRK",
     address:
-      "0x046c7a54c82b1fe374353859f554a40b8bd31d3e30f742901579e7b57b1b5960",
+      "0x046c7a54c82b1fe374353859f554a40b8bd31d3e30f742901579e7b57b1b5960" as Address,
     decimals: 18,
     symbol: "txSTRK-H",
   },
@@ -3205,7 +3206,7 @@ export const mainnetTokens: Record<string, Token> = {
   ALB: {
     name: "AlienBase",
     address:
-      "0x026b2ed59e8944a5d980305f5db50834492441caaba11d4a004224168b8d1f6d",
+      "0x026b2ed59e8944a5d980305f5db50834492441caaba11d4a004224168b8d1f6d" as Address,
     decimals: 18,
     symbol: "ALB",
   },

@@ -1,5 +1,5 @@
 import type { Wallet } from "../wallet/index.js";
-import type { ExecuteOptions, Token } from "../types/index.js";
+import type { Address, ExecuteOptions, Token } from "../types/index.js";
 import { type Call, CallData, uint256 } from "starknet";
 import type { Tx } from "../tx/index.js";
 
@@ -18,7 +18,7 @@ export class Erc20 {
    */
   public async transfer(args: {
     from: Wallet;
-    transfers: { to: string; amount: string }[];
+    transfers: { to: Address; amount: string }[];
     options?: ExecuteOptions;
   }): Promise<Tx> {
     const calls: Call[] = args.transfers.map((transfer) => {

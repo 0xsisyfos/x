@@ -1,4 +1,5 @@
 import type { SDKConfig } from "../src/index.js";
+import { Address } from "../src/types/index.js";
 
 /**
  * Test configuration for Starknet Sepolia testnet.
@@ -27,7 +28,9 @@ export const devnetConfig: SDKConfig = {
  * Note: This is a valid Stark private key within curve order
  */
 export const devnetAccount = {
-  address: "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691",
+  address: Address.from(
+    "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691"
+  ),
   privateKey: "0x71d7bb07b9a64f6f78ac4c816aff4da9",
 };
 

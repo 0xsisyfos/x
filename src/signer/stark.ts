@@ -8,6 +8,7 @@ import {
   type TypedData,
 } from "starknet";
 import type { SignerInterface } from "./interface.js";
+import type { Address } from "../types/index.js";
 
 /**
  * Standard Stark curve signer using a private key.
@@ -32,7 +33,7 @@ export class StarkSigner implements SignerInterface {
 
   async signMessage(
     typedData: TypedData,
-    accountAddress: string
+    accountAddress: Address
   ): Promise<Signature> {
     return this.signer.signMessage(typedData, accountAddress);
   }

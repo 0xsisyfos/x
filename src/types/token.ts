@@ -1,3 +1,5 @@
+import type { Address } from "./address.js";
+
 /**
  * ERC20 token configuration.
  *
@@ -22,7 +24,7 @@ export interface Token {
   /** Human-readable name of the token */
   name: string;
   /** Contract address of the token */
-  address: string;
+  address: Address;
   /** Number of decimal places (e.g., 18 for ETH, 6 for USDC, 8 for BTC) */
   decimals: number;
   /** Token symbol for display */

@@ -1,7 +1,8 @@
 import { hash, type Calldata } from "starknet";
-import type { SignerInterface } from "../../signer/interface.js";
-import type { AccountClassConfig } from "../../types/wallet.js";
 import { OpenZeppelinPreset } from "../../account/presets.js";
+import type { SignerInterface } from "../../signer/interface.js";
+import { Address } from "../../types/address.js";
+import type { AccountClassConfig } from "../../types/wallet.js";
 
 /**
  * Account provider that combines a signer with an account class configuration.
@@ -10,14 +11,14 @@ export class AccountProvider {
   private readonly signer: SignerInterface;
   private readonly accountClass: AccountClassConfig;
   private cachedPublicKey: string | null = null;
-  private cachedAddress: string | null = null;
+  private cachedAddress: Address | null = null;
 
   constructor(signer: SignerInterface, accountClass?: AccountClassConfig) {
     this.signer = signer;
     this.accountClass = accountClass ?? OpenZeppelinPreset;
   }
 
-  async getAddress(): Promise<string> {
+  async getAddress(): Promise<Address> {
     if (this.cachedAddress) {
       return this.cachedAddress;
     }
@@ -25,12 +26,14 @@ export class AccountProvider {
     const publicKey = await this.getPublicKey();
     const calldata = this.getConstructorCalldata(publicKey);
 
-    this.cachedAddress = hash.calculateContractAddressFromHash(
+    const addressStr = hash.calculateContractAddressFromHash(
       publicKey, // salt
       this.accountClass.classHash,
       calldata,
       0 // deployer address (0 for counterfactual)
     );
+
+    this.cachedAddress = Address.from(addressStr);
 
     return this.cachedAddress;
   }

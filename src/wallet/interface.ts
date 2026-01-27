@@ -8,6 +8,7 @@ import type {
   PrepareOptions,
 } from "../types/wallet.js";
 import type { PreparedTransaction, ExecutableUserTransaction } from "starknet";
+import type { Address } from "../types/address.js";
 
 /**
  * Interface for a connected Starknet wallet.
@@ -34,7 +35,7 @@ import type { PreparedTransaction, ExecutableUserTransaction } from "starknet";
  */
 export interface WalletInterface {
   /** The wallet's Starknet address */
-  readonly address: string;
+  get address(): Address;
 
   /**
    * Check if the account contract is deployed on-chain.

@@ -20,6 +20,7 @@ import { writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
+import { Address } from "../src/types/address.js";
 import "dotenv/config";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -93,7 +94,7 @@ interface VoyagerResponse {
 
 interface Token {
   name: string;
-  address: string;
+  address: Address;
   decimals: number;
   symbol: string;
 }
@@ -128,7 +129,7 @@ async function fetchPage(
 function transformToken(voyagerToken: VoyagerToken): Token {
   return {
     name: voyagerToken.name,
-    address: voyagerToken.address,
+    address: Address.from(voyagerToken.address),
     decimals: parseInt(voyagerToken.decimals, 10),
     symbol: voyagerToken.symbol,
   };
@@ -216,6 +217,7 @@ function generatePresets(tokens: Token[], networkName: Network): string {
     " */",
     "",
     'import type { Token } from "../types/token.js";',
+    'import type { Address } from "../types/address.js";',
     "",
     `export const ${networkName}Tokens: Record<string, Token> = {`,
   ];
@@ -236,7 +238,7 @@ function generatePresets(tokens: Token[], networkName: Network): string {
     lines.push(`  /** ${escapeString(token.name)} */`);
     lines.push(`  ${keyName}: {`);
     lines.push(`    name: "${escapeString(token.name)}",`);
-    lines.push(`    address: "${token.address}",`);
+    lines.push(`    address: "${token.address}" as Address,`);
     lines.push(`    decimals: ${token.decimals},`);
     lines.push(`    symbol: "${escapeString(token.symbol)}",`);
     lines.push("  },");

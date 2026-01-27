@@ -5,6 +5,7 @@ import type {
   SignerInterface as StarknetSignerInterface,
   TypedData,
 } from "starknet";
+import type { Address } from "../types/index.js";
 
 /**
  * Signer interface for the SDK.
@@ -19,7 +20,10 @@ export interface SignerInterface {
   /**
    * Sign a typed data message (EIP-712 style, for off-chain signatures).
    */
-  signMessage(typedData: TypedData, accountAddress: string): Promise<Signature>;
+  signMessage(
+    typedData: TypedData,
+    accountAddress: Address
+  ): Promise<Signature>;
 
   /**
    * Sign an invoke transaction.
