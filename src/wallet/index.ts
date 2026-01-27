@@ -333,4 +333,11 @@ export class Wallet implements WalletInterface {
   getAccount(): Account {
     return this.account;
   }
+
+  /**
+   * Get the underlying RPC provider.
+   */
+  getProvider(): RpcProvider {
+    return this.provider;
+  }
 }

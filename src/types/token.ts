@@ -10,6 +10,7 @@
  * // Or define custom
  * sdk.erc20({
  *   token: {
+ *     name: "My Token",
  *     address: "0x...",
  *     decimals: 18,
  *     symbol: "MY_TOKEN",
@@ -18,6 +19,8 @@
  * ```
  */
 export interface Token {
+  /** Human-readable name of the token */
+  name: string;
   /** Contract address of the token */
   address: string;
   /** Number of decimal places (e.g., 18 for ETH, 6 for USDC, 8 for BTC) */

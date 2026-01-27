@@ -21,8 +21,9 @@ export {
   BraavosPreset,
 } from "./account/presets.js";
 
-// Token Presets
-export { TBTC, WBTC, USDC, USDT, ETH, STRK } from "./token/presets.js";
+// Token Presets (auto-generated from Voyager API)
+export * from "./token/presets.js";
+export * from "./token/presets.sepolia.js";
 
 // Types - Config
 export type {
