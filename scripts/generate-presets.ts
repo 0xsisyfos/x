@@ -1,7 +1,7 @@
 // noinspection ES6PreferShortImport
 
 /**
- * Fetches ERC20 tokens from Voyager API and generates TypeScript presets.
+ * Fetches verified ERC20 tokens from AVNU API and generates TypeScript presets.
  *
  * Usage:
  *   npm run generate:presets
@@ -9,13 +9,11 @@
  *
  * Options:
  *   --network    (mainnet or sepolia) Network to fetch tokens for.
- *   --limit      Maximum number of tokens to fetch (default: 400 for mainnet, 200 for sepolia)
  *
  * Arguments:
  *   output-path  Path to output TypeScript file (default: src/token/presets.ts)
  *
- * Requires:
- *   VOYAGER_API_KEY in .env file or as environment variable
+ * API Documentation: https://docs.avnu.fi/api/tokens/get-tokens
  */
 
 import { writeFileSync } from "node:fs";
@@ -23,51 +21,29 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { Address } from "../src/types/address.js";
-import "dotenv/config";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const VOYAGER_API_URLS = {
-  mainnet: "https://api.voyager.online/beta/tokens",
-  sepolia: "https://sepolia-api.voyager.online/beta/tokens",
+const AVNU_API_URLS = {
+  mainnet: "https://starknet.api.avnu.fi/v1/starknet/tokens",
+  sepolia: "https://sepolia.api.avnu.fi/v1/starknet/tokens",
 } as const;
 
-type Network = keyof typeof VOYAGER_API_URLS;
+type Network = keyof typeof AVNU_API_URLS;
 
 const DEFAULT_OUTPUT_PATHS: Record<Network, string> = {
   mainnet: resolve(__dirname, "../src/token/presets.ts"),
   sepolia: resolve(__dirname, "../src/token/presets.sepolia.ts"),
 };
 
-const DEFAULT_LIMITS: Record<Network, number> = {
-  mainnet: 400,
-  sepolia: 200,
-};
-
 const { values, positionals } = parseArgs({
   allowPositionals: true,
   options: {
     network: { type: "string", short: "n" },
-    limit: { type: "string", short: "l" },
   },
 });
 
 const network = values.network as Network | undefined;
-
-function getLimit(): number {
-  if (values.limit) {
-    const parsed = parseInt(values.limit, 10);
-    if (isNaN(parsed) || parsed <= 0) {
-      console.error("Error: --limit must be a positive number");
-      process.exit(1);
-    }
-    return parsed;
-  }
-  if (network && network in DEFAULT_LIMITS) {
-    return DEFAULT_LIMITS[network];
-  }
-  return DEFAULT_LIMITS.mainnet;
-}
 
 function getOutputPath(): string {
   if (positionals[0]) {
@@ -79,19 +55,23 @@ function getOutputPath(): string {
   return DEFAULT_OUTPUT_PATHS.mainnet;
 }
 
-interface VoyagerToken {
+interface AvnuToken {
   address: string;
-  decimals: string;
-  holders: string;
   name: string;
   symbol: string;
-  transfers: string;
-  type: "erc20" | "erc721" | "erc1155";
+  decimals: number;
+  logoUri: string | null;
+  lastDailyVolumeUsd: number;
+  extensions: Record<string, unknown>;
+  tags: string[];
 }
 
-interface VoyagerResponse {
-  items: VoyagerToken[];
-  lastPage: number;
+interface AvnuResponse {
+  content: AvnuToken[];
+  size: number;
+  number: number;
+  totalElements: number;
+  totalPages: number;
 }
 
 interface Token {
@@ -99,73 +79,62 @@ interface Token {
   address: Address;
   decimals: number;
   symbol: string;
+  logoUrl: string | null;
 }
 
-async function fetchPage(
-  page: number,
-  apiKey: string,
-  apiUrl: string
-): Promise<VoyagerResponse> {
+async function fetchPage(page: number, apiUrl: string): Promise<AvnuResponse> {
   const url = new URL(apiUrl);
-  url.searchParams.set("type", "erc20");
-  url.searchParams.set("attribute", "holders");
-  url.searchParams.set("p", page.toString());
-  url.searchParams.set("ps", "100");
+  url.searchParams.set("page", page.toString());
+  url.searchParams.set("size", "100");
+  url.searchParams.set("tag", "Verified");
 
   const response = await fetch(url.toString(), {
     headers: {
-      "x-api-key": apiKey,
       "Content-Type": "application/json",
     },
   });
 
   if (!response.ok) {
     throw new Error(
-      "Voyager API error: " + response.status + " " + response.statusText
+      "AVNU API error: " + response.status + " " + response.statusText
     );
   }
 
-  return response.json() as Promise<VoyagerResponse>;
+  return response.json() as Promise<AvnuResponse>;
 }
 
-function transformToken(voyagerToken: VoyagerToken): Token {
+function transformToken(avnuToken: AvnuToken): Token {
   return {
-    name: voyagerToken.name,
-    address: Address.from(voyagerToken.address),
-    decimals: parseInt(voyagerToken.decimals, 10),
-    symbol: voyagerToken.symbol,
+    name: avnuToken.name,
+    address: Address.from(avnuToken.address),
+    decimals: avnuToken.decimals,
+    symbol: avnuToken.symbol,
+    logoUrl: avnuToken.logoUri,
   };
 }
 
-async function fetchAllTokens(
-  apiKey: string,
-  apiUrl: string,
-  limit: number
-): Promise<Token[]> {
+async function fetchAllTokens(apiUrl: string): Promise<Token[]> {
   const tokens: Token[] = [];
-  let page = 1;
-  let lastPage = 1;
+  let page = 0; // AVNU API uses zero-based page index
+  let totalPages = 1;
 
   console.log(
-    "Fetching up to " + limit + " ERC20 tokens from " + apiUrl + "..."
+    "Fetching verified ERC20 tokens from AVNU API (" + apiUrl + ")..."
   );
 
   do {
-    const pageInfo = lastPage > 1 ? page + "/" + lastPage : page + "/...";
+    const pageInfo =
+      totalPages > 1 ? page + 1 + "/" + totalPages : page + 1 + "/...";
     console.log("  Fetching page " + pageInfo);
-    const response = await fetchPage(page, apiKey, apiUrl);
-    lastPage = response.lastPage;
+    const response = await fetchPage(page, apiUrl);
+    totalPages = response.totalPages;
 
-    for (const item of response.items) {
+    for (const item of response.content) {
       tokens.push(transformToken(item));
-      if (tokens.length >= limit) {
-        console.log("  Reached limit of " + limit + " tokens");
-        return tokens;
-      }
     }
 
     page++;
-  } while (page <= lastPage);
+  } while (page < totalPages);
 
   return tokens;
 }
@@ -208,14 +177,14 @@ function escapeString(str: string): string {
  * Generate TypeScript presets file content for a specific network.
  */
 function generatePresets(tokens: Token[], networkName: Network): string {
-  const subdomain = networkName === "sepolia" ? "sepolia." : "";
+  const subdomain = networkName === "sepolia" ? "sepolia." : "starknet.";
   const lines: string[] = [
     "/**",
-    ` * ERC20 token presets for Starknet ${networkName}.`,
+    ` * Verified ERC20 token presets for Starknet ${networkName}.`,
     " *",
     " * AUTO-GENERATED FILE - DO NOT EDIT MANUALLY",
     ` * Generated by: npx tsx scripts/generate-presets.ts --network ${networkName}`,
-    ` * Source: Voyager API (https://${subdomain}voyager.online)`,
+    ` * Source: AVNU API (https://${subdomain}api.avnu.fi)`,
     " */",
     "",
     'import type { Token } from "../types/token.js";',
@@ -243,6 +212,11 @@ function generatePresets(tokens: Token[], networkName: Network): string {
     lines.push(`    address: "${token.address}" as Address,`);
     lines.push(`    decimals: ${token.decimals},`);
     lines.push(`    symbol: "${escapeString(token.symbol)}",`);
+    if (token.logoUrl) {
+      lines.push(`    metadata: {`);
+      lines.push(`      logoUrl: new URL("${escapeString(token.logoUrl)}"),`);
+      lines.push(`    },`);
+    }
     lines.push("  },");
   }
 
@@ -261,25 +235,14 @@ async function main() {
     process.exit(1);
   }
 
-  const apiKey = process.env.VOYAGER_API_KEY;
-
-  if (!apiKey) {
-    console.error("Error: VOYAGER_API_KEY environment variable is required");
-    console.error("Set it in .env or pass it directly:");
-    console.error(
-      "  VOYAGER_API_KEY=xxx npx tsx scripts/generate-presets.ts --network " +
-        network
-    );
-    process.exit(1);
-  }
-
-  const apiUrl = VOYAGER_API_URLS[network];
-  const limit = getLimit();
+  const apiUrl = AVNU_API_URLS[network];
 
   try {
-    const tokens = await fetchAllTokens(apiKey, apiUrl, limit);
+    const tokens = await fetchAllTokens(apiUrl);
 
-    console.log("\nFetched " + tokens.length + " ERC20 tokens for " + network);
+    console.log(
+      "\nFetched " + tokens.length + " verified ERC20 tokens for " + network
+    );
 
     const presetsContent = generatePresets(tokens, network);
     const outputPath = getOutputPath();

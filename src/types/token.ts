@@ -13,9 +13,12 @@ import type { Address } from "./address.js";
  * sdk.erc20({
  *   token: {
  *     name: "My Token",
- *     address: "0x...",
+ *     address: "0x..." as Address,
  *     decimals: 18,
  *     symbol: "MY_TOKEN",
+ *     metadata: {
+ *       logoUrl: new URL("https://example.com/logo.png"),
+ *     },
  *   }
  * });
  * ```
@@ -29,4 +32,20 @@ export interface Token {
   decimals: number;
   /** Token symbol for display */
   symbol: string;
+  /** Token metadata */
+  metadata?: TokenMetadata;
+}
+
+/**
+ * Token metadata.
+ *
+ * @example
+ * ```ts
+ * {
+ *   logoUrl: new URL("https://example.com/logo.png"),
+ * }
+ */
+export interface TokenMetadata {
+  /** Logo URL of the token */
+  logoUrl?: URL;
 }
