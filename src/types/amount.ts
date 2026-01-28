@@ -292,6 +292,405 @@ export class Amount {
       this.symbol ?? ""
     );
   }
+
+  /**
+   * Returns the number of decimal places for this amount.
+   *
+   * Useful for validation when working with specific token contracts.
+   *
+   * @returns The number of decimal places (e.g., 18 for ETH, 6 for USDC)
+   *
+   * @example
+   * ```ts
+   * const ethAmount = Amount.fromUnit("1.5", 18, "ETH");
+   * console.log(ethAmount.getDecimals()); // 18
+   *
+   * const usdcAmount = Amount.fromTokenUnit("100", USDC);
+   * console.log(usdcAmount.getDecimals()); // 6
+   * ```
+   */
+  public getDecimals(): number {
+    return this.decimals;
+  }
+
+  /**
+   * Returns the token symbol for this amount, if set.
+   *
+   * Useful for validation when working with specific token contracts.
+   *
+   * @returns The token symbol (e.g., "ETH", "USDC") or undefined if not set
+   *
+   * @example
+   * ```ts
+   * const ethAmount = Amount.fromUnit("1.5", 18, "ETH");
+   * console.log(ethAmount.getSymbol()); // "ETH"
+   *
+   * const noSymbol = Amount.fromUnit("1.5", 18);
+   * console.log(noSymbol.getSymbol()); // undefined
+   * ```
+   */
+  public getSymbol(): string | undefined {
+    return this.symbol;
+  }
+
+  /**
+   * Checks if another Amount is compatible for operations.
+   * Two amounts are compatible if they have the same decimals and symbol.
+   *
+   * @param other - The other Amount to check against
+   * @returns true if compatible, false otherwise
+   */
+  private isCompatible(other: Amount): boolean {
+    if (this.decimals !== other.decimals) {
+      return false;
+    }
+
+    // Only check symbols if both are set
+    if (
+      this.symbol !== undefined &&
+      other.symbol !== undefined &&
+      this.symbol !== other.symbol
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Validates that another Amount is compatible for arithmetic operations.
+   * Two amounts are compatible if they have the same decimals and symbol.
+   *
+   * @param other - The other Amount to validate against
+   * @throws Error if decimals don't match
+   * @throws Error if symbols don't match (when both are set)
+   */
+  private assertCompatible(other: Amount): void {
+    if (this.decimals !== other.decimals) {
+      throw new Error(
+        `Cannot perform arithmetic on amounts with different decimals: ${this.decimals} vs ${other.decimals}`
+      );
+    }
+
+    // Only validate symbols if both are set
+    if (
+      this.symbol !== undefined &&
+      other.symbol !== undefined &&
+      this.symbol !== other.symbol
+    ) {
+      throw new Error(
+        `Cannot perform arithmetic on amounts with different symbols: "${this.symbol}" vs "${other.symbol}"`
+      );
+    }
+  }
+
+  /**
+   * Adds another Amount to this one.
+   *
+   * Both amounts must have the same decimals and symbol (if set).
+   *
+   * @param other - The Amount to add
+   * @returns A new Amount representing the sum
+   * @throws Error if decimals don't match
+   * @throws Error if symbols don't match (when both are set)
+   *
+   * @example
+   * ```ts
+   * const a = Amount.fromUnit("1.5", 18, "ETH");
+   * const b = Amount.fromUnit("2.5", 18, "ETH");
+   * const sum = a.add(b);
+   * console.log(sum.toUnit()); // "4"
+   * ```
+   */
+  public add(other: Amount): Amount {
+    this.assertCompatible(other);
+    return new Amount(
+      this.baseValue + other.baseValue,
+      this.decimals,
+      this.symbol ?? other.symbol
+    );
+  }
+
+  /**
+   * Subtracts another Amount from this one.
+   *
+   * Both amounts must have the same decimals and symbol (if set).
+   * Note: This can result in a negative base value if other > this.
+   *
+   * @param other - The Amount to subtract
+   * @returns A new Amount representing the difference
+   * @throws Error if decimals don't match
+   * @throws Error if symbols don't match (when both are set)
+   *
+   * @example
+   * ```ts
+   * const a = Amount.fromUnit("5", 18, "ETH");
+   * const b = Amount.fromUnit("2", 18, "ETH");
+   * const diff = a.subtract(b);
+   * console.log(diff.toUnit()); // "3"
+   * ```
+   */
+  public subtract(other: Amount): Amount {
+    this.assertCompatible(other);
+    return new Amount(
+      this.baseValue - other.baseValue,
+      this.decimals,
+      this.symbol ?? other.symbol
+    );
+  }
+
+  /**
+   * Multiplies this Amount by a scalar value.
+   *
+   * The scalar can be a string, number, or bigint. Fractional multipliers
+   * are supported (e.g., "0.5" to halve the amount).
+   *
+   * @param multiplier - The scalar value to multiply by
+   * @returns A new Amount representing the product
+   * @throws Error if multiplier is negative or invalid
+   *
+   * @example
+   * ```ts
+   * const amount = Amount.fromUnit("10", 18, "ETH");
+   *
+   * amount.multiply(2).toUnit();     // "20"
+   * amount.multiply("0.5").toUnit(); // "5"
+   * amount.multiply("1.5").toUnit(); // "15"
+   * ```
+   */
+  public multiply(multiplier: AmountInput): Amount {
+    const multiplierStr = multiplier.toString();
+
+    if (!multiplierStr.match(/^\d+(\.\d+)?$/)) {
+      throw new Error(
+        `Invalid multiplier: "${multiplierStr}". Must be a positive number.`
+      );
+    }
+
+    // Use high precision for scalar operations
+    const PRECISION = 18;
+    const scaleFactor = 10n ** BigInt(PRECISION);
+
+    // Convert multiplier to scaled bigint
+    const [integer, fraction = ""] = multiplierStr.split(".");
+    const paddedFraction = fraction.padEnd(PRECISION, "0").slice(0, PRECISION);
+    const scaledMultiplier = BigInt(`${integer}${paddedFraction}`);
+
+    // Multiply and scale back down
+    const result = (this.baseValue * scaledMultiplier) / scaleFactor;
+
+    return new Amount(result, this.decimals, this.symbol);
+  }
+
+  /**
+   * Divides this Amount by a scalar value.
+   *
+   * The scalar can be a string, number, or bigint. Fractional divisors
+   * are supported (e.g., "0.5" to double the amount).
+   *
+   * Note: Division uses integer arithmetic and rounds down (floor).
+   *
+   * @param divisor - The scalar value to divide by
+   * @returns A new Amount representing the quotient
+   * @throws Error if divisor is zero
+   * @throws Error if divisor is negative or invalid
+   *
+   * @example
+   * ```ts
+   * const amount = Amount.fromUnit("10", 18, "ETH");
+   *
+   * amount.divide(2).toUnit();     // "5"
+   * amount.divide("0.5").toUnit(); // "20"
+   * amount.divide(4).toUnit();     // "2.5"
+   * ```
+   */
+  public divide(divisor: AmountInput): Amount {
+    const divisorStr = divisor.toString();
+
+    if (!divisorStr.match(/^\d+(\.\d+)?$/)) {
+      throw new Error(
+        `Invalid divisor: "${divisorStr}". Must be a positive number.`
+      );
+    }
+
+    // Use high precision for scalar operations
+    const PRECISION = 18;
+    const scaleFactor = 10n ** BigInt(PRECISION);
+
+    // Convert divisor to scaled bigint
+    const [integer, fraction = ""] = divisorStr.split(".");
+    const paddedFraction = fraction.padEnd(PRECISION, "0").slice(0, PRECISION);
+    const scaledDivisor = BigInt(`${integer}${paddedFraction}`);
+
+    if (scaledDivisor === 0n) {
+      throw new Error("Division by zero");
+    }
+
+    // Scale up the base value before division to maintain precision
+    const scaledBase = this.baseValue * scaleFactor;
+    const result = scaledBase / scaledDivisor;
+
+    return new Amount(result, this.decimals, this.symbol);
+  }
+
+  /**
+   * Checks if this Amount is equal to another Amount.
+   *
+   * Returns false if amounts have different decimals or symbols.
+   *
+   * @param other - The Amount to compare with
+   * @returns true if the amounts are equal and compatible, false otherwise
+   *
+   * @example
+   * ```ts
+   * const a = Amount.fromUnit("1.5", 18, "ETH");
+   * const b = Amount.fromUnit("1.5", 18, "ETH");
+   * const c = Amount.fromUnit("2", 18, "ETH");
+   * const usdc = Amount.fromUnit("1.5", 6, "USDC");
+   *
+   * a.eq(b);    // true
+   * a.eq(c);    // false
+   * a.eq(usdc); // false (incompatible)
+   * ```
+   */
+  public eq(other: Amount): boolean {
+    if (!this.isCompatible(other)) {
+      return false;
+    }
+    return this.baseValue === other.baseValue;
+  }
+
+  /**
+   * Checks if this Amount is greater than another Amount.
+   *
+   * Returns false if amounts have different decimals or symbols.
+   *
+   * @param other - The Amount to compare with
+   * @returns true if this amount is greater and compatible, false otherwise
+   *
+   * @example
+   * ```ts
+   * const a = Amount.fromUnit("2", 18, "ETH");
+   * const b = Amount.fromUnit("1", 18, "ETH");
+   * const usdc = Amount.fromUnit("1", 6, "USDC");
+   *
+   * a.gt(b);    // true
+   * b.gt(a);    // false
+   * a.gt(usdc); // false (incompatible)
+   * ```
+   */
+  public gt(other: Amount): boolean {
+    if (!this.isCompatible(other)) {
+      return false;
+    }
+    return this.baseValue > other.baseValue;
+  }
+
+  /**
+   * Checks if this Amount is greater than or equal to another Amount.
+   *
+   * Returns false if amounts have different decimals or symbols.
+   *
+   * @param other - The Amount to compare with
+   * @returns true if this amount is greater or equal and compatible, false otherwise
+   *
+   * @example
+   * ```ts
+   * const a = Amount.fromUnit("2", 18, "ETH");
+   * const b = Amount.fromUnit("2", 18, "ETH");
+   * const usdc = Amount.fromUnit("2", 6, "USDC");
+   *
+   * a.gte(b);    // true
+   * a.gte(usdc); // false (incompatible)
+   * ```
+   */
+  public gte(other: Amount): boolean {
+    if (!this.isCompatible(other)) {
+      return false;
+    }
+    return this.baseValue >= other.baseValue;
+  }
+
+  /**
+   * Checks if this Amount is less than another Amount.
+   *
+   * Returns false if amounts have different decimals or symbols.
+   *
+   * @param other - The Amount to compare with
+   * @returns true if this amount is less and compatible, false otherwise
+   *
+   * @example
+   * ```ts
+   * const a = Amount.fromUnit("1", 18, "ETH");
+   * const b = Amount.fromUnit("2", 18, "ETH");
+   * const usdc = Amount.fromUnit("2", 6, "USDC");
+   *
+   * a.lt(b);    // true
+   * b.lt(a);    // false
+   * a.lt(usdc); // false (incompatible)
+   * ```
+   */
+  public lt(other: Amount): boolean {
+    if (!this.isCompatible(other)) {
+      return false;
+    }
+    return this.baseValue < other.baseValue;
+  }
+
+  /**
+   * Checks if this Amount is less than or equal to another Amount.
+   *
+   * Returns false if amounts have different decimals or symbols.
+   *
+   * @param other - The Amount to compare with
+   * @returns true if this amount is less or equal and compatible, false otherwise
+   *
+   * @example
+   * ```ts
+   * const a = Amount.fromUnit("2", 18, "ETH");
+   * const b = Amount.fromUnit("2", 18, "ETH");
+   * const usdc = Amount.fromUnit("2", 6, "USDC");
+   *
+   * a.lte(b);    // true
+   * a.lte(usdc); // false (incompatible)
+   * ```
+   */
+  public lte(other: Amount): boolean {
+    if (!this.isCompatible(other)) {
+      return false;
+    }
+    return this.baseValue <= other.baseValue;
+  }
+
+  /**
+   * Checks if this Amount is zero.
+   *
+   * @returns true if the amount is zero, false otherwise
+   *
+   * @example
+   * ```ts
+   * Amount.fromUnit("0", 18, "ETH").isZero();   // true
+   * Amount.fromUnit("0.1", 18, "ETH").isZero(); // false
+   * ```
+   */
+  public isZero(): boolean {
+    return this.baseValue === 0n;
+  }
+
+  /**
+   * Checks if this Amount is positive (greater than zero).
+   *
+   * @returns true if the amount is positive, false otherwise
+   *
+   * @example
+   * ```ts
+   * Amount.fromUnit("1", 18, "ETH").isPositive(); // true
+   * Amount.fromUnit("0", 18, "ETH").isPositive(); // false
+   * ```
+   */
+  public isPositive(): boolean {
+    return this.baseValue > 0n;
+  }
 }
 
 /**

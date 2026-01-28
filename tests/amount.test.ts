@@ -471,6 +471,60 @@ describe("Amount", () => {
       expect(amount.toUnit()).toBe("1.1");
     });
   });
+
+  describe("getDecimals", () => {
+    it("should return decimals for ETH (18)", () => {
+      const amount = Amount.fromUnit("1.5", 18, "ETH");
+      expect(amount.getDecimals()).toBe(18);
+    });
+
+    it("should return decimals for USDC (6)", () => {
+      const amount = Amount.fromUnit("100", 6, "USDC");
+      expect(amount.getDecimals()).toBe(6);
+    });
+
+    it("should return decimals for BTC (8)", () => {
+      const amount = Amount.fromUnit("0.5", 8, "BTC");
+      expect(amount.getDecimals()).toBe(8);
+    });
+
+    it("should return 0 decimals for zero-decimal tokens", () => {
+      const amount = Amount.fromUnit("100", 0, "TOKEN");
+      expect(amount.getDecimals()).toBe(0);
+    });
+
+    it("should return decimals from token", () => {
+      const amount = Amount.fromTokenUnit("1.5", mockETH);
+      expect(amount.getDecimals()).toBe(mockETH.decimals);
+    });
+  });
+
+  describe("getSymbol", () => {
+    it("should return symbol when set", () => {
+      const amount = Amount.fromUnit("1.5", 18, "ETH");
+      expect(amount.getSymbol()).toBe("ETH");
+    });
+
+    it("should return undefined when no symbol set", () => {
+      const amount = Amount.fromUnit("1.5", 18);
+      expect(amount.getSymbol()).toBeUndefined();
+    });
+
+    it("should return symbol from token", () => {
+      const amount = Amount.fromTokenUnit("1.5", mockUSDC);
+      expect(amount.getSymbol()).toBe("USDC");
+    });
+
+    it("should return symbol from base constructor with token", () => {
+      const amount = Amount.fromTokenBase(1500000000000000000n, mockETH);
+      expect(amount.getSymbol()).toBe("ETH");
+    });
+
+    it("should return empty string when symbol is empty string", () => {
+      const amount = Amount.fromUnit("1.5", 18, "");
+      expect(amount.getSymbol()).toBe("");
+    });
+  });
 });
 
 describe("tokenAmountToFormatted", () => {
@@ -554,5 +608,424 @@ describe("tokenAmountToFormatted", () => {
     expect(tokenAmountToFormatted(false, 1100000000000000000n, 18, "ETH")).toBe(
       `ETH${NBSP}1.1`
     );
+  });
+});
+
+describe("Amount arithmetic operations", () => {
+  describe("add", () => {
+    it("should add two amounts with same decimals and symbol", () => {
+      const a = Amount.fromUnit("1.5", 18, "ETH");
+      const b = Amount.fromUnit("2.5", 18, "ETH");
+      const result = a.add(b);
+      expect(result.toUnit()).toBe("4");
+      expect(result.getDecimals()).toBe(18);
+      expect(result.getSymbol()).toBe("ETH");
+    });
+
+    it("should add amounts when one has no symbol", () => {
+      const a = Amount.fromUnit("1.5", 18, "ETH");
+      const b = Amount.fromUnit("2.5", 18);
+      const result = a.add(b);
+      expect(result.toUnit()).toBe("4");
+      expect(result.getSymbol()).toBe("ETH");
+    });
+
+    it("should add amounts when neither has symbol", () => {
+      const a = Amount.fromUnit("1.5", 18);
+      const b = Amount.fromUnit("2.5", 18);
+      const result = a.add(b);
+      expect(result.toUnit()).toBe("4");
+      expect(result.getSymbol()).toBeUndefined();
+    });
+
+    it("should throw on different decimals", () => {
+      const a = Amount.fromUnit("1.5", 18, "ETH");
+      const b = Amount.fromUnit("2.5", 6, "USDC");
+      expect(() => a.add(b)).toThrow(
+        "Cannot perform arithmetic on amounts with different decimals: 18 vs 6"
+      );
+    });
+
+    it("should throw on different symbols", () => {
+      const a = Amount.fromUnit("1.5", 18, "ETH");
+      const b = Amount.fromUnit("2.5", 18, "DAI");
+      expect(() => a.add(b)).toThrow(
+        'Cannot perform arithmetic on amounts with different symbols: "ETH" vs "DAI"'
+      );
+    });
+
+    it("should handle adding zero", () => {
+      const a = Amount.fromUnit("1.5", 18, "ETH");
+      const b = Amount.fromUnit("0", 18, "ETH");
+      expect(a.add(b).toUnit()).toBe("1.5");
+    });
+
+    it("should handle very small amounts", () => {
+      const a = Amount.fromBase(1n, 18, "ETH");
+      const b = Amount.fromBase(1n, 18, "ETH");
+      expect(a.add(b).toBase()).toBe(2n);
+    });
+  });
+
+  describe("subtract", () => {
+    it("should subtract two amounts with same decimals and symbol", () => {
+      const a = Amount.fromUnit("5", 18, "ETH");
+      const b = Amount.fromUnit("2", 18, "ETH");
+      const result = a.subtract(b);
+      expect(result.toUnit()).toBe("3");
+      expect(result.getDecimals()).toBe(18);
+      expect(result.getSymbol()).toBe("ETH");
+    });
+
+    it("should subtract amounts when one has no symbol", () => {
+      const a = Amount.fromUnit("5", 18, "ETH");
+      const b = Amount.fromUnit("2", 18);
+      const result = a.subtract(b);
+      expect(result.toUnit()).toBe("3");
+      expect(result.getSymbol()).toBe("ETH");
+    });
+
+    it("should throw on different decimals", () => {
+      const a = Amount.fromUnit("5", 18, "ETH");
+      const b = Amount.fromUnit("2", 6, "USDC");
+      expect(() => a.subtract(b)).toThrow(
+        "Cannot perform arithmetic on amounts with different decimals: 18 vs 6"
+      );
+    });
+
+    it("should throw on different symbols", () => {
+      const a = Amount.fromUnit("5", 18, "ETH");
+      const b = Amount.fromUnit("2", 18, "DAI");
+      expect(() => a.subtract(b)).toThrow(
+        'Cannot perform arithmetic on amounts with different symbols: "ETH" vs "DAI"'
+      );
+    });
+
+    it("should handle subtracting to zero", () => {
+      const a = Amount.fromUnit("5", 18, "ETH");
+      const b = Amount.fromUnit("5", 18, "ETH");
+      expect(a.subtract(b).toUnit()).toBe("0");
+    });
+
+    it("should handle fractional results", () => {
+      const a = Amount.fromUnit("1.5", 18, "ETH");
+      const b = Amount.fromUnit("0.3", 18, "ETH");
+      expect(a.subtract(b).toUnit()).toBe("1.2");
+    });
+  });
+
+  describe("multiply", () => {
+    it("should multiply by integer", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.multiply(2).toUnit()).toBe("20");
+    });
+
+    it("should multiply by string integer", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.multiply("3").toUnit()).toBe("30");
+    });
+
+    it("should multiply by fractional value", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.multiply("0.5").toUnit()).toBe("5");
+    });
+
+    it("should multiply by decimal value", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.multiply("1.5").toUnit()).toBe("15");
+    });
+
+    it("should multiply by zero", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.multiply(0).toUnit()).toBe("0");
+    });
+
+    it("should preserve decimals and symbol", () => {
+      const amount = Amount.fromUnit("10", 6, "USDC");
+      const result = amount.multiply(2);
+      expect(result.getDecimals()).toBe(6);
+      expect(result.getSymbol()).toBe("USDC");
+    });
+
+    it("should handle small multipliers", () => {
+      const amount = Amount.fromUnit("100", 18, "ETH");
+      expect(amount.multiply("0.001").toUnit()).toBe("0.1");
+    });
+
+    it("should throw on negative multiplier", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(() => amount.multiply("-1")).toThrow("Invalid multiplier");
+    });
+
+    it("should throw on invalid multiplier", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(() => amount.multiply("abc")).toThrow("Invalid multiplier");
+    });
+
+    it("should handle bigint multiplier", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.multiply(3n).toUnit()).toBe("30");
+    });
+  });
+
+  describe("divide", () => {
+    it("should divide by integer", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.divide(2).toUnit()).toBe("5");
+    });
+
+    it("should divide by string integer", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.divide("4").toUnit()).toBe("2.5");
+    });
+
+    it("should divide by fractional value (effectively multiply)", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.divide("0.5").toUnit()).toBe("20");
+    });
+
+    it("should divide by decimal value", () => {
+      const amount = Amount.fromUnit("15", 18, "ETH");
+      expect(amount.divide("1.5").toUnit()).toBe("10");
+    });
+
+    it("should throw on division by zero", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(() => amount.divide(0)).toThrow("Division by zero");
+    });
+
+    it("should throw on division by zero string", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(() => amount.divide("0")).toThrow("Division by zero");
+    });
+
+    it("should preserve decimals and symbol", () => {
+      const amount = Amount.fromUnit("10", 6, "USDC");
+      const result = amount.divide(2);
+      expect(result.getDecimals()).toBe(6);
+      expect(result.getSymbol()).toBe("USDC");
+    });
+
+    it("should throw on negative divisor", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(() => amount.divide("-2")).toThrow("Invalid divisor");
+    });
+
+    it("should throw on invalid divisor", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(() => amount.divide("abc")).toThrow("Invalid divisor");
+    });
+
+    it("should handle bigint divisor", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.divide(2n).toUnit()).toBe("5");
+    });
+
+    it("should floor the result for non-exact division", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      // 10 / 3 = 3.333... but with integer division we lose some precision
+      const result = amount.divide(3);
+      // The result should be close to 3.333...
+      expect(result.toUnit()).toBe("3.333333333333333333");
+    });
+  });
+
+  describe("comparison operations", () => {
+    describe("eq", () => {
+      it("should return true for equal amounts", () => {
+        const a = Amount.fromUnit("1.5", 18, "ETH");
+        const b = Amount.fromUnit("1.5", 18, "ETH");
+        expect(a.eq(b)).toBe(true);
+      });
+
+      it("should return false for different amounts", () => {
+        const a = Amount.fromUnit("1.5", 18, "ETH");
+        const b = Amount.fromUnit("2", 18, "ETH");
+        expect(a.eq(b)).toBe(false);
+      });
+
+      it("should return false on different decimals", () => {
+        const a = Amount.fromUnit("1.5", 18, "ETH");
+        const b = Amount.fromUnit("1.5", 6, "USDC");
+        expect(a.eq(b)).toBe(false);
+      });
+
+      it("should return false on different symbols", () => {
+        const a = Amount.fromUnit("1.5", 18, "ETH");
+        const b = Amount.fromUnit("1.5", 18, "DAI");
+        expect(a.eq(b)).toBe(false);
+      });
+
+      it("should return true when one has no symbol", () => {
+        const a = Amount.fromUnit("1.5", 18, "ETH");
+        const b = Amount.fromUnit("1.5", 18);
+        expect(a.eq(b)).toBe(true);
+      });
+    });
+
+    describe("gt", () => {
+      it("should return true when greater", () => {
+        const a = Amount.fromUnit("2", 18, "ETH");
+        const b = Amount.fromUnit("1", 18, "ETH");
+        expect(a.gt(b)).toBe(true);
+      });
+
+      it("should return false when equal", () => {
+        const a = Amount.fromUnit("1", 18, "ETH");
+        const b = Amount.fromUnit("1", 18, "ETH");
+        expect(a.gt(b)).toBe(false);
+      });
+
+      it("should return false when less", () => {
+        const a = Amount.fromUnit("1", 18, "ETH");
+        const b = Amount.fromUnit("2", 18, "ETH");
+        expect(a.gt(b)).toBe(false);
+      });
+
+      it("should return false on incompatible decimals", () => {
+        const a = Amount.fromUnit("100", 18, "ETH");
+        const b = Amount.fromUnit("1", 6, "USDC");
+        expect(a.gt(b)).toBe(false);
+      });
+
+      it("should return false on incompatible symbols", () => {
+        const a = Amount.fromUnit("2", 18, "ETH");
+        const b = Amount.fromUnit("1", 18, "DAI");
+        expect(a.gt(b)).toBe(false);
+      });
+    });
+
+    describe("gte", () => {
+      it("should return true when greater", () => {
+        const a = Amount.fromUnit("2", 18, "ETH");
+        const b = Amount.fromUnit("1", 18, "ETH");
+        expect(a.gte(b)).toBe(true);
+      });
+
+      it("should return true when equal", () => {
+        const a = Amount.fromUnit("1", 18, "ETH");
+        const b = Amount.fromUnit("1", 18, "ETH");
+        expect(a.gte(b)).toBe(true);
+      });
+
+      it("should return false when less", () => {
+        const a = Amount.fromUnit("1", 18, "ETH");
+        const b = Amount.fromUnit("2", 18, "ETH");
+        expect(a.gte(b)).toBe(false);
+      });
+
+      it("should return false on incompatible amounts", () => {
+        const a = Amount.fromUnit("100", 18, "ETH");
+        const b = Amount.fromUnit("1", 6, "USDC");
+        expect(a.gte(b)).toBe(false);
+      });
+    });
+
+    describe("lt", () => {
+      it("should return true when less", () => {
+        const a = Amount.fromUnit("1", 18, "ETH");
+        const b = Amount.fromUnit("2", 18, "ETH");
+        expect(a.lt(b)).toBe(true);
+      });
+
+      it("should return false when equal", () => {
+        const a = Amount.fromUnit("1", 18, "ETH");
+        const b = Amount.fromUnit("1", 18, "ETH");
+        expect(a.lt(b)).toBe(false);
+      });
+
+      it("should return false when greater", () => {
+        const a = Amount.fromUnit("2", 18, "ETH");
+        const b = Amount.fromUnit("1", 18, "ETH");
+        expect(a.lt(b)).toBe(false);
+      });
+
+      it("should return false on incompatible amounts", () => {
+        const a = Amount.fromUnit("1", 18, "ETH");
+        const b = Amount.fromUnit("100", 6, "USDC");
+        expect(a.lt(b)).toBe(false);
+      });
+    });
+
+    describe("lte", () => {
+      it("should return true when less", () => {
+        const a = Amount.fromUnit("1", 18, "ETH");
+        const b = Amount.fromUnit("2", 18, "ETH");
+        expect(a.lte(b)).toBe(true);
+      });
+
+      it("should return true when equal", () => {
+        const a = Amount.fromUnit("1", 18, "ETH");
+        const b = Amount.fromUnit("1", 18, "ETH");
+        expect(a.lte(b)).toBe(true);
+      });
+
+      it("should return false when greater", () => {
+        const a = Amount.fromUnit("2", 18, "ETH");
+        const b = Amount.fromUnit("1", 18, "ETH");
+        expect(a.lte(b)).toBe(false);
+      });
+
+      it("should return false on incompatible amounts", () => {
+        const a = Amount.fromUnit("1", 18, "ETH");
+        const b = Amount.fromUnit("100", 6, "USDC");
+        expect(a.lte(b)).toBe(false);
+      });
+    });
+
+    describe("isZero", () => {
+      it("should return true for zero amount", () => {
+        const amount = Amount.fromUnit("0", 18, "ETH");
+        expect(amount.isZero()).toBe(true);
+      });
+
+      it("should return false for non-zero amount", () => {
+        const amount = Amount.fromUnit("0.1", 18, "ETH");
+        expect(amount.isZero()).toBe(false);
+      });
+
+      it("should return true for zero base", () => {
+        const amount = Amount.fromBase(0n, 18, "ETH");
+        expect(amount.isZero()).toBe(true);
+      });
+    });
+
+    describe("isPositive", () => {
+      it("should return true for positive amount", () => {
+        const amount = Amount.fromUnit("1", 18, "ETH");
+        expect(amount.isPositive()).toBe(true);
+      });
+
+      it("should return false for zero amount", () => {
+        const amount = Amount.fromUnit("0", 18, "ETH");
+        expect(amount.isPositive()).toBe(false);
+      });
+
+      it("should return true for very small positive amount", () => {
+        const amount = Amount.fromBase(1n, 18, "ETH");
+        expect(amount.isPositive()).toBe(true);
+      });
+    });
+  });
+
+  describe("chaining operations", () => {
+    it("should support chaining add operations", () => {
+      const a = Amount.fromUnit("1", 18, "ETH");
+      const b = Amount.fromUnit("2", 18, "ETH");
+      const c = Amount.fromUnit("3", 18, "ETH");
+      expect(a.add(b).add(c).toUnit()).toBe("6");
+    });
+
+    it("should support chaining multiply and divide", () => {
+      const amount = Amount.fromUnit("10", 18, "ETH");
+      expect(amount.multiply(2).divide(4).toUnit()).toBe("5");
+    });
+
+    it("should support complex chaining", () => {
+      const a = Amount.fromUnit("10", 18, "ETH");
+      const b = Amount.fromUnit("5", 18, "ETH");
+      // (10 + 5) * 2 / 3 = 10
+      expect(a.add(b).multiply(2).divide(3).toUnit()).toBe("10");
+    });
   });
 });

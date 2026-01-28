@@ -65,6 +65,10 @@ export type { PreparedTransaction, ExecutableUserTransaction } from "starknet";
 // Types - Token
 export type { Token } from "./types/token.js";
 
+// Amount
+export { Amount, tokenAmountToFormatted } from "./types/amount.js";
+export type { AmountInput } from "./types/amount.js";
+
 // Types - Transaction
 export type {
   TxReceipt,

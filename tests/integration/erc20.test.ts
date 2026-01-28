@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from "vitest";
 import { RpcProvider } from "starknet";
 import { StarkSDK } from "../../src/sdk.js";
 import { Erc20 } from "../../src/erc20/index.js";
-import { StarkSigner, DevnetPreset } from "../../src/index.js";
+import { StarkSigner, DevnetPreset, Amount } from "../../src/index.js";
 import { sepoliaTokens } from "../../src/index.js";
 import { getTestConfig, testPrivateKeys } from "../config.js";
 
@@ -108,16 +108,19 @@ describe("ERC20 (Integration)", () => {
     // Create ERC20 instance
     const erc20 = new Erc20(ETH);
 
-    // Get initial balances using erc20.balanceOf()
+    // Get initial balances using erc20.balanceOf() - now returns Amount
     const senderBalanceBefore = await erc20.balanceOf({ wallet: senderWallet });
     const receiverBalanceBefore = await erc20.balanceOf({
       wallet: receiverWallet,
     });
-    console.log("Sender balance before:", senderBalanceBefore.toString());
-    console.log("Receiver balance before:", receiverBalanceBefore.toString());
+    console.log("Sender balance before:", senderBalanceBefore.toFormatted());
+    console.log(
+      "Receiver balance before:",
+      receiverBalanceBefore.toFormatted()
+    );
 
-    // Transfer amount: 0.1 ETH
-    const transferAmount = "100000000000000000";
+    // Transfer amount: 0.1 ETH using Amount
+    const transferAmount = Amount.fromTokenUnit("0.1", ETH);
 
     // Transfer tokens
     const tx = await erc20.transfer({
@@ -131,21 +134,21 @@ describe("ERC20 (Integration)", () => {
     await tx.wait();
     console.log("Transfer confirmed");
 
-    // Get final balances using erc20.balanceOf()
+    // Get final balances using erc20.balanceOf() - now returns Amount
     const senderBalanceAfter = await erc20.balanceOf({ wallet: senderWallet });
     const receiverBalanceAfter = await erc20.balanceOf({
       wallet: receiverWallet,
     });
-    console.log("Sender balance after:", senderBalanceAfter.toString());
-    console.log("Receiver balance after:", receiverBalanceAfter.toString());
+    console.log("Sender balance after:", senderBalanceAfter.toFormatted());
+    console.log("Receiver balance after:", receiverBalanceAfter.toFormatted());
 
-    // Verify receiver got the tokens
-    const receiverGained = receiverBalanceAfter - receiverBalanceBefore;
-    expect(receiverGained).toBe(BigInt(transferAmount));
+    // Verify receiver got the tokens using Amount methods
+    const receiverGained = receiverBalanceAfter.subtract(receiverBalanceBefore);
+    expect(receiverGained.eq(transferAmount)).toBe(true);
 
     // Verify sender lost at least the transfer amount (plus some gas)
-    const senderLost = senderBalanceBefore - senderBalanceAfter;
-    expect(senderLost).toBeGreaterThanOrEqual(BigInt(transferAmount));
+    const senderLost = senderBalanceBefore.subtract(senderBalanceAfter);
+    expect(senderLost.gte(transferAmount)).toBe(true);
   });
 
   it("should transfer to multiple recipients in one transaction", async () => {
@@ -197,7 +200,7 @@ describe("ERC20 (Integration)", () => {
     // Create ERC20 instance
     const erc20 = new Erc20(ETH);
 
-    // Get initial balances using erc20.balanceOf()
+    // Get initial balances using erc20.balanceOf() - now returns Amount
     const receiver1BalanceBefore = await erc20.balanceOf({
       wallet: receiver1Wallet,
     });
@@ -205,9 +208,9 @@ describe("ERC20 (Integration)", () => {
       wallet: receiver2Wallet,
     });
 
-    // Transfer amounts
-    const amount1 = "100000000000000000"; // 0.1 ETH
-    const amount2 = "200000000000000000"; // 0.2 ETH
+    // Transfer amounts using Amount
+    const amount1 = Amount.fromTokenUnit("0.1", ETH); // 0.1 ETH
+    const amount2 = Amount.fromTokenUnit("0.2", ETH); // 0.2 ETH
 
     // Do multi-transfer
     const tx = await erc20.transfer({
@@ -222,7 +225,7 @@ describe("ERC20 (Integration)", () => {
     await tx.wait();
     console.log("Multi-transfer confirmed");
 
-    // Verify balances using erc20.balanceOf()
+    // Verify balances using erc20.balanceOf() - now returns Amount
     const receiver1BalanceAfter = await erc20.balanceOf({
       wallet: receiver1Wallet,
     });
@@ -230,14 +233,19 @@ describe("ERC20 (Integration)", () => {
       wallet: receiver2Wallet,
     });
 
-    const receiver1Gained = receiver1BalanceAfter - receiver1BalanceBefore;
-    const receiver2Gained = receiver2BalanceAfter - receiver2BalanceBefore;
+    // Verify balances using Amount methods
+    const receiver1Gained = receiver1BalanceAfter.subtract(
+      receiver1BalanceBefore
+    );
+    const receiver2Gained = receiver2BalanceAfter.subtract(
+      receiver2BalanceBefore
+    );
 
-    console.log("Receiver 1 gained:", receiver1Gained.toString());
-    console.log("Receiver 2 gained:", receiver2Gained.toString());
+    console.log("Receiver 1 gained:", receiver1Gained.toFormatted());
+    console.log("Receiver 2 gained:", receiver2Gained.toFormatted());
 
-    expect(receiver1Gained).toBe(BigInt(amount1));
-    expect(receiver2Gained).toBe(BigInt(amount2));
+    expect(receiver1Gained.eq(amount1)).toBe(true);
+    expect(receiver2Gained.eq(amount2)).toBe(true);
   });
 
   it("should use custom token configuration", async () => {
@@ -280,12 +288,13 @@ describe("ERC20 (Integration)", () => {
     // Create ERC20 instance with custom token config
     const erc20 = new Erc20(customEthToken);
 
-    // Get balance using erc20.balanceOf()
+    // Get balance using erc20.balanceOf() - now returns Amount
     const receiverBalanceBefore = await erc20.balanceOf({
       wallet: receiverWallet,
     });
 
-    const transferAmount = "50000000000000000"; // 0.05 ETH
+    // Use Amount for transfer - using the custom token config
+    const transferAmount = Amount.fromTokenUnit("0.05", customEthToken); // 0.05 ETH
 
     const tx = await erc20.transfer({
       from: senderWallet,
@@ -295,12 +304,12 @@ describe("ERC20 (Integration)", () => {
     await tx.wait();
     console.log("Custom token transfer confirmed");
 
-    // Verify balance using erc20.balanceOf()
+    // Verify balance using Amount methods
     const receiverBalanceAfter = await erc20.balanceOf({
       wallet: receiverWallet,
     });
-    const gained = receiverBalanceAfter - receiverBalanceBefore;
+    const gained = receiverBalanceAfter.subtract(receiverBalanceBefore);
 
-    expect(gained).toBe(BigInt(transferAmount));
+    expect(gained.eq(transferAmount)).toBe(true);
   });
 });
