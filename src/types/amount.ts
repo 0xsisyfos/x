@@ -1,20 +1,5 @@
+import type { BigNumberish } from "starknet";
 import type { Token } from "./token.js";
-
-/**
- * Input type for creating Amount instances.
- * Accepts string, number, or bigint values.
- *
- * @example
- * ```ts
- * // All of these are valid AmountInput values:
- * "1.5"      // string with decimals
- * "100"      // string integer
- * 1.5        // number with decimals
- * 100        // number integer
- * 100n       // bigint
- * ```
- */
-export type AmountInput = string | number | bigint;
 
 /**
  * Arguments for the Amount constructor.
@@ -103,7 +88,7 @@ export class Amount {
    * Amount.parse("0.5", 8)             // 0.5 with 8 decimals, no symbol
    * ```
    */
-  static parse(amount: AmountInput, ...args: AmountArgs): Amount {
+  static parse(amount: BigNumberish, ...args: AmountArgs): Amount {
     let decimals: number;
     let symbol: string | undefined;
 
@@ -167,7 +152,7 @@ export class Amount {
    * Amount.fromRaw(1000000n, 6)                      // 1 unit, no symbol
    * ```
    */
-  static fromRaw(amount: AmountInput, ...args: AmountArgs): Amount {
+  static fromRaw(amount: BigNumberish, ...args: AmountArgs): Amount {
     const baseValue = BigInt(amount);
 
     let decimals: number;
@@ -435,7 +420,7 @@ export class Amount {
    * amount.multiply("1.5").toUnit(); // "15"
    * ```
    */
-  public multiply(multiplier: AmountInput): Amount {
+  public multiply(multiplier: BigNumberish): Amount {
     const multiplierStr = multiplier.toString();
 
     if (!multiplierStr.match(/^\d+(\.\d+)?$/)) {
@@ -481,7 +466,7 @@ export class Amount {
    * amount.divide(4).toUnit();     // "2.5"
    * ```
    */
-  public divide(divisor: AmountInput): Amount {
+  public divide(divisor: BigNumberish): Amount {
     const divisorStr = divisor.toString();
 
     if (!divisorStr.match(/^\d+(\.\d+)?$/)) {
