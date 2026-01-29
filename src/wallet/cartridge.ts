@@ -21,6 +21,7 @@ import type {
 } from "../types/wallet.js";
 import type { ExplorerConfig, ChainId } from "../types/config.js";
 import type { WalletInterface } from "./interface.js";
+import { Address } from "../types/index.js";
 
 // Map SDK chainId to Starknet constants
 const CHAIN_ID_MAP: Record<ChainId, string> = {
@@ -88,8 +89,6 @@ export interface CartridgeWalletOptions {
  * ```
  */
 export class CartridgeWallet implements WalletInterface {
-  readonly address: string;
-
   private readonly controller: Controller;
   private readonly walletAccount: WalletAccount;
   private readonly provider: RpcProvider;
@@ -105,7 +104,6 @@ export class CartridgeWallet implements WalletInterface {
   ) {
     this.controller = controller;
     this.walletAccount = walletAccount;
-    this.address = walletAccount.address;
     this.provider = provider;
     this.defaultFeeMode = options.feeMode ?? "user_pays";
     this.defaultTimeBounds = options.timeBounds;
@@ -403,5 +401,9 @@ export class CartridgeWallet implements WalletInterface {
    */
   async username(): Promise<string | undefined> {
     return this.controller.username();
+  }
+
+  get address(): Address {
+    return Address.from(this.walletAccount.address);
   }
 }

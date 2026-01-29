@@ -19,6 +19,7 @@ import type {
 } from "../types/wallet.js";
 import type { SDKConfig } from "../types/config.js";
 import type { WalletInterface } from "./interface.js";
+import { Address } from "../types/address.js";
 
 export { type WalletInterface } from "./interface.js";
 
@@ -42,9 +43,6 @@ export { type WalletInterface } from "./interface.js";
  * ```
  */
 export class Wallet implements WalletInterface {
-  /** The wallet's Starknet address */
-  readonly address: string;
-
   private readonly provider: RpcProvider;
   private readonly account: Account;
   private readonly accountProvider: AccountProvider;
@@ -53,7 +51,6 @@ export class Wallet implements WalletInterface {
   private readonly defaultTimeBounds: PaymasterTimeBounds | undefined;
 
   private constructor(
-    address: string,
     accountProvider: AccountProvider,
     account: Account,
     provider: RpcProvider,
@@ -61,7 +58,6 @@ export class Wallet implements WalletInterface {
     defaultFeeMode: FeeMode = "user_pays",
     defaultTimeBounds?: PaymasterTimeBounds
   ) {
-    this.address = address;
     this.accountProvider = accountProvider;
     this.account = account;
     this.provider = provider;
@@ -94,7 +90,6 @@ export class Wallet implements WalletInterface {
     const account = new Account(accountOptions);
 
     return new Wallet(
-      address,
       accountProvider,
       account,
       provider,
@@ -332,5 +327,16 @@ export class Wallet implements WalletInterface {
    */
   getAccount(): Account {
     return this.account;
+  }
+
+  /**
+   * Get the underlying RPC provider.
+   */
+  getProvider(): RpcProvider {
+    return this.provider;
+  }
+
+  get address(): Address {
+    return Address.from(this.account.address);
   }
 }
