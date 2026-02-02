@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll, afterAll, vi } from "vitest";
-import { Amount, tokenAmountToFormatted } from "../src/index.js";
-import type { Token } from "../src/index.js";
-import type { Address } from "../src/types/address.js";
+import { Amount, tokenAmountToFormatted } from "@/types";
+import type { Token } from "@/types";
+import type { Address } from "@/types";
 
 // Mock Intl.NumberFormat to use 'en-US' locale for deterministic test output
 const OriginalNumberFormat = Intl.NumberFormat;

@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
-import { Erc20 } from "../src/erc20/index.js";
-import { Amount } from "../src/index.js";
-import type { Token } from "../src/index.js";
-import type { Address } from "../src/types/address.js";
-import type { Wallet } from "../src/index.js";
+import { Erc20 } from "@/erc20";
+import { Amount } from "@/types";
+import type { Token } from "@/types";
+import type { Address } from "@/types";
+import type { Wallet } from "@/wallet";
 
 // Mock tokens for testing
 const mockUSDC: Token = {

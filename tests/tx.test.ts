@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { RpcProvider, TransactionFinalityStatus } from "starknet";
-import { Tx } from "../src/tx/index.js";
+import { Tx } from "@/tx";
 import { getTestConfig } from "./config.js";
 
 describe("Tx", () => {

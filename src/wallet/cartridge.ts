@@ -11,7 +11,7 @@ import {
   type Signature,
   type WalletAccount,
 } from "starknet";
-import { Tx } from "../tx/index.js";
+import { Tx } from "@/tx";
 import type {
   EnsureReadyOptions,
   ExecuteOptions,
@@ -19,10 +19,11 @@ import type {
   PreflightOptions,
   PreflightResult,
   PrepareOptions,
-} from "../types/wallet.js";
-import type { ExplorerConfig, ChainId } from "../types/config.js";
-import { Address } from "../types/address.js";
-import type { WalletInterface } from "./interface.js";
+  ExplorerConfig,
+  ChainId,
+} from "@/types";
+import type { WalletInterface } from "@/wallet/interface";
+import { Address } from "@/types";
 import {
   checkDeployed,
   ensureWalletReady,
@@ -160,6 +161,7 @@ export class CartridgeWallet implements WalletInterface {
       nodeUrl: options.rpcUrl ?? controller.rpcUrl(),
     });
 
+    // @ts-expect-error This is a preexisting issue with the starknet.js version mismatch and cartridge's starknet.js version.
     return new CartridgeWallet(controller, walletAccount, provider, options);
   }
 

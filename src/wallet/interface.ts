@@ -7,15 +7,15 @@ import type {
   PreparedTransaction,
   ExecutableUserTransaction,
 } from "starknet";
-import type { Tx } from "../tx/index.js";
-import type { Address } from "../types/address.js";
+import type { Tx } from "@/tx";
 import type {
+  Address,
   EnsureReadyOptions,
   ExecuteOptions,
   PreflightOptions,
   PreflightResult,
   PrepareOptions,
-} from "../types/wallet.js";
+} from "@/types";
 
 /**
  * Interface for a connected Starknet wallet.

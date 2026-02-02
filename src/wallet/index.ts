@@ -8,10 +8,10 @@ import {
   type TypedData,
   type Signature,
 } from "starknet";
-import { Tx } from "../tx/index.js";
-import { AccountProvider } from "./accounts/provider.js";
+import { Tx } from "@/tx";
+import { AccountProvider } from "@/wallet/accounts/provider";
 import { SignerAdapter } from "../signer/adapter.js";
-import type { SignerInterface } from "../signer/interface.js";
+import type { SignerInterface } from "@/signer";
 import type {
   AccountClassConfig,
   EnsureReadyOptions,
@@ -20,9 +20,9 @@ import type {
   PreflightOptions,
   PreflightResult,
   PrepareOptions,
-} from "../types/wallet.js";
-import type { SDKConfig, ExplorerConfig } from "../types/config.js";
-import { Address } from "../types/address.js";
+} from "@/types";
+import type { SDKConfig, ExplorerConfig } from "@/types";
+import { Address } from "@/types";
 import type { WalletInterface } from "./interface.js";
 import {
   checkDeployed,

@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "x": "file:.."
+    "x": "file:../.."
   },
   "devDependencies": {
     "@privy-io/node": "^0.8.0",

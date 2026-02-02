@@ -1,5 +1,5 @@
 import type { Call, Calldata, PaymasterTimeBounds } from "starknet";
-import type { SignerInterface } from "../signer/interface.js";
+import type { SignerInterface } from "@/signer/interface";
 
 // ─── Account Class Configuration ─────────────────────────────────────────────
 

@@ -10,7 +10,12 @@ export default defineConfig(
   tseslint.configs.recommended,
   eslintConfigPrettier,
   {
-    ignores: ["dist/", "node_modules/"],
+    ignores: [
+      "dist/",
+      "node_modules/",
+      "examples/mobile/eslint.config.js",
+      "examples/mobile/metro.config.js",
+    ],
   },
   {
     rules: {

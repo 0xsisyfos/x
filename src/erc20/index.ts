@@ -1,8 +1,8 @@
-import type { Wallet } from "../wallet/index.js";
-import type { Address, ExecuteOptions, Token } from "../types/index.js";
-import { Amount } from "../types/amount.js";
+import type { Wallet } from "@/wallet";
+import type { Address, ExecuteOptions, Token } from "@/types";
+import { Amount } from "@/types";
 import { type Call, CallData, uint256 } from "starknet";
-import type { Tx } from "../tx/index.js";
+import type { Tx } from "@/tx";
 
 export class Erc20 {
   private readonly token: Token;

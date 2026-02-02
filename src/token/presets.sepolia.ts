@@ -6,8 +6,7 @@
  * Source: AVNU API (https://sepolia.api.avnu.fi)
  */
 
-import type { Token } from "../types/token.js";
-import type { Address } from "../types/address.js";
+import type { Token, Address } from "@/types";
 
 export const sepoliaTokens: Record<string, Token> = {
   /** Ether */

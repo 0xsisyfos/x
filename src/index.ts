@@ -1,19 +1,19 @@
 // Main SDK
-export { StarkSDK } from "./sdk.js";
+export { StarkSDK } from "@/sdk";
 
 // Wallet
 export { Wallet, AccountProvider } from "./wallet/index.js";
-export type { WalletInterface, WalletOptions } from "./wallet/index.js";
-export { CartridgeWallet } from "./wallet/cartridge.js";
-export type { CartridgeWalletOptions } from "./wallet/cartridge.js";
+export type { WalletInterface, WalletOptions } from "@/wallet";
+export { CartridgeWallet } from "@/wallet/cartridge";
+export type { CartridgeWalletOptions } from "@/wallet/cartridge";
 
 // Transaction
-export { Tx } from "./tx/index.js";
+export { Tx } from "@/tx";
 
 // Signer
-export type { SignerInterface } from "./signer/interface.js";
+export type { SignerInterface } from "@/signer/interface";
 export { SignerAdapter } from "./signer/adapter.js";
-export { StarkSigner } from "./signer/stark.js";
+export { StarkSigner } from "@/signer/stark";
 export { PrivySigner, type PrivySignerConfig } from "./signer/privy.js";
 
 // Account Presets
@@ -23,11 +23,11 @@ export {
   ArgentPreset,
   BraavosPreset,
   ArgentXV050Preset,
-} from "./account/presets.js";
+} from "@/account/presets";
 
 // Token Presets (auto-generated from Voyager API)
-export * from "./token/presets.js";
-export * from "./token/presets.sepolia.js";
+export * from "@/token/presets";
+export * from "@/token/presets.sepolia";
 
 // Types - Config
 export type {
@@ -35,7 +35,7 @@ export type {
   ChainId,
   ExplorerConfig,
   ExplorerProvider,
-} from "./types/config.js";
+} from "@/types/config";
 
 // Types - Paymaster (re-exported from starknet.js)
 export type {
@@ -43,7 +43,7 @@ export type {
   PaymasterOptions,
   PaymasterTimeBounds,
   PaymasterFeeMode,
-} from "./types/sponsorship.js";
+} from "@/types/sponsorship";
 
 // Types - Wallet
 export type {
@@ -59,17 +59,17 @@ export type {
   PrepareOptions,
   PreflightOptions,
   PreflightResult,
-} from "./types/wallet.js";
+} from "@/types/wallet";
 
 // Re-export paymaster transaction types from starknet.js
 export type { PreparedTransaction, ExecutableUserTransaction } from "starknet";
 
 // Types - Token
-export type { Token } from "./types/token.js";
+export type { Token } from "@/types/token";
 
 // Amount
-export { Amount, tokenAmountToFormatted } from "./types/amount.js";
-export type { AmountArgs } from "./types/amount.js";
+export { Amount, tokenAmountToFormatted } from "@/types/amount";
+export type { AmountArgs } from "@/types/amount";
 
 // Types - Transaction
 export type {
@@ -78,9 +78,9 @@ export type {
   TxWatchCallback,
   TxUnsubscribe,
   WaitOptions,
-} from "./types/tx.js";
+} from "@/types/tx";
 
-export { TransactionStatus } from "./types/tx.js";
+export { TransactionStatus } from "@/types/tx";
 
 // Re-export useful starknet.js types
 export {

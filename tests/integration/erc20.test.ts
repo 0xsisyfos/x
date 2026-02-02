@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeAll } from "vitest";
 import { RpcProvider } from "starknet";
-import { StarkSDK } from "../../src/sdk.js";
-import { Erc20 } from "../../src/erc20/index.js";
+import { StarkSDK } from "@/sdk";
+import { Erc20 } from "@/erc20";
 import { StarkSigner, DevnetPreset, Amount } from "../../src/index.js";
-import { sepoliaTokens } from "../../src/index.js";
+import { sepoliaTokens } from "@/token";
 import { getTestConfig, testPrivateKeys } from "../config.js";
 
 /**
