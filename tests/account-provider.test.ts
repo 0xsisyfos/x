@@ -1,12 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { AccountProvider } from "../src/wallet/accounts/provider.js";
-import { StarkSigner } from "../src/index.js";
-import {
-  OpenZeppelinPreset,
-  ArgentPreset,
-  BraavosPreset,
-} from "../src/index.js";
-import { testPrivateKeys } from "./config.js";
+import { AccountProvider } from "@/wallet/accounts/provider";
+import { StarkSigner } from "@/signer";
+import { OpenZeppelinPreset, ArgentPreset, BraavosPreset } from "@/account";
+import { testPrivateKeys } from "./config";
 
 describe("AccountProvider", () => {
   describe("constructor", () => {

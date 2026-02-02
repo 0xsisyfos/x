@@ -1,5 +1,5 @@
 import type { Signature } from "starknet";
-import type { SignerInterface } from "./interface.js";
+import type { SignerInterface } from "@/signer/interface";
 
 /**
  * Configuration for the Privy signer.

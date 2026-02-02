@@ -1,8 +1,8 @@
 import { hash, type Calldata } from "starknet";
-import { OpenZeppelinPreset } from "../../account/presets.js";
-import type { SignerInterface } from "../../signer/index.js";
-import { Address } from "../../types/address.js";
-import type { AccountClassConfig } from "../../types/wallet.js";
+import { OpenZeppelinPreset } from "@/account";
+import type { SignerInterface } from "@/signer";
+import { Address } from "@/types";
+import type { AccountClassConfig } from "@/types";
 
 /**
  * Account provider that combines a signer with an account class configuration.

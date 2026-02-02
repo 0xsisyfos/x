@@ -1,4 +1,4 @@
-import type { Address } from "./address.js";
+import type { Address } from "@/types/address";
 
 /**
  * ERC20 token configuration.

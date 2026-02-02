@@ -1,5 +1,5 @@
 import type { BigNumberish } from "starknet";
-import type { Token } from "./token.js";
+import type { Token } from "@/types/token";
 
 /**
  * Arguments for the Amount constructor.

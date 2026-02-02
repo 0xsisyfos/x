@@ -1,11 +1,11 @@
 import { RpcProvider } from "starknet";
-import type { SDKConfig } from "./types/config.js";
-import type { ConnectWalletOptions } from "./types/wallet.js";
-import { Wallet } from "./wallet/index.js";
+import type { SDKConfig } from "@/types/config";
+import type { ConnectWalletOptions } from "@/types/wallet";
+import { Wallet } from "@/wallet";
 import {
   CartridgeWallet,
   type CartridgeWalletOptions,
-} from "./wallet/cartridge.js";
+} from "@/wallet/cartridge";
 
 /**
  * Main SDK class for Starknet wallet integration.

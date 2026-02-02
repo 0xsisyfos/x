@@ -1,5 +1,5 @@
 import { ec, type Signature } from "starknet";
-import type { SignerInterface } from "./interface.js";
+import type { SignerInterface } from "@/signer/interface";
 
 /**
  * Standard Stark curve signer using a private key.

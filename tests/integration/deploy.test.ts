@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeAll } from "vitest";
 import { RpcProvider } from "starknet";
-import { StarkSDK } from "../../src/sdk.js";
-import { StarkSigner } from "../../src/index.js";
-import { DevnetPreset } from "../../src/index.js";
-import { getTestConfig, testPrivateKeys } from "../config.js";
+import { StarkSDK } from "@/sdk";
+import { StarkSigner } from "@/signer";
+import { DevnetPreset } from "@/account";
+import { getTestConfig, testPrivateKeys } from "../config";
 
 /**
  * Integration tests that require a running devnet.

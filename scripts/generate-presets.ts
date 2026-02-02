@@ -20,7 +20,7 @@ import { writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
-import { Address } from "../src/types/address.js";
+import { Address } from "@/types";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -187,8 +187,7 @@ function generatePresets(tokens: Token[], networkName: Network): string {
     ` * Source: AVNU API (https://${subdomain}api.avnu.fi)`,
     " */",
     "",
-    'import type { Token } from "../types/token.js";',
-    'import type { Address } from "../types/address.js";',
+    'import type { Token, Address } from "@/types";',
     "",
     `export const ${networkName}Tokens: Record<string, Token> = {`,
   ];

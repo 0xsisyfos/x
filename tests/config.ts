@@ -1,5 +1,5 @@
-import type { SDKConfig } from "../src/index.js";
-import { Address } from "../src/types/index.js";
+import type { SDKConfig } from "@/types";
+import { Address } from "@/types";
 
 /**
  * Test configuration for Starknet Sepolia testnet.

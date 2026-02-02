@@ -1,6 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { StarkSigner } from "../src/signer/stark.js";
-import { SignerAdapter } from "../src/signer/adapter.js";
+import { StarkSigner, SignerAdapter } from "@/signer";
 import { testPrivateKeys } from "./config.js";
 
 describe("StarkSigner", () => {

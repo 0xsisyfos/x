@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { Address } from "../src/types/address.js";
+import { Address } from "@/types";
 
 describe("Address", () => {
   describe("from", () => {

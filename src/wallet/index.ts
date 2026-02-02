@@ -8,10 +8,10 @@ import {
   type TypedData,
   type Signature,
 } from "starknet";
-import { Tx } from "../tx/index.js";
-import { AccountProvider } from "./accounts/provider.js";
-import { SignerAdapter } from "../signer/adapter.js";
-import type { SignerInterface } from "../signer/interface.js";
+import { Tx } from "@/tx";
+import { AccountProvider } from "@/wallet/accounts/provider";
+import { SignerAdapter } from "@/signer";
+import type { SignerInterface } from "@/signer";
 import type {
   AccountClassConfig,
   EnsureReadyOptions,
@@ -20,20 +20,20 @@ import type {
   PreflightOptions,
   PreflightResult,
   PrepareOptions,
-} from "../types/wallet.js";
-import type { SDKConfig, ExplorerConfig } from "../types/config.js";
-import { Address } from "../types/address.js";
-import type { WalletInterface } from "./interface.js";
+} from "@/types";
+import type { SDKConfig, ExplorerConfig } from "@/types";
+import { Address } from "@/types";
+import type { WalletInterface } from "@/wallet/interface";
 import {
   checkDeployed,
   ensureWalletReady,
   executeWithFeeMode,
   preflightTransaction,
   buildSponsoredTransaction,
-} from "./utils.js";
+} from "@/wallet/utils";
 
-export { type WalletInterface } from "./interface.js";
-export { AccountProvider } from "./accounts/provider.js";
+export { type WalletInterface } from "@/wallet/interface";
+export { AccountProvider } from "@/wallet/accounts/provider";
 
 /**
  * Options for creating a Wallet.

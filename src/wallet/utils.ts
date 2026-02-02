@@ -4,14 +4,14 @@ import {
   type Call,
   type PaymasterTimeBounds,
 } from "starknet";
-import { Tx } from "../tx/index.js";
-import type { Address } from "../types/address.js";
+import { Tx } from "@/tx";
+import type { Address } from "@/types";
 import type {
   EnsureReadyOptions,
   PreflightOptions,
   PreflightResult,
-} from "../types/wallet.js";
-import type { ExplorerConfig } from "../types/config.js";
+} from "@/types";
+import type { ExplorerConfig } from "@/types";
 
 /**
  * Shared wallet utilities.

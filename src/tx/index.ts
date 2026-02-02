@@ -8,8 +8,8 @@ import type {
   TxUnsubscribe,
   TxWatchCallback,
   WaitOptions,
-} from "../types/tx.js";
-import type { ExplorerConfig } from "../types/config.js";
+  ExplorerConfig,
+} from "@/types";
 
 const DEFAULT_POLL_INTERVAL_MS = 5_000;
 

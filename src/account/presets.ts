@@ -5,7 +5,7 @@ import {
   CairoOptionVariant,
   type Calldata,
 } from "starknet";
-import type { AccountClassConfig } from "../types/wallet.js";
+import type { AccountClassConfig } from "@/types";
 
 /**
  * Devnet account preset.

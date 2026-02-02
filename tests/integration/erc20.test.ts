@@ -1,10 +1,12 @@
 import { describe, it, expect, beforeAll } from "vitest";
 import { RpcProvider } from "starknet";
-import { StarkSDK } from "../../src/sdk.js";
-import { Erc20 } from "../../src/erc20/index.js";
-import { StarkSigner, DevnetPreset, Amount } from "../../src/index.js";
-import { sepoliaTokens } from "../../src/index.js";
-import { getTestConfig, testPrivateKeys } from "../config.js";
+import { StarkSDK } from "@/sdk";
+import { Erc20 } from "@/erc20";
+import { sepoliaTokens } from "@/token";
+import { StarkSigner } from "@/signer";
+import { DevnetPreset } from "@/account";
+import { Amount } from "@/types";
+import { getTestConfig, testPrivateKeys } from "../config";
 
 /**
  * ERC20 integration tests that require a running devnet.
