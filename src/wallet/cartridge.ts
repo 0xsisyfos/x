@@ -30,7 +30,7 @@ import {
   executeWithFeeMode,
   preflightTransaction,
   buildSponsoredTransaction,
-} from "./utils.js";
+} from "@/wallet/utils";
 
 const CHAIN_ID_MAP: Record<ChainId, string> = {
   SN_MAIN: constants.StarknetChainId.SN_MAIN,

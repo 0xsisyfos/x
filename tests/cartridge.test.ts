@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { CartridgeWallet } from "@/wallet/cartridge";
 
 // Mock the @cartridge/controller module
 vi.mock("@cartridge/controller", () => {
@@ -65,8 +66,6 @@ vi.mock("starknet", async (importOriginal) => {
     RpcProvider: MockRpcProvider,
   };
 });
-
-import { CartridgeWallet } from "../src/index.js";
 
 describe("CartridgeWallet", () => {
   beforeEach(() => {

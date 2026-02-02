@@ -1,6 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { StarkSDK, StarkSigner, OpenZeppelinPreset } from "../src/index.js";
-import { devnetConfig } from "./config.js";
+import { StarkSDK } from "@/sdk";
+import { StarkSigner } from "@/signer";
+import { OpenZeppelinPreset } from "@/account";
+import { devnetConfig } from "./config";
 
 describe("Sponsorship (AVNU Paymaster)", () => {
   // Valid Stark curve private key for testing

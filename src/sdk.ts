@@ -5,7 +5,7 @@ import { Wallet } from "@/wallet";
 import {
   CartridgeWallet,
   type CartridgeWalletOptions,
-} from "./wallet/cartridge.js";
+} from "@/wallet/cartridge";
 
 /**
  * Main SDK class for Starknet wallet integration.

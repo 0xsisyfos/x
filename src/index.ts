@@ -2,7 +2,7 @@
 export { StarkSDK } from "@/sdk";
 
 // Wallet
-export { Wallet, AccountProvider } from "./wallet/index.js";
+export { Wallet, AccountProvider } from "@/wallet";
 export type { WalletInterface, WalletOptions } from "@/wallet";
 export { CartridgeWallet } from "@/wallet/cartridge";
 export type { CartridgeWalletOptions } from "@/wallet/cartridge";
@@ -12,9 +12,9 @@ export { Tx } from "@/tx";
 
 // Signer
 export type { SignerInterface } from "@/signer/interface";
-export { SignerAdapter } from "./signer/adapter.js";
+export { SignerAdapter } from "@/signer/adapter";
 export { StarkSigner } from "@/signer/stark";
-export { PrivySigner, type PrivySignerConfig } from "./signer/privy.js";
+export { PrivySigner, type PrivySignerConfig } from "@/signer/privy";
 
 // Account Presets
 export {

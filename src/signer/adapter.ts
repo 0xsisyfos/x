@@ -15,7 +15,7 @@ import {
   transaction,
   EDAMode,
 } from "starknet";
-import type { SignerInterface } from "./interface.js";
+import type { SignerInterface } from "@/signer/interface";
 
 /**
  * Convert data availability mode to integer (0 = L1, 1 = L2).

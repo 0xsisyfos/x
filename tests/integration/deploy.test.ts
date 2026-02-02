@@ -3,7 +3,7 @@ import { RpcProvider } from "starknet";
 import { StarkSDK } from "@/sdk";
 import { StarkSigner } from "@/signer";
 import { DevnetPreset } from "@/account";
-import { getTestConfig, testPrivateKeys } from "../config.js";
+import { getTestConfig, testPrivateKeys } from "../config";
 
 /**
  * Integration tests that require a running devnet.
