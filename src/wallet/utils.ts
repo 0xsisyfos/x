@@ -5,6 +5,7 @@ import {
   type PaymasterTimeBounds,
 } from "starknet";
 import { Tx } from "../tx/index.js";
+import type { Address } from "../types/address.js";
 import type {
   EnsureReadyOptions,
   PreflightOptions,
@@ -22,7 +23,7 @@ import type { ExplorerConfig } from "../types/config.js";
  */
 export async function checkDeployed(
   provider: RpcProvider,
-  address: string
+  address: Address
 ): Promise<boolean> {
   try {
     const classHash = await provider.getClassHashAt(address);
