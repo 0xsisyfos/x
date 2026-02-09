@@ -4,7 +4,6 @@ import {
   type AccountClassConfig,
   ArgentPreset,
   BraavosPreset,
-  type ChainId,
   DevnetPreset,
   fromAddress,
   OpenZeppelinPreset,
@@ -13,6 +12,8 @@ import {
   StarkSDK,
   StarkSigner,
   type WalletInterface,
+  type ChainIdLiteral,
+  ChainId,
 } from "x";
 import {
   showTransactionToast,
@@ -56,6 +57,7 @@ export const NETWORKS: NetworkConfig[] = [
 export const DEFAULT_NETWORK_INDEX = 0;
 
 // Account presets
+// Note: Braavos deployment requires special signature format (see BraavosPreset docs)
 export const PRESETS: Record<string, AccountClassConfig> = {
   OpenZeppelin: OpenZeppelinPreset,
   Argent: ArgentPreset,
@@ -100,7 +102,7 @@ interface WalletState {
   selectNetwork: (index: number) => void;
   selectCustomNetwork: () => void;
   setCustomRpcUrl: (url: string) => void;
-  setCustomChainId: (chainId: ChainId) => void;
+  setCustomChainId: (chainId: ChainIdLiteral) => void;
   confirmNetworkConfig: () => void;
   resetNetworkConfig: () => void;
 
@@ -157,7 +159,7 @@ export const useWalletStore = create<WalletState>((set, get) => ({
 
   // Custom network form state
   customRpcUrl: "",
-  customChainId: "SN_SEPOLIA",
+  customChainId: ChainId.from("SN_SEPOLIA"),
 
   // Initial state
   privateKey: "",
@@ -193,7 +195,7 @@ export const useWalletStore = create<WalletState>((set, get) => ({
 
   setCustomRpcUrl: (url) => set({ customRpcUrl: url }),
 
-  setCustomChainId: (chainId) => set({ customChainId: chainId }),
+  setCustomChainId: (chainId) => set({ customChainId: ChainId.from(chainId) }),
 
   confirmNetworkConfig: () => {
     const { selectedNetworkIndex, customRpcUrl, customChainId, addLog } = get();
