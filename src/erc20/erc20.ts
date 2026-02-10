@@ -50,6 +50,36 @@ export class Erc20 {
   }
 
   /**
+   * Build an ERC20 approve Call without executing.
+   *
+   * @internal Used by {@link TxBuilder} — not part of the public API.
+   */
+  public populateApprove(spender: Address, amount: Amount): Call {
+    this.validateAmount(amount);
+    return this.contract.populateTransaction.approve(
+      spender,
+      uint256.bnToUint256(amount.toBase())
+    );
+  }
+
+  /**
+   * Build transfer Call(s) without executing.
+   *
+   * @internal Used by {@link TxBuilder} — not part of the public API.
+   */
+  public populateTransfer(
+    transfers: { to: Address; amount: Amount }[]
+  ): Call[] {
+    return transfers.map((transfer) => {
+      this.validateAmount(transfer.amount);
+      return this.contract.populateTransaction.transfer(
+        transfer.to,
+        uint256.bnToUint256(transfer.amount.toBase())
+      );
+    });
+  }
+
+  /**
    * Transfer tokens to one or more addresses.
    * @param from - Wallet to transfer tokens from
    * @param transfers - Array of transfer objects, each containing a to address and an Amount
@@ -75,16 +105,7 @@ export class Erc20 {
     transfers: { to: Address; amount: Amount }[],
     options?: ExecuteOptions
   ): Promise<Tx> {
-    const calls: Call[] = transfers.map((transfer) => {
-      // Validate that the amount matches this token
-      this.validateAmount(transfer.amount);
-
-      return this.contract.populateTransaction.transfer(
-        transfer.to,
-        uint256.bnToUint256(transfer.amount.toBase())
-      );
-    });
-
+    const calls = this.populateTransfer(transfers);
     return await from.execute(calls, options);
   }
 
