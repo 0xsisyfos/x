@@ -85,11 +85,18 @@ function createMockErc20(token: Token) {
   } as unknown as Erc20;
 }
 
-function createMockStaking() {
+const addPoolCall: Call = {
+  contractAddress: poolAddress,
+  entrypoint: "add_to_delegation_pool",
+  calldata: ["0xwallet", "100", "0"],
+};
+
+function createMockStaking(isMember = false) {
   return {
     poolAddress,
+    isMember: vi.fn().mockResolvedValue(isMember),
     populateEnter: vi.fn().mockReturnValue([approveCall, enterPoolCall]),
-    populateAdd: vi.fn().mockReturnValue([approveCall, enterPoolCall]),
+    populateAdd: vi.fn().mockReturnValue([approveCall, addPoolCall]),
     populateClaimRewards: vi.fn().mockReturnValue(claimCall),
     populateExitIntent: vi.fn().mockReturnValue(exitIntentCall),
     populateExit: vi.fn().mockReturnValue(exitCall),
@@ -136,11 +143,58 @@ describe("TxBuilder", () => {
       expect(builder.add(rawCall)).toBe(builder);
       expect(builder.approve(mockUSDC, dexAddress, amount)).toBe(builder);
       expect(builder.transfer(mockUSDC, { to: alice, amount })).toBe(builder);
+      expect(builder.stake(poolAddress, amount)).toBe(builder);
       expect(builder.enterPool(poolAddress, amount)).toBe(builder);
       expect(builder.addToPool(poolAddress, amount)).toBe(builder);
       expect(builder.claimPoolRewards(poolAddress)).toBe(builder);
       expect(builder.exitPoolIntent(poolAddress, amount)).toBe(builder);
       expect(builder.exitPool(poolAddress)).toBe(builder);
+    });
+  });
+
+  // ============================================================
+  // State accessors
+  // ============================================================
+
+  describe("length / isEmpty / isSent", () => {
+    it("should start empty", () => {
+      const wallet = createMockWallet();
+      const builder = new TxBuilder(wallet);
+
+      expect(builder.length).toBe(0);
+      expect(builder.isEmpty).toBe(true);
+      expect(builder.isSent).toBe(false);
+    });
+
+    it("should track the number of pending operations", () => {
+      const wallet = createMockWallet();
+      const amount = Amount.parse("100", mockUSDC);
+      const builder = new TxBuilder(wallet)
+        .add(rawCall)
+        .transfer(mockUSDC, { to: alice, amount })
+        .approve(mockUSDC, dexAddress, amount);
+
+      expect(builder.length).toBe(3);
+      expect(builder.isEmpty).toBe(false);
+    });
+
+    it("should reflect sent state after send()", async () => {
+      const wallet = createMockWallet();
+      const builder = new TxBuilder(wallet).add(rawCall);
+
+      expect(builder.isSent).toBe(false);
+      await builder.send();
+      expect(builder.isSent).toBe(true);
+    });
+
+    it("should not mark as sent when send() fails", async () => {
+      const wallet = createMockWallet({
+        execute: vi.fn().mockRejectedValue(new Error("fail")),
+      });
+      const builder = new TxBuilder(wallet).add(rawCall);
+
+      await expect(builder.send()).rejects.toThrow("fail");
+      expect(builder.isSent).toBe(false);
     });
   });
 
@@ -221,6 +275,57 @@ describe("TxBuilder", () => {
   // ============================================================
   // Staking operations
   // ============================================================
+
+  describe("stake", () => {
+    it("should call populateEnter when wallet is not a member", async () => {
+      const mockStaking = createMockStaking(false);
+      const wallet = createMockWallet({
+        staking: vi.fn().mockResolvedValue(mockStaking),
+      });
+      const amount = Amount.parse("100", mockSTRK);
+
+      const calls = await new TxBuilder(wallet)
+        .stake(poolAddress, amount)
+        .calls();
+
+      expect(mockStaking.isMember).toHaveBeenCalledWith(wallet);
+      expect(mockStaking.populateEnter).toHaveBeenCalled();
+      expect(mockStaking.populateAdd).not.toHaveBeenCalled();
+      expect(calls).toHaveLength(2);
+      expect(calls[0].entrypoint).toBe("approve");
+      expect(calls[1].entrypoint).toBe("enter_delegation_pool");
+    });
+
+    it("should call populateAdd when wallet is already a member", async () => {
+      const mockStaking = createMockStaking(true);
+      const wallet = createMockWallet({
+        staking: vi.fn().mockResolvedValue(mockStaking),
+      });
+      const amount = Amount.parse("100", mockSTRK);
+
+      const calls = await new TxBuilder(wallet)
+        .stake(poolAddress, amount)
+        .calls();
+
+      expect(mockStaking.isMember).toHaveBeenCalledWith(wallet);
+      expect(mockStaking.populateAdd).toHaveBeenCalled();
+      expect(mockStaking.populateEnter).not.toHaveBeenCalled();
+      expect(calls).toHaveLength(2);
+      expect(calls[0].entrypoint).toBe("approve");
+      expect(calls[1].entrypoint).toBe("add_to_delegation_pool");
+    });
+
+    it("should propagate staking resolution errors", async () => {
+      const wallet = createMockWallet({
+        staking: vi.fn().mockRejectedValue(new Error("pool not found")),
+      });
+      const amount = Amount.parse("100", mockSTRK);
+
+      await expect(
+        new TxBuilder(wallet).stake(poolAddress, amount).calls()
+      ).rejects.toThrow("pool not found");
+    });
+  });
 
   describe("enterPool", () => {
     it("should resolve staking and build enter calls", async () => {
@@ -362,6 +467,51 @@ describe("TxBuilder", () => {
       await new TxBuilder(wallet).add(rawCall).estimateFee();
 
       expect(wallet.estimateFee).toHaveBeenCalledWith([rawCall]);
+    });
+  });
+
+  describe("preflight", () => {
+    it("should delegate to wallet.preflight with resolved calls", async () => {
+      const wallet = createMockWallet({
+        preflight: vi.fn().mockResolvedValue({ ok: true }),
+      });
+
+      const result = await new TxBuilder(wallet).add(rawCall).preflight();
+
+      expect(wallet.preflight).toHaveBeenCalledWith({ calls: [rawCall] });
+      expect(result).toEqual({ ok: true });
+    });
+
+    it("should return failure reason from simulation", async () => {
+      const wallet = createMockWallet({
+        preflight: vi
+          .fn()
+          .mockResolvedValue({ ok: false, reason: "insufficient balance" }),
+      });
+
+      const result = await new TxBuilder(wallet).add(rawCall).preflight();
+
+      expect(result).toEqual({ ok: false, reason: "insufficient balance" });
+    });
+
+    it("should resolve async staking calls before simulating", async () => {
+      const mockStaking = createMockStaking(false);
+      const wallet = createMockWallet({
+        staking: vi.fn().mockResolvedValue(mockStaking),
+        preflight: vi.fn().mockResolvedValue({ ok: true }),
+      });
+      const amount = Amount.parse("100", mockSTRK);
+
+      await new TxBuilder(wallet).stake(poolAddress, amount).preflight();
+
+      expect(wallet.preflight).toHaveBeenCalledWith({
+        calls: expect.arrayContaining([
+          expect.objectContaining({ entrypoint: "approve" }),
+          expect.objectContaining({
+            entrypoint: "enter_delegation_pool",
+          }),
+        ]),
+      });
     });
   });
 
@@ -628,20 +778,23 @@ describe("TxBuilder", () => {
       await expect(builder.send()).rejects.toThrow("execution reverted");
     });
 
-    it("should not mark as sent when wallet.execute fails", async () => {
+    it("should allow retry when wallet.execute fails", async () => {
       const wallet = createMockWallet({
-        execute: vi.fn().mockRejectedValueOnce(new Error("network error")),
+        execute: vi
+          .fn()
+          .mockRejectedValueOnce(new Error("network error"))
+          .mockResolvedValueOnce({ hash: "0xretry" }),
       });
 
       const builder = new TxBuilder(wallet).add(rawCall);
 
+      // First attempt fails
       await expect(builder.send()).rejects.toThrow("network error");
 
-      // Fix: the builder currently marks sent=true before execute resolves,
-      // so a second send() would throw "already sent" — let's verify current behavior
-      await expect(builder.send()).rejects.toThrow(
-        "This transaction has already been sent"
-      );
+      // Retry succeeds — builder was not marked as sent
+      const tx = await builder.send();
+      expect(tx).toEqual({ hash: "0xretry" });
+      expect(wallet.execute).toHaveBeenCalledTimes(2);
     });
   });
 });

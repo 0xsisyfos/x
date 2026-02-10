@@ -3,6 +3,7 @@ import {
   type Address,
   Amount,
   type ChainId,
+  type DeployOptions,
   type EnsureReadyOptions,
   type ExecuteOptions,
   type FeeMode,
@@ -40,7 +41,7 @@ import { Staking } from "@/staking";
  * ```ts
  * class CustomWallet extends BaseWallet {
  *   constructor(address: Address, private account: Account) {
- *     super(address);
+ *     super(address, undefined);
  *   }
  *
  *   async isDeployed(): Promise<boolean> {
@@ -117,7 +118,7 @@ export abstract class BaseWallet implements WalletInterface {
   abstract ensureReady(options?: EnsureReadyOptions): Promise<void>;
 
   /** @inheritdoc */
-  abstract deploy(): Promise<Tx>;
+  abstract deploy(options?: DeployOptions): Promise<Tx>;
 
   /** @inheritdoc */
   abstract execute(calls: Call[], options?: ExecuteOptions): Promise<Tx>;

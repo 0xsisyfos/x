@@ -1,7 +1,13 @@
 import type { Call } from "starknet";
 import type { WalletInterface } from "@/wallet/interface";
 import type { Tx } from "@/tx";
-import type { Address, Amount, ExecuteOptions, Token } from "@/types";
+import type {
+  Address,
+  Amount,
+  ExecuteOptions,
+  PreflightResult,
+  Token,
+} from "@/types";
 
 /**
  * Fluent transaction builder for batching multiple operations into a single transaction.
@@ -50,6 +56,34 @@ export class TxBuilder {
 
   constructor(wallet: WalletInterface) {
     this.wallet = wallet;
+  }
+
+  // ============================================================
+  // State accessors
+  // ============================================================
+
+  /**
+   * The number of pending operations in the builder.
+   *
+   * Each chained method counts as one operation, even if it expands
+   * into multiple calls once resolved.
+   */
+  get length(): number {
+    return this.pending.length;
+  }
+
+  /**
+   * Whether the builder has no pending operations.
+   */
+  get isEmpty(): boolean {
+    return this.pending.length === 0;
+  }
+
+  /**
+   * Whether `send()` has already been called successfully on this builder.
+   */
+  get isSent(): boolean {
+    return this.sent;
   }
 
   // ============================================================
@@ -150,9 +184,51 @@ export class TxBuilder {
   // ============================================================
 
   /**
+   * Stake tokens in a delegation pool, automatically choosing the right
+   * action based on current membership status.
+   *
+   * - If the wallet is **not** a member, calls `enter_delegation_pool`.
+   * - If the wallet **is** already a member, calls `add_to_delegation_pool`.
+   *
+   * In both cases the token approve call is included automatically.
+   *
+   * This is the **recommended** way to stake via the builder. Prefer this
+   * over {@link enterPool} and {@link addToPool} unless you need explicit
+   * control over which entrypoint is called.
+   *
+   * @param poolAddress - The pool contract address
+   * @param amount - The amount of tokens to stake
+   * @returns this (for chaining)
+   *
+   * @example
+   * ```ts
+   * // Works whether the wallet is a new or existing member
+   * const tx = await wallet.tx()
+   *   .stake(poolAddress, Amount.parse("100", STRK))
+   *   .send();
+   * await tx.wait();
+   * ```
+   */
+  stake(poolAddress: Address, amount: Amount): this {
+    const p = this.wallet.staking(poolAddress).then(async (s) => {
+      const isMember = await s.isMember(this.wallet);
+      return isMember
+        ? s.populateAdd(this.wallet.address, amount)
+        : s.populateEnter(this.wallet.address, amount);
+    });
+    p.catch(() => {});
+    this.pending.push(p);
+    return this;
+  }
+
+  /**
    * Enter a delegation pool as a new member.
    *
    * Automatically includes the token approve call before the pool entry call.
+   *
+   * **Prefer {@link stake}** which auto-detects membership. Only use this if
+   * you are certain the wallet is not already a member — the transaction will
+   * revert on-chain otherwise.
    *
    * @param poolAddress - The pool contract address to enter
    * @param amount - The amount of tokens to stake
@@ -166,11 +242,11 @@ export class TxBuilder {
    * ```
    */
   enterPool(poolAddress: Address, amount: Amount): this {
-    this.pending.push(
-      this.wallet
-        .staking(poolAddress)
-        .then((s) => s.populateEnter(this.wallet.address, amount))
-    );
+    const p = this.wallet
+      .staking(poolAddress)
+      .then((s) => s.populateEnter(this.wallet.address, amount));
+    p.catch(() => {});
+    this.pending.push(p);
     return this;
   }
 
@@ -178,6 +254,10 @@ export class TxBuilder {
    * Add more tokens to an existing stake in a pool.
    *
    * Automatically includes the token approve call before the add-to-pool call.
+   *
+   * **Prefer {@link stake}** which auto-detects membership. Only use this if
+   * you are certain the wallet is already a member — the transaction will
+   * revert on-chain otherwise.
    *
    * @param poolAddress - The pool contract address
    * @param amount - The amount of tokens to add
@@ -191,16 +271,20 @@ export class TxBuilder {
    * ```
    */
   addToPool(poolAddress: Address, amount: Amount): this {
-    this.pending.push(
-      this.wallet
-        .staking(poolAddress)
-        .then((s) => s.populateAdd(this.wallet.address, amount))
-    );
+    const p = this.wallet
+      .staking(poolAddress)
+      .then((s) => s.populateAdd(this.wallet.address, amount));
+    p.catch(() => {});
+    this.pending.push(p);
     return this;
   }
 
   /**
    * Claim accumulated staking rewards from a pool.
+   *
+   * **Note:** Unlike `wallet.claimPoolRewards()`, this does not verify
+   * membership. The transaction will revert on-chain if the wallet is not
+   * a member of the pool.
    *
    * @param poolAddress - The pool contract address
    * @returns this (for chaining)
@@ -213,19 +297,23 @@ export class TxBuilder {
    * ```
    */
   claimPoolRewards(poolAddress: Address): this {
-    this.pending.push(
-      this.wallet
-        .staking(poolAddress)
-        .then((s) => [s.populateClaimRewards(this.wallet.address)])
-    );
+    const p = this.wallet
+      .staking(poolAddress)
+      .then((s) => [s.populateClaimRewards(this.wallet.address)]);
+    p.catch(() => {});
+    this.pending.push(p);
     return this;
   }
 
   /**
    * Initiate an exit from a delegation pool.
    *
-   * After this, wait for the exit window to pass, then call `exitPool()` to
-   * complete the withdrawal.
+   * After this, wait for the exit window to pass, then call {@link exitPool}
+   * to complete the withdrawal.
+   *
+   * **Note:** Unlike `wallet.exitPoolIntent()`, this does not verify
+   * membership or balance. The transaction will revert on-chain if the
+   * wallet is not a member or has insufficient stake.
    *
    * @param poolAddress - The pool contract address
    * @param amount - The amount to unstake
@@ -239,16 +327,20 @@ export class TxBuilder {
    * ```
    */
   exitPoolIntent(poolAddress: Address, amount: Amount): this {
-    this.pending.push(
-      this.wallet
-        .staking(poolAddress)
-        .then((s) => [s.populateExitIntent(amount)])
-    );
+    const p = this.wallet
+      .staking(poolAddress)
+      .then((s) => [s.populateExitIntent(amount)]);
+    p.catch(() => {});
+    this.pending.push(p);
     return this;
   }
 
   /**
    * Complete the exit from a delegation pool after the exit window has passed.
+   *
+   * **Note:** Unlike `wallet.exitPool()`, this does not verify that an exit
+   * intent exists. The transaction will revert on-chain if no prior
+   * {@link exitPoolIntent} was submitted or the exit window has not elapsed.
    *
    * @param poolAddress - The pool contract address
    * @returns this (for chaining)
@@ -261,11 +353,11 @@ export class TxBuilder {
    * ```
    */
   exitPool(poolAddress: Address): this {
-    this.pending.push(
-      this.wallet
-        .staking(poolAddress)
-        .then((s) => [s.populateExit(this.wallet.address)])
-    );
+    const p = this.wallet
+      .staking(poolAddress)
+      .then((s) => [s.populateExit(this.wallet.address)]);
+    p.catch(() => {});
+    this.pending.push(p);
     return this;
   }
 
@@ -300,19 +392,50 @@ export class TxBuilder {
    *
    * Resolves any pending async operations and estimates the execution fee.
    *
-   * @returns Fee estimation result
+   * @returns Fee estimation including overall fee, gas price, and gas bounds
    *
    * @example
    * ```ts
    * const fee = await wallet.tx()
    *   .transfer(USDC, { to: alice, amount })
-   *   .enterPool(poolAddress, stakeAmount)
+   *   .stake(poolAddress, stakeAmount)
    *   .estimateFee();
+   *
+   * console.log("Estimated fee:", fee.overall_fee);
    * ```
    */
   async estimateFee() {
     const calls = await this.calls();
     return this.wallet.estimateFee(calls);
+  }
+
+  /**
+   * Simulate the transaction to check if it would succeed.
+   *
+   * Resolves all pending operations and runs them through the wallet's
+   * preflight simulation without submitting on-chain. Use this to
+   * validate the transaction before calling {@link send}.
+   *
+   * @returns `{ ok: true }` if the simulation succeeds, or
+   *          `{ ok: false, reason: string }` with a human-readable error
+   *
+   * @example
+   * ```ts
+   * const builder = wallet.tx()
+   *   .stake(poolAddress, amount)
+   *   .transfer(USDC, { to: alice, amount: usdcAmount });
+   *
+   * const result = await builder.preflight();
+   * if (!result.ok) {
+   *   console.error("Transaction would fail:", result.reason);
+   * } else {
+   *   await builder.send();
+   * }
+   * ```
+   */
+  async preflight(): Promise<PreflightResult> {
+    const calls = await this.calls();
+    return this.wallet.preflight({ calls });
   }
 
   /**
@@ -351,7 +474,8 @@ export class TxBuilder {
       );
     }
 
+    const tx = await this.wallet.execute(calls, options);
     this.sent = true;
-    return this.wallet.execute(calls, options);
+    return tx;
   }
 }
