@@ -1,6 +1,7 @@
 {
   "name": "Consumer App SDK Documentation",
-  "theme": "mint",
+  "theme": "venus",
+  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#6366F1",
     "light": "#818CF8",
