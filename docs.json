@@ -49,9 +49,7 @@
       },
       {
         "group": "Using LLMs",
-        "pages": [
-          "mintlify-docs/build/consumer-app-sdk/using-llms"
-        ]
+        "pages": ["mintlify-docs/build/consumer-app-sdk/using-llms"]
       },
       {
         "group": "Modules",
@@ -73,9 +71,7 @@
       },
       {
         "group": "Examples",
-        "pages": [
-          "mintlify-docs/build/consumer-app-sdk/examples"
-        ]
+        "pages": ["mintlify-docs/build/consumer-app-sdk/examples"]
       },
       {
         "group": "Reference",
