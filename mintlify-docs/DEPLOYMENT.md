@@ -1,14 +1,16 @@
 # Deployment Guide
 
-## Option 1: Mintlify Hosting (Recommended)
+## Option 1: Mintlify Hosting (Recommended - Use This!)
 
-Mintlify provides free hosting for documentation sites. This is the easiest and recommended approach:
+**This is the recommended approach.** Mintlify provides free hosting and is designed for this purpose.
 
 1. **Connect your repository to Mintlify:**
    - Go to [Mintlify Dashboard](https://mintlify.com)
-   - Sign up or log in
+   - Sign up or log in (free account)
    - Click "New Project" and connect your GitHub repository
-   - Select the `mintlify-docs` directory as the root
+   - Select the branch: `docs/mintlify`
+   - Set the root directory to: `mintlify-docs`
+   - Mintlify will automatically detect `mint.json`
 
 2. **Automatic deployments:**
    - Mintlify will automatically deploy on every push to your main branch
@@ -19,7 +21,26 @@ Mintlify provides free hosting for documentation sites. This is the easiest and 
 
 ## Option 2: Vercel Deployment
 
-If you prefer to deploy to Vercel, follow these steps:
+**⚠️ Important Note:** Mintlify is designed for Mintlify hosting. For Vercel, you need to ensure the build output is correct. If you get 404 errors, the build might not be generating static files properly.
+
+**⚠️ Important:** Mintlify is designed to be hosted on Mintlify's platform. While you can try to deploy to Vercel, Mintlify doesn't build traditional static files, which can cause 404 errors.
+
+**Recommended:** Use Mintlify hosting (Option 1) for the best experience.
+
+If you still want to deploy to Vercel, you have two options:
+
+### Option 2A: Use Mintlify's Vercel Integration
+
+Mintlify provides a Vercel integration that handles the deployment properly:
+
+1. Connect your repository to Mintlify (see Option 1)
+2. In Mintlify dashboard, go to Settings → Deployment
+3. Enable Vercel integration
+4. Follow the setup instructions
+
+### Option 2B: Manual Vercel Setup (May Not Work)
+
+If you prefer to deploy to Vercel manually, follow these steps:
 
 ### Prerequisites
 
