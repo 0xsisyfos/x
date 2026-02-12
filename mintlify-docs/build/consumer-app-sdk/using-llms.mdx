@@ -1,0 +1,99 @@
+---
+title: Setup Cursor
+description: "Set up Cursor IDE and MCP with Consumer App SDK documentation for AI-powered development"
+icon: code
+---
+
+## Overview
+
+Using Docs in Cursor - Learn how to set up Cursor IDE and MCP with Consumer App SDK documentation
+
+## Setting Up LLM Integrations with Consumer App SDK
+
+This guide covers two powerful ways to integrate Consumer App SDK with LLMs: Cursor IDE integration and Model Context Protocol (MCP) setup.
+
+## Cursor IDE Setup
+
+### Prerequisites
+
+- Cursor IDE installed on your machine
+- Basic familiarity with Cursor's interface
+
+### Configuration Steps
+
+1. **Open Cursor IDE**
+2. **Navigate to Settings > Features > Docs**
+3. **Click on Add new doc**
+4. **In the URL field, paste the following URL:**
+   ```
+   https://docs.starknet.io/llms-full.txt
+   ```
+
+## Using Consumer App SDK Documentation in Cursor
+
+Once configured, you can access Consumer App SDK's documentation directly within Cursor using the following methods:
+
+### Method 1: Using @docs Command
+
+Type `@docs` followed by "Consumer App SDK" to reference the documentation in your code. For example:
+
+```typescript
+// @docs -> Consumer App SDK: How to initialize a wallet connection
+const wallet = await sdk.onboard({
+  strategy: OnboardStrategy.Privy,
+  // ...
+});
+```
+
+### Method 2: Local Docs MCP Setup
+
+You can also ask questions about Consumer App SDK directly in comments, and Cursor will use the documentation to provide relevant answers and code suggestions.
+
+## Example Usage
+
+Here are some examples of how to use the documentation in Cursor:
+
+**Initializing the SDK:**
+```typescript
+// @docs -> Consumer App SDK: SDK initialization and configuration
+import { StarkSDK } from "x";
+
+const sdk = new StarkSDK({
+  network: "mainnet",
+});
+```
+
+**Connecting a Wallet:**
+```typescript
+// @docs -> Consumer App SDK: Wallet connection with Privy
+const onboard = await sdk.onboard({
+  strategy: OnboardStrategy.Privy,
+  privy: {
+    resolve: async () => ({
+      walletId: "privy-wallet-id",
+      publicKey: "0xPUBLIC_KEY",
+      serverUrl: "https://your-api.example/wallet/sign",
+    }),
+  },
+});
+```
+
+**Executing Transactions:**
+```typescript
+// @docs -> Consumer App SDK: Transaction execution and batching
+const tx = await wallet.execute([call]);
+await tx.wait();
+```
+
+## Benefits
+
+- **Faster Development** - Get instant answers without leaving your IDE
+- **Accurate Code Suggestions** - LLM uses official documentation for context
+- **Reduced Errors** - Documentation-backed code examples
+- **Better Understanding** - Learn as you code with inline documentation
+
+## Next Steps
+
+- Explore the [Quick Start Guide](/build/consumer-app-sdk/quick-start) to begin building
+- Check out [Examples](/build/consumer-app-sdk/examples) for practical code samples
+- Review the [API Reference](/build/consumer-app-sdk/api-reference) for detailed method documentation
