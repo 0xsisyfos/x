@@ -39,6 +39,7 @@
           "mintlify-docs/build/consumer-app-sdk/quick-start",
           {
             "group": "Configuration",
+            "icon": "cog",
             "pages": [
               "mintlify-docs/build/consumer-app-sdk/configuration",
               "mintlify-docs/build/consumer-app-sdk/paymasters"
@@ -86,5 +87,15 @@
     "twitter": "https://twitter.com/StarknetEco",
     "github": "https://github.com/starknet-io/starknet-docs",
     "linkedin": "https://www.linkedin.com/company/starkware"
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "mcp",
+      "cursor"
+    ]
   }
 }
