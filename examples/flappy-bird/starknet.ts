@@ -5,7 +5,7 @@
  * Uses only StarkZap (x): SDK, wallet, provider (wallet.getProvider()), Contract and RpcProvider re-exported from x for read-only calls.
  */
 import {
-  StarkZap,
+  StarkSDK,
   OnboardStrategy,
   ChainId,
   networks,
@@ -55,7 +55,7 @@ const GAME_ABI = [
   },
 ];
 
-let sdk: StarkZap | null = null;
+let sdk: StarkSDK | null = null;
 let wallet: WalletInterface | null = null;
 
 /** If true, account is not SNIP-9 compatible; use user_pays so transactions succeed. */
@@ -95,9 +95,9 @@ async function executeGameCall(
   }
 }
 
-export function initSdk(): StarkZap {
+export function initSdk(): StarkSDK {
   if (!sdk) {
-    sdk = new StarkZap({ network: "sepolia" });
+    sdk = new StarkSDK({ network: "sepolia" });
   }
   return sdk;
 }
