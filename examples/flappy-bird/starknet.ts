@@ -11,12 +11,13 @@ import {
   networks,
   type WalletInterface,
 } from "x";
-import { Contract, type RpcProvider } from "starknet";
+import { Contract, getChecksumAddress, type RpcProvider } from "starknet";
 
 // FOS demo game contract on Sepolia (same as https://github.com/0xsisyfos/fos)
-// Use lowercase so it matches Cartridge session policy key and RPC address comparison
-export const GAME_CONTRACT =
-  "0x03730b941e8d3ece030a4a0d5f1008f34fbde0976e86577a78648c8b35079464".toLowerCase();
+// Checksummed address so execute() calls match Cartridge session policies (Controller normalizes policy targets with getChecksumAddress).
+export const GAME_CONTRACT = getChecksumAddress(
+  "0x03730b941e8d3ece030a4a0d5f1008f34fbde0976e86577a78648c8b35079464"
+);
 
 const GAME_POLICIES = [
   { target: GAME_CONTRACT, method: "start_new_game" },
@@ -75,7 +76,7 @@ async function executeGameCall(
     await wallet.execute(
       [
         {
-          contractAddress: GAME_CONTRACT,
+          contractAddress: GAME_CONTRACT, // already checksummed; must match session policy target
           entrypoint,
           calldata,
         },
