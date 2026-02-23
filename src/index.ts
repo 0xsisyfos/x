@@ -1,13 +1,10 @@
-// Main SDK
+// Main SDK (StarkZap is the public name; StarkSDK kept for backward compatibility)
 export { StarkSDK } from "@/sdk";
+export { StarkSDK as StarkZap } from "@/sdk";
 
 // Wallet
 export { Wallet, AccountProvider, BaseWallet } from "@/wallet";
 export type { WalletInterface, WalletOptions } from "@/wallet";
-export {
-  CartridgeWallet,
-  type CartridgeWalletOptions,
-} from "@/wallet/cartridge";
 
 // Transaction
 export { Tx, TxBuilder } from "@/tx";
@@ -30,8 +27,9 @@ export * from "@/staking";
 // Types
 export * from "@/types";
 
-// Re-export useful starknet.js types
+// Re-export useful starknet.js types and classes for apps that need read-only contract calls
 export {
+  Contract,
   TransactionFinalityStatus,
   TransactionExecutionStatus,
 } from "starknet";
@@ -40,4 +38,5 @@ export type {
   Call,
   PreparedTransaction,
   ExecutableUserTransaction,
+  RpcProvider,
 } from "starknet";

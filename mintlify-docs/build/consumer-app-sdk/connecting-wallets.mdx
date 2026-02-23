@@ -49,7 +49,7 @@ The simplest approach — sign transactions locally using a private key (like st
 ```typescript
 import { StarkSDK, StarkSigner, OpenZeppelinPreset } from "@starkware-ecosystem/starkzap";
 
-const sdk = new StarkSDK({ network: "sepolia" });
+const sdk = new StarkZap({ network: "sepolia" });
 const signer = new StarkSigner("0xYOUR_PRIVATE_KEY");
 
 // Default account type: OpenZeppelin
@@ -148,7 +148,7 @@ const signer = new PrivySigner({
 ```typescript
 import { StarkSDK } from "@starkware-ecosystem/starkzap";
 
-const sdk = new StarkSDK({ network: "mainnet" });
+const sdk = new StarkZap({ network: "mainnet" });
 
 const wallet = await sdk.connectCartridge({
   policies: [
@@ -294,7 +294,7 @@ The onboarding API simplifies wallet connection by handling strategy selection, 
 ```typescript
 import { StarkSDK, OnboardStrategy } from "@starkware-ecosystem/starkzap";
 
-const sdk = new StarkSDK({ network: "sepolia" });
+const sdk = new StarkZap({ network: "sepolia" });
 const accessToken = await privy.getAccessToken();
 
 const onboard = await sdk.onboard({

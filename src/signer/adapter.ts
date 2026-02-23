@@ -15,6 +15,7 @@ import {
   transaction,
   EDAMode,
 } from "starknet";
+import { BraavosPreset, BRAAVOS_IMPL_CLASS_HASH } from "@/account/presets";
 import type { SignerInterface } from "@/signer/interface";
 
 /**
@@ -23,6 +24,24 @@ import type { SignerInterface } from "@/signer/interface";
 function intDAM(mode: string | EDAMode): 0 | 1 {
   if (mode === EDAMode.L2 || mode === "L2") return 1;
   return 0;
+}
+
+function assertV3Version(
+  version: string,
+  operation: "invoke" | "deploy_account" | "declare"
+): void {
+  let isV3 = false;
+  try {
+    isV3 = (BigInt(version) & 0xffn) === 0x3n;
+  } catch {
+    isV3 = false;
+  }
+
+  if (!isV3) {
+    throw new Error(
+      `SignerAdapter only supports V3 ${operation} transactions (received version ${version}).`
+    );
+  }
 }
 
 /**
@@ -39,7 +58,7 @@ function intDAM(mode: string | EDAMode): 0 | 1 {
  *
  * @example
  * ```ts
- * import { SignerAdapter, StarkSigner } from "x";
+ * import { SignerAdapter, StarkSigner } from "@starkware-ecosystem/starkzap";
  * import { Account, RpcProvider } from "starknet";
  *
  * const adapter = new SignerAdapter(new StarkSigner(privateKey));
@@ -65,6 +84,7 @@ export class SignerAdapter implements StarknetSignerInterface {
     transactions: Call[],
     details: InvocationsSignerDetails
   ): Promise<Signature> {
+    assertV3Version(details.version, "invoke");
     const det = details as V3InvocationsSignerDetails;
     // Use getExecuteCalldata to properly format multicall for the account's cairo version
     const compiledCalldata = transaction.getExecuteCalldata(
@@ -92,6 +112,7 @@ export class SignerAdapter implements StarknetSignerInterface {
   async signDeployAccountTransaction(
     details: DeployAccountSignerDetails
   ): Promise<Signature> {
+    assertV3Version(details.version, "deploy_account");
     const det = details as V3DeployAccountSignerDetails;
     const compiledConstructorCalldata = CallData.compile(
       det.constructorCalldata
@@ -112,12 +133,64 @@ export class SignerAdapter implements StarknetSignerInterface {
       paymasterData: det.paymasterData || [],
     });
 
-    return this.signer.signRaw(msgHash as string);
+    const txSig = await this.signer.signRaw(msgHash as string);
+    const txSigArray = Array.isArray(txSig) ? txSig : [txSig.r, txSig.s];
+    if (!txSigArray[0] || !txSigArray[1]) {
+      throw new Error("Invalid signature format from signer");
+    }
+
+    // Braavos Base: additional params are sent via the signature (15 elements).
+    // See Braavos docs: "When using an ACCOUNT_DEPLOY transaction... the additional deployment parameters are sent via the signature."
+    if (det.classHash === BraavosPreset.classHash) {
+      const chainIdFelt =
+        typeof det.chainId === "string"
+          ? det.chainId
+          : BigInt(det.chainId).toString(16).replace(/^/, "0x");
+      const auxData: string[] = [
+        BRAAVOS_IMPL_CLASS_HASH,
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        chainIdFelt,
+      ];
+      const auxHash = hash.computePoseidonHashOnElements(auxData);
+      const auxSig = await this.signer.signRaw(auxHash);
+      const auxSigArray = Array.isArray(auxSig) ? auxSig : [auxSig.r, auxSig.s];
+      if (!auxSigArray[0] || !auxSigArray[1]) {
+        throw new Error("Invalid aux signature format from signer");
+      }
+      return [
+        String(txSigArray[0]),
+        String(txSigArray[1]),
+        BRAAVOS_IMPL_CLASS_HASH,
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        chainIdFelt,
+        String(auxSigArray[0]),
+        String(auxSigArray[1]),
+      ];
+    }
+
+    return txSig;
   }
 
   async signDeclareTransaction(
     details: DeclareSignerDetails
   ): Promise<Signature> {
+    assertV3Version(details.version, "declare");
     const det = details as V3DeclareSignerDetails;
 
     const msgHash = hash.calculateDeclareTransactionHash({

@@ -27,7 +27,7 @@ Staking works out of the box when using a supported chain preset:
 ```typescript
 import { StarkSDK } from "@starkware-ecosystem/starkzap";
 
-const sdk = new StarkSDK({
+const sdk = new StarkZap({
   network: "mainnet",
 });
 ```
@@ -37,7 +37,7 @@ Optional override:
 ```typescript
 import { StarkSDK, fromAddress } from "@starkware-ecosystem/starkzap";
 
-const sdk = new StarkSDK({
+const sdk = new StarkZap({
   network: "mainnet",
   staking: {
     contract: fromAddress(

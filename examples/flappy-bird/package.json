@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "x": "file:../..",
+    "@starkware-ecosystem/starkzap": "file:../..",
     "starknet": "^9.2.1"
   },
   "devDependencies": {

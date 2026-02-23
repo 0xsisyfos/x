@@ -90,7 +90,7 @@ Use Privy with Starkzap:
 ```typescript
 import { StarkSDK, PrivySigner, OnboardStrategy, accountPresets } from "@starkware-ecosystem/starkzap";
 
-const sdk = new StarkSDK({ network: "sepolia" });
+const sdk = new StarkZap({ network: "sepolia" });
 const accessToken = await privy.getAccessToken();
 
 // Option 1: Using onboard API (recommended)
@@ -205,7 +205,7 @@ app.listen(3001);
 ```typescript
 import { StarkSDK, OnboardStrategy, accountPresets } from "@starkware-ecosystem/starkzap";
 
-const sdk = new StarkSDK({ network: "sepolia" });
+const sdk = new StarkZap({ network: "sepolia" });
 const accessToken = await privy.getAccessToken();
 
 // Connect with SDK

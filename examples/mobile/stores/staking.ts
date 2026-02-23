@@ -11,7 +11,7 @@ import {
   type ChainId,
   type WalletInterface,
   type StarkSDK,
-} from "x";
+} from "@starkware-ecosystem/starkzap";
 import {
   showTransactionToast,
   updateTransactionToast,

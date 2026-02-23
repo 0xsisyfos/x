@@ -42,6 +42,7 @@ import {
 // Braavos factory address (same on Sepolia and Mainnet)
 const BRAAVOS_FACTORY_ADDRESS =
   "0x3d94f65ebc7552eb517ddb374250a9525b605f25f4e41ded6e7d7381ff1c2e8";
+const NEGATIVE_DEPLOYMENT_CACHE_TTL_MS = 3_000;
 
 export { type WalletInterface } from "@/wallet/interface";
 export { BaseWallet } from "@/wallet/base";
@@ -110,6 +111,8 @@ export class Wallet extends BaseWallet {
 
   /** Cached deployment status (null = not checked yet) */
   private deployedCache: boolean | null = null;
+  private deployedCacheExpiresAt = 0;
+  private sponsoredDeployLock: Promise<void> | null = null;
 
   private constructor(options: WalletInternals) {
     super(options.address, options.stakingConfig);
@@ -199,16 +202,48 @@ export class Wallet extends BaseWallet {
   }
 
   async isDeployed(): Promise<boolean> {
+    const now = Date.now();
+
     // Return cached result if we know it's deployed
     if (this.deployedCache === true) {
       return true;
+    }
+    if (this.deployedCache === false && now < this.deployedCacheExpiresAt) {
+      return false;
     }
 
     const deployed = await checkDeployed(this.provider, this.address);
     if (deployed) {
       this.deployedCache = true;
+      this.deployedCacheExpiresAt = Number.POSITIVE_INFINITY;
+    } else {
+      this.deployedCache = false;
+      this.deployedCacheExpiresAt = now + NEGATIVE_DEPLOYMENT_CACHE_TTL_MS;
     }
     return deployed;
+  }
+
+  private clearDeploymentCache(): void {
+    this.deployedCache = null;
+    this.deployedCacheExpiresAt = 0;
+  }
+
+  private async withSponsoredDeployLock<T>(work: () => Promise<T>): Promise<T> {
+    while (this.sponsoredDeployLock) {
+      await this.sponsoredDeployLock;
+    }
+
+    let releaseLock: (() => void) | undefined;
+    this.sponsoredDeployLock = new Promise<void>((resolve) => {
+      releaseLock = resolve;
+    });
+
+    try {
+      return await work();
+    } finally {
+      releaseLock?.();
+      this.sponsoredDeployLock = null;
+    }
   }
 
   async ensureReady(options: EnsureReadyOptions = {}): Promise<void> {
@@ -216,25 +251,20 @@ export class Wallet extends BaseWallet {
   }
 
   async deploy(options: DeployOptions = {}): Promise<Tx> {
+    this.clearDeploymentCache();
     const feeMode = options.feeMode ?? this.defaultFeeMode;
     const timeBounds = options.timeBounds ?? this.defaultTimeBounds;
 
     if (feeMode === "sponsored") {
       const tx = await this.deployPaymasterWith([], timeBounds);
-      this.deployedCache = true;
       return tx;
     }
 
     const classHash = this.accountProvider.getClassHash();
     const publicKey = await this.accountProvider.getPublicKey();
+    const addressSalt = this.accountProvider.getSalt(publicKey);
     const constructorCalldata =
       this.accountProvider.getConstructorCalldata(publicKey);
-
-    const estimateFee = await this.account.estimateAccountDeployFee({
-      classHash,
-      constructorCalldata,
-      addressSalt: publicKey,
-    });
 
     const multiply2x = (value: {
       max_amount: bigint;
@@ -246,20 +276,41 @@ export class Wallet extends BaseWallet {
       };
     };
 
-    const { l1_gas, l2_gas, l1_data_gas } = estimateFee.resourceBounds;
-
-    const resourceBounds = {
-      l1_gas: multiply2x(l1_gas),
-      l2_gas: multiply2x(l2_gas),
-      l1_data_gas: multiply2x(l1_data_gas),
+    // Default resource bounds when estimate fails. L2 must cover Braavos deploy (~1M gas); prices meet network minimums (~47e12 for L1).
+    const DEFAULT_DEPLOY_RESOURCE_BOUNDS = {
+      l1_gas: { max_amount: 50_000n, max_price_per_unit: 50_000_000_000_000n },
+      l2_gas: {
+        max_amount: 1_100_000n,
+        max_price_per_unit: 50_000_000_000_000n,
+      },
+      l1_data_gas: {
+        max_amount: 50_000n,
+        max_price_per_unit: 50_000_000_000_000n,
+      },
     };
 
+    let resourceBounds: typeof DEFAULT_DEPLOY_RESOURCE_BOUNDS;
+    try {
+      const estimateFee = await this.account.estimateAccountDeployFee({
+        classHash,
+        constructorCalldata,
+        addressSalt,
+      });
+      const { l1_gas, l2_gas, l1_data_gas } = estimateFee.resourceBounds;
+      resourceBounds = {
+        l1_gas: multiply2x(l1_gas),
+        l2_gas: multiply2x(l2_gas),
+        l1_data_gas: multiply2x(l1_data_gas),
+      };
+    } catch {
+      resourceBounds = DEFAULT_DEPLOY_RESOURCE_BOUNDS;
+    }
+
     const { transaction_hash } = await this.account.deployAccount(
-      { classHash, constructorCalldata, addressSalt: publicKey },
+      { classHash, constructorCalldata, addressSalt },
       { resourceBounds }
     );
 
-    this.deployedCache = true;
     return new Tx(
       transaction_hash,
       this.provider,
@@ -272,6 +323,7 @@ export class Wallet extends BaseWallet {
     calls: Call[],
     timeBounds?: PaymasterTimeBounds
   ): Promise<Tx> {
+    this.clearDeploymentCache();
     const classHash = this.accountProvider.getClassHash();
 
     // Special handling for Braavos - deploy via factory
@@ -285,7 +337,6 @@ export class Wallet extends BaseWallet {
       calls,
       sponsoredDetails(timeBounds ?? this.defaultTimeBounds, deploymentData)
     );
-    this.deployedCache = true;
     return new Tx(
       transaction_hash,
       this.provider,
@@ -400,7 +451,6 @@ export class Wallet extends BaseWallet {
       transactionHash = result.transaction_hash;
     }
 
-    this.deployedCache = true;
     return new Tx(
       transactionHash,
       this.provider,
@@ -416,17 +466,48 @@ export class Wallet extends BaseWallet {
     let transactionHash: string;
 
     if (feeMode === "sponsored") {
-      // Check if account needs deployment (paymaster can deploy + invoke in one tx)
       const deployed = await this.isDeployed();
-      transactionHash = deployed
-        ? (
-            await this.account.executePaymasterTransaction(
-              calls,
-              sponsoredDetails(timeBounds)
-            )
-          ).transaction_hash
-        : (await this.deployPaymasterWith(calls, timeBounds)).hash;
+      if (deployed) {
+        transactionHash = (
+          await this.account.executePaymasterTransaction(
+            calls,
+            sponsoredDetails(timeBounds)
+          )
+        ).transaction_hash;
+      } else {
+        transactionHash = await this.withSponsoredDeployLock(async () => {
+          const recheckedDeployed = await this.isDeployed();
+          if (recheckedDeployed) {
+            return (
+              await this.account.executePaymasterTransaction(
+                calls,
+                sponsoredDetails(timeBounds)
+              )
+            ).transaction_hash;
+          }
+
+          try {
+            return (await this.deployPaymasterWith(calls, timeBounds)).hash;
+          } catch (error) {
+            if (!isAlreadyDeployedError(error)) {
+              throw error;
+            }
+            return (
+              await this.account.executePaymasterTransaction(
+                calls,
+                sponsoredDetails(timeBounds)
+              )
+            ).transaction_hash;
+          }
+        });
+      }
     } else {
+      const deployed = await this.isDeployed();
+      if (!deployed) {
+        throw new Error(
+          'Account is not deployed. Call wallet.ensureReady({ deploy: "if_needed" }) before execute() in user_pays mode.'
+        );
+      }
       transactionHash = (await this.account.execute(calls)).transaction_hash;
     }
 
@@ -443,7 +524,11 @@ export class Wallet extends BaseWallet {
   }
 
   async preflight(options: PreflightOptions): Promise<PreflightResult> {
-    return preflightTransaction(this, this.account, options);
+    const feeMode = options.feeMode ?? this.defaultFeeMode;
+    return preflightTransaction(this, this.account, {
+      ...options,
+      feeMode,
+    });
   }
 
   getAccount(): Account {
@@ -491,6 +576,18 @@ export class Wallet extends BaseWallet {
   }
 
   async disconnect(): Promise<void> {
-    // No-op for signer-based wallets
+    this.clearCaches();
+    this.clearDeploymentCache();
   }
+}
+
+function isAlreadyDeployedError(error: unknown): boolean {
+  const message = (
+    error instanceof Error ? error.message : String(error)
+  ).toLowerCase();
+  return (
+    message.includes("already deployed") ||
+    message.includes("account already exists") ||
+    message.includes("contract already exists")
+  );
 }

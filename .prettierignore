@@ -5,3 +5,10 @@ dist
 node_modules
 .expo
 expo-env.d.ts
+docs
+examples/flappy-bird
+.claude
+.codex
+AGENTS.md
+CLAUDE.md
+tasks

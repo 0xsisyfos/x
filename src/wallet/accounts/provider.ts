@@ -22,7 +22,7 @@ function toHex(value: string | number | bigint): string {
  *
  * @example
  * ```ts
- * import { AccountProvider, StarkSigner, ArgentPreset } from "x";
+ * import { AccountProvider, StarkSigner, ArgentPreset } from "@starkware-ecosystem/starkzap";
  *
  * const provider = new AccountProvider(
  *   new StarkSigner(privateKey),
@@ -63,11 +63,7 @@ export class AccountProvider {
 
     const publicKey = await this.getPublicKey();
     const calldata = this.getConstructorCalldata(publicKey);
-
-    // Use custom salt computation if provided, otherwise use public key directly
-    const salt = this.accountClass.getSalt
-      ? this.accountClass.getSalt(publicKey)
-      : publicKey;
+    const salt = this.getSalt(publicKey);
 
     const addressStr = hash.calculateContractAddressFromHash(
       salt,
