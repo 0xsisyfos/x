@@ -84,6 +84,8 @@ The SDK has two dependencies:
 - [`starknet`](https://www.npmjs.com/package/starknet) (v9+) — Starknet.js core library
 - [`@cartridge/controller`](https://www.npmjs.com/package/@cartridge/controller) — Cartridge wallet integration
 
+The package is published on npm as [`@starkware-ecosystem/starkzap`](https://www.npmjs.com/package/@starkware-ecosystem/starkzap); use `npm install @starkware-ecosystem/starkzap` and `from "@starkware-ecosystem/starkzap"` when not developing from this repo.
+
 ---
 
 ## Quick Start
