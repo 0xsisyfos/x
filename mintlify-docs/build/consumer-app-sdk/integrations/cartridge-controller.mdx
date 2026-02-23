@@ -1,6 +1,6 @@
 ---
 title: Cartridge Controller
-description: "Controller API for Cartridge access and ownership logic on Starknet"
+description: "Use Cartridge Controller with network-safe session configuration"
 ---
 
 ## Overview
@@ -42,9 +42,9 @@ npm install @cartridge/controller
 ### 2. Initialize SDK
 
 ```typescript
-import { StarkSDK, OnboardStrategy } from "starkzap";
+import { StarkSDK, OnboardStrategy } from "@starkware-ecosystem/starkzap";
 
-const sdk = new StarkSDK({ network: "mainnet" });
+const sdk = new StarkZap({ network: "mainnet" });
 ```
 
 ## Integration
@@ -146,9 +146,9 @@ const isAuthenticated = controller.isAuthenticated();
 ## Complete Example
 
 ```typescript
-import { StarkSDK, OnboardStrategy, Amount, fromAddress, mainnetTokens } from "starkzap";
+import { StarkSDK, OnboardStrategy, Amount, fromAddress, mainnetTokens } from "@starkware-ecosystem/starkzap";
 
-const sdk = new StarkSDK({ network: "mainnet" });
+const sdk = new StarkZap({ network: "mainnet" });
 
 // Define policies for what the user can do
 // All transactions matching these policies will be automatically paymastered

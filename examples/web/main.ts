@@ -10,7 +10,7 @@ import {
   DevnetPreset,
   type WalletInterface,
   type AccountClassConfig,
-} from "x";
+} from "@starkware-ecosystem/starkzap";
 import { ec } from "starknet";
 
 // Configuration

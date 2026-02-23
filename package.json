@@ -1,5 +1,5 @@
 {
-  "name": "x",
+  "name": "@starkware-ecosystem/starkzap",
   "version": "1.0.0",
   "description": "Helper sdk for easy wallet integration",
   "homepage": "https://github.com/keep-starknet-strange/x#readme",
@@ -19,9 +19,19 @@
     ".": {
       "types": "./dist/src/index.d.ts",
       "import": "./dist/src/index.js"
+    },
+    "./cartridge": {
+      "types": "./dist/src/cartridge.d.ts",
+      "import": "./dist/src/cartridge.js"
     }
   },
+  "peerDependencies": {
+    "@cartridge/controller": "^0.13.9"
+  },
   "peerDependenciesMeta": {
+    "@cartridge/controller": {
+      "optional": true
+    },
     "react-native-get-random-values": {
       "optional": true
     },
@@ -35,6 +45,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc; tsc-alias",
     "typecheck": "tsc --noEmit",
@@ -53,11 +66,12 @@
     "generate:validators": "npx tsx scripts/generate-validator-presets.ts --network mainnet",
     "generate:validators:sepolia": "npx tsx scripts/generate-validator-presets.ts --network sepolia",
     "docs:api": "typedoc --options typedoc.json",
-    "docs:export": "npm run docs:api && node scripts/docs-export.mjs && bestzip docs/export/x-docs.zip docs/export/*",
+    "docs:export": "npm run docs:api && node scripts/docs-export.mjs",
     "docs:check": "npm run docs:api",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@cartridge/controller": "^0.13.9",
     "@eslint/js": "^9.39.2",
     "@vitest/coverage-v8": "^4.0.17",
     "bestzip": "^2.2.1",
@@ -77,7 +91,7 @@
     "vitest": "^4.0.17"
   },
   "dependencies": {
-    "@cartridge/controller": "^0.11.3",
+    "@cartridge/controller": "^0.13.9",
     "starknet": "^9.2.1"
   }
 }

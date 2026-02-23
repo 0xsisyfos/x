@@ -17,7 +17,7 @@ Flappy Bird on Starknet. This example **forks [nebez/floppybird](https://github.
 
 ## Deploy to Vercel (live demo)
 
-This repo is a **fork of [keep-starknet-strange/x](https://github.com/keep-starknet-strange/x)**. The flappy-bird example depends on the parent SDK (`x`) via `file:../..`, so the **entire monorepo** must be in the repo you deploy from. This will be updated once the SDK is published. For now, use one of these flows.
+This repo is a **fork of [keep-starknet-strange/starkzap](https://github.com/keep-starknet-strange/starkzap)**. The flappy-bird example depends on the parent SDK via `file:../..`, so the **entire monorepo** must be in the repo you deploy from. The SDK is published on npm as [`@starkware-ecosystem/starkzap`](https://www.npmjs.com/package/@starkware-ecosystem/starkzap); for a standalone clone you can use that instead of `file:../..`. Use one of these flows to deploy.
 
 ### Option A: Deploy from this fork (recommended)
 
@@ -80,12 +80,12 @@ The **Cartridge Controller** (social login / passkey) only works in a **secure c
 ## Stack
 
 - **Vite + TypeScript** — Entry and StarkZap wiring; game is vanilla JS from floppybird.
-- **StarkZap SDK (x)** — `StarkZap`, `OnboardStrategy.Cartridge`, `networks`, `wallet.execute()`, `wallet.getProvider()`, `wallet.address`, `wallet.disconnect()`, Cartridge `username()`. Config: `StarkZap({ network: "sepolia" })`; explorer from `networks.sepolia.explorerUrl`.
+- **Starkzap SDK (`@starkware-ecosystem/starkzap`)** — `StarkSDK`, `OnboardStrategy.Cartridge`, `networks`, `wallet.execute()`, `wallet.getProvider()`, `wallet.address`, `wallet.disconnect()`, Cartridge `username()`. Config: `new StarkSDK({ network: "sepolia" })`; explorer from `networks.sepolia.explorerUrl`.
 - **Game contract** — Demo contract on Starknet Sepolia: `start_new_game`, `increment_score`, `end_game`, plus view functions for high score and leaderboard. Address: `0x03730b941e8d3ece030a4a0d5f1008f34fbde0976e86577a78648c8b35079464`.
 
 ## What this example uses outside StarkZap
 
-This example import `starknet` . In the future, StarkZap re-exports `Contract` and `RpcProvider`; the provider comes from `wallet.getProvider()`. Use them from `x` for read-only contract calls so your app depends only on StarkZap.
+The example does **not** import `starknet` directly. StarkZap re-exports `Contract` and `RpcProvider`; the provider comes from `wallet.getProvider()`. Use them from `x` for read-only contract calls so your app depends only on StarkZap.
 
 | Thing | Purpose |
 |-------|--------|

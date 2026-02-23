@@ -1,6 +1,9 @@
 const { getDefaultConfig } = require("expo/metro-config");
 const path = require("path");
 
+const SDK_PACKAGE_NAME = "starkzap";
+const SDK_SCOPED_PACKAGE_NAME = "@starkware-ecosystem/starkzap";
+
 const sdkRoot = path.resolve(__dirname, "../..");
 const config = getDefaultConfig(__dirname);
 
@@ -11,16 +14,22 @@ config.resolver.nodeModulesPaths = [
   path.resolve(sdkRoot, "node_modules"),
 ];
 
-// Custom resolver to handle "x" package and path alias resolution
+// Custom resolver to handle SDK package aliases and path alias resolution
 config.resolver.resolveRequest = (context, moduleName, platform) => {
-  // Resolve "x" to source files directly
-  if (moduleName === "x") {
+  // Resolve SDK package imports to source files directly
+  if (
+    moduleName === SDK_PACKAGE_NAME ||
+    moduleName === SDK_SCOPED_PACKAGE_NAME
+  ) {
     return {
       filePath: path.resolve(sdkRoot, "src/index.ts"),
       type: "sourceFile",
     };
   }
-  if (moduleName === "x/polyfills") {
+  if (
+    moduleName === `${SDK_PACKAGE_NAME}/polyfills` ||
+    moduleName === `${SDK_SCOPED_PACKAGE_NAME}/polyfills`
+  ) {
     return {
       filePath: path.resolve(sdkRoot, "src/polyfills.ts"),
       type: "sourceFile",
