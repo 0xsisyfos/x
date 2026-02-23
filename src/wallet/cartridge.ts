@@ -125,7 +125,6 @@ export class CartridgeWallet extends BaseWallet {
     }
 
     if (options.policies && options.policies.length > 0) {
-      // Normalize through Cartridge's own helper to avoid malformed policy payloads.
       controllerOptions.policies = toSessionPolicies(
         options.policies as Parameters<typeof toSessionPolicies>[0]
       );
