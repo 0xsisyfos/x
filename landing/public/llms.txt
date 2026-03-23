@@ -1,0 +1,33 @@
+# Starkzap
+
+> Starkzap is an open-source SDK for integrating Bitcoin, stablecoins, and DeFi into web and mobile apps on Starknet.
+
+## Key Features
+
+- **Gasless Transactions**: Users never pay gas fees. Paymaster handles everything, provided by AVNU and Cartridge.
+- **Social Login**: Google, Apple, and Passkeys authentication. No seed phrases. Powered by Privy and Cartridge.
+- **Bitcoin Staking**: Let users earn yield on BTC, USDC, and STRK in a few lines of code.
+- **Cross-Platform**: Available for Web, Android, and iOS development.
+
+## Installation
+
+```
+npm install starkzap
+```
+
+## Links
+
+- Documentation: https://docs.starknet.io/build/starkzap/overview
+- GitHub: https://github.com/keep-starknet-strange/starkzap
+- Examples: https://github.com/keep-starknet-strange/awesome-starkzap
+- Website: https://starkzap.io
+
+## Ecosystem
+
+Starkzap is built on the Starknet ecosystem and integrates with Privy, AVNU, Cartridge, Ready, Braavos, and OpenZeppelin.
+
+## Upcoming Features
+
+- Swaps with Ekubo and AVNU
+- Bridges with Near Intents and Starkgate
+- Lending with Vesu
