@@ -7,6 +7,11 @@
 - **Gasless Transactions**: Users never pay gas fees. Paymaster handles everything, provided by AVNU and Cartridge.
 - **Social Login**: Google, Apple, and Passkeys authentication. No seed phrases. Powered by Privy and Cartridge.
 - **Bitcoin Staking**: Let users earn yield on BTC, USDC, and STRK in a few lines of code.
+- **Cross-Chain Bridging**: Move assets across chains with LayerZero CCTP, Hyperlane, and StarkGate.
+- **Token Swaps**: Swap tokens seamlessly using AVNU and Ekubo.
+- **Dollar-Cost Averaging**: Automate recurring token purchases with DCA strategies powered by AVNU and Ekubo.
+- **Lending & Borrowing**: Supply and borrow assets through Vesu integration.
+- **Confidential Transfers**: Private on-chain transfers powered by Tongo.cash.
 - **Cross-Platform**: Available for Web, Android, and iOS development.
 
 ## Installation
@@ -24,10 +29,4 @@ npm install starkzap
 
 ## Ecosystem
 
-Starkzap is built on the Starknet ecosystem and integrates with Privy, AVNU, Cartridge, Ready, Braavos, and OpenZeppelin.
-
-## Upcoming Features
-
-- Swaps with Ekubo and AVNU
-- Bridges with Near Intents and Starkgate
-- Lending with Vesu
+Starkzap is built on the Starknet ecosystem and integrates with Privy, AVNU, Cartridge, Ekubo, Vesu, Tongo.cash, LayerZero, Hyperlane, StarkGate, Ready, Braavos, and OpenZeppelin.
