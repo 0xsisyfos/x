@@ -144,6 +144,12 @@ Absolutely. Starkzap makes cross-chain bridging effortless. Move tokens from Eth
 
 Insanely easy. One function call and you're done. Starkzap routes through AVNU and Ekubo to guarantee the best price every time. No manual DEX hunting required.
 
+## Related
+
+- [STRK20 Privacy](https://strk20.starknet.io): private payments and DeFi on Starknet
+- [STRK20 Docs](https://strk20.starknet.io/docs)
+- [Starknet](https://www.starknet.io)
+
 ## Links
 
 - [Docs](https://docs.starknet.io/build/starkzap/overview)

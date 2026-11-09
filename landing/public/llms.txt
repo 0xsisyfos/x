@@ -27,6 +27,12 @@ npm install starkzap
 - Examples: https://github.com/keep-starknet-strange/awesome-starkzap
 - Website: https://starkzap.io
 
+## Related
+
+- STRK20 Privacy: https://strk20.starknet.io
+- STRK20 Docs: https://strk20.starknet.io/docs
+- Starknet: https://www.starknet.io
+
 ## Ecosystem
 
 Starkzap is built on the Starknet ecosystem and integrates with Privy, AVNU, Cartridge, Ekubo, Vesu, Tongo.cash, LayerZero, Hyperlane, StarkGate, Ready, Braavos, and OpenZeppelin.
